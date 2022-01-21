@@ -5,7 +5,7 @@
 
         <variable
             name="adapter"
-            type="com.nic.RealTimeMonitoringSystem.adapter.PendingScreenAdapter" />
+            type="com.nic.thooimaikaavalar.adapter.PendingScreenAdapter" />
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"

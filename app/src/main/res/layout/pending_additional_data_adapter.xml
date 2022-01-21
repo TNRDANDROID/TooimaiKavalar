@@ -5,7 +5,7 @@
 
         <variable
             name="adapter"
-            type="com.nic.RealTimeMonitoringSystem.adapter.PendingAdditionalDataAdpter" />
+            type="com.nic.thooimaikaavalar.adapter.PendingAdditionalDataAdpter" />
     </data>
 
     <RelativeLayout

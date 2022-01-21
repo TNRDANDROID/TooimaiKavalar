@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.nic.thooimaikaavalar.activity.ViewAndEditMCCDetaila" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_icon_new_1"
+        tools:context=".activity.NewMainPage">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66B8B4B4">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:id="@+id/toolbar"
+            android:background="@color/colorPrimaryDark">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/back_img"
+                android:src="@mipmap/back_arrow"
+                android:tint="@color/white"
+                android:padding="@dimen/_10sdp"
+                android:layout_centerVertical="true"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                android:text="@string/add"
+                android:layout_centerInParent="true"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/toolbar">
+        <TextView
+            android:id="@+id/select_village_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Select Village"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_12sdp"
+            style="@string/font_circular_bold" />
+        <RelativeLayout
+
+            android:id="@+id/village_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/header"
+            android:layout_below="@+id/select_hab_tv"
+            android:layout_marginTop="@dimen/padding"
+            android:background="@drawable/rectangle_box"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="15dp"
+
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_12sdp"
+                android:visibility="visible"
+                style="@string/font_normal" />
+
+            <Spinner
+                android:id="@+id/village_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center" />
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mcc_reclcler_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:id="@+id/tv_1"
+                    android:text="MCC List"
+                    android:textColor="@color/black"
+                    android:layout_centerHorizontal="true"></TextView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mcc_recyler"
+                    android:layout_below="@+id/tv_1">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:id="@+id/no_data_text"
+                    android:text="No Record"
+                    android:layout_below="@id/mcc_recyler"
+                    android:textColor="@color/black"
+                    android:layout_centerHorizontal="true"></TextView>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+    </RelativeLayout>
+</layout>

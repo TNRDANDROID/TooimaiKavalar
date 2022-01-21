@@ -102,5 +102,13 @@
         <item name="colorButtonNormal">@color/yellow</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
     </style>
+    <style name="diagonalStyle">
+        <item name="android:background">@drawable/slanding_line_bg</item>
+    </style>
+    <style name="datepicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
 </resources>

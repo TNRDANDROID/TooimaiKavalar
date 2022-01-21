@@ -5,7 +5,7 @@
 
         <variable
             name="activity"
-            type="com.nic.RealTimeMonitoringSystem.activity.HomePage" />
+            type="com.nic.thooimaikaavalar.activity.HomePage" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,31 +13,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        tools:context="com.nic.RealTimeMonitoringSystem.activity.HomePage">
+        tools:context="com.nic.thooimaikaavalar.activity.HomePage">
         <RelativeLayout
             android:id="@+id/header_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimaryDark">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="@dimen/margin"
-                android:text="Home Page"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
+                android:text="@string/home_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
                 style="@style/font_circular_bold"/>
 
             <ImageView
                 android:id="@+id/log_out"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_10sdp"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
                 android:adjustViewBounds="true"
                 android:onClick="@{()-> activity.logout()}"
                 android:scaleType="centerInside"
@@ -62,8 +61,8 @@
                 android:background="@drawable/circle_border">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
                     android:layout_margin="9dp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/circle"
@@ -82,7 +81,7 @@
                 android:fontFamily="sans-serif-light"
                 android:text="Joey Tribbiani"
                 android:textColor="@color/white"
-                android:textSize="32sp" />
+                android:textSize="@dimen/_14sdp" />
 
 
             <TextView
@@ -94,8 +93,8 @@
                 android:fontFamily="sans-serif"
                 android:text="new york, usa"
                 android:textAllCaps="true"
-                android:textColor="@color/address"
-                android:textSize="14sp" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp" />
 
 
         </RelativeLayout>
@@ -114,18 +113,17 @@
                 android:layout_weight="1"
                 android:background="@color/followersBg"
                 android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:padding="@dimen/_10sdp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:fontFamily="sans-serif-light"
-                    android:text="Pending works for Upload"
+                    android:text="@string/pending_works_for_upload"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_18sdp" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
 
             </RelativeLayout>
 
@@ -136,8 +134,7 @@
                 android:layout_weight="1"
                 android:background="@color/followingBg"
                 android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:padding="@dimen/_10sdp">
 
 
 
@@ -147,8 +144,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:text="873"
-                        android:textColor="@color/black"
-                        android:textSize="23sp" />
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -186,23 +183,36 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <Button
-                        android:id="@+id/view_works_tv"
-                        android:layout_width="120dp"
+                        android:id="@+id/add_new_mcc"
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_centerHorizontal="true"
                         android:layout_height="35dp"
-                        android:layout_marginBottom="@dimen/margin"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="@dimen/margin"
-                        android:layout_marginRight="@dimen/margin"
                         android:background="@drawable/grad_curve"
                         android:onClick="@{()-> activity.viewVillageList()}"
-                        android:text="View Works"
+                        android:text="@string/add_new_mcc"
                         android:textAlignment="center"
                         android:clickable="true"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_12sdp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp"
                         />
+                    <Button
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_below="@+id/add_new_mcc"
+                        android:id="@+id/edit_mcc"
+                        android:layout_width="@dimen/_120sdp"
+                        android:layout_height="35dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/grad_curve"
+                        android:onClick="@{()-> activity.viewMCCBasicDetailsList()}"
+                        android:text="@string/edit_mcc"
+                        android:textAlignment="center"
+                        android:clickable="true"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp"
+                        />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -217,7 +227,6 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_below="@+id/view_works_tv"
                         android:layout_height="1dp"
                         android:layout_marginTop="15dp"
                         android:visibility="gone"
@@ -240,20 +249,20 @@
                         android:text="Sync"
                         style="@style/font_circular_bold"
                         android:textColor="#000080"
-                        android:textSize="13sp" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Pending Uploads"
+                        android:text="@string/pending_uploads"
                         android:textColor="#000000"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/_14sdp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="@dimen/_13sdp"
                         android:background="@color/grey" />
 
                 </LinearLayout>
@@ -271,10 +280,10 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:padding="@dimen/_13sdp"
-            android:text="Sofware Designed &amp; Developed by NIC"
+            android:text="Software Designed &amp; Developed by NIC"
             android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_13sdp"
             android:fontFamily="sans-serif-light"
             />
 
