@@ -8,6 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -60,6 +65,8 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     public com.nic.thooimaikaavalar.dataBase.dbData dbData = new dbData(this);
 
     public LoginScreenBinding loginScreenBinding;
+    HideReturnsTransformationMethod hideReturnsTransformationMethod;
+    String password_visible="show";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +76,45 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         loginScreenBinding.setActivity(this);
         intializeUI();
 
+        loginScreenBinding.visible.setVisibility(View.GONE);
+        loginScreenBinding.visible.setImageResource(R.drawable.ic_baseline_visibility_24px);
+        loginScreenBinding.visible.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(password_visible.equals("show")){
+                    loginScreenBinding.userPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    password_visible ="hide";
+                    loginScreenBinding.visible.setImageResource(R.drawable.ic_baseline_visibility_off_24px);
+                }
+                else {
+                    loginScreenBinding.userPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    password_visible ="show";
+                    loginScreenBinding.visible.setImageResource(R.drawable.ic_baseline_visibility_24px);
+                }
+            }
+        });
+
+        loginScreenBinding.userPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.length()>0){
+                    loginScreenBinding.visible.setVisibility(View.VISIBLE);
+                }
+                else {
+                    loginScreenBinding.visible.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
     }
 

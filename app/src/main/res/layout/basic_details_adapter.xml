@@ -20,20 +20,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <RelativeLayout
+                android:id="@+id/image_rl"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp">
 
-
-               <ImageView
-                   android:layout_centerVertical="true"
-                   android:src="@mipmap/avatar"
-                   android:scaleType="fitXY"
-                   android:layout_width="@dimen/_80sdp"
-                   android:layout_height="@dimen/_80sdp"
-                   android:id="@+id/mcc_center_image"></ImageView>
+                <ImageView
+                    android:src="@drawable/bacground_bg_for_choosing_layout"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/mcc_center_image"></ImageView>
+            </RelativeLayout>
 
 
             <RelativeLayout
+                android:layout_marginLeft="@dimen/_7sdp"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/mcc_center_image"
+                android:layout_toRightOf="@id/image_rl"
                 android:layout_toLeftOf="@+id/delete_upload_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

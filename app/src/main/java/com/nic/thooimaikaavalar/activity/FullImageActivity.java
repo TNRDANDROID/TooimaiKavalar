@@ -45,7 +45,7 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
     public String OnOffType,work_id,mcc_id,component_id;
     private FullImageAdapter fullImageAdapter;
     private PrefManager prefManager;
-    private static  ArrayList<RealTimeMonitoringSystem> activityImage = new ArrayList<>();
+    private  ArrayList<RealTimeMonitoringSystem> activityImage = new ArrayList<>();
     private dbData dbData = new dbData(this);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -260,8 +260,14 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
         }
     }
     public void setAdapter(){
-        fullImageAdapter = new FullImageAdapter(FullImageActivity.this,
-                activityImage, dbData);
+        if(OnOffType.equalsIgnoreCase("Offline")) {
+            fullImageAdapter = new FullImageAdapter(FullImageActivity.this,
+                    activityImage, dbData,"Offline");
+        }
+        else if(OnOffType.equalsIgnoreCase("Online")){
+            fullImageAdapter = new FullImageAdapter(FullImageActivity.this,
+                    activityImage, dbData,"Online");
+        }
 /*
         fullImageRecyclerBinding.imagePreviewRecyclerview.addOnItemTouchListener(new FullImageAdapter.RecyclerTouchListener(getApplicationContext(), fullImageRecyclerBinding.imagePreviewRecyclerview, new FullImageAdapter.ClickListener() {
             @Override
@@ -283,6 +289,7 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
         }));
 */
         fullImageRecyclerBinding.imagePreviewRecyclerview.setAdapter(fullImageAdapter);
+        fullImageAdapter.notifyDataSetChanged();
     }
     @Override
     public void OnError(VolleyError volleyError) {

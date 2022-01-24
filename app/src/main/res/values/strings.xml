@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ThooimaiKavalar</string>
+    <string name="app_name">ThooimaiKaavalar</string>
     <string name="hint_password">Password</string>
     <string name="hint_username">User Name</string>
     <string name="btn_login">Login</string>
@@ -48,6 +48,9 @@
     <string name="capture_mcc_center">Capture MICRO COMPOSTING CENTRE</string>
     <string name="please_capture_mcc_center">Please Capture MICRO COMPOSTING CENTRE</string>
     <string name="save">Save</string>
+    <string name="software_d_a_d_b_nic">Software Designed &amp; Developed by NIC</string>
+    <string name="close">Close</string>
+    <string name="add_photo">Add Photo</string>
 
 
 </resources>

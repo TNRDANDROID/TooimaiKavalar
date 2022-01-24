@@ -24,6 +24,7 @@ import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.icu.text.SimpleDateFormat;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.ExifInterface;
@@ -73,10 +74,12 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.CAMERA;
@@ -167,8 +170,50 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
                 finish();
             }
         });
+        initializeUi();
 
     }
+
+    public void initializeUi(){
+        String date_of_commencement= dateFormate(getIntent().getStringExtra("date_of_commencement"),"yes");
+        viewTakeEditComponentsPhotsBinding.villageName.setText("Village : "+getIntent().getStringExtra("village_name"));
+        viewTakeEditComponentsPhotsBinding.mccName.setText("MCC Name : "+getIntent().getStringExtra("mcc_name"));
+        viewTakeEditComponentsPhotsBinding.dateOfCommencement.setText("Date of Commencement : "+date_of_commencement);
+    }
+    public  String dateFormate( String strDate,String type ){
+        try {
+            android.icu.text.SimpleDateFormat sdfSource =null;
+            if(type.equals("")) {
+                // create SimpleDateFormat object with source string date format
+                sdfSource = new android.icu.text.SimpleDateFormat(
+                        "dd-M-yyyy");
+            }
+            else {
+                sdfSource = new android.icu.text.SimpleDateFormat(
+                        "yyyy-mm-dd");
+            }
+
+            // parse the string into Date object
+            Date date = sdfSource.parse(strDate);
+
+            // create SimpleDateFormat object with desired date format
+            android.icu.text.SimpleDateFormat sdfDestination = new SimpleDateFormat(
+                    "dd-MM-yyyy");
+
+            // parse the date into another format
+            strDate = sdfDestination.format(date);
+
+           /* System.out
+                    .println("Date is converted from yyyy-MM-dd'T'hh:mm:ss'.000Z' format to dd/MM/yyyy, ha");
+            System.out.println("Converted date is : " + strDate.toLowerCase());
+*/
+        } catch (ParseException pe) {
+            System.out.println("Parse Exception : " + pe);
+        }
+        return strDate;
+    }
+
+
 
     public void componentsAdapterItemClicked(int position){
         component_id_ = componentsList.get(position).getKEY_ID();
@@ -274,6 +319,7 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
                 JSONArray imageJson = new JSONArray();
                 long rowInserted=0;
                 int childCount = mobileNumberLayout.getChildCount();
+                int count = 0;
                 if (childCount > 0) {
                     for (int i = 0; i < childCount; i++) {
                         JSONArray imageArray = new JSONArray();
@@ -287,6 +333,7 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
 
                         if(imageView.getDrawable()!=null){
                             if(!myEditTextView.getText().toString().equals("")){
+                                count = count+1;
                                 byte[] imageInByte = new byte[0];
                                 String image_str = "";
                                 String description="";
@@ -322,6 +369,16 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
 
                         rowInserted = db.insert(DBHelper.COMPOST_TUB_IMAGE_TABLE, null, imageValue);
 
+                        if(count==childCount){
+                            if(rowInserted>0){
+                                dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+                                dialog.dismiss();
+                                //Toast.makeText(ViewTakeEditComponentsPhots.this, "Success", Toast.LENGTH_SHORT).show();
+                                Toasty.success(ViewTakeEditComponentsPhots.this,"Success",Toasty.LENGTH_SHORT);
+                                onBackPressed();
+                            }
+
+                        }
 
                     }
 
@@ -336,12 +393,6 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
 
                     }
 
-                    if(rowInserted>0){
-                        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-                        dialog.dismiss();
-                        Toast.makeText(ViewTakeEditComponentsPhots.this, "Success", Toast.LENGTH_SHORT).show();
-                        onBackPressed();
-                    }
 
                 }
 

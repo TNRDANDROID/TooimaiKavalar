@@ -13,8 +13,13 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.ViewTakeEditComponentsPhots">
+        tools:context=".activity.ViewTakeEditComponentsPhots"
+        android:background="@drawable/bg_icon_new_1">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#0AD62C78">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
@@ -102,22 +107,76 @@
             android:id="@+id/scroolview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tab_layout">
+            android:layout_below="@id/tab_layout"
+            >
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tab_layout">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tab_layout"
+            >
 
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="@dimen/_7sdp"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/card_view_4"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_12sdp"
+                android:outlineSpotShadowColor="@color/purple">
+
+                <RelativeLayout
+                    android:padding="@dimen/_10sdp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/village_name"></TextView>
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_below="@id/village_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/mcc_name"></TextView>
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_below="@id/mcc_name"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/date_of_commencement"></TextView>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_below="@+id/card_view_4"
+                android:background="@drawable/cornered_border_bg_strong">
             <com.cooltechworks.views.shimmer.ShimmerRecyclerView
                 android:id="@+id/components_recycler"
                 android:layout_width="match_parent"
+                android:layout_margin="@dimen/_15sdp"
                 android:layout_height="wrap_content"
                 app:shimmer_demo_shimmer_color="#8FFFFFFF"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_below="@+id/choose_capacity_text"
                 android:fadeScrollbars="false"
                 android:scrollbarSize="4dp"
                 android:scrollbars="vertical" />
+            </RelativeLayout>
 
             <ImageView
                 android:visibility="gone"
@@ -128,5 +187,6 @@
                 android:src="@drawable/no_data_ic"></ImageView>
         </RelativeLayout>
         </ScrollView>
+        </RelativeLayout>
     </RelativeLayout>
 </layout>

@@ -320,14 +320,22 @@
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_12sdp"
                     style="@string/font_circular_bold" />
-                <RelativeLayout
-                    android:id="@+id/capture_mcc_layout"
+                <androidx.cardview.widget.CardView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/_20sdp"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_100sdp"
-                    android:layout_below="@+id/select_hab_tv"
-                    android:layout_marginTop="@dimen/padding"
+                    app:cardBackgroundColor="@color/white"
+                    android:id="@+id/card_view_4"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardElevation="@dimen/_12sdp"
+                    android:outlineSpotShadowColor="@color/purple">
+                <RelativeLayout
+                    android:id="@+id/capture_mcc_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/rectangle_box"
                     android:orientation="vertical">
 
                     <ImageView
@@ -351,6 +359,8 @@
 
 
                 </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
 
 
 

@@ -29,6 +29,7 @@
             android:scaleType="centerCrop" />
 
         <TextView
+            android:layout_marginTop="@dimen/_7sdp"
             android:id="@+id/headtext"
             style="@style/font_circular_medium"
             android:layout_width="wrap_content"

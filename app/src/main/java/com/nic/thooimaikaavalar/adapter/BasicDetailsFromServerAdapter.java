@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.icu.text.SimpleDateFormat;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,8 @@ import com.nic.thooimaikaavalar.model.RealTimeMonitoringSystem;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDetailsFromServerAdapter.MyViewHolder>{
@@ -58,7 +61,8 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
 
             @Override
             public void onBindViewHolder(@NonNull final BasicDetailsFromServerAdapter.MyViewHolder holder,final int position){
-                    holder.basicDetailsAdapterBinding.date.setText("Date of Commencement -"+basicDetailsList.get(position).getDate_of_commencement());
+                    String date = dateFormate(basicDetailsList.get(position).getDate_of_commencement(),"yes");
+                    holder.basicDetailsAdapterBinding.date.setText("Date of Commencement -"+date);
                     holder.basicDetailsAdapterBinding.mccName.setText("MCC Name -"+basicDetailsList.get(position).getMcc_name());
                     holder.basicDetailsAdapterBinding.villageName.setText("Village Name -"+basicDetailsList.get(position).getPvName());
                     holder.basicDetailsAdapterBinding.waterAvailabilityName.setText("Water Available Name -"+basicDetailsList.get(position).getWater_supply_availability_name());
@@ -187,6 +191,40 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
         }
 
     }
+
+    public  String dateFormate( String strDate,String type ){
+        try {
+            SimpleDateFormat sdfSource =null;
+            if(type.equals("")) {
+                // create SimpleDateFormat object with source string date format
+                sdfSource = new SimpleDateFormat(
+                        "dd-M-yyyy");
+            }
+            else {
+                sdfSource = new SimpleDateFormat(
+                        "yyyy-mm-dd");
+            }
+
+            // parse the string into Date object
+            Date date = sdfSource.parse(strDate);
+
+            // create SimpleDateFormat object with desired date format
+            SimpleDateFormat sdfDestination = new SimpleDateFormat(
+                    "dd-MM-yyyy");
+
+            // parse the date into another format
+            strDate = sdfDestination.format(date);
+
+           /* System.out
+                    .println("Date is converted from yyyy-MM-dd'T'hh:mm:ss'.000Z' format to dd/MM/yyyy, ha");
+            System.out.println("Converted date is : " + strDate.toLowerCase());
+*/
+        } catch (ParseException pe) {
+            System.out.println("Parse Exception : " + pe);
+        }
+        return strDate;
+    }
+
 
 
 }

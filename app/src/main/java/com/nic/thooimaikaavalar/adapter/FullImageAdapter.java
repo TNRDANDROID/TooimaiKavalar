@@ -42,13 +42,15 @@ public class FullImageAdapter extends RecyclerView.Adapter<FullImageAdapter.MyVi
     private List<RealTimeMonitoringSystem> imagePreviewlistvalues;
     private final dbData dbData;
     private LayoutInflater layoutInflater;
+    String type;
 
-    public FullImageAdapter(Context context, List<RealTimeMonitoringSystem> imagePreviewlistvalues, dbData dbData) {
+    public FullImageAdapter(Context context, List<RealTimeMonitoringSystem> imagePreviewlistvalues, dbData dbData,String type) {
 
         this.context = context;
         prefManager = new PrefManager(context);
         this.dbData = dbData;
         this.imagePreviewlistvalues = imagePreviewlistvalues;
+        this.type =type;
     }
 
     @Override
@@ -82,6 +84,12 @@ public class FullImageAdapter extends RecyclerView.Adapter<FullImageAdapter.MyVi
                 .thumbnail(0.5f)
                 .into(holder.galleryThumbnailBinding.thumbnail);
 
+        if(type.equals("Online")){
+            holder.galleryThumbnailBinding.deleteIcon.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.galleryThumbnailBinding.deleteIcon.setVisibility(View.GONE);
+        }
 
         holder.galleryThumbnailBinding.deleteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +104,7 @@ public class FullImageAdapter extends RecyclerView.Adapter<FullImageAdapter.MyVi
                 ((FullImageActivity)context).gotoFullImageView(position);
             }
         });
+
 
     }
 

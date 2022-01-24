@@ -15,6 +15,8 @@
     <!--<color name="followersBg">#C26DED</color>
     <color name="followingBg">#C247FF</color>-->
     <color name="followersBg">#EF82B3</color>
+    <color name="followersBg_mild">#F4DAE6</color>
+    <color name="followersBg_bg">#F8CFE2</color>
     <color name="followingBg">#E1458B</color>
     <color name="grey">#E5E5E5</color>
 
