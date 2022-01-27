@@ -3,13 +3,16 @@ package com.nic.thooimaikaavalar.activity;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -99,6 +102,24 @@ public class VillageListScreen extends AppCompatActivity implements View.OnClick
         searchView.setSearchableInfo(searchManager
                 .getSearchableInfo(getComponentName()));
         searchView.setMaxWidth(Integer.MAX_VALUE);
+        int id = searchView.getContext()
+                .getResources()
+                .getIdentifier("android:id/search_src_text", null, null);
+        int id2 = searchView.getContext()
+                .getResources()
+                .getIdentifier("android:id/search_button", null, null);
+        int id3 = searchView.getContext()
+                .getResources()
+                .getIdentifier("android:id/search_close_btn", null, null);
+        TextView textView = (TextView) searchView.findViewById(id);
+        ImageView img = (ImageView) searchView.findViewById(id2);
+        ImageView close = (ImageView) searchView.findViewById(id3);
+        img.setColorFilter(Color.WHITE);
+        close.setColorFilter(Color.WHITE);
+        textView.setTextColor(Color.WHITE);
+        textView.setHintTextColor(this.getResources().getColor(R.color.grey_6));
+
+
 
         // listening to search query text change
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

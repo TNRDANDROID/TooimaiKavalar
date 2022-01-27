@@ -50,6 +50,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_width="match_parent"
+            android:id="@+id/ll1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_below="@+id/toolbar">
@@ -120,6 +121,7 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
 
+<!--
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,9 +131,56 @@
                     android:layout_below="@id/mcc_recyler"
                     android:textColor="@color/black"
                     android:layout_centerHorizontal="true"></TextView>
+-->
+
 
             </RelativeLayout>
         </LinearLayout>
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_below="@id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitEnd"
+            android:id="@+id/no_data_text"
+            android:layout_centerInParent="true"
+            android:src="@drawable/no_result_show"></pl.droidsonroids.gif.GifImageView>
+
+
+        <RelativeLayout
+            android:visibility="visible"
+            android:layout_below="@id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/preview_image_layout"
+            android:background="#45DEE1E1">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/close_icon"
+                android:layout_alignParentEnd="true"
+                android:src="@mipmap/close_icon"
+                android:layout_margin="@dimen/_10sdp"></ImageView>
+
+            <com.jsibbold.zoomage.ZoomageView
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_below="@id/close_icon"
+                android:id="@+id/image_preview_full"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                app:zoomage_restrictBounds="false"
+                app:zoomage_animateOnReset="false"
+                app:zoomage_autoResetMode="UNDER"
+                app:zoomage_autoCenter="true"
+                app:zoomage_zoomable="true"
+                app:zoomage_translatable="false"
+                app:zoomage_minScale="0.6"
+                app:zoomage_maxScale="8"/>
+
+
+        </RelativeLayout>
 
     </RelativeLayout>
     </RelativeLayout>

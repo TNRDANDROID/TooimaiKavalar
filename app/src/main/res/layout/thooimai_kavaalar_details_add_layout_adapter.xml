@@ -74,13 +74,12 @@
                     android:text="@string/date_of_engage"></TextView>
 
 
-                <com.vicmikhailau.maskededittext.MaskedEditText
+                <EditText
                     android:id="@+id/date_of_engage"
                     android:focusable="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="date"
-                    app:mask="##-##-####"
                     android:textSize="@dimen/_12sdp"
                     android:hint="@string/date_of_engage"
                     android:backgroundTint="@color/colorPrimary"
@@ -95,16 +94,15 @@
                     android:textColor="@color/black"
                     android:text="@string/date_of_training"></TextView>
 
-                <com.vicmikhailau.maskededittext.MaskedEditText
+                <EditText
+                    android:backgroundTint="@color/colorPrimary"
                     android:focusable="false"
                     android:id="@+id/date_of_training"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="date"
-                    app:mask="##-##-####"
                     android:textSize="@dimen/_12sdp"
                     android:hint="@string/date_of_training"
-                    android:backgroundTint="@color/colorPrimary"
 
                     />
 

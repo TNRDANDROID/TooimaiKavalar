@@ -120,8 +120,8 @@ public class NewThooimaiKavalarEdit extends AppCompatActivity implements Api.Ser
                 JSONObject jsonObject = new JSONObject(responseDecryptedSchemeKey);
                 Log.d("Query",responseDecryptedSchemeKey);
                 if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
-                    //Utils.showAlert(this,jsonObject.getString("MESSAGE"));
-                    Utils.showAlert(this,"Successfully Deleted");
+                    Utils.showAlert(this,jsonObject.getString("MESSAGE"));
+                    //Utils.showAlert(this,"Successfully Deleted");
                     int sds = db.delete(DBHelper.THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_SERVER, "thooimai_kaavalar_id = ? ", new String[]{delete_mcc_id});
                     getKaavalarListserverList();
 

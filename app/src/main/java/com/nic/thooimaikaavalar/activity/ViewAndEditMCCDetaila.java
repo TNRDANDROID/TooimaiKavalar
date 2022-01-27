@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -72,6 +75,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
         activity_view_and_edit_m_c_c_detaila.mccReclclerRl.setVisibility(View.GONE);
         activity_view_and_edit_m_c_c_detaila.noDataText.setVisibility(View.GONE);
         activity_view_and_edit_m_c_c_detaila.mccRecyler.setVisibility(View.GONE);
+        activity_view_and_edit_m_c_c_detaila.previewImageLayout.setVisibility(View.GONE);
 
         activity_view_and_edit_m_c_c_detaila.villageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -105,7 +109,19 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
         activity_view_and_edit_m_c_c_detaila.backImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                if(activity_view_and_edit_m_c_c_detaila.previewImageLayout.getVisibility()==View.VISIBLE){
+                    activity_view_and_edit_m_c_c_detaila.previewImageLayout.setVisibility(View.GONE);
+                }
+                else {
+                    finish();
+                }
+
+            }
+        });
+        activity_view_and_edit_m_c_c_detaila.closeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity_view_and_edit_m_c_c_detaila.previewImageLayout.setVisibility(View.GONE);
             }
         });
 
@@ -280,8 +296,9 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
                 String where="pvcode=?";
                 String where_new="mcc_id=?";
                 db.delete(DBHelper.BASIC_DETAILS_OF_MCC_SAVE_SERVER, where, new String[]{pv_code}) ;
+                db.delete(DBHelper.THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_SERVER, where, new String[]{pv_code}) ;
                  //db.execSQL("delete from "+ DBHelper.BASIC_DETAILS_OF_MCC_SAVE_SERVER);
-                db.execSQL("delete from "+ DBHelper.THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_SERVER);
+                //db.execSQL("delete from "+ DBHelper.THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_SERVER);
                 JSONArray jsonArray = new JSONArray();
                 JSONArray jsonArray1 = new JSONArray();
                 JSONArray jsonArray2 = new JSONArray();
@@ -323,6 +340,12 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
 
                                 for (int j = 0; j < jsonArray1.length(); j++) {
                                     RealTimeMonitoringSystem thooimaiList = new RealTimeMonitoringSystem();
+                                    thooimaiList.setDistictCode(jsonArray.getJSONObject(i).getString("dcode"));
+                                    thooimaiList.setDistrictName(jsonArray.getJSONObject(i).getString("dname"));
+                                    thooimaiList.setBlockCode(jsonArray.getJSONObject(i).getString("bcode"));
+                                    thooimaiList.setBlockName(jsonArray.getJSONObject(i).getString("bname"));
+                                    thooimaiList.setPvCode(jsonArray.getJSONObject(i).getString("pvcode"));
+                                    thooimaiList.setPvName(jsonArray.getJSONObject(i).getString("pvname"));
                                     thooimaiList.setMcc_id(jsonArray1.getJSONObject(j).getString("mcc_id"));
                                     thooimaiList.setThooimai_kaavalar_id(jsonArray1.getJSONObject(j).getString("thooimai_kaavalar_id"));
                                     thooimaiList.setName_of_the_thooimai_kaavalars(jsonArray1.getJSONObject(j).getString("name_of_the_thooimai_kaavalars"));
@@ -419,6 +442,33 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
 
     }
 
+    public void fullImagePreview(int position){
+        activity_view_and_edit_m_c_c_detaila.previewImageLayout.setVisibility(View.VISIBLE);
+        activity_view_and_edit_m_c_c_detaila.imagePreviewFull.setImageBitmap(StringToBitMap(basicDetailsServerList.get(position).getCenter_image()));
+    }
 
+    /**
+     * @param encodedString
+     * @return bitmap (from given string)
+     */
+    public Bitmap StringToBitMap(String encodedString){
+        try {
+            byte [] encodeByte= Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch(Exception e) {
+            e.getMessage();
+            return null;
+        }
+    }
 
+    @Override
+    public void onBackPressed() {
+        if(activity_view_and_edit_m_c_c_detaila.previewImageLayout.getVisibility()==View.VISIBLE){
+            activity_view_and_edit_m_c_c_detaila.previewImageLayout.setVisibility(View.GONE);
+        }
+        else {
+        super.onBackPressed();
+        }
+    }
 }

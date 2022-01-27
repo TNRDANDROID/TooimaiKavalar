@@ -71,12 +71,23 @@
             android:id="@+id/basic_recycler"></androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
+<!--
     <ImageView
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_150sdp"
         android:layout_centerInParent="true"
         android:id="@+id/no_data_icon"
         android:src="@drawable/no_data_ic"></ImageView>
+-->
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitEnd"
+        android:id="@+id/no_data_icon"
+        android:layout_centerInParent="true"
+        android:src="@drawable/no_result_show"></pl.droidsonroids.gif.GifImageView>
 
 
 

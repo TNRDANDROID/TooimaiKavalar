@@ -59,6 +59,16 @@
             android:scrollbarSize="4dp"
             android:scrollbars="vertical" />
 
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_below="@id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitEnd"
+            android:id="@+id/no_data_gif"
+            android:layout_centerInParent="true"
+            android:src="@drawable/no_result_show"></pl.droidsonroids.gif.GifImageView>
+
+
     </RelativeLayout>
 
 </layout>

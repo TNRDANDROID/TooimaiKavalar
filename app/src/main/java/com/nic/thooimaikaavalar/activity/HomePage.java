@@ -116,6 +116,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
         if(getAllBasicDetails.size()>0||getTooimaiKaavalrCount.size()>0||getComponentImageCount.size()>0){
             homeScreenBinding.sync.setVisibility(View.VISIBLE);
+            homeScreenBinding.syncCountLayout.setVisibility(View.VISIBLE);
             try {
                 homeScreenBinding.pendingCount.setText(String.valueOf(getAllBasicDetails.size()+getTooimaiKaavalrCount.size()+getComponentImageCount.size()));
             }catch (Exception e){
@@ -124,6 +125,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
         }else {
             homeScreenBinding.sync.setVisibility(View.GONE);
+            homeScreenBinding.syncCountLayout.setVisibility(View.GONE);
             homeScreenBinding.pendingCount.setText("NIL");
         }
 

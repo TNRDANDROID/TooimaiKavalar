@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/circle_border">
+                >
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/_80sdp"
@@ -100,7 +100,8 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/linlay1"
+            android:visibility="gone"
+            android:id="@+id/sync_count_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/rellay1"
@@ -166,7 +167,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/linlay1"
+            android:layout_below="@+id/sync_count_layout"
             android:layout_above="@+id/textView1">
 
             <ScrollView
@@ -319,6 +320,8 @@
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:layout_marginBottom="@dimen/_10sdp"
+
                     android:id="@+id/sync"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -135,6 +135,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 "date_of_training_given TEXT)");
         db.execSQL("CREATE TABLE " + THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_SERVER + " ("
                 +"mcc_id TEXT," +
+                "dcode TEXT," +
+                "dname TEXT," +
+                "bcode TEXT," +
+                "bname TEXT," +
+                "pvcode TEXT," +
+                "pvname TEXT," +
                 "name_of_the_thooimai_kaavalars TEXT," +
                 "mobile_no TEXT," +
                 "thooimai_kaavalar_id TEXT," +

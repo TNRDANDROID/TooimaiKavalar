@@ -191,7 +191,7 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
                 JSONObject jsonObject = new JSONObject(responseDecryptedBlockKey);
                 if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
 
-                    Utils.showAlert(this,"Successfully Saved");
+                    Utils.showAlert(this,jsonObject.getString("MESSAGE"));
                     if(type.equalsIgnoreCase("thooimai")){
                         int sdsm = db.delete(DBHelper.THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL, "mcc_id = ? ", new String[]{key_id});
                         getThooimaiKaavalrList();

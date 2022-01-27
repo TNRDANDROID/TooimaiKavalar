@@ -13,17 +13,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nic.thooimaikaavalar.ImageZoom.ImageMatrixTouchHandler;
 import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.activity.NewPendingScreenActivity;
 import com.nic.thooimaikaavalar.activity.ViewAndEditMCCDetaila;
+import com.nic.thooimaikaavalar.activity.ViewTakeEditComponentsPhots;
 import com.nic.thooimaikaavalar.constant.AppConstant;
 import com.nic.thooimaikaavalar.databinding.BasicDetailsAdapterBinding;
 import com.nic.thooimaikaavalar.databinding.BasicDetailsAdapterFromServerBinding;
@@ -93,6 +97,18 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
                         @Override
                         public void onClick(View view){
                             ((ViewAndEditMCCDetaila)context).gotoEditMcc(position);
+                        }
+                    });
+
+                    holder.basicDetailsAdapterBinding.mccCenterImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(basicDetailsList.get(position).getComposting_center_image_available().equals("Y")){
+                                /*((ViewAndEditMCCDetaila)context).fullImagePreview(position);*/
+                                ExpandedImage(holder.basicDetailsAdapterBinding.mccCenterImage.getDrawable());
+                            }
+                            else {
+                            }
                         }
                     });
 
@@ -225,6 +241,39 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
         return strDate;
     }
 
+    private void ExpandedImage(Drawable profile) {
+        try {
+            //We need to get the instance of the LayoutInflater, use the context of this activity
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            //Inflate the view from a predefined XML layout
+            View ImagePopupLayout = inflater.inflate(R.layout.image_fullscreen_preview, null);
+
+            ImageView zoomImage = (ImageView) ImagePopupLayout.findViewById(R.id.image_preview);
+            zoomImage.setImageDrawable(profile);
+
+            ImageMatrixTouchHandler imageMatrixTouchHandler = new ImageMatrixTouchHandler(context);
+            zoomImage.setOnTouchListener(imageMatrixTouchHandler);
+//            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mContext, R.style.MyDialogTheme);
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+            dialogBuilder.setView(ImagePopupLayout);
+
+            final AlertDialog alert = dialogBuilder.create();
+            alert.getWindow().getAttributes().windowAnimations = R.style.dialog_animation_zoomInOut;
+            alert.show();
+            alert.getWindow().setBackgroundDrawableResource(R.color.full_transparent);
+            alert.setCanceledOnTouchOutside(true);
+
+            zoomImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alert.dismiss();
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

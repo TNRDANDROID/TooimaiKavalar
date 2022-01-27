@@ -7,7 +7,6 @@
     <androidx.cardview.widget.CardView
         android:layout_centerInParent="true"
         android:id="@+id/card_view"
-        android:layout_margin="@dimen/_10sdp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -273,7 +273,7 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
                     }
                 }
             }
-        },2000);
+        },1000);
 
     }
 
@@ -289,7 +289,7 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
             public void run() {
                 new fetchScheduletask().execute();
             }
-        },2000);
+        },1000);
     }
     private void initNoOfThooimaiKaavalarRecyler() {
         recyclerView1 = activityNewMainPageBinding.noOfThooimaiKaavalrList;
@@ -820,7 +820,7 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
             values.put("longitude",longitude);
 
             whereClause = "mcc_id = ?";
-            whereArgs = new String[]{pvcode};dbData.open();
+            whereArgs = new String[]{new_mcc_id};dbData.open();
 
             if(new_mcc_id.equals("")) {
                 id = db.insert(DBHelper.BASIC_DETAILS_OF_MCC_SAVE, null, values);
@@ -989,8 +989,9 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(NewMainPage.this,HomePage.class);
+        intent.putExtra("Home","Home");
         startActivity(intent);
         finish();
-        //super.onBackPressed();
+        super.onBackPressed();
     }
 }

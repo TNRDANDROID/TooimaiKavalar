@@ -145,7 +145,8 @@ public class ThooimaiKaavalrEnterDetailsAdapter extends RecyclerView.Adapter<Tho
                     .println("Date is converted from yyyy-MM-dd'T'hh:mm:ss'.000Z' format to dd/MM/yyyy, ha");
             System.out.println("Converted date is : " + strDate.toLowerCase());
 */
-        } catch (ParseException pe) {
+        }
+        catch (ParseException pe) {
             System.out.println("Parse Exception : " + pe);
         }
         return strDate;

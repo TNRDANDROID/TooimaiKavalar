@@ -108,6 +108,9 @@ dependencies {
     implementation 'com.jsibbold:zoomage:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
 
-    ///date Edit Text
+   /* ///date Edit Text
     implementation 'com.vicmikhailau:MaskedEditText:2.0.3'
+*/
+    ///Gif Image
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.0'
 }

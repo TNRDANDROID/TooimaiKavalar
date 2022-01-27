@@ -185,6 +185,12 @@ public class dbData {
     public RealTimeMonitoringSystem insertThooimaKavalarListFromServer(RealTimeMonitoringSystem kvvtSurvey) {
 
         ContentValues values = new ContentValues();
+        values.put("dcode", kvvtSurvey.getDistictCode());
+        values.put("dname", kvvtSurvey.getDistrictName());
+        values.put("bcode", kvvtSurvey.getBlockCode());
+        values.put("bname", kvvtSurvey.getBlockName());
+        values.put("pvcode", kvvtSurvey.getPvCode());
+        values.put("pvname", kvvtSurvey.getPvName());
         values.put("mcc_id", kvvtSurvey.getMcc_id());
         values.put("thooimai_kaavalar_id", kvvtSurvey.getThooimai_kaavalar_id());
         values.put("name_of_the_thooimai_kaavalars", kvvtSurvey.getName_of_the_thooimai_kaavalars());
@@ -530,6 +536,8 @@ public class dbData {
                             .getColumnIndexOrThrow(AppConstant.KEY_ID)));
                     card.setPvCode(cursor.getString(cursor
                             .getColumnIndexOrThrow(AppConstant.PV_CODE)));
+                    card.setMcc_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("mcc_id")));
                     card.setMcc_name(cursor.getString(cursor
                             .getColumnIndexOrThrow("mcc_name")));
                     card.setCapacity_of_mcc_id(cursor.getString(cursor

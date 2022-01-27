@@ -58,6 +58,8 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
         mcc_id = getIntent().getStringExtra("mcc_id");
         component_id = getIntent().getStringExtra("component_id");
 
+        fullImageRecyclerBinding.noDataGif.setVisibility(View.VISIBLE);
+        fullImageRecyclerBinding.imagePreviewRecyclerview.setVisibility(View.GONE);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(),2);
         fullImageRecyclerBinding.imagePreviewRecyclerview.setLayoutManager(mLayoutManager);
         fullImageRecyclerBinding.imagePreviewRecyclerview.setItemAnimator(new DefaultItemAnimator());
@@ -128,7 +130,16 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
         @Override
         protected void onPostExecute(final ArrayList<RealTimeMonitoringSystem> imageList) {
             super.onPostExecute(imageList);
-            setAdapter();
+            if(imageList.size()>0){
+                fullImageRecyclerBinding.noDataGif.setVisibility(View.GONE);
+                fullImageRecyclerBinding.imagePreviewRecyclerview.setVisibility(View.VISIBLE);
+                setAdapter();
+            }
+            else {
+                fullImageRecyclerBinding.noDataGif.setVisibility(View.VISIBLE);
+                fullImageRecyclerBinding.imagePreviewRecyclerview.setVisibility(View.GONE);
+            }
+
         }
     }
     public void homePage() {
@@ -208,6 +219,12 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
                     generateImageArrayList(jsonObject.getJSONArray("IMAGE"));
                     Log.d("Length", "" + jsonObject.getJSONArray("IMAGE").length());
                 }
+                else if(jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("NO_RECORD")){
+                    fullImageRecyclerBinding.noDataGif.setVisibility(View.VISIBLE);
+                    fullImageRecyclerBinding.imagePreviewRecyclerview.setVisibility(View.GONE);
+
+                }
+
                 Log.d("resp_OnlineImage", "" + responseDecryptedBlockKey);
             }
             if ("DeleteDetails".equals(urlType) && responseObj != null) {
@@ -255,9 +272,17 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
                 }
 
             }
-
+        }
+        if(activityImage.size()>0){
+            fullImageRecyclerBinding.noDataGif.setVisibility(View.GONE);
+            fullImageRecyclerBinding.imagePreviewRecyclerview.setVisibility(View.VISIBLE);
             setAdapter();
         }
+        else {
+            fullImageRecyclerBinding.noDataGif.setVisibility(View.VISIBLE);
+            fullImageRecyclerBinding.imagePreviewRecyclerview.setVisibility(View.GONE);
+        }
+
     }
     public void setAdapter(){
         if(OnOffType.equalsIgnoreCase("Offline")) {

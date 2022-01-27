@@ -116,6 +116,12 @@ public class BasicDetailsAdapter extends RecyclerView.Adapter<BasicDetailsAdapte
         JSONObject jsonObject1 = new JSONObject();
         try {
             jsonObject.put(AppConstant.KEY_SERVICE_ID,"details_of_micro_composting_save");
+            if(basicDetailsList.get(position).getMcc_id().equals("")){
+
+            }
+            else {
+                jsonObject.put("mcc_id",basicDetailsList.get(position).getMcc_id());
+            }
             jsonObject.put("pvcode",pvcode);
             jsonObject.put("mcc_name",mcc_name);
             jsonObject.put("capacity_of_mcc_id",capacity_of_mcc_id);
