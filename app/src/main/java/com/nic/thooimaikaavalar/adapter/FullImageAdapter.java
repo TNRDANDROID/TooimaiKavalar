@@ -197,7 +197,7 @@ public class FullImageAdapter extends RecyclerView.Adapter<FullImageAdapter.MyVi
                 text.setText("Do You Want to Edit?");
             }
             else if(save_delete.equals("delete")){
-                text.setText("Do You Want to Delete this photo?");
+                text.setText(context.getResources().getString(R.string.do_you_wnat_to_delete));
             }
 
             Button yesButton = (Button) dialog.findViewById(R.id.btn_ok);

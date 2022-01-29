@@ -108,14 +108,14 @@ public class AddThooimaiKaavalarDetails extends AppCompatActivity {
 
                         if (childCount == count) {
                                 onBackPressed();
-                                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, getResources().getString(R.string.inserted_success), Toast.LENGTH_SHORT).show();
                             }
 
                     }
                     //onBackPressed();
                 }
                 else {
-                    Utils.showAlert(this,"Please enter All the Details!");
+                    Utils.showAlert(this,getResources().getString(R.string.please_enter_all_the_details));
                 }
             }
 
@@ -184,6 +184,7 @@ public class AddThooimaiKaavalarDetails extends AppCompatActivity {
                 for (int i=0;i<imageJson.length();i++){
                     jsonObject1=imageJson.getJSONObject(i);
                     if(!jsonObject1.getString("name").equals("")&&!jsonObject1.getString("mobile_number").equals("")
+                            && Utils.isValidMobilenew(jsonObject1.getString("mobile_number"))
                             &&!jsonObject1.getString("date_of_engage").equals("")&&!jsonObject1.getString("date_of_training").equals("")){
                         flag=true;
                     }

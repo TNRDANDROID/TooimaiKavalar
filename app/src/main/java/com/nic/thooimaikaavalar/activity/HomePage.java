@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +34,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class HomePage extends AppCompatActivity implements Api.ServerResponseListener, View.OnClickListener, MyDialog.myOnClickListener {
     private HomeScreenBinding homeScreenBinding;
@@ -58,6 +63,9 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             fetchAllResponseFromApi();
         }
         syncButtonVisibility();
+
+        showMenuLayout();
+        initialUINew();
     }
 
 
@@ -117,6 +125,11 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         if(getAllBasicDetails.size()>0||getTooimaiKaavalrCount.size()>0||getComponentImageCount.size()>0){
             homeScreenBinding.sync.setVisibility(View.VISIBLE);
             homeScreenBinding.syncCountLayout.setVisibility(View.VISIBLE);
+
+            homeScreenBinding.sync1.setVisibility(View.VISIBLE);
+
+
+
             try {
                 homeScreenBinding.pendingCount.setText(String.valueOf(getAllBasicDetails.size()+getTooimaiKaavalrCount.size()+getComponentImageCount.size()));
             }catch (Exception e){
@@ -125,13 +138,17 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
         }else {
             homeScreenBinding.sync.setVisibility(View.GONE);
-            homeScreenBinding.syncCountLayout.setVisibility(View.GONE);
+            homeScreenBinding.sync1.setVisibility(View.VISIBLE);
+            homeScreenBinding.syncCountLayout.setVisibility(View.VISIBLE);
+
             homeScreenBinding.pendingCount.setText("NIL");
+
         }
 
 
     }
     public void openPendingScreen() {
+        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
         Intent intent = new Intent(this, NewPendingScreenActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
@@ -145,6 +162,13 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         }
     }
 
+    public void showMenuLayout(){
+        homeScreenBinding.tvName1.setText(prefManager.getDesignation());
+        homeScreenBinding.tvName1.setTextColor(getResources().getColor(R.color.white));
+        homeScreenBinding.designation1.setText(prefManager.getBlockName()+" : "+prefManager.getDesignation());
+        homeScreenBinding.designation1.setTextColor(getResources().getColor(R.color.white));
+        getTimeMange();
+    }
 
 
     public void getVillageList() {
@@ -895,11 +919,13 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
     }
 
     public void viewVillageList() {
+        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
         Intent intent = new Intent(this, VillageListScreen.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     public void viewMCCBasicDetailsList() {
+        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
         Intent intent = new Intent(this, ViewAndEditMCCDetaila.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
@@ -915,14 +941,14 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
 
     public void closeApplication() {
-        new MyDialog(this).exitDialog(this, "Are you sure you want to Logout?", "Logout");
+        new MyDialog(this).exitDialog(this, getResources().getString(R.string.you_want_to_log_out), "Logout");
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-                new MyDialog(this).exitDialog(this, "Are you sure you want to exit ?", "Exit");
+                new MyDialog(this).exitDialog(this, getResources().getString(R.string.you_want_to_exit), "Exit");
                 return false;
             }
         }
@@ -945,6 +971,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         }
     }
     public void logout() {
+        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
         dbData.open();
         ArrayList<RealTimeMonitoringSystem> getAllBasicDetails =  dbData.getAllBasicDetails();
         ArrayList<RealTimeMonitoringSystem> getTooimaiKaavalrCount =  dbData.getAllThooimaikaavalarListLocalAll();
@@ -952,12 +979,12 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
         ArrayList<RealTimeMonitoringSystem> activityCount = dbData.getSavedWorkImage("","","","","");
         if (!Utils.isOnline()) {
-            Utils.showAlert(this, "Logging out while offline may leads to loss of data!");
+            Utils.showAlert(this, getResources().getString(R.string.logging_out_loss_data));
         } else {
             if (!(getAllBasicDetails.size() > 0 || getTooimaiKaavalrCount.size()>0 || getComponentImageCount.size()>0 )) {
                 closeApplication();
             }else{
-                Utils.showAlert(this,"Sync all the data before logout!");
+                Utils.showAlert(this,getResources().getString(R.string.sync_all_the_data_before_logout));
             }
         }
     }
@@ -967,4 +994,58 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         super.onResume();
         syncButtonVisibility();
     }
+
+    public void getTimeMange(){
+        homeScreenBinding.timeImageText.setTextColor(getResources().getColor(R.color.white));
+        try {
+            DateTimeFormatter dtf = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime now = LocalDateTime.now();
+                System.out.println(dtf.format(now));
+
+
+            }
+        }
+        catch (Exception e){
+        }
+
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+
+        if(timeOfDay >= 0 && timeOfDay < 12){
+            //Toast.makeText(this, "Good Morning", Toast.LENGTH_SHORT).show();
+            homeScreenBinding.timeImage.setImageResource(R.drawable.good_morning_image);
+            homeScreenBinding.timeImageText.setText("Good Morning");
+        }else if(timeOfDay >= 12 && timeOfDay < 16){
+            //Toast.makeText(this, "Good Afternoon", Toast.LENGTH_SHORT).show();
+            homeScreenBinding.timeImage.setImageResource(R.drawable.good_after_noon_image);
+            homeScreenBinding.timeImageText.setText("Good Afternoon");
+        }else if(timeOfDay >= 16 && timeOfDay < 21){
+            //Toast.makeText(this, "Good Evening", Toast.LENGTH_SHORT).show();
+            homeScreenBinding.timeImage.setImageResource(R.drawable.good_evening_image);
+            homeScreenBinding.timeImageText.setText("Good Evening");
+        }
+        else if(timeOfDay >= 21 && timeOfDay < 24){
+            //Toast.makeText(this, "Good Night", Toast.LENGTH_SHORT).show();
+            homeScreenBinding.timeImage.setImageResource(R.drawable.good_night_image);
+            homeScreenBinding.timeImageText.setText("Good Night");
+        }
+    }
+
+    public void openMenuDrawer(){
+        if(homeScreenBinding.drawerLayout.isDrawerOpen(Gravity.LEFT)){
+            homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
+        }else{
+            homeScreenBinding.drawerLayout.openDrawer(Gravity.LEFT);
+        }
+    }
+
+    public void initialUINew(){
+        homeScreenBinding.title.setText("Micro Composting Center");
+        homeScreenBinding.district.setText("District"+" : "+prefManager.getDistrictName());
+        homeScreenBinding.block.setText("Block"+" : "+prefManager.getBlockName());
+        homeScreenBinding.finYear.setText("Fin Year"+" : "+"2021-2022");
+    }
+
 }

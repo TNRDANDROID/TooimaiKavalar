@@ -347,7 +347,7 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
 
                                 } catch (Exception e) {
                                     //imageboolean = false;
-                                    Utils.showAlert(ViewTakeEditComponentsPhots.this, "Atleast Capture one Photo");
+                                    Utils.showAlert(ViewTakeEditComponentsPhots.this, getResources().getString(R.string.at_least_capture_one_photo));
                                     //e.printStackTrace();
                                 }
 
@@ -374,7 +374,7 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
                                 dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                                 dialog.dismiss();
                                 //Toast.makeText(ViewTakeEditComponentsPhots.this, "Success", Toast.LENGTH_SHORT).show();
-                                Toasty.success(ViewTakeEditComponentsPhots.this,"Success",Toasty.LENGTH_SHORT);
+                                Toasty.success(ViewTakeEditComponentsPhots.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
                                 onBackPressed();
                             }
 
@@ -383,11 +383,11 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
                     }
 
                     else {
-                                Utils.showAlert(ViewTakeEditComponentsPhots.this,"Please Enter Description");
+                                Utils.showAlert(ViewTakeEditComponentsPhots.this,getResources().getString(R.string.please_enter_description));
                     }
                }
                else {
-                    Utils.showAlert(ViewTakeEditComponentsPhots.this,"Please Capture Image");
+                    Utils.showAlert(ViewTakeEditComponentsPhots.this,getResources().getString(R.string.please_capture_image));
                }
 
 
@@ -411,11 +411,11 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
                          dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                          updateView(ViewTakeEditComponentsPhots.this, mobileNumberLayout, "", type);
                      } else {
-                         Utils.showAlert(ViewTakeEditComponentsPhots.this, "First Capture Image and add remark then add another Image!");
+                         Utils.showAlert(ViewTakeEditComponentsPhots.this, getResources().getString(R.string.first_capture_image_add_another));
                      }
                  }
                  else {
-                     Utils.showAlert(ViewTakeEditComponentsPhots.this, "Maximum three Photo allowed");
+                     Utils.showAlert(ViewTakeEditComponentsPhots.this, getResources().getString(R.string.maximum_three_photos));
 
                  }
             }
@@ -523,10 +523,10 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
                     captureImage();
                 }
             } else {
-                Utils.showAlert(ViewTakeEditComponentsPhots.this, "Satellite communication not available to get GPS Co-ordination Please Capture Photo in Open Area..");
+                Utils.showAlert(ViewTakeEditComponentsPhots.this, getResources().getString(R.string.satellite));
             }
         } else {
-            Utils.showAlert(ViewTakeEditComponentsPhots.this, "GPS is not turned on...");
+            Utils.showAlert(ViewTakeEditComponentsPhots.this, getResources().getString(R.string.gps_is_not_turned_on));
         }
     }
 
@@ -561,14 +561,14 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
 
     private void showPermissionsAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Permissions required!")
-                .setMessage("Camera needs few permissions to work properly. Grant them in settings.")
-                .setPositiveButton("GOTO SETTINGS", new DialogInterface.OnClickListener() {
+        builder.setTitle(getResources().getString(R.string.permission_required))
+                .setMessage(getResources().getString(R.string.camera_need_permission))
+                .setPositiveButton(getResources().getString(R.string.goto_settings), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         CameraUtils.openSettings(ViewTakeEditComponentsPhots.this);
                     }
                 })
-                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
@@ -643,12 +643,12 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
             } else if (resultCode == RESULT_CANCELED) {
                 // user cancelled Image capture
                 Toast.makeText(getApplicationContext(),
-                        "User cancelled image capture", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.user_canceled_image_capture), Toast.LENGTH_SHORT)
                         .show();
             } else {
                 // failed to capture image
                 Toast.makeText(getApplicationContext(),
-                        "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.sorry_failed_to_capture), Toast.LENGTH_SHORT)
                         .show();
             }
         } else if (requestCode == CAMERA_CAPTURE_VIDEO_REQUEST_CODE) {
@@ -662,12 +662,12 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
             } else if (resultCode == RESULT_CANCELED) {
                 // user cancelled recording
                 Toast.makeText(getApplicationContext(),
-                        "User cancelled video recording", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.user_canceled_video), Toast.LENGTH_SHORT)
                         .show();
             } else {
                 // failed to record video
                 Toast.makeText(getApplicationContext(),
-                        "Sorry! Failed to record video", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.sorry_failed_capture_video), Toast.LENGTH_SHORT)
                         .show();
             }
         }

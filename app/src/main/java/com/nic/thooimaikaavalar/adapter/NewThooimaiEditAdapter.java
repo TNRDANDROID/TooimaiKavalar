@@ -25,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.util.Util;
 import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.activity.AddThooimaiKaavalarDetails;
 import com.nic.thooimaikaavalar.activity.NewDashborad;
@@ -159,10 +160,10 @@ public class NewThooimaiEditAdapter extends RecyclerView.Adapter<NewThooimaiEdit
 
                     TextView text = (TextView) dialog.findViewById(R.id.tv_message);
                     if(save_delete.equals("save")) {
-                        text.setText("Do You Want to Edit?");
+                        text.setText(context.getResources().getString(R.string.do_you_wnat_to_upload));
                     }
                     else if(save_delete.equals("delete")){
-                        text.setText("Do You Want to Delete?");
+                        text.setText(context.getResources().getString(R.string.do_you_wnat_to_delete));
                     }
 
                     Button yesButton = (Button) dialog.findViewById(R.id.btn_ok);
@@ -225,7 +226,7 @@ public class NewThooimaiEditAdapter extends RecyclerView.Adapter<NewThooimaiEdit
                 public void onClick(View view) {
                     Activity activity= (Activity) context;
                     if(!name.getText().toString().equals("")){
-                        if(!mobile_number.getText().toString().equals("")){
+                        if(!mobile_number.getText().toString().equals("")&& Utils.isValidMobilenew(mobile_number.getText().toString())){
                             if(!date_of_engage.getText().toString().equals("")){
                                 if(!date_of_training.getText().toString().equals("")){
                                     dbData.open();
@@ -239,30 +240,30 @@ public class NewThooimaiEditAdapter extends RecyclerView.Adapter<NewThooimaiEdit
                                     ArrayList<RealTimeMonitoringSystem> count = dbData.getAllThooimaikaavalarListLocaltID(basicDetailsList.get(pos).getThooimai_kaavalar_id());
                                     if(count.size()>0){
                                        dbData.updateThooimaiKaavaleDetailsLocal(realTimeMonitoringSystem,basicDetailsList.get(pos).getThooimai_kaavalar_id());
-                                        Toasty.success(context, "Success!", Toast.LENGTH_LONG, true).show();
+                                        Toasty.success(context, context.getResources().getString(R.string.updated_success), Toast.LENGTH_LONG, true).show();
                                         dialog.dismiss();
                                     }
                                     else {
                                         dbData.insertThooimaiKaavaleDetailsLocal(realTimeMonitoringSystem);
-                                        Toasty.success(context, "Success!", Toast.LENGTH_LONG, true).show();
+                                        Toasty.success(context, context.getResources().getString(R.string.inserted_success), Toast.LENGTH_LONG, true).show();
                                         dialog.dismiss();
                                     }
 
                                 }
                                 else {
-                                    Utils.showAlert(activity,"Please Choose Date of Training");
+                                    Utils.showAlert(activity,context.getResources().getString(R.string.please_choose_date_of_training));
                                 }
                             }
                             else {
-                                Utils.showAlert(activity,"Please Choose Date of Engagement");
+                                Utils.showAlert(activity,context.getResources().getString(R.string.please_choose_date_of_engagement));
                             }
                         }
                         else {
-                            Utils.showAlert(activity,"Please Enter Mobile Number");
+                            Utils.showAlert(activity,context.getResources().getString(R.string.please_enter_valid_mobile_number));
                         }
                     }
                     else {
-                        Utils.showAlert(activity,"Please Enter Name");
+                        Utils.showAlert(activity,context.getResources().getString(R.string.please_enter_name));
                     }
 
                 }

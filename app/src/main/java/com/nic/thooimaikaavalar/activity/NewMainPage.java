@@ -583,10 +583,10 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
                     captureImage();
                 }
             } else {
-                Utils.showAlert(NewMainPage.this, "Satellite communication not available to get GPS Co-ordination Please Capture Photo in Open Area..");
+                Utils.showAlert(NewMainPage.this, getResources().getString(R.string.satellite));
             }
         } else {
-            Utils.showAlert(NewMainPage.this, "GPS is not turned on...");
+            Utils.showAlert(NewMainPage.this, getResources().getString(R.string.gps_is_not_turned_on));
         }
     }
 
@@ -621,14 +621,14 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
 
     private void showPermissionsAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Permissions required!")
-                .setMessage("Camera needs few permissions to work properly. Grant them in settings.")
-                .setPositiveButton("GOTO SETTINGS", new DialogInterface.OnClickListener() {
+        builder.setTitle(getResources().getString(R.string.permission_required))
+                .setMessage(getResources().getString(R.string.camera_need_permission))
+                .setPositiveButton(getResources().getString(R.string.goto_settings), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         CameraUtils.openSettings(NewMainPage.this);
                     }
                 })
-                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
@@ -708,12 +708,12 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
             } else if (resultCode == RESULT_CANCELED) {
                 // user cancelled Image capture
                 Toast.makeText(getApplicationContext(),
-                        "User cancelled image capture", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.user_canceled_image_capture), Toast.LENGTH_SHORT)
                         .show();
             } else {
                 // failed to capture image
                 Toast.makeText(getApplicationContext(),
-                        "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.sorry_failed_to_capture), Toast.LENGTH_SHORT)
                         .show();
             }
         }
@@ -728,12 +728,12 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
             } else if (resultCode == RESULT_CANCELED) {
                 // user cancelled recording
                 Toast.makeText(getApplicationContext(),
-                        "User cancelled video recording", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.user_canceled_video), Toast.LENGTH_SHORT)
                         .show();
             } else {
                 // failed to record video
                 Toast.makeText(getApplicationContext(),
-                        "Sorry! Failed to record video", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.sorry_failed_capture_video), Toast.LENGTH_SHORT)
                         .show();
             }
         }
@@ -825,7 +825,7 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
             if(new_mcc_id.equals("")) {
                 id = db.insert(DBHelper.BASIC_DETAILS_OF_MCC_SAVE, null, values);
                 if(id > 0){
-                    Toasty.success(this, "Inserted Success!", Toast.LENGTH_LONG, true).show();
+                    Toasty.success(this, getResources().getString(R.string.inserted_success), Toast.LENGTH_LONG, true).show();
                     onBackPressed();
                 }
 
@@ -835,7 +835,7 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
                 if(imageOffline.size()>0){
                     id = db.update(DBHelper.BASIC_DETAILS_OF_MCC_SAVE, values, whereClause, whereArgs);
                     if(id > 0){
-                        Toasty.success(this, "Updated Success!", Toast.LENGTH_LONG, true).show();
+                        Toasty.success(this, getResources().getString(R.string.updated_success), Toast.LENGTH_LONG, true).show();
                         onBackPressed();
                     }
 
@@ -843,7 +843,7 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
                 else {
                     id = db.insert(DBHelper.BASIC_DETAILS_OF_MCC_SAVE, null, values);
                     if(id > 0){
-                        Toasty.success(this, "Inserted Success!", Toast.LENGTH_LONG, true).show();
+                        Toasty.success(this, getResources().getString(R.string.inserted_success), Toast.LENGTH_LONG, true).show();
                         onBackPressed();
                     }
 

@@ -87,7 +87,7 @@
         android:scaleType="fitEnd"
         android:id="@+id/no_data_icon"
         android:layout_centerInParent="true"
-        android:src="@drawable/no_result_show"></pl.droidsonroids.gif.GifImageView>
+        android:src="@drawable/new_no_result_image_1_"></pl.droidsonroids.gif.GifImageView>
 
 
 

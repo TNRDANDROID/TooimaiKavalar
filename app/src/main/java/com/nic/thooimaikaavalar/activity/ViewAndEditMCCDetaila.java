@@ -172,7 +172,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
 
 
                 } else if(jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("NO_RECORD")){
-                    Utils.showAlert(this,"NO RECORD FOUND!");
+                    Utils.showAlert(this,getResources().getString(R.string.no_record_found));
                     activity_view_and_edit_m_c_c_detaila.mccReclclerRl.setVisibility(View.VISIBLE);
                     activity_view_and_edit_m_c_c_detaila.noDataText.setVisibility(View.VISIBLE);
                     activity_view_and_edit_m_c_c_detaila.mccRecyler.setVisibility(View.GONE);
@@ -187,7 +187,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
                 Log.d("Query",responseDecryptedSchemeKey);
                 if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
                     //Utils.showAlert(this,jsonObject.getString("MESSAGE"));
-                    Utils.showAlert(this,"Successfully Deleted");
+                    Utils.showAlert(this,getResources().getString(R.string.successfully_deleted));
                     int sdsm = db.delete(DBHelper.THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL, "mcc_id = ? ", new String[]{delete_mcc_id});
                     int sds = db.delete(DBHelper.BASIC_DETAILS_OF_MCC_SAVE, "mcc_id = ? ", new String[]{delete_mcc_id});
                     int sd = db.delete(DBHelper.COMPOST_TUB_IMAGE_TABLE, "mcc_id = ? ", new String[]{delete_mcc_id});

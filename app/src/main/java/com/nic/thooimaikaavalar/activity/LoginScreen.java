@@ -206,10 +206,10 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
 
         if (username.isEmpty()) {
             valid = false;
-            Utils.showAlert(this, "Please enter the username");
+            Utils.showAlert(this, getResources().getString(R.string.please_enter_user_name));
         } else if (password.isEmpty()) {
             valid = false;
-            Utils.showAlert(this, "Please enter the password");
+            Utils.showAlert(this, getResources().getString(R.string.please_enter_user_password));
         }
         return valid;
     }
@@ -234,14 +234,14 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
             else if (prefManager.getUserName().length() > 0 && password.length() > 0) {
                 new ApiService(this).makeRequest("LoginScreen", Api.Method.POST, UrlGenerator.getLoginUrl(), loginParams(), "not cache", this);
             } else {
-                Utils.showAlert(this, "Please enter your username and password!");
+                Utils.showAlert(this, getResources().getString(R.string.please_enter_user_name_password));
             }
         } else {
             //Utils.showAlert(this, getResources().getString(R.string.no_internet));
             AlertDialog.Builder ab = new AlertDialog.Builder(
                     LoginScreen.this);
-            ab.setMessage("Internet Connection is not avaliable..Please Turn ON Network Connection OR Continue With Off-line Mode..");
-            ab.setPositiveButton("Settings",
+            ab.setMessage(getResources().getString(R.string.internet_connection_is_not_available));
+            ab.setPositiveButton(getResources().getString(R.string.settings),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,
                                             int whichButton) {
@@ -250,7 +250,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                             startActivity(I);
                         }
                     });
-            ab.setNegativeButton("Continue With Off-Line",
+            ab.setNegativeButton(getResources().getString(R.string.continue_with_off_line),
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,
                                             int whichButton) {
@@ -331,7 +331,7 @@ Log.d("params",""+params);
                         showHomeScreen();
                     } else {
                         if (response.equals("LOGIN_FAILED")) {
-                            Utils.showAlert(this, "Invalid UserName Or Password");
+                            Utils.showAlert(this, getResources().getString(R.string.invalid_user_name_password));
                         }
                     }
                 }
@@ -356,7 +356,7 @@ Log.d("params",""+params);
 
     @Override
     public void OnError(VolleyError volleyError) {
-        Utils.showAlert(this, "Login Again");
+        Utils.showAlert(this, getResources().getString(R.string.log_in_again));
     }
 
 //    @Override
@@ -379,7 +379,7 @@ Log.d("params",""+params);
         if (name.equals(userName) && pass.equals(password)) {
             showHomeScreen();
         } else {
-            Utils.showAlert(this, "No data available for offline. Please Turn On Your Network");
+            Utils.showAlert(this, getResources().getString(R.string.no_data_available_for_offline));
         }
     }
 

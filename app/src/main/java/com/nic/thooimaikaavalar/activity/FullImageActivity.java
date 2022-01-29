@@ -234,7 +234,7 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
                 Log.d("Query",responseDecryptedSchemeKey);
                 if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
                     //Utils.showAlert(this,jsonObject.getString("MESSAGE"));
-                    Utils.showAlert(this,"Successfully Deleted");
+                    Utils.showAlert(this,getResources().getString(R.string.successfully_deleted));
                     if (Utils.isOnline()) {
                         getOnlineImage();
                     }

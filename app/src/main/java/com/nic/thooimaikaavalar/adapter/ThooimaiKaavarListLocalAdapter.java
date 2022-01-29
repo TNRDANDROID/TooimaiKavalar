@@ -168,10 +168,10 @@ public class ThooimaiKaavarListLocalAdapter extends RecyclerView.Adapter<Thooima
 
             TextView text = (TextView) dialog.findViewById(R.id.tv_message);
             if(save_delete.equals("save")) {
-                text.setText("Do You Want to Upload?");
+                text.setText(context.getResources().getString(R.string.do_you_wnat_to_upload));
             }
             else if(save_delete.equals("delete")){
-                text.setText("Do You Want to Delete?");
+                text.setText(context.getResources().getString(R.string.do_you_wnat_to_delete));
             }
 
             Button yesButton = (Button) dialog.findViewById(R.id.btn_ok);
