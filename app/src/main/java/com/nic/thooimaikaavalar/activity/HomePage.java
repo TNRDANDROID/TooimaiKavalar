@@ -1,10 +1,13 @@
 package com.nic.thooimaikaavalar.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -34,6 +37,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -47,11 +51,13 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
     JSONObject dataset = new JSONObject();
     private ProgressHUD progressHUD;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homeScreenBinding = DataBindingUtil.setContentView(this, R.layout.home_screen);
         homeScreenBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         prefManager = new PrefManager(this);
         homeScreenBinding.tvName.setText(prefManager.getDesignation());
         homeScreenBinding.designation.setText(prefManager.getDesignation());
@@ -66,8 +72,37 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
         showMenuLayout();
         initialUINew();
+        timerConcept();
     }
 
+    public void timerConcept(){
+        try {
+            CountDownTimer newtimer = new CountDownTimer(1000000000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    long date =System.currentTimeMillis();
+                    SimpleDateFormat datetimeformat =new SimpleDateFormat("E dd-MM-yyyy\n hh:mm:ss a");
+                    try {
+                        String datetimetext =datetimeformat.format(date);
+                        homeScreenBinding.timer.setText(datetimetext);
+                    }
+                    catch (Exception e){
+
+                    }
+                }
+                public void onFinish() {
+
+                }
+            };
+            newtimer.start();
+        }
+        catch (Exception e){
+
+        }
+
+
+
+    }
 
     public void fetchAllResponseFromApi() {
         ///////////// ************** Now Not Need ********//////
@@ -138,8 +173,8 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
         }else {
             homeScreenBinding.sync.setVisibility(View.GONE);
-            homeScreenBinding.sync1.setVisibility(View.VISIBLE);
-            homeScreenBinding.syncCountLayout.setVisibility(View.VISIBLE);
+            homeScreenBinding.sync1.setVisibility(View.GONE);
+            homeScreenBinding.syncCountLayout.setVisibility(View.GONE);
 
             homeScreenBinding.pendingCount.setText("NIL");
 

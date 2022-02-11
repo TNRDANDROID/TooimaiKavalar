@@ -22,8 +22,8 @@
             <RelativeLayout
                 android:id="@+id/header_layout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_90sdp"
-                android:background="@drawable/new_bottom_curved_bg">
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark">
 
                 <TextView
                     android:id="@+id/t_1"
@@ -37,6 +37,7 @@
                     style="@style/font_circular_bold"/>
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -74,6 +75,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:layout_marginTop="-30dp"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="@dimen/_15sdp"
@@ -148,7 +150,6 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:visibility="gone"
                 android:id="@+id/rl_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -510,14 +511,13 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingBottom="20dp"
                         android:background="#34C51162">
 
                     <RelativeLayout
                         android:id="@+id/imgUser1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="10dp"
                         >
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -525,9 +525,8 @@
                             android:layout_height="@dimen/_50sdp"
                             android:layout_margin="9dp"
                             android:id="@+id/profile_icon"
-                            android:background="@drawable/circle"
                             android:padding="8dp"
-                            android:src="@drawable/micro_compos_image_icon"
+                            android:src="@drawable/ic_fertilizer"
                             />
                         <ImageView
                             android:visibility="gone"
@@ -556,7 +555,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/imgUser1"
-                        android:layout_marginTop="15sp"
+                        android:layout_marginTop="5sp"
                         android:fontFamily="sans-serif-light"
                         android:text="Joey Tribbiani"
                         android:textColor="@color/colorPrimaryDark"
@@ -573,6 +572,18 @@
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/_10sdp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_below="@+id/designation1"
+                            android:id="@+id/timer"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_12sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:padding="@dimen/_10sdp"></TextView>
+
                     </RelativeLayout>
 
                 </RelativeLayout>

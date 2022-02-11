@@ -1,13 +1,16 @@
 package com.nic.thooimaikaavalar.activity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -20,6 +23,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -48,7 +52,7 @@ import java.util.Map;
 
 
 /**
- * Created by AchanthiSundar on 28-12-2018.
+ * Created by Dileep on 12-01-2022.
  */
 
 public class LoginScreen extends AppCompatActivity implements View.OnClickListener, Api.ServerResponseListener {
@@ -68,12 +72,14 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     HideReturnsTransformationMethod hideReturnsTransformationMethod;
     String password_visible="show";
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         loginScreenBinding = DataBindingUtil.setContentView(this, R.layout.login_screen);
         loginScreenBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         intializeUI();
 
         loginScreenBinding.visible.setVisibility(View.GONE);
@@ -316,6 +322,8 @@ Log.d("params",""+params);
                         Log.d("userdatadecry", "" + userDataDecrypt);
                         jsonObject = new JSONObject(userDataDecrypt);
                         JSONArray districtCodeJsonArray = new JSONArray();
+                        prefManager.setUserName(loginScreenBinding.userName.getText().toString());
+                        prefManager.setUserPassword(loginScreenBinding.userPassword.getText().toString());
                         districtCodeJsonArray.put(jsonObject.get(AppConstant.DISTRICT_CODE));
                         prefManager.setDistrictCodeJson(districtCodeJsonArray);
                         prefManager.setDistrictCode(jsonObject.get(AppConstant.DISTRICT_CODE));

@@ -1,8 +1,10 @@
 package com.nic.thooimaikaavalar.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -35,11 +37,13 @@ public class VillageListScreen extends AppCompatActivity implements View.OnClick
     private VillageListAdapter villageListAdapter;
     public dbData dbData = new dbData(this);
     private SearchView searchView;
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         villageListActivityBinding = DataBindingUtil.setContentView(this, R.layout.village_list_activity);
         villageListActivityBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar(villageListActivityBinding.toolbar);
         intializeUI();
         initRecyclerView();

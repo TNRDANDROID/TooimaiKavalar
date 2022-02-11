@@ -1,8 +1,10 @@
 package com.nic.thooimaikaavalar.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -61,11 +63,13 @@ public class WorkListScreen extends AppCompatActivity implements View.OnClickLis
     public static DBHelper dbHelper;
     private ProgressHUD progressHUD;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityWorkListBinding = DataBindingUtil.setContentView(this, R.layout.activity_work_list);
         activityWorkListBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();

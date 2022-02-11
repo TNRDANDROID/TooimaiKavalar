@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">தூய்மை காவலர்</string>
+    <string name="app_name">MCC</string>
     <string name="hint_password">Password</string>
-    <string name="hint_username">UserName</string>
+    <string name="hint_username">User Name</string>
     <string name="btn_login">Login</string>
     <string name="font_circular_medium">circular-medium.ttf</string>
     <string name="font_circular_bold">circular-bold.ttf</string>
@@ -41,5 +41,53 @@
     <string name="please_enter_valid_mobile_number">Please Enter Thooimai Kaavalar Valid Mobile Number</string>
     <string name="please_enter_data_of_engage">Please Enter Thooimai Kaavalar Date Of Engage</string>
     <string name="please_enter_date_of_training">Please Enter Thooimai Kaavalar Date Of Training</string>
+    <string name="add_new_mcc">Add New MCC</string>
+    <string name="edit_mcc">View/Edit MCC</string>
+    <string name="enter_mcc_name">Enter MCC Name</string>
+    <string name="please_enter_mcc_name">Please Enter MCC Name</string>
+    <string name="select_date_of_commencement">Select Date Of Commencement</string>
+    <string name="capture_mcc_center">Capture MICRO COMPOSTING CENTRE</string>
+    <string name="please_capture_mcc_center">Please Capture MICRO COMPOSTING CENTRE</string>
+    <string name="save">Save</string>
+    <string name="software_d_a_d_b_nic">Software Designed &amp; Developed by NIC</string>
+    <string name="close">Close</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="no_data_available_for_offline">No data available for offline. Please Turn On Your Network</string>
+    <string name="log_in_again">Login Again</string>
+    <string name="invalid_user_name_password">Invalid UserName Or Password</string>
+    <string name="internet_connection_is_not_available">Internet Connection is not available..Please Turn ON Network Connection OR Continue With Off-line Mode...</string>
+    <string name="settings">Settings</string>
+    <string name="continue_with_off_line">Continue With Off-Line</string>
+    <string name="please_enter_user_name_password">Please enter your username and password!</string>
+    <string name="please_enter_user_name">Please enter your username!</string>
+    <string name="please_enter_user_password">Please enter your password!</string>
+    <string name="logging_out_loss_data">Logging out while offline may leads to loss of data!</string>
+    <string name="sync_all_the_data_before_logout">Sync all the data before logout!</string>
+    <string name="you_want_to_log_out">Are you sure you want to Logout ?</string>
+    <string name="you_want_to_exit">Are you sure you want to Exit ?</string>
+    <string name="gps_is_not_turned_on">GPS is not turned on...</string>
+    <string name="satellite">Satellite communication not available to get GPS Co-ordination Please Capture Photo in Open Area...</string>
+    <string name="permission_required">Permissions required!</string>
+    <string name="camera_need_permission">Camera needs few permissions to work properly. Grant them in settings.</string>
+    <string name="goto_settings">GOTO SETTINGS</string>
+    <string name="cancel">Cancel</string>
+    <string name="inserted_success">Inserted Success!</string>
+    <string name="updated_success">Updated Success!</string>
+    <string name="user_canceled_image_capture">User cancelled image capture</string>
+    <string name="sorry_failed_to_capture">Sorry! Failed to capture image</string>
+    <string name="user_canceled_video">User cancelled video recording</string>
+    <string name="sorry_failed_capture_video">Sorry! Failed to record video</string>
+    <string name="successfully_deleted">Successfully Deleted</string>
+    <string name="no_record_found">NO RECORD FOUND!</string>
+    <string name="at_least_capture_one_photo">At least Capture one Photo</string>
+    <string name="please_enter_description">Please Enter Description</string>
+    <string name="please_capture_image">Please Capture Image</string>
+    <string name="maximum_three_photos">Maximum three Photo allowed</string>
+    <string name="first_capture_image_add_another">First Capture Image and add remark then add another Image!</string>
+    <string name="please_enter_all_the_details">Please enter All the Details!</string>
+    <string name="do_you_wnat_to_upload">Do You Want to Upload?</string>
+    <string name="do_you_wnat_to_delete">Do You Want to Delete?</string>
+    <string name="please_choose_date_of_training">Please Choose Date of Training</string>
+    <string name="please_choose_date_of_engagement">Please Choose Date of Engagement</string>
 
 </resources>

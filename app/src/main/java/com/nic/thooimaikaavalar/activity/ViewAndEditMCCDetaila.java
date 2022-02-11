@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -59,10 +60,10 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activity_view_and_edit_m_c_c_detaila = DataBindingUtil.setContentView(this, R.layout.activity_view_and_edit_m_c_c_detaila);
         activity_view_and_edit_m_c_c_detaila.setActivity(this);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         prefManager = new PrefManager(this);
         try {
             dbHelper = new DBHelper(this);

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,12 +42,14 @@ public class NewThooimaiKavalarEdit extends AppCompatActivity implements Api.Ser
     String mcc_id_="";
     String delete_mcc_id="";
     ActivityNewThooimaiKavalarEditBinding activityNewThooimaiKavalarEditBinding;
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activityNewThooimaiKavalarEditBinding = DataBindingUtil.setContentView(this, R.layout.activity_new_thooimai_kavalar_edit);
         activityNewThooimaiKavalarEditBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         prefManager = new PrefManager(this);
         try {

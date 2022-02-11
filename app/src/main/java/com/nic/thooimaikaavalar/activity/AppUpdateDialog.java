@@ -1,6 +1,8 @@
 package com.nic.thooimaikaavalar.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -19,11 +21,13 @@ public class AppUpdateDialog extends AppCompatActivity implements View.OnClickLi
     private MyCustomTextView btnSave;
     private AppUpdateDialogBinding appUpdateDialogBinding;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         appUpdateDialogBinding = DataBindingUtil.setContentView(this,R.layout.app_update_dialog);
         appUpdateDialogBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         intializeUI();
 
     }

@@ -1,7 +1,9 @@
 package com.nic.thooimaikaavalar.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -47,11 +49,13 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
     private PrefManager prefManager;
     private  ArrayList<RealTimeMonitoringSystem> activityImage = new ArrayList<>();
     private dbData dbData = new dbData(this);
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fullImageRecyclerBinding = DataBindingUtil.setContentView(this, R.layout.full_image_recycler);
         fullImageRecyclerBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         prefManager = new PrefManager(this);
         OnOffType = getIntent().getStringExtra("OnOffType");
         work_id = getIntent().getStringExtra(AppConstant.WORK_ID);

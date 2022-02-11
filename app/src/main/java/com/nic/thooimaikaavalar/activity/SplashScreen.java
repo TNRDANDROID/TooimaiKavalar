@@ -1,6 +1,8 @@
 package com.nic.thooimaikaavalar.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
@@ -25,11 +27,13 @@ public class SplashScreen extends AppCompatActivity implements
     public SplashScreenBinding splashScreenBinding;
 
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         splashScreenBinding = DataBindingUtil.setContentView(this,R.layout.splash_screen);
         splashScreenBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         prefManager = new PrefManager(this);
        /* if (BuildConfig.BUILD_TYPE.equalsIgnoreCase("production")) {
             if (Utils.isOnline()) {

@@ -1,8 +1,10 @@
 package com.nic.thooimaikaavalar.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -59,11 +61,13 @@ public class PendingScreen extends AppCompatActivity implements Api.ServerRespon
     JSONObject dataset = new JSONObject();
     private ProgressHUD progressHUD;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         pendingScreenBinding = DataBindingUtil.setContentView(this, R.layout.pending_screen);
         pendingScreenBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setSupportActionBar(pendingScreenBinding.toolbar);
         try {
             dbHelper = new DBHelper(this);
@@ -73,6 +77,7 @@ public class PendingScreen extends AppCompatActivity implements Api.ServerRespon
         }
         prefManager = new PrefManager(this);
 
+        Utils.setupUI(pendingScreenBinding.parentLayout,this);
         pendingList = new ArrayList<>();
         pendingScreenAdapter = new PendingScreenAdapter(PendingScreen.this,pendingList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);

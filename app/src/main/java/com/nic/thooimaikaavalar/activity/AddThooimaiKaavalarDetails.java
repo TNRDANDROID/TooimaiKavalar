@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -38,12 +40,14 @@ public class AddThooimaiKaavalarDetails extends AppCompatActivity {
     EditText name,mobile_number,date_of_engage,date_of_training;
     String thooimai_kaavalar_id="";
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         activityAddThooimaiKaavalarDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_thooimai_kaavalar_details);
         activityAddThooimaiKaavalarDetailsBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
         count =getIntent().getIntExtra("count",0);

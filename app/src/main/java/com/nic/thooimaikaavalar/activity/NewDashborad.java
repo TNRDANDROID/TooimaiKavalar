@@ -3,9 +3,11 @@ package com.nic.thooimaikaavalar.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.view.View;
@@ -24,12 +26,14 @@ import java.util.Date;
 public class NewDashborad extends AppCompatActivity {
 
     ActivityNewDashboradBinding activityNewDashboradBinding;
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activityNewDashboradBinding = DataBindingUtil.setContentView(this, R.layout.activity_new_dashborad);
         activityNewDashboradBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         activityNewDashboradBinding.btn1.setOnClickListener(new View.OnClickListener() {
             @Override

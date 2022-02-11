@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,12 +47,14 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
     ComponentPhotoAdapter componentPhotoAdapter;
     String key_id="";
     String type="";
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activity_new_pending_screen = DataBindingUtil.setContentView(this, R.layout.activity_new_pending_screen);
         activity_new_pending_screen.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         prefManager = new PrefManager(this);
         try {
             dbHelper = new DBHelper(this);
@@ -58,6 +62,7 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Utils.setupUI(activity_new_pending_screen.parentLayout,this);
 
         getBasicList();
         activity_new_pending_screen.listName.setText("Basic Details of MCC");

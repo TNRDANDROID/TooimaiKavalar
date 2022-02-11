@@ -1,12 +1,14 @@
 package com.nic.thooimaikaavalar.activity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -101,11 +103,13 @@ public class CameraScreen extends AppCompatActivity implements View.OnClickListe
 
 
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         cameraScreenBinding = DataBindingUtil.setContentView(this, R.layout.camera_screen);
         cameraScreenBinding.setActivity(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();
