@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/mcc_name"
                     android:textColor="@color/black"
-                    android:fontFamily="YanoneKaffeesatz-Regular"
+                    android:fontFamily="@string/font_regular"
                     ></TextView>
                 <TextView
                     android:textSize="@dimen/_10sdp"
@@ -57,7 +57,7 @@
                     android:layout_below="@id/mcc_name"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textColor="@color/black"
-                    android:fontFamily="YanoneKaffeesatz-Regular"
+                    android:fontFamily="@string/font_regular"
                     ></TextView>
 
                 <TextView
@@ -68,7 +68,7 @@
                     android:layout_below="@id/village_name"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textColor="@color/black"
-                    android:fontFamily="YanoneKaffeesatz-Regular"
+                    android:fontFamily="@string/font_regular"
                     ></TextView>
 
                 <TextView
@@ -79,7 +79,7 @@
                     android:layout_below="@id/date"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textColor="@color/black"
-                    android:fontFamily="YanoneKaffeesatz-Regular"
+                    android:fontFamily="@string/font_regular"
                     ></TextView>
 
 

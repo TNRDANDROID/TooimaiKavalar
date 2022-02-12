@@ -384,7 +384,7 @@
                     app:cardBackgroundColor="@color/purple"
                     android:layout_below="@+id/card_view"
                     app:cardCornerRadius="20dp"
-                    app:cardElevation="@dimen/_12sdp"
+                    app:cardElevation="@dimen/_5sdp"
                     android:outlineSpotShadowColor="@color/purple">
                 <RelativeLayout
                     android:visibility="visible"

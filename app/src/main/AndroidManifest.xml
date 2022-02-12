@@ -143,6 +143,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="fullSensor"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
+        <activity android:name=".activity.SampleHome" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

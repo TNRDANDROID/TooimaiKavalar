@@ -90,4 +90,7 @@
     <string name="please_choose_date_of_training">Please Choose Date of Training</string>
     <string name="please_choose_date_of_engagement">Please Choose Date of Engagement</string>
 
+    <string name="font_regular">yanonekaffeesatz_regular.ttf</string>
+
+
 </resources>

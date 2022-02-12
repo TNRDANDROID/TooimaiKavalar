@@ -67,11 +67,11 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
             @Override
             public void onBindViewHolder(@NonNull final BasicDetailsFromServerAdapter.MyViewHolder holder,final int position){
 
-                Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/" + "Ubuntu-Medium.ttf");
+                /*Typeface typeface = Typeface.createFromAsset(context.getAssets(), "fonts/" + "Ubuntu-Medium.ttf");
                 holder.basicDetailsAdapterBinding.date.setTypeface(typeface);
                 holder.basicDetailsAdapterBinding.mccName.setTypeface(typeface);
                 holder.basicDetailsAdapterBinding.villageName.setTypeface(typeface);
-                holder.basicDetailsAdapterBinding.waterAvailabilityName.setTypeface(typeface);
+                holder.basicDetailsAdapterBinding.waterAvailabilityName.setTypeface(typeface);*/
                     String date = dateFormate(basicDetailsList.get(position).getDate_of_commencement(),"yes");
                     holder.basicDetailsAdapterBinding.date.setText("Date of Commencement -"+date);
                     holder.basicDetailsAdapterBinding.mccName.setText("MCC Name -"+basicDetailsList.get(position).getMcc_name());
