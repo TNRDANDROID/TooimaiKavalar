@@ -32,6 +32,11 @@
     <color name="grey_9">#514f4d</color>
     <color name="grey_10">#3e3e3c</color>
 
+    <color name="grey1">#878787</color>
+    <color name="grey2">#505454</color>
+    <color name="black_grey">#616565</color>
+    <color name="unselect">#a0a0a0</color>
+
     <color name="black">#000000</color>
     <color name="yellow">#F5F504</color>
     <color name="red">#B71C1C</color>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.nic.thooimaikaavalar.activity.NewPendingScreenActivity;
 import com.nic.thooimaikaavalar.activity.ViewAndEditMCCDetaila;
 import com.nic.thooimaikaavalar.activity.ViewTakeEditComponentsPhots;
 import com.nic.thooimaikaavalar.constant.AppConstant;
+import com.nic.thooimaikaavalar.dataBase.DBHelper;
 import com.nic.thooimaikaavalar.dataBase.dbData;
 import com.nic.thooimaikaavalar.databinding.BasicDetailsAdapterFromServerBinding;
 import com.nic.thooimaikaavalar.databinding.ComponentPhotoAdapterBinding;
@@ -72,7 +74,7 @@ public class ComponentPhotoAdapter extends RecyclerView.Adapter<ComponentPhotoAd
         holder.basicDetailsAdapterBinding.deleteIcon.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
+                save_and_delete_alert(position,"delete");
             }
         });
         holder.basicDetailsAdapterBinding.uploadIcon.setOnClickListener(new View.OnClickListener(){
@@ -109,6 +111,15 @@ public class ComponentPhotoAdapter extends RecyclerView.Adapter<ComponentPhotoAd
             super(Binding.getRoot());
             basicDetailsAdapterBinding = Binding;
         }
+    }
+    public void deletePending(int position) {
+        String key_id = basicDetailsList.get(position).getMcc_id();
+
+        int sdsm = NewPendingScreenActivity.db.delete(DBHelper.COMPOST_TUB_IMAGE_TABLE, "mcc_id = ? ", new String[]{key_id});
+        basicDetailsList.remove(position);
+        notifyItemRemoved(position);
+        notifyItemChanged(position, basicDetailsList.size());
+        Log.d("sdsm", String.valueOf(sdsm));
     }
 
     public void uploadPending(int position) {
@@ -185,7 +196,7 @@ public class ComponentPhotoAdapter extends RecyclerView.Adapter<ComponentPhotoAd
                         dialog.dismiss();
                     }
                     else if(save_delete.equals("delete")) {
-                        //deletePending(position);
+                        deletePending(position);
                         dialog.dismiss();
                     }
                 }

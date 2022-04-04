@@ -1,11 +1,12 @@
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
 <data>
     <variable
         name="activity"
         type="com.nic.thooimaikaavalar.activity.FullImageActivity" />
 </data>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent">
@@ -17,14 +18,15 @@
             android:background="@color/colorPrimaryDark">
 
             <TextView
-                style="@string/font_circular_medium"
+                android:fontFamily="@string/font_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="@dimen/margin"
-                android:text="View Image"
+                android:text="@string/view_image"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
                 android:id="@+id/back_img"
@@ -32,10 +34,11 @@
                 android:layout_height="@dimen/_30sdp"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
-                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:tint="@color/white"
                 android:onClick="@{()-> activity.onBackPress()}"
-                android:src="@mipmap/back_arrow" />
+                android:src="@mipmap/back_arrow"
+                android:contentDescription="@string/back_icon" />
 
             <ImageView
                 android:tint="@color/white"
@@ -44,9 +47,10 @@
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
-                android:layout_marginRight="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 android:onClick="@{()-> activity.homePage()}"
-                android:src="@mipmap/home_img" />
+                android:src="@mipmap/home_img"
+                android:contentDescription="@string/home_icon" />
 
         </RelativeLayout>
 
@@ -59,14 +63,15 @@
             android:scrollbarSize="4dp"
             android:scrollbars="vertical" />
 
-        <pl.droidsonroids.gif.GifImageView
+        <ImageView
             android:layout_below="@id/header_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitEnd"
             android:id="@+id/no_data_gif"
             android:layout_centerInParent="true"
-            android:src="@drawable/new_no_result_image_1_"></pl.droidsonroids.gif.GifImageView>
+            android:src="@drawable/new_no_result_image_1_"
+            android:contentDescription="@string/no_data_icon" />
 
 
     </RelativeLayout>

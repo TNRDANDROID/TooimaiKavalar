@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,7 +38,6 @@ public class AdditionalWorkScreen extends AppCompatActivity implements View.OnCl
     public dbData dbData = new dbData(this);
     private SearchView searchView;
     private PrefManager prefManager;
-    private SQLiteDatabase db;
     public static DBHelper dbHelper;
     private String work_id;
     ArrayList<RealTimeMonitoringSystem> additionalList = new ArrayList<>();
@@ -78,6 +76,7 @@ public class AdditionalWorkScreen extends AppCompatActivity implements View.OnCl
 //        }, 2000);
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class fetchAdditionaltask extends AsyncTask<Void, Void,
             ArrayList<RealTimeMonitoringSystem>> {
         @Override

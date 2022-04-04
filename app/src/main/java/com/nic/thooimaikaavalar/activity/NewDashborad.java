@@ -53,6 +53,12 @@ public class NewDashborad extends AppCompatActivity {
                 gotoEditViewEditComponentsActivity();
             }
         });
+        activityNewDashboradBinding.btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoViewWasteCollectedDetailsActivity();
+            }
+        });
 
         activityNewDashboradBinding.backImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +160,15 @@ public class NewDashborad extends AppCompatActivity {
         Intent intent =new Intent(NewDashborad.this,ViewTakeEditComponentsPhots.class);
         intent.putExtra("mcc_id",getIntent().getStringExtra("mcc_id"));
         intent.putExtra("village_name",getIntent().getStringExtra("village_name"));
+        intent.putExtra("mcc_name",getIntent().getStringExtra("mcc_name"));
+        intent.putExtra("date_of_commencement",getIntent().getStringExtra("date_of_commencement"));
+        startActivity(intent);
+    }
+    public void gotoViewWasteCollectedDetailsActivity(){
+        Intent intent =new Intent(NewDashborad.this,ViewWasteCollectedDetails.class);
+        intent.putExtra("mcc_id",getIntent().getStringExtra("mcc_id"));
+        intent.putExtra("village_name",getIntent().getStringExtra("village_name"));
+        intent.putExtra("pvcode",getIntent().getStringExtra("pvcode"));
         intent.putExtra("mcc_name",getIntent().getStringExtra("mcc_name"));
         intent.putExtra("date_of_commencement",getIntent().getStringExtra("date_of_commencement"));
         startActivity(intent);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:customfontdemo="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -15,9 +15,6 @@
             android:id="@+id/district_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
             android:layout_margin="15dp"
             android:layout_marginTop="15dp"
 
@@ -29,13 +26,15 @@
                 android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.9"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UselessParent">
 
                     <ImageView
                         android:id="@+id/image_view_preview"
@@ -43,7 +42,7 @@
                         android:layout_height="100dp"
                         android:scaleType="fitXY"
                         android:background="@drawable/capture_image"
-                        />
+                        android:contentDescription="@string/camera_icon" />
 
                     <ImageView
                         android:id="@+id/image_view"
@@ -51,7 +50,7 @@
                         android:layout_height="100dp"
                         android:scaleType="fitXY"
                         android:visibility="gone"
-                        />
+                        android:contentDescription="@string/camera_icon" />
 
                     <!--<LinearLayout-->
                         <!--android:layout_width="wrap_content"-->
@@ -91,6 +90,7 @@
 
 
                         <EditText
+                            android:fontFamily="@string/font_regular"
                             android:layout_marginTop="@dimen/_7sdp"
                             android:id="@+id/description"
                             android:layout_width="fill_parent"
@@ -99,8 +99,9 @@
                             android:textSize="15sp"
                             android:textColor="@android:color/black"
                             android:background="@color/full_transparent"
-                            android:hint="Photograph Remark"
-                             />
+                            android:hint="@string/photograph_remark"
+                            android:importantForAutofill="no"
+                            android:inputType="text" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -110,12 +111,12 @@
                             android:textColor="@color/full_transparent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/latitude"></TextView>
+                            android:id="@+id/latitude"/>
                         <TextView
                             android:textColor="@color/full_transparent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/longtitude"></TextView>
+                            android:id="@+id/longtitude"/>
 
                     </LinearLayout>
 
@@ -136,6 +137,7 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="5dp"
         android:clickable="true"
-        android:src="@mipmap/close_icon" />
+        android:src="@mipmap/close_icon"
+        android:contentDescription="@string/close_icon" />
 
 </RelativeLayout>

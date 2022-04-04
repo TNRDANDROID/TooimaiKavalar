@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="adapter"
@@ -7,14 +9,14 @@
     </data>
     <androidx.cardview.widget.CardView
         android:layout_margin="@dimen/_10sdp"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
         android:id="@+id/card_view"
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_12sdp"
-        android:outlineSpotShadowColor="@color/purple">
+        android:outlineSpotShadowColor="@color/purple"
+        tools:ignore="UnusedAttribute">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -30,14 +32,15 @@
                     android:scaleType="fitXY"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/mcc_center_image"></ImageView>
+                    android:id="@+id/mcc_center_image"
+                    android:contentDescription="@string/mcc_center_iamge_icon" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_toRightOf="@id/image_rl"
-                android:layout_toLeftOf="@+id/delete_upload_rl"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toEndOf="@id/image_rl"
+                android:layout_toStartOf="@+id/delete_upload_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -48,7 +51,7 @@
                     android:id="@+id/mcc_name"
                     android:textColor="@color/black"
                     android:fontFamily="@string/font_regular"
-                    ></TextView>
+                    />
                 <TextView
                     android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
@@ -58,7 +61,7 @@
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textColor="@color/black"
                     android:fontFamily="@string/font_regular"
-                    ></TextView>
+                    />
 
                 <TextView
                     android:textSize="@dimen/_10sdp"
@@ -69,7 +72,7 @@
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textColor="@color/black"
                     android:fontFamily="@string/font_regular"
-                    ></TextView>
+                    />
 
                 <TextView
                     android:textSize="@dimen/_10sdp"
@@ -80,7 +83,7 @@
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textColor="@color/black"
                     android:fontFamily="@string/font_regular"
-                    ></TextView>
+                    />
 
 
             </RelativeLayout>
@@ -100,7 +103,8 @@
                     android:id="@+id/delete_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"></ImageView>
+                    android:layout_alignParentTop="true"
+                    android:contentDescription="@string/delete_icon" />
                 <ImageView
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_mode_edit_black_24dp"
@@ -109,7 +113,8 @@
                     android:id="@+id/edit_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"></ImageView>
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/edit_icon" />
                 <ImageView
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_visibility_grey_900_24dp"
@@ -118,7 +123,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="@dimen/_5sdp"></ImageView>
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:contentDescription="@string/view_icon" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/collect_details_layout"
+                android:layout_below="@+id/image_rl"
+                android:background="@drawable/bottom_cureved_bg_new">
+
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_collected_details"
+                    android:padding="@dimen/_7sdp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/go_icon"
+                    android:src="@drawable/ic_next"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/_4sdp"
+                    android:visibility="gone"
+                    android:tint="@color/grey_5"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:contentDescription="@string/back_icon" />
 
             </RelativeLayout>
 

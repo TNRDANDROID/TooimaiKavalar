@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -19,14 +20,20 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.SwitchCompat;
@@ -77,6 +84,13 @@ public class Utils {
     private static int CIPHER_KEY_LEN = 16; //128 bits
     private static PrefManager prefManager;
 
+    //Datepicker
+    private static String fromToDate = "";
+    private static  boolean date_flag =true;
+    private static String fromDate,toDate;
+    public static boolean flag = false; //128 bits
+
+    static DateInterface dateInterface  ;
     private static void initializeSharedPreference() {
         sharedPreferences = NICApplication.getGlobalContext()
                 .getSharedPreferences(SHARED_PREFERENCE_UTILS,
@@ -1359,4 +1373,226 @@ public class Utils {
 
     }
 
+    //Date Picker
+    public static void showDatePickerDialog(final Context context) {
+        fromToDate=" ";
+        dateInterface= (DateInterface) context;
+        final SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View dialogView = inflater.inflate(R.layout.date_picker_layout, null);
+        final android.app.AlertDialog alertDialog = builder.create();
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(alertDialog.getWindow().getAttributes());
+        lp.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+        lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        lp.gravity = Gravity.CENTER;
+        lp.windowAnimations = R.style.DialogAnimation;
+        alertDialog.getWindow().setAttributes(lp);
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertDialog.setView(dialogView, 0, 0, 0, 0);
+        alertDialog.setCancelable(true);
+        alertDialog.show();
+
+        final DatePicker datePicker = (DatePicker) dialogView.findViewById(R.id.datePicker);
+        final TextView from = (TextView) dialogView.findViewById(R.id.from);
+        final TextView to = (TextView) dialogView.findViewById(R.id.to);
+        TextView cancel = (TextView) dialogView.findViewById(R.id.cancel);
+        TextView ok = (TextView) dialogView.findViewById(R.id.ok);
+        final TextView fromDateValue = (TextView) dialogView.findViewById(R.id.fromDateValue);
+        final TextView toDateValue = (TextView) dialogView.findViewById(R.id.toDateValue);
+        final LinearLayout t_layout = (LinearLayout) dialogView.findViewById(R.id.t_layout);
+        final LinearLayout f_layout = (LinearLayout) dialogView.findViewById(R.id.f_layout);
+        RelativeLayout button_layout = (RelativeLayout) dialogView.findViewById(R.id.button_layout);
+
+        /*Typeface custom_font = Typeface.createFromAsset(context.getAssets(), "fonts/Poppins-Medium.ttf");
+        from.setTypeface(custom_font);
+        to.setTypeface(custom_font);
+        fromDateValue.setTypeface(custom_font);
+        toDateValue.setTypeface(custom_font);
+        cancel.setTypeface(custom_font);
+        ok.setTypeface(custom_font);*/
+
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+
+        date_flag=true;
+        f_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+        fromDateValue.setTextColor(context.getResources().getColor(R.color.white));
+        from.setTextColor(context.getResources().getColor(R.color.white));
+        toDateValue.setTextColor(context.getResources().getColor(R.color.unselect));
+        to.setTextColor(context.getResources().getColor(R.color.unselect));
+        t_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+
+        datePicker.setMaxDate(new Date().getTime());
+        datePicker.setMinDate(0);
+
+        fromDate= format.format(c.getTime());
+        fromDateValue.setText(fromDate);
+        toDate= format.format(c.getTime());
+        toDateValue.setText(toDate);
+        datePicker.setMaxDate(new Date().getTime());
+        datePicker.setMinDate(0);
+// set current date into datepicker
+        datePicker.init(year, month, day, null);
+        f_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                date_flag=true;
+                f_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                fromDateValue.setTextColor(context.getResources().getColor(R.color.white));
+                from.setTextColor(context.getResources().getColor(R.color.white));
+                toDateValue.setTextColor(context.getResources().getColor(R.color.unselect));
+                to.setTextColor(context.getResources().getColor(R.color.unselect));
+                t_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+
+                datePicker.setMaxDate(new Date().getTime());
+                datePicker.setMinDate(0);
+            }
+        });
+        t_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                date_flag=false;
+                f_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                fromDateValue.setTextColor(context.getResources().getColor(R.color.unselect));
+                from.setTextColor(context.getResources().getColor(R.color.unselect));
+                toDateValue.setTextColor(context.getResources().getColor(R.color.white));
+                to.setTextColor(context.getResources().getColor(R.color.white));
+                t_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                Date date = null;
+                try {
+                    date = format.parse(fromDate);
+                    datePicker.setMinDate(date.getTime());
+                    datePicker.setMaxDate(new Date().getTime());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
+
+                if(date_flag){
+
+                    fromDate=datePicker.getDayOfMonth() + "-" + (datePicker.getMonth() + 1) + "-" + datePicker.getYear();
+                    fromDateValue.setText(updateLabel(fromDate));
+
+                    try {
+                        Date strDate = format.parse(fromDate);
+                        Date endDate = format.parse(toDate);
+                        if (!endDate.after(strDate)) {
+                            toDate=datePicker.getDayOfMonth() + "-" + (datePicker.getMonth() + 1) + "-" + datePicker.getYear();
+                            toDateValue.setText(updateLabel(toDate));
+                        }else {
+
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    date_flag=false;
+                    f_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                    fromDateValue.setTextColor(context.getResources().getColor(R.color.unselect));
+                    from.setTextColor(context.getResources().getColor(R.color.unselect));
+                    toDateValue.setTextColor(context.getResources().getColor(R.color.white));
+                    to.setTextColor(context.getResources().getColor(R.color.white));
+                    t_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                    Date date = null;
+                    try {
+                        date = format.parse(fromDate);
+                        datePicker.setMinDate(date.getTime());
+                        datePicker.setMaxDate(new Date().getTime());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                }else {
+
+
+
+                    toDate=datePicker.getDayOfMonth() + "-" + (datePicker.getMonth() + 1) + "-" + datePicker.getYear();
+                    toDateValue.setText(updateLabel(toDate));
+
+                }
+            }
+        });
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(flag){
+                    fromDate=datePicker.getDayOfMonth() + "-" + (datePicker.getMonth() + 1) + "-" + datePicker.getYear();
+                    fromDateValue.setText(updateLabel(fromDate));
+
+                    try {
+                        Date strDate = format.parse(fromDate);
+                        Date endDate = format.parse(toDate);
+                        if (!endDate.after(strDate)) {
+                            toDate=datePicker.getDayOfMonth() + "-" + (datePicker.getMonth() + 1) + "-" + datePicker.getYear();
+                            toDateValue.setText(updateLabel(toDate));
+                        }else {
+
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    date_flag=false;
+                    f_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                    fromDateValue.setTextColor(context.getResources().getColor(R.color.unselect));
+                    from.setTextColor(context.getResources().getColor(R.color.unselect));
+                    toDateValue.setTextColor(context.getResources().getColor(R.color.white));
+                    to.setTextColor(context.getResources().getColor(R.color.white));
+                    t_layout.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                    Date date = null;
+                    try {
+                        date = format.parse(fromDate);
+                        datePicker.setMinDate(date.getTime());
+                        datePicker.setMaxDate(new Date().getTime());
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                }else {
+                    fromToDate=fromDateValue.getText().toString()+":"+toDateValue.getText().toString();
+                    dateInterface.getDate(fromToDate);
+                    alertDialog.dismiss();
+                }
+
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fromToDate=" ";
+                alertDialog.dismiss();
+            }
+        });
+
+    }
+    private static String updateLabel(String dateStr) {
+        String myFormat="";
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date date1 = format.parse(dateStr);
+            System.out.println(date1);
+            String dateTime = format.format(date1);
+            System.out.println("Current Date Time : " + dateTime);
+            myFormat = dateTime; //In which you need put here
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return myFormat;
+    }
 }

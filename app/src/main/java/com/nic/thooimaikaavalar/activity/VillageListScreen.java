@@ -20,7 +20,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration;
 
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.nic.thooimaikaavalar.R;
@@ -51,7 +53,8 @@ public class VillageListScreen extends AppCompatActivity implements View.OnClick
     private void initRecyclerView() {
         recyclerView = villageListActivityBinding.villageList;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        ItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
 

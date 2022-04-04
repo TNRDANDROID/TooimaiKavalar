@@ -192,6 +192,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
                     int sdsm = db.delete(DBHelper.THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL, "mcc_id = ? ", new String[]{delete_mcc_id});
                     int sds = db.delete(DBHelper.BASIC_DETAILS_OF_MCC_SAVE, "mcc_id = ? ", new String[]{delete_mcc_id});
                     int sd = db.delete(DBHelper.COMPOST_TUB_IMAGE_TABLE, "mcc_id = ? ", new String[]{delete_mcc_id});
+                    int sd1 = db.delete(DBHelper.WASTE_COLLECTED_SAVE_TABLE, "mcc_id = ? ", new String[]{delete_mcc_id});
                     getBasicMccList();
 
                 } else if(jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("NO_RECORD")){
@@ -401,6 +402,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
         intent.putExtra("village_name",basicDetailsServerList.get(position).getPvName());
         intent.putExtra("date_of_commencement",basicDetailsServerList.get(position).getDate_of_commencement());
         intent.putExtra("mcc_name",basicDetailsServerList.get(position).getMcc_name());
+        intent.putExtra("pvcode",basicDetailsServerList.get(position).getPvCode());
         startActivity(intent);
     }
     public void gotoEditMcc(int position){

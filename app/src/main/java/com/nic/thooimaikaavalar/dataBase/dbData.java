@@ -875,6 +875,68 @@ public class dbData {
         return cards;
     }
 
+    public ArrayList<RealTimeMonitoringSystem > getParticularWasteCollectedSaveTableRow(String mcc_id,String type) {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+
+        try {
+            if(type.equals("All")){
+                cursor = db.rawQuery("select * from "+DBHelper.WASTE_COLLECTED_SAVE_TABLE,null);
+            }
+            else {
+                cursor = db.rawQuery("select * from "+DBHelper.WASTE_COLLECTED_SAVE_TABLE+" where mcc_id = "+mcc_id,null);
+            }
+
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvcode")));
+                    card.setPvName(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvname")));
+                    card.setMcc_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("mcc_id")));
+                    card.setMcc_name(cursor.getString(cursor
+                            .getColumnIndexOrThrow("mcc_name")));
+                    card.setHouseholds_waste(cursor.getString(cursor
+                            .getColumnIndexOrThrow("households_waste")));
+                    card.setShops_waste(cursor.getString(cursor
+                            .getColumnIndexOrThrow("shops_waste")));
+                    card.setMarket_waste(cursor.getString(cursor
+                            .getColumnIndexOrThrow("market_waste")));
+                    card.setHotels_waste(cursor.getString(cursor
+                            .getColumnIndexOrThrow("hotels_waste")));
+                    card.setOthers_waste(cursor.getString(cursor
+                            .getColumnIndexOrThrow("others_waste")));
+                    card.setTot_bio_waste_collected(cursor.getString(cursor
+                            .getColumnIndexOrThrow("tot_bio_waste_collected")));
+                    card.setTot_bio_waste_shredded(cursor.getString(cursor
+                            .getColumnIndexOrThrow("tot_bio_waste_shredded")));
+                    card.setTot_bio_compost_produced(cursor.getString(cursor
+                            .getColumnIndexOrThrow("tot_bio_compost_produced")));
+                    card.setTot_bio_compost_sold(cursor.getString(cursor
+                            .getColumnIndexOrThrow("tot_bio_compost_sold")));
+                    card.setDate_of_save(cursor.getString(cursor
+                            .getColumnIndexOrThrow("date_of_save")));
+
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+
 
 
     ////////////// ************************** Now Not Need ///////////////////////
@@ -1695,6 +1757,9 @@ public class dbData {
     public void deleteCOMPOST_TUB_IMAGE_TABLE() {
         db.execSQL("delete from " + DBHelper.COMPOST_TUB_IMAGE_TABLE);
     }
+    public void deleteWASTE_COLLECTED_SAVE_TABLE() {
+        db.execSQL("delete from " + DBHelper.WASTE_COLLECTED_SAVE_TABLE);
+    }
 
 
     public void deleteAll() {
@@ -1718,6 +1783,7 @@ public class dbData {
         deleteTHOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_SERVER();
         deleteTHOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL();
         deleteCOMPOST_TUB_IMAGE_TABLE();
+        deleteWASTE_COLLECTED_SAVE_TABLE();
     }
 
 

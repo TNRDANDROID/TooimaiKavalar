@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,7 +10,6 @@
     </data>
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,11 +36,10 @@
                     android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Enter Details"
                     android:textStyle="bold"
                     android:rotation="180"
                     android:textSize="18sp"
-                    android:textColor="@color/black"></TextView>
+                    android:textColor="@color/black" />
 
             </RelativeLayout>
             <ScrollView
@@ -50,7 +49,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="ExtraText">
 
                     //Check dam 108
                     <LinearLayout
@@ -76,9 +76,8 @@
                                 android:id="@+id/length"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Length of weir (in m) - "
+                                android:text="@string/length_of_weir_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -101,9 +100,8 @@
                                 android:id="@+id/height"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Height of weir (in m) - "
+                                android:text="@string/height_of_weir_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -126,9 +124,8 @@
                                 android:id="@+id/length_of_water_storage"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Length of water storage in upstream side of channel (in m)"
+                                android:text="@string/length_of_water_storage_in_upstream_side_of_channel_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -150,7 +147,7 @@
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m)"
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
@@ -181,9 +178,8 @@
                                 android:id="@+id/no_of_trenches_per_one_work_site"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="No of trenches  per one work site - "
+                                android:text="@string/no_of_trenches_per_one_work_site"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -205,9 +201,8 @@
                                 android:id="@+id/length_in_m"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Length (in m) - "
+                                android:text="@string/length_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -230,9 +225,8 @@
                                 android:id="@+id/width_in_m"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Width (in m) - "
+                                android:text="@string/width_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -255,9 +249,8 @@
                                 android:id="@+id/depth_in_m"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="depth (in m) - "
+                                android:text="@string/depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -279,9 +272,8 @@
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m) - "
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -314,9 +306,8 @@
                                 android:id="@+id/no_of_units_per_waterbody"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="No of units per waterbody - "
+                                android:text="@string/no_of_units_per_water_body"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -338,9 +329,8 @@
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m) - "
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -367,22 +357,23 @@
                             android:id="@+id/id_41"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/no_of_units_4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="No of units - "
+                                android:text="@string/no_of_units"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -399,22 +390,23 @@
                             android:id="@+id/id_42"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/length_in_m_4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Length (in m) - "
+                                android:text="@string/length_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -432,22 +424,23 @@
                             android:id="@+id/id_43"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/width_in_m_4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Width (in m) - "
+                                android:text="@string/width_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -465,22 +458,23 @@
                             android:id="@+id/id_44"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/depth_in_m_4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="depth (in m) - "
+                                android:text="@string/depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -497,22 +491,23 @@
                             android:id="@+id/id_45"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m) - "
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -540,22 +535,23 @@
                             android:id="@+id/area_covered_in_Hect"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/area_covered_in_hect_5"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Area covered (in Hect.) - "
+                                android:text="@string/area_covered_in_hect"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -572,22 +568,23 @@
                             android:id="@+id/no_of_plantation_per_site"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/no_of_plantation_per_site_5"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="No of plantation per site - "
+                                android:text="@string/no_of_plantation_per_site"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -604,22 +601,23 @@
                             android:id="@+id/id_55"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_5"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m) - "
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -645,22 +643,23 @@
                             android:id="@+id/id_61"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/no_of_units_6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="No of units - "
+                                android:text="@string/no_of_units"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -677,22 +676,23 @@
                             android:id="@+id/id_62"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/length_in_m_6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Length (in m) - "
+                                android:text="@string/length_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -710,22 +710,23 @@
                             android:id="@+id/id_63"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/width_in_m_6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Width (in m) - "
+                                android:text="@string/width_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -743,22 +744,23 @@
                             android:id="@+id/id_64"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/depth_in_m_6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="depth (in m) - "
+                                android:text="@string/depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -775,22 +777,23 @@
                             android:id="@+id/id_65"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m) - "
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -818,25 +821,27 @@
                             android:id="@+id/id_71"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
                                 android:id="@+id/storage_structure_sump_available_yes"
                                 android:layout_marginTop="@dimen/_5sdp"
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="If storage structure/sump available - "
+                                android:text="@string/if_storage_structure_sump_available"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
-                                android:textSize="@dimen/_13sdp"/>
+                                android:textSize="@dimen/_13sdp"
+                                tools:ignore="TooManyViews" />
 
 
                         </LinearLayout>
@@ -851,22 +856,23 @@
                             android:id="@+id/id_72"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/length_diameter_in_m"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Length/diameter  (in m) - "
+                                android:text="@string/length_diameter_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -884,22 +890,23 @@
                             android:id="@+id/id_73"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/width_diameter_in_m"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Width/diameter (in m) - "
+                                android:text="@string/width_diameter_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -917,22 +924,23 @@
                             android:id="@+id/id_74"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/depth_in_m_7"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="depth (in m) - "
+                                android:text="@string/depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -949,22 +957,23 @@
                             android:id="@+id/id_75"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_7"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m) - "
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -992,22 +1001,23 @@
                             android:id="@+id/id_85"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables,UselessParent">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_8"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m) - "
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -1034,22 +1044,23 @@
                             android:id="@+id/id_91"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/individual_community"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Individual/Community - "
+                                android:text="@string/individual_community"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -1067,22 +1078,23 @@
                             android:id="@+id/id_95"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_9"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m) - "
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -1110,22 +1122,22 @@
                             android:id="@+id/id_10_1"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
 
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/lenth_of_channel_in_m_10"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Length of channel (in m) - "
+                                android:text="@string/length_of_channel_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -1143,22 +1155,23 @@
                             android:id="@+id/id_105"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            >
+                            tools:ignore="UseCompoundDrawables">
+
                             <ImageView
                                 android:layout_gravity="center_vertical"
                                 android:layout_width="@dimen/_7sdp"
                                 android:layout_height="@dimen/_7sdp"
                                 android:src="@drawable/circle"
-                                android:tint="@color/black"></ImageView>
+                                android:tint="@color/black"
+                                android:contentDescription="@string/circle_icon" />
 
                             <TextView
-                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:id="@+id/observation_premonsoon_gw_depth_in_m_10"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Observation (premonsoon GW depth in m) - "
+                                android:text="@string/observation_premonsoon_gw_depth_in_m"
                                 android:layout_gravity="center_vertical"
-                                android:layout_centerVertical="true"
                                 android:textColor="@color/grey_9"
                                 android:textSize="@dimen/_13sdp"/>
 
@@ -1186,7 +1199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:padding="5dp"
-                    android:text="Sync Data"
+                    android:text="@string/sync_data"
                     android:textAlignment="viewEnd"
                     android:textStyle="bold"
                     android:textColor="@color/black"

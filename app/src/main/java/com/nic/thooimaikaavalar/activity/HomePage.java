@@ -59,6 +59,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         homeScreenBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         prefManager = new PrefManager(this);
+        dbData.open();
         homeScreenBinding.tvName.setText(prefManager.getDesignation());
         homeScreenBinding.designation.setText(prefManager.getDesignation());
         Bundle bundle = this.getIntent().getExtras();
@@ -143,6 +144,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         ArrayList<RealTimeMonitoringSystem> getAllBasicDetails =  dbData.getAllBasicDetails();
         ArrayList<RealTimeMonitoringSystem> getTooimaiKaavalrCount =  dbData.getAllThooimaikaavalarListLocalAll();
         ArrayList<RealTimeMonitoringSystem> getComponentImageCount =  dbData.getAllComponentsPendingScreen();
+        ArrayList<RealTimeMonitoringSystem> getWasteCollectedDetailsCount =  dbData.getParticularWasteCollectedSaveTableRow("","All");
 
 /*        if (workImageCount.size() > 0 || workCapacityCount.size() > 0) {
             homeScreenBinding.sync.setVisibility(View.VISIBLE);
@@ -157,7 +159,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             homeScreenBinding.pendingCount.setText("NIL");
         }*/
 
-        if(getAllBasicDetails.size()>0||getTooimaiKaavalrCount.size()>0||getComponentImageCount.size()>0){
+        if(getAllBasicDetails.size()>0||getTooimaiKaavalrCount.size()>0||getComponentImageCount.size()>0|| getWasteCollectedDetailsCount.size()>0){
             homeScreenBinding.sync.setVisibility(View.VISIBLE);
             homeScreenBinding.syncCountLayout.setVisibility(View.VISIBLE);
 
@@ -166,7 +168,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
 
             try {
-                homeScreenBinding.pendingCount.setText(String.valueOf(getAllBasicDetails.size()+getTooimaiKaavalrCount.size()+getComponentImageCount.size()));
+                homeScreenBinding.pendingCount.setText(String.valueOf(getAllBasicDetails.size()+getTooimaiKaavalrCount.size()+getComponentImageCount.size()+getWasteCollectedDetailsCount.size()));
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -1011,12 +1013,13 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         ArrayList<RealTimeMonitoringSystem> getAllBasicDetails =  dbData.getAllBasicDetails();
         ArrayList<RealTimeMonitoringSystem> getTooimaiKaavalrCount =  dbData.getAllThooimaikaavalarListLocalAll();
         ArrayList<RealTimeMonitoringSystem> getComponentImageCount =  dbData.getAllComponentsPendingScreen();
+        ArrayList<RealTimeMonitoringSystem> getWasteCollectedCount =  dbData.getParticularWasteCollectedSaveTableRow("","All");
 
         ArrayList<RealTimeMonitoringSystem> activityCount = dbData.getSavedWorkImage("","","","","");
         if (!Utils.isOnline()) {
             Utils.showAlert(this, getResources().getString(R.string.logging_out_loss_data));
         } else {
-            if (!(getAllBasicDetails.size() > 0 || getTooimaiKaavalrCount.size()>0 || getComponentImageCount.size()>0 )) {
+            if (!(getAllBasicDetails.size() > 0 || getTooimaiKaavalrCount.size()>0 || getComponentImageCount.size()>0 || getWasteCollectedCount.size()>0)) {
                 closeApplication();
             }else{
                 Utils.showAlert(this,getResources().getString(R.string.sync_all_the_data_before_logout));

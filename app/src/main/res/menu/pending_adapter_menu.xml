@@ -6,5 +6,7 @@
         android:title="Thooimai Kaavalar" />
     <item android:id="@+id/component_photo_recyler"
         android:title="Component Photo" />
+    <item android:id="@+id/waste_collected_from"
+        android:title="Waste Collected" />
 
 </menu>

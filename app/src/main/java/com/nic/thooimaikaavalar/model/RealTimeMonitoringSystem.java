@@ -136,6 +136,97 @@ public class RealTimeMonitoringSystem {
     Bitmap  component_image;
     String  component_image_string;
 
+    String  households_waste;
+    String  shops_waste;
+    String  market_waste;
+    String  hotels_waste;
+    String  others_waste;
+    String  tot_bio_waste_collected;
+    String  tot_bio_waste_shredded;
+    String  tot_bio_compost_produced;
+    String  tot_bio_compost_sold;
+    String  date_of_save;
+
+    public String getHouseholds_waste() {
+        return households_waste;
+    }
+
+    public void setHouseholds_waste(String households_waste) {
+        this.households_waste = households_waste;
+    }
+
+    public String getShops_waste() {
+        return shops_waste;
+    }
+
+    public void setShops_waste(String shops_waste) {
+        this.shops_waste = shops_waste;
+    }
+
+    public String getMarket_waste() {
+        return market_waste;
+    }
+
+    public void setMarket_waste(String market_waste) {
+        this.market_waste = market_waste;
+    }
+
+    public String getHotels_waste() {
+        return hotels_waste;
+    }
+
+    public void setHotels_waste(String hotels_waste) {
+        this.hotels_waste = hotels_waste;
+    }
+
+    public String getOthers_waste() {
+        return others_waste;
+    }
+
+    public void setOthers_waste(String others_waste) {
+        this.others_waste = others_waste;
+    }
+
+    public String getTot_bio_waste_collected() {
+        return tot_bio_waste_collected;
+    }
+
+    public void setTot_bio_waste_collected(String tot_bio_waste_collected) {
+        this.tot_bio_waste_collected = tot_bio_waste_collected;
+    }
+
+    public String getTot_bio_waste_shredded() {
+        return tot_bio_waste_shredded;
+    }
+
+    public void setTot_bio_waste_shredded(String tot_bio_waste_shredded) {
+        this.tot_bio_waste_shredded = tot_bio_waste_shredded;
+    }
+
+    public String getTot_bio_compost_produced() {
+        return tot_bio_compost_produced;
+    }
+
+    public void setTot_bio_compost_produced(String tot_bio_compost_produced) {
+        this.tot_bio_compost_produced = tot_bio_compost_produced;
+    }
+
+    public String getTot_bio_compost_sold() {
+        return tot_bio_compost_sold;
+    }
+
+    public void setTot_bio_compost_sold(String tot_bio_compost_sold) {
+        this.tot_bio_compost_sold = tot_bio_compost_sold;
+    }
+
+    public String getDate_of_save() {
+        return date_of_save;
+    }
+
+    public void setDate_of_save(String date_of_save) {
+        this.date_of_save = date_of_save;
+    }
+
     public String getPhotograph_serial_no() {
         return photograph_serial_no;
     }

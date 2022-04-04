@@ -2,7 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <padding android:top="1dp"/>
             <solid   android:color="#00CCCCCC"/>
             <corners android:topLeftRadius="40dp"
                      android:topRightRadius="40dp"/>
@@ -10,7 +9,7 @@
     </item>
     <item>
         <shape>
-            <padding android:top="1dp"/>
+
             <solid   android:color="#10CCCCCC"/>
             <corners android:topLeftRadius="40dp"
                      android:topRightRadius="40dp"/>
@@ -18,7 +17,6 @@
     </item>
     <item>
         <shape>
-            <padding android:top="1dp"/>
             <solid   android:color="#20CCCCCC"/>
             <corners android:topLeftRadius="40dp"
                      android:topRightRadius="40dp"/>
@@ -26,7 +24,6 @@
     </item>
     <item>
         <shape>
-            <padding android:top="1dp"/>
             <solid   android:color="#30CCCCCC"/>
             <corners android:topLeftRadius="40dp"
                      android:topRightRadius="40dp"/>
@@ -34,7 +31,6 @@
     </item>
     <item>
         <shape>
-            <padding android:top="1dp"/>
             <solid   android:color="#30CCCCCC"/>
             <corners android:topLeftRadius="40dp"
                      android:topRightRadius="40dp"/>
@@ -42,7 +38,6 @@
     </item>
     <item>
         <shape>
-            <padding android:top="1dp"/>
             <solid   android:color="#50CCCCCC"/>
             <corners android:topLeftRadius="40dp"
                      android:topRightRadius="40dp"/>

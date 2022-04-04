@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
             name="activity"
             type="com.nic.thooimaikaavalar.activity.VillageListScreen" />
     </data>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -41,7 +41,8 @@
                     android:padding="@dimen/_10sdp"
                     android:tint="@color/white"
                     android:onClick="@{()-> activity.onBackPressed()}"
-                    android:src="@mipmap/back_arrow" />
+                    android:src="@mipmap/back_arrow"
+                    android:contentDescription="@string/back_icon" />
 
                 <TextView
                     android:id="@+id/title_tv"
@@ -49,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="@string/village_list"
+                    android:fontFamily="@string/font_regular"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:textSize="@dimen/_13sdp" />
@@ -96,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="@dimen/_230sdp"
-                android:text="No Projects Found!"
+                android:text="@string/no_projects_found"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_16sdp"

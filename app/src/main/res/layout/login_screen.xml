@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -213,7 +215,6 @@
     -->
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_icon_new_1">
@@ -235,7 +236,8 @@
                     android:layout_height="100dp"
                     android:id="@+id/log_in_text"
                     android:src="@drawable/tamilnadu_govt_logo"
-                    android:layout_centerInParent="true">
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/logo_icon">
 
 
                 </ImageView>
@@ -247,10 +249,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
-                    android:text="Sign In"
+                    android:text="@string/sign_in"
                     android:layout_marginTop="15dp"
-                    android:textSize="30dp"
-                    android:textStyle="bold"></TextView>
+                    android:textSize="30sp"
+                    android:textStyle="bold"/>
 
             </RelativeLayout>
 
@@ -263,14 +265,14 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_margin="@dimen/_10sdp"
-                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/white"
                     android:id="@+id/card_view"
                     app:cardCornerRadius="30dp"
                     app:cardElevation="@dimen/_12sdp"
-                    android:outlineSpotShadowColor="@color/purple">
+                    android:outlineSpotShadowColor="@color/purple"
+                    tools:ignore="UnusedAttribute">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:id="@+id/details_id"
@@ -296,18 +298,18 @@
                                 android:layout_height="30dp"
                                 android:src="@drawable/usernamebg"
                                 android:tint="@color/white"
-                                ></ImageView>
+                                android:contentDescription="@string/user_icon" />
                         </RelativeLayout>
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:layout_alignParentBottom="true"
-                            android:background="@color/background_light_gray"></View>
+                            android:background="@color/background_light_gray"/>
 
 
                         <EditText
-                            android:layout_toRightOf="@+id/user_icon"
-                            android:layout_marginLeft="10dp"
+                            android:layout_toEndOf="@+id/user_icon"
+                            android:layout_marginStart="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -315,8 +317,11 @@
                             android:textColor="@color/black"
                             android:hint="@string/hint_username"
                             android:textSize="@dimen/_12sdp"
+                            android:fontFamily="@string/font_regular"
                             android:singleLine="true"
-                            android:id="@+id/user_name"></EditText>
+                            android:id="@+id/user_name"
+                            android:importantForAutofill="no"
+                            android:inputType="text" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -338,15 +343,15 @@
                                 android:src="@drawable/ic_padlock"
                                 android:layout_centerInParent="true"
                                 android:tint="@color/white"
-                                ></ImageView>
+                                android:contentDescription="@string/password_icon" />
                         </RelativeLayout>
 
 
 
 
                         <EditText
-                            android:layout_toRightOf="@+id/password_icon"
-                            android:layout_marginLeft="10dp"
+                            android:layout_toEndOf="@+id/password_icon"
+                            android:layout_marginStart="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -355,8 +360,11 @@
                             android:hint="@string/hint_password"
                             android:textSize="@dimen/_12sdp"
                             android:singleLine="true"
+                            android:fontFamily="@string/font_regular"
                             android:inputType="textPassword"
-                            android:id="@+id/user_password"></EditText>
+                            android:id="@+id/user_password"
+                            android:importantForAutofill="no"
+                            tools:ignore="RelativeOverlap" />
 
                         <ImageView
                             android:id="@+id/visible"
@@ -366,9 +374,9 @@
                             android:src="@drawable/ic_visibility_grey_900_24dp"
                             android:layout_centerVertical="true"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:tint="@color/black"
-                            ></ImageView>
+                            android:contentDescription="@string/visible_icon" />
 
                     </RelativeLayout>
 
@@ -378,14 +386,14 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_margin="@dimen/_10sdp"
-                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/purple"
                     android:layout_below="@+id/card_view"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="@dimen/_5sdp"
-                    android:outlineSpotShadowColor="@color/purple">
+                    android:outlineSpotShadowColor="@color/purple"
+                    tools:ignore="UnusedAttribute">
                 <RelativeLayout
                     android:visibility="visible"
                     android:layout_centerHorizontal="true"
@@ -402,8 +410,9 @@
                         android:text="@string/btn_login"
                         android:textSize="@dimen/_14sdp"
                         android:textColor="@color/white"
+                        android:fontFamily="@string/font_regular"
                         android:textStyle="bold"
-                        ></TextView>
+                        />
                 </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -426,6 +435,7 @@
                     android:text="@string/version"
                     android:layout_above="@+id/nic_name"
                     android:textAlignment="center"
+                    android:fontFamily="@string/font_regular"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_14sdp" />
 
@@ -437,6 +447,7 @@
                     android:layout_alignParentBottom="true"
                     android:text="@string/software_d_a_d_b_nic"
                     android:textAlignment="center"
+                    android:fontFamily="@string/font_regular"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/_14sdp" />
             </RelativeLayout>

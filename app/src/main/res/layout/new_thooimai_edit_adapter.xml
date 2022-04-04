@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="adapter"
@@ -8,13 +10,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_margin="@dimen/_10sdp"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
         android:outlineSpotShadowColor="@color/colorPrimaryDark"
         app:cardCornerRadius="@dimen/_10sdp"
-        app:cardElevation="@dimen/_12sdp">
+        app:cardElevation="@dimen/_12sdp"
+        tools:ignore="UnusedAttribute">
 
         <RelativeLayout
             android:padding="@dimen/_5sdp"
@@ -22,99 +24,103 @@
             android:layout_height="wrap_content">
             <RelativeLayout
                 android:id="@+id/image_rl"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/top_bootom_curve_rect">
 
                 <ImageView
-                    android:src="@drawable/thooimai_kaavar_icon"
-                    android:scaleType="center"
+                    android:src="@drawable/cleaner_new_icon"
+                    android:scaleType="fitXY"
                     android:layout_width="match_parent"
-                    android:tint="@color/grey"
                     android:layout_height="match_parent"
-                    android:id="@+id/mcc_center_image"></ImageView>
+                    android:id="@+id/mcc_center_image"
+                    android:contentDescription="@string/mcc_center_iamge_icon" />
             </RelativeLayout>
 
 
             <LinearLayout
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/image_rl"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_toLeftOf="@+id/delete_upload_rl"
+                android:layout_toEndOf="@+id/image_rl"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toStartOf="@+id/delete_upload_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
-                    android:textSize="@dimen/_12sdp"
+                    android:visibility="gone"
+                    android:fontFamily="@string/font_regular"
+                    android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/thooimai_kavalar_name"></TextView>
+                    android:text="@string/thooimai_kavalar_name"/>
 
                 <TextView
-                    android:singleLine="true"
+                    android:fontFamily="@string/font_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/name"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="@dimen/_10sdp"
                     android:textColor="@color/black"
-                    ></TextView>
+                    />
 
                 <TextView
-                    android:textSize="@dimen/_12sdp"
+                    android:visibility="gone"
+                    android:fontFamily="@string/font_regular"
+                    android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/thooimai_kavalar_mobile_number"></TextView>
+                    android:text="@string/thooimai_kavalar_mobile_number"/>
 
                 <TextView
-                    android:singleLine="true"
+                    android:fontFamily="@string/font_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/mobile_number"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="@dimen/_10sdp"
                     android:textColor="@color/black"
-                    ></TextView>
+                    />
 
                 <TextView
-                    android:textSize="@dimen/_12sdp"
+                    android:visibility="gone"
+                    android:fontFamily="@string/font_regular"
+                    android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/date_of_engage"></TextView>
+                    android:text="@string/date_of_engage"/>
 
 
                 <TextView
-                    android:singleLine="true"
+                    android:fontFamily="@string/font_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/date_of_engage"
-                    android:inputType="number"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="@dimen/_10sdp"
                     android:textColor="@color/black"
-                    ></TextView>
+                    />
 
 
                 <TextView
-                    android:textSize="@dimen/_12sdp"
+                    android:visibility="gone"
+                    android:fontFamily="@string/font_regular"
+                    android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="@string/date_of_training"></TextView>
+                    android:text="@string/date_of_training"/>
 
                 <TextView
-                    android:singleLine="true"
+                    android:fontFamily="@string/font_regular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/date_of_training"
-                    android:inputType="number"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="@dimen/_10sdp"
                     android:textColor="@color/black"
-                    ></TextView>
+                    />
 
 
 
@@ -134,7 +140,8 @@
                     android:id="@+id/delete_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"></ImageView>
+                    android:layout_alignParentTop="true"
+                    android:contentDescription="@string/delete_icon" />
                 <ImageView
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/ic_mode_edit_black_24dp"
@@ -143,7 +150,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="@dimen/_5sdp"></ImageView>
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:contentDescription="@string/edit_icon"/>
 
             </RelativeLayout>
 

@@ -2,6 +2,7 @@ package com.nic.thooimaikaavalar.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -29,6 +30,7 @@ import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.activity.NewPendingScreenActivity;
 import com.nic.thooimaikaavalar.activity.ViewAndEditMCCDetaila;
 import com.nic.thooimaikaavalar.activity.ViewTakeEditComponentsPhots;
+import com.nic.thooimaikaavalar.activity.WasteCollectedForm;
 import com.nic.thooimaikaavalar.constant.AppConstant;
 import com.nic.thooimaikaavalar.databinding.BasicDetailsAdapterBinding;
 import com.nic.thooimaikaavalar.databinding.BasicDetailsAdapterFromServerBinding;
@@ -116,6 +118,19 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
                             }
                             else {
                             }
+                        }
+                    });
+
+                    holder.basicDetailsAdapterBinding.collectDetailsLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, WasteCollectedForm.class);
+                            intent.putExtra("pvcode",basicDetailsList.get(position).getPvCode());
+                            intent.putExtra("pv_name",basicDetailsList.get(position).getPvName());
+                            intent.putExtra("mcc_id",basicDetailsList.get(position).getMcc_id());
+                            intent.putExtra("mcc_name",basicDetailsList.get(position).getMcc_name());
+                            context.startActivity(intent);
+
                         }
                     });
 

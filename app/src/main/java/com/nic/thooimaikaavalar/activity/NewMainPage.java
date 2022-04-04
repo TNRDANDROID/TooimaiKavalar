@@ -23,6 +23,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.icu.text.SimpleDateFormat;
+import android.location.Criteria;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.ExifInterface;
@@ -552,6 +553,19 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
     public void getLatLong() {
         mlocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         mlocListener = new MyLocationListener();
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setPowerRequirement(Criteria.POWER_HIGH);
+        criteria.setAltitudeRequired(false);
+        criteria.setSpeedRequired(false);
+        criteria.setCostAllowed(true);
+        criteria.setBearingRequired(false);
+
+        //API level 9 and up
+        criteria.setHorizontalAccuracy(Criteria.ACCURACY_HIGH);
+        criteria.setVerticalAccuracy(Criteria.ACCURACY_HIGH);
+        Integer gpsFreqInMillis = 1000;
+        Integer gpsFreqInDistance = 1;
 
 
         // permission was granted, yay! Do the
@@ -561,7 +575,8 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
                 == PackageManager.PERMISSION_GRANTED) {
 
             //Request location updates:
-            mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
+            //mlocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
+            mlocManager.requestLocationUpdates(gpsFreqInMillis, gpsFreqInDistance, criteria, mlocListener, null);
 
         }
 

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="adapter"
             type="com.nic.thooimaikaavalar.adapter.FullImageAdapter" />
     </data>
 <com.nic.thooimaikaavalar.support.SquareLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
@@ -18,7 +17,8 @@
         android:layout_height="match_parent"
         android:padding="@dimen/_1sdp"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/image_icon" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -27,6 +27,7 @@
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/_10sdp"
         android:tint="@color/colorPrimaryDark"
-        android:src="@drawable/ic_delete_black_24dp"></ImageView>
+        android:src="@drawable/ic_delete_black_24dp"
+        android:contentDescription="@string/delete_icon" />
 </com.nic.thooimaikaavalar.support.SquareLayout>
 </layout>

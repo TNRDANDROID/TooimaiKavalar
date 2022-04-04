@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
 <data>
     <variable
         name="activity"
         type="com.nic.thooimaikaavalar.activity.CameraScreen" />
 </data>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,17 +18,18 @@
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimaryDark">
 
         <TextView
-            style="@style/font_circular_medium"
+            android:fontFamily="@string/font_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/margin"
-            android:text="Take Photo"
+            android:text="@string/take_photo"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="RelativeOverlap" />
 
         <ImageView
             android:id="@+id/back_img"
@@ -35,9 +37,11 @@
             android:layout_height="@dimen/_30sdp"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
             android:onClick="@{()-> activity.onBackPress()}"
-            android:src="@mipmap/back_arrow" />
+            android:src="@mipmap/back_arrow"
+            android:tint="@color/white"
+            android:contentDescription="@string/back_icon" />
 
         <ImageView
             android:id="@+id/home_img"
@@ -45,9 +49,11 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
             android:onClick="@{()-> activity.homePage()}"
-            android:src="@mipmap/home_img" />
+            android:src="@mipmap/home_img"
+            android:tint="@color/white"
+            android:contentDescription="@string/home_icon" />
 
     </RelativeLayout>
 
@@ -59,13 +65,13 @@
 
         <TextView
             android:id="@+id/alert_severity_title"
-            style="@style/font_circular_bold"
+            android:fontFamily="@string/font_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_left_20dp"
             android:layout_marginTop="@dimen/padding"
             android:layout_marginRight="@dimen/margin_left_20dp"
-            android:text="Select Stage"
+            android:text="@string/select_stage"
             android:textColor="@android:color/black"
             android:textSize="@dimen/_15sdp"
             android:visibility="visible" />
@@ -81,15 +87,16 @@
             android:visibility="visible">
 
             <TextView
-                style="@style/font_normal"
+                android:fontFamily="@string/font_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerInParent="true"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_15sdp"
-                android:visibility="visible" />
+                android:visibility="visible"
+                tools:ignore="RelativeOverlap" />
 
             <Spinner
                 android:id="@+id/stage"
@@ -113,26 +120,29 @@
             <RelativeLayout
                 android:id="@+id/image_description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent">
 
-                <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                <androidx.cardview.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/district_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/toolbar"
                     android:layout_centerInParent="true"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="15dp"
                     android:layout_marginTop="15dp"
                     card_view:cardCornerRadius="5dp"
-                    card_view:cardElevation="5dp">
+                    card_view:cardElevation="5dp"
+                    >
 
 
                     <LinearLayout
                         android:id="@+id/header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -146,7 +156,8 @@
                                 android:layout_height="170dp"
                                 android:background="@drawable/capture_image"
                                 android:onClick="@{()-> activity.getLatLong()}"
-                                android:scaleType="fitXY" />
+                                android:scaleType="fitXY"
+                                android:contentDescription="@string/camera_icon" />
 
                             <ImageView
                                 android:id="@+id/image_view"
@@ -154,7 +165,8 @@
                                 android:layout_height="170dp"
                                 android:scaleType="fitXY"
                                 android:onClick="@{()-> activity.getLatLong()}"
-                                android:visibility="gone" />
+                                android:visibility="gone"
+                                android:contentDescription="@string/camera_icon" />
 
 
                             <!--<View-->
@@ -174,7 +186,7 @@
 
                                 <EditText
                                     android:id="@+id/description"
-                                    style="@style/font_circular_bold"
+                                    android:fontFamily="@string/font_regular"
                                     android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dip"
@@ -182,10 +194,13 @@
                                     android:layout_marginRight="10dip"
                                     android:background="@android:color/transparent"
                                     android:gravity="top"
-                                    android:hint="Enter Description"
+                                    android:hint="@string/enter_description"
                                     android:lines="6"
                                     android:textColor="@android:color/black"
-                                    android:textSize="15sp" />
+                                    android:textSize="15sp"
+                                    android:importantForAutofill="no"
+                                    android:inputType="text"
+                                    tools:ignore="TooDeepLayout" />
                             </LinearLayout>
 
 
@@ -212,9 +227,9 @@
                 android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerInParent="true"
-
+                android:fontFamily="@string/font_regular"
                 android:background="@drawable/rectangle_box"
-                android:text="SAVE IMAGE"
+                android:text="@string/save_image"
                 android:textAllCaps="false"
                 android:textColor="@android:color/black" />
         </RelativeLayout>

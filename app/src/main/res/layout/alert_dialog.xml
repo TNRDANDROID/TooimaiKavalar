@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -10,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
 
         <TextView
@@ -21,7 +23,7 @@
             android:gravity="center"
             android:padding="@dimen/padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            style="@style/font_circular_book" />
+            android:fontFamily="@string/font_regular" />
 
         <View
             android:layout_width="match_parent"
@@ -40,10 +42,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:text="CANCEL"
+                android:text="@string/cancel"
+                android:fontFamily="@string/font_regular"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/menu_title_size"
-                android:visibility="gone" />
+                android:visibility="gone"
+                tools:ignore="ButtonStyle,SpUsage" />
 
             <Button
                 android:id="@+id/btn_ok"
@@ -51,9 +55,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:text="OK"
+                android:text="@string/ok"
+                android:fontFamily="@string/font_regular"
                 android:textColor="@color/colorAccent"
-                android:textSize="@dimen/menu_title_size" />
+                android:textSize="@dimen/menu_title_size"
+                tools:ignore="ButtonStyle,SpUsage" />
         </LinearLayout>
 
     </LinearLayout>

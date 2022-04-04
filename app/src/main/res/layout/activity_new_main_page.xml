@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -7,9 +8,8 @@
             name="activity"
             type="com.nic.thooimaikaavalar.activity.NewMainPage" />
     </data>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_icon_new_1"
@@ -33,7 +33,8 @@
                 android:src="@mipmap/back_arrow"
                 android:tint="@color/white"
                 android:padding="@dimen/_10sdp"
-                android:layout_centerVertical="true"></ImageView>
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/back_icon"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -42,8 +43,9 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 android:text="@string/add"
+                android:fontFamily="@string/font_regular"
                 android:layout_centerInParent="true"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
         </RelativeLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -60,18 +62,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="UselessParent">
 
                 <TextView
                     android:id="@+id/please_enter_mcc_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/village_layout"
                     android:layout_marginTop="@dimen/padding"
                     android:text="@string/enter_mcc_name"
+                    android:fontFamily="@string/font_regular"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_12sdp"
-                    style="@string/font_circular_bold" />
+                    />
                 <RelativeLayout
                     android:id="@+id/mcc_name_layout"
                     android:layout_width="match_parent"
@@ -88,21 +91,24 @@
                         android:src="@drawable/center_icon"
                         android:tint="@color/colorPrimaryDark"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/_5sdp"></ImageView>
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:contentDescription="@string/mcc_name_icon" />
 
                     <EditText
-                        android:layout_toRightOf="@+id/center_icon"
+                        android:layout_toEndOf="@+id/center_icon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:inputType="text"
                         android:id="@+id/mcc_name"
+                        android:fontFamily="@string/font_regular"
                         android:background="@color/full_transparent"
                         android:hint="@string/enter_mcc_name"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
                         android:visibility="visible"
-                        style="@string/font_normal" />
+                        style="@string/font_normal"
+                        android:importantForAutofill="no" />
 
 
                 </RelativeLayout>
@@ -112,7 +118,6 @@
                     android:id="@+id/select_hab_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/village_layout"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="@string/select_habitation"
                     android:textColor="@android:color/black"
@@ -123,7 +128,6 @@
                     android:id="@+id/hab_layout"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/header"
-                    android:layout_below="@+id/select_hab_tv"
                     android:layout_marginTop="@dimen/padding"
                     android:background="@drawable/rectangle_box"
                     android:orientation="vertical">
@@ -134,12 +138,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerInParent="true"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
 
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/_12sdp"
                         android:visibility="visible"
-                        style="@string/font_normal" />
+                        style="@string/font_normal"
+                        tools:ignore="RelativeOverlap" />
 
                     <Spinner
                         android:id="@+id/habitation_spinner"
@@ -161,35 +166,34 @@
                     android:textSize="@dimen/_12sdp"
                     android:textColor="@color/black"
                     android:padding="@dimen/_5sdp"
+                    android:fontFamily="@string/font_regular"
                     android:text="@string/choose_capacity_of_mcc_in_tonnes">
 
                  </TextView>
                 <com.cooltechworks.views.shimmer.ShimmerRecyclerView
-                android:id="@+id/capacity_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:shimmer_demo_shimmer_color="#8FFFFFFF"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_below="@+id/choose_capacity_text"
-                android:fadeScrollbars="false"
-                android:scrollbarSize="4dp"
-                android:scrollbars="vertical" />
+                    android:id="@+id/capacity_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:shimmer_demo_shimmer_color="#8FFFFFFF"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fadeScrollbars="false"
+                    android:scrollbarSize="4dp"
+                    android:scrollbars="vertical" />
 
                 <TextView
                     android:id="@+id/select_water_supply_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/village_layout"
+                    android:fontFamily="@string/font_regular"
                     android:layout_marginTop="@dimen/padding"
                     android:text="@string/select_water_supply"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_12sdp"
-                    style="@string/font_circular_bold" />
+                    />
                 <RelativeLayout
                     android:id="@+id/water_layout"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/header"
-                    android:layout_below="@+id/select_hab_tv"
                     android:layout_marginTop="@dimen/padding"
                     android:background="@drawable/rectangle_box"
                     android:orientation="vertical">
@@ -200,12 +204,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerInParent="true"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
 
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/_12sdp"
                         android:visibility="visible"
-                        style="@string/font_normal" />
+                        android:fontFamily="@string/font_regular"
+                        tools:ignore="RelativeOverlap" />
 
                     <Spinner
                         android:id="@+id/water_spinner"
@@ -224,17 +229,15 @@
                     android:id="@+id/please_specify"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/village_layout"
                     android:layout_marginTop="@dimen/padding"
                     android:text="@string/please_specify"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_12sdp"
-                    style="@string/font_circular_bold" />
+                    android:fontFamily="@string/font_regular"/>
                 <RelativeLayout
                     android:id="@+id/specify_layout"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/header"
-                    android:layout_below="@+id/select_hab_tv"
                     android:layout_marginTop="@dimen/padding"
                     android:background="@drawable/rectangle_box"
                     android:orientation="vertical">
@@ -246,22 +249,25 @@
                         android:src="@drawable/specify_icon"
                         android:tint="@color/colorPrimaryDark"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/_5sdp"></ImageView>
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:contentDescription="@string/specify_icon" />
 
 
                     <EditText
-                        android:layout_toRightOf="@+id/specify_icon"
+                        android:layout_toEndOf="@+id/specify_icon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:inputType="text"
                         android:id="@+id/specify_text"
+                        android:fontFamily="@string/font_regular"
                         android:background="@color/full_transparent"
                         android:hint="@string/please_specify"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
                         android:visibility="visible"
-                        style="@string/font_normal" />
+                        style="@string/font_normal"
+                        android:importantForAutofill="no" />
 
 
                 </RelativeLayout>
@@ -270,17 +276,15 @@
                     android:id="@+id/select_date_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/village_layout"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="@string/select_date_of_commencement"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_12sdp"
-                    style="@string/font_circular_bold" />
+                    android:fontFamily="@string/font_regular" />
                 <RelativeLayout
                     android:id="@+id/date_of_commencement_layout"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/header"
-                    android:layout_below="@+id/select_hab_tv"
                     android:layout_marginTop="@dimen/padding"
                     android:background="@drawable/rectangle_box"
                     android:orientation="vertical">
@@ -293,20 +297,21 @@
                         android:src="@drawable/date_icon"
                         android:tint="@color/colorPrimaryDark"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/_5sdp"></ImageView>
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:contentDescription="@string/calender_icon" />
 
                     <TextView
                         android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/date_icon"
+                        android:layout_toEndOf="@+id/date_icon"
                         android:id="@+id/date_of_commencement"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="@string/select_date_of_commencement"
-                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
                         android:visibility="visible"
-                        style="@string/font_normal" />
+                        android:fontFamily="@string/font_regular" />
 
                 </RelativeLayout>
 
@@ -314,23 +319,22 @@
                     android:id="@+id/capture_mcc_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/village_layout"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="@string/capture_mcc_center"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_12sdp"
-                    style="@string/font_circular_bold" />
+                    android:fontFamily="@string/font_regular" />
                 <androidx.cardview.widget.CardView
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/_20sdp"
-                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_100sdp"
                     app:cardBackgroundColor="@color/white"
                     android:id="@+id/card_view_4"
                     app:cardCornerRadius="@dimen/_10sdp"
                     app:cardElevation="@dimen/_12sdp"
-                    android:outlineSpotShadowColor="@color/purple">
+                    android:outlineSpotShadowColor="@color/purple"
+                    tools:ignore="UnusedAttribute">
                 <RelativeLayout
                     android:id="@+id/capture_mcc_layout"
                     android:layout_width="match_parent"
@@ -345,7 +349,8 @@
                         android:layout_centerInParent="true"
                         android:src="@drawable/camera_icon"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/_5sdp"></ImageView>
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:contentDescription="@string/camera_icon" />
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -354,7 +359,7 @@
                         android:layout_centerInParent="true"
                         android:scaleType="fitXY"
                         android:layout_centerVertical="true"
-                        ></ImageView>
+                        android:contentDescription="@string/mcc_center_iamge_icon" />
 
 
 
@@ -372,6 +377,7 @@
                     android:id="@+id/choose_no_of_thooimai_kavalar"
                     android:textSize="@dimen/_12sdp"
                     android:textColor="@color/black"
+                    android:fontFamily="@string/font_regular"
                     android:padding="@dimen/_5sdp"
                     android:text="@string/choose_no_of_thooimai_kavalar">
                 </TextView>
@@ -382,7 +388,6 @@
                     android:layout_height="wrap_content"
                     app:shimmer_demo_shimmer_color="#8FFFFFFF"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_below="@+id/choose_capacity_text"
                     android:fadeScrollbars="false"
                     android:scrollbarSize="4dp"
                     android:scrollbars="vertical" />
@@ -403,6 +408,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/save"
+                        android:fontFamily="@string/font_regular"
                         android:background="@color/full_transparent"
                         android:textAllCaps="false"
                         android:textColor="@color/white">

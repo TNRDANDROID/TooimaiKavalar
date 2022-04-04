@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -26,15 +27,17 @@
                 android:padding="@dimen/_10sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true">
+                android:layout_centerInParent="true"
+                tools:ignore="UselessParent">
 
                 <TextView
+                    android:fontFamily="@string/font_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/capacity"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:id="@+id/value_tv"></TextView>
+                    android:id="@+id/value_tv"/>
             </RelativeLayout>
         </RelativeLayout>
 

@@ -19,6 +19,7 @@ import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.adapter.BasicDetailsAdapter;
 import com.nic.thooimaikaavalar.adapter.ComponentPhotoAdapter;
 import com.nic.thooimaikaavalar.adapter.ThooimaiKaavarListLocalAdapter;
+import com.nic.thooimaikaavalar.adapter.WasteCollectedAdapter;
 import com.nic.thooimaikaavalar.api.Api;
 import com.nic.thooimaikaavalar.api.ApiService;
 import com.nic.thooimaikaavalar.api.ServerResponse;
@@ -45,6 +46,7 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
     BasicDetailsAdapter basicDetailsAdapter;
     ThooimaiKaavarListLocalAdapter thooimaiKaavarListLocalAdapter;
     ComponentPhotoAdapter componentPhotoAdapter;
+    WasteCollectedAdapter wasteCollectedAdapter;
     String key_id="";
     String type="";
     @SuppressLint("SourceLockedOrientationActivity")
@@ -97,6 +99,10 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
                             case R.id.component_photo_recyler:
                                 getComponentsPhotoList();
                                 activity_new_pending_screen.listName.setText("MCC Component Details");
+                                break;
+                            case R.id.waste_collected_from:
+                                getWasteCollectedList();
+                                activity_new_pending_screen.listName.setText("Waste Collected Details");
                                 break;
                         }
                         return true;
@@ -161,6 +167,23 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
         }
 
     }
+    public void getWasteCollectedList() {
+        dbData.open();
+        ArrayList<RealTimeMonitoringSystem> getAllThooimaikaavalarListLocal =  dbData.getParticularWasteCollectedSaveTableRow("","All");
+
+        if(getAllThooimaikaavalarListLocal.size()>0){
+            activity_new_pending_screen.noDataIcon.setVisibility(View.GONE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            wasteCollectedAdapter = new WasteCollectedAdapter(getAllThooimaikaavalarListLocal,this,dbData);
+            activity_new_pending_screen.basicRecycler.setAdapter(wasteCollectedAdapter);
+        }
+        else {
+            activity_new_pending_screen.noDataIcon.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.GONE);
+        }
+
+    }
 
     public void SyncData(JSONObject jsonObject,String key_id_n,String type_){
         key_id =key_id_n;
@@ -215,6 +238,12 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
                         componentPhotoAdapter.notifyDataSetChanged();
 
                     }
+                    else if(type.equalsIgnoreCase("waste_collected")){
+                        int sdsm = db.delete(DBHelper.WASTE_COLLECTED_SAVE_TABLE, "mcc_id = ? ", new String[]{key_id});
+                        getWasteCollectedList();
+                        wasteCollectedAdapter.notifyDataSetChanged();
+
+                    }
 
                 }
                 else if(jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("FAIL")){
@@ -225,11 +254,12 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
 
         } catch (JSONException e) {
             e.printStackTrace();
+            Utils.showAlert(this,"Something Wrong!");
         }
     }
 
     @Override
     public void OnError(VolleyError volleyError) {
-
+        Utils.showAlert(this,"No Response from Server!");
     }
 }

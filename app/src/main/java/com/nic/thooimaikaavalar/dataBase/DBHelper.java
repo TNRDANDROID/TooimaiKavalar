@@ -35,6 +35,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_SERVER = "thooimai_kaavalars_detail_of_micro_composting_save_server";
     public static final String THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL = "thooimai_kaavalars_detail_of_micro_composting_save_local";
     public static final String COMPOST_TUB_IMAGE_TABLE = "compost_tub_image_table";
+    public static final String WASTE_COLLECTED_SAVE_TABLE = "waste_collected_save_table";
 
     ////**************///////
 
@@ -155,6 +156,21 @@ public class DBHelper extends SQLiteOpenHelper {
                 "longitude TEXT," +
                 "photograph_remark TEXT)");
 
+        db.execSQL("CREATE TABLE " + WASTE_COLLECTED_SAVE_TABLE + " ("
+                +"pvcode TEXT," +
+                "pvname TEXT," +
+                "mcc_id TEXT," +
+                "mcc_name TEXT," +
+                "households_waste TEXT," +
+                "shops_waste TEXT," +
+                "market_waste TEXT," +
+                "hotels_waste TEXT," +
+                "others_waste TEXT," +
+                "tot_bio_waste_collected TEXT," +
+                "tot_bio_waste_shredded TEXT," +
+                "tot_bio_compost_produced TEXT," +
+                "tot_bio_compost_sold TEXT," +
+                "date_of_save TEXT)");
 
 
 
@@ -330,6 +346,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_SERVER);
             db.execSQL("DROP TABLE IF EXISTS " + THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL);
             db.execSQL("DROP TABLE IF EXISTS " + COMPOST_TUB_IMAGE_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + WASTE_COLLECTED_SAVE_TABLE);
 
             onCreate(db);
         }

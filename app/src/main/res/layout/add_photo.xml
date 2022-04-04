@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
@@ -20,9 +20,10 @@
             android:id="@+id/close"
             android:layout_width="70dp"
             android:layout_height="30dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:layout_marginRight="@dimen/margin"
+            android:fontFamily="@string/font_regular"
+            android:layout_marginEnd="@dimen/margin"
             android:gravity="center"
             android:text="@string/close"
             android:textColor="@color/white"
@@ -38,10 +39,11 @@
         android:background="#CCC"
         android:gravity="center"
         android:padding="15dp"
-        android:text="You can Capture upto 3 Photos"
+        android:fontFamily="@string/font_regular"
+        android:text="@string/you_can_capture_upto_3_photos"
         android:textSize="@dimen/menu_title_size"
         android:visibility="visible"
-        />
+        tools:ignore="SpUsage" />
 
 
     <ScrollView
@@ -51,7 +53,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
             android:orientation="vertical"
             android:paddingBottom="60dp">
@@ -71,7 +73,9 @@
                 android:background="@drawable/new_bg_log_in_btn_purple"
                 android:text="@string/add_photo"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white" />
+                android:fontFamily="@string/font_regular"
+                android:textColor="@android:color/white"
+                tools:ignore="RtlHardcoded" />
 
 
             <RelativeLayout
@@ -88,7 +92,8 @@
                     android:layout_centerInParent="true"
                     android:layout_margin="5dp"
                     android:background="@drawable/new_bg_log_in_btn_purple"
-                    android:text="SAVE IMAGE LOCAL"
+                    android:text="@string/save_image_local"
+                    android:fontFamily="@string/font_regular"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     />

@@ -50,7 +50,7 @@ public class ComponentsAdapter extends RecyclerView.Adapter<ComponentsAdapter.My
 
         }
         else {
-            holder.capacityRecylerAdapterBinding.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.white));
+            holder.capacityRecylerAdapterBinding.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.grey_2));
 
         }
 
