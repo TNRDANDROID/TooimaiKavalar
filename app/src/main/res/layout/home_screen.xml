@@ -415,6 +415,63 @@
 
                             </androidx.cardview.widget.CardView>
 
+                            <androidx.cardview.widget.CardView
+                                android:layout_centerHorizontal="true"
+                                android:layout_below="@+id/edit_mcc_card"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_45sdp"
+                                app:cardBackgroundColor="@color/white"
+                                android:id="@+id/another_detail_collection"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                app:cardElevation="@dimen/_12sdp"
+                                android:outlineSpotShadowColor="@color/purple"
+                                tools:ignore="UnusedAttribute">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/v_3"
+                                        android:layout_width="@dimen/_4sdp"
+                                        android:layout_height="match_parent"
+                                        android:background="@drawable/line_shape_curved_bg"/>
+
+                                    <Button
+                                        android:fontFamily="@string/font_regular"
+                                        android:onClick="@{()-> activity.viewSWMDetailsList()}"
+                                        android:clickable="true"
+                                        android:layout_toEndOf="@+id/v_3"
+                                        android:background="@color/full_transparent"
+                                        android:id="@+id/another_details_mcc"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerHorizontal="true"
+                                        android:text="@string/collect_swm_details"
+                                        android:textAlignment="center"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/_14sdp"
+                                        />
+
+                                    <ImageView
+                                        android:padding="@dimen/_3sdp"
+                                        android:id="@+id/icon_4"
+                                        android:layout_centerVertical="true"
+                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginEnd="@dimen/_10sdp"
+                                        android:src="@drawable/view_and_edit_icon"
+                                        android:contentDescription="@string/view_take_icon" />
+
+
+                                </RelativeLayout>
+
+                            </androidx.cardview.widget.CardView>
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

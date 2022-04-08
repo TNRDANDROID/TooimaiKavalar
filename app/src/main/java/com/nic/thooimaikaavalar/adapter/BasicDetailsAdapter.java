@@ -3,6 +3,7 @@ package com.nic.thooimaikaavalar.adapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -40,9 +41,18 @@ public class BasicDetailsAdapter extends RecyclerView.Adapter<BasicDetailsAdapte
     Context context;
     int pos=-1;
 
+    public  DBHelper dbHelper;
+    public SQLiteDatabase db;
     public BasicDetailsAdapter(List<RealTimeMonitoringSystem> capacityList, Context context) {
         this.basicDetailsList = capacityList;
         this.context = context;
+
+        try {
+            dbHelper = new DBHelper(context);
+            db = dbHelper.getWritableDatabase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @NonNull
@@ -117,7 +127,7 @@ public class BasicDetailsAdapter extends RecyclerView.Adapter<BasicDetailsAdapte
         try {
             jsonObject.put(AppConstant.KEY_SERVICE_ID,"details_of_micro_composting_save");
             if(basicDetailsList.get(position).getMcc_id().equals("")){
-
+                jsonObject.put("mcc_id","");
             }
             else {
                 jsonObject.put("mcc_id",basicDetailsList.get(position).getMcc_id());
@@ -144,7 +154,7 @@ public class BasicDetailsAdapter extends RecyclerView.Adapter<BasicDetailsAdapte
     public void deletePending(int position) {
         String key_id = basicDetailsList.get(position).getKEY_ID();
 
-        int sdsm = NewPendingScreenActivity.db.delete(DBHelper.BASIC_DETAILS_OF_MCC_SAVE, "id = ? ", new String[]{key_id});
+        int sdsm = db.delete(DBHelper.BASIC_DETAILS_OF_MCC_SAVE, "id = ? ", new String[]{key_id});
         basicDetailsList.remove(position);
         notifyItemRemoved(position);
         notifyItemChanged(position, basicDetailsList.size());

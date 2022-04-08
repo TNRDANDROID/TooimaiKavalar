@@ -49,6 +49,10 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
     private PrefManager prefManager;
     private  ArrayList<RealTimeMonitoringSystem> activityImage = new ArrayList<>();
     private dbData dbData = new dbData(this);
+
+    String activity,asset_type_id,swm_infra_details_id,pvcoe;
+    String swm_infra_assets_id,swm_infra_asset_detail_id;
+    int asset_image_id;
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,9 +62,29 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         prefManager = new PrefManager(this);
         OnOffType = getIntent().getStringExtra("OnOffType");
-        work_id = getIntent().getStringExtra(AppConstant.WORK_ID);
-        mcc_id = getIntent().getStringExtra("mcc_id");
-        component_id = getIntent().getStringExtra("component_id");
+        activity = getIntent().getStringExtra("Activity");
+        if(activity.equals("Assets")){
+            if(OnOffType.equals("Online")){
+                asset_type_id = getIntent().getStringExtra("swm_asset_type_id");
+                swm_infra_details_id = getIntent().getStringExtra("swm_infra_details_id");
+                swm_infra_assets_id = getIntent().getStringExtra("swm_infra_assets_id");
+                swm_infra_asset_detail_id = getIntent().getStringExtra("swm_infra_asset_detail_id");
+                pvcoe = getIntent().getStringExtra("pvcoe");
+            }
+            else {
+                asset_type_id = getIntent().getStringExtra("swm_asset_type_id");
+                asset_image_id = getIntent().getIntExtra("asset_image_id",0);
+                swm_infra_details_id = getIntent().getStringExtra("swm_infra_details_id");
+                pvcoe = getIntent().getStringExtra("pvcoe");
+            }
+
+        }
+        else {
+            work_id = getIntent().getStringExtra(AppConstant.WORK_ID);
+            mcc_id = getIntent().getStringExtra("mcc_id");
+            component_id = getIntent().getStringExtra("component_id");
+        }
+
 
         fullImageRecyclerBinding.noDataGif.setVisibility(View.VISIBLE);
         fullImageRecyclerBinding.imagePreviewRecyclerview.setVisibility(View.GONE);
@@ -79,11 +103,17 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
         }
         else {
             //new fetchImagetask().execute();
-            new fetchComponentImageTask().execute();
+            if(activity.equals("Assets")){
+                new fetchAssetsImageTask().execute();
+            }
+            else {
+                new fetchComponentImageTask().execute();
+            }
+
         }
 
     }
-    public class fetchImagetask extends AsyncTask<Void, Void,
+    public class fetchAssetsImageTask extends AsyncTask<Void, Void,
             ArrayList<RealTimeMonitoringSystem>> {
         @Override
         protected ArrayList<RealTimeMonitoringSystem> doInBackground(Void... params) {
@@ -102,7 +132,7 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
                 }*/
                 dbData.open();
                 activityImage = new ArrayList<>();
-                activityImage = dbData.getParticularMCCIDImage(mcc_id);
+                activityImage = dbData.getParticularAssetsPhotosList(asset_image_id,pvcoe,asset_type_id,swm_infra_details_id);
             }
 
             Log.d("IMAGE_COUNT", String.valueOf(activityImage.size()));
@@ -191,21 +221,21 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
 
     public JSONObject ImagesListJsonParams() throws JSONException {
         JSONObject dataSet = new JSONObject();
-        /*if(getIntent().getStringExtra(AppConstant.TYPE_OF_WORK).equalsIgnoreCase(AppConstant.MAIN_WORK)){
-            dataSet.put(AppConstant.KEY_SERVICE_ID, AppConstant.KEY_ONLINE_IMAGE_MAIN_WORK_SERVICE_ID);
-        }else {
-            dataSet.put(AppConstant.KEY_SERVICE_ID, AppConstant.KEY_ONLINE_IMAGE_ADDITIONAL_WORK_SERVICE_ID);
-            dataSet.put(AppConstant.CD_PORT_WORK_ID_ONLINE_IMAGE, getIntent().getStringExtra(AppConstant.CD_WORK_NO));
+        if(activity.equals("Assets")){
+            dataSet.put(AppConstant.KEY_SERVICE_ID,"details_of_swm_infra_assets_photos_view");
+            dataSet.put("swm_infra_details_id",swm_infra_details_id);
+            dataSet.put("swm_asset_type_id",asset_type_id);
+            dataSet.put("swm_infra_assets_id",swm_infra_assets_id);
+            dataSet.put("swm_infra_asset_detail_id",swm_infra_asset_detail_id);
+            Log.d("utils_imageDataset", "" + dataSet);
         }
-        dataSet.put(AppConstant.DISTRICT_CODE, getIntent().getStringExtra(AppConstant.DISTRICT_CODE));
-        dataSet.put(AppConstant.BLOCK_CODE, getIntent().getStringExtra(AppConstant.BLOCK_CODE));
-        dataSet.put(AppConstant.PV_CODE, getIntent().getStringExtra(AppConstant.PV_CODE));
-        dataSet.put(AppConstant.WORK_ID, getIntent().getStringExtra(AppConstant.WORK_ID));
-        dataSet.put(AppConstant.WORK_TYPE_FLAG_LE,  getIntent().getStringExtra(AppConstant.WORK_TYPE_FLAG_LE));*/
-        dataSet.put(AppConstant.KEY_SERVICE_ID,"details_of_component_photo");
-        dataSet.put("mcc_id",mcc_id);
-        dataSet.put("component_id",component_id);
-        Log.d("utils_imageDataset", "" + dataSet);
+        else {
+            dataSet.put(AppConstant.KEY_SERVICE_ID,"details_of_component_photo");
+            dataSet.put("mcc_id",mcc_id);
+            dataSet.put("component_id",component_id);
+            Log.d("utils_imageDataset", "" + dataSet);
+        }
+
         return dataSet;
     }
 
@@ -220,8 +250,16 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
                 String responseDecryptedBlockKey = Utils.decrypt(prefManager.getUserPassKey(), key);
                 JSONObject jsonObject = new JSONObject(responseDecryptedBlockKey);
                 if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
-                    generateImageArrayList(jsonObject.getJSONArray("IMAGE"));
-                    Log.d("Length", "" + jsonObject.getJSONArray("IMAGE").length());
+                    if(activity.equals("Assets")){
+                        generateImageArrayList(jsonObject.getJSONArray("JSON_DATA"));
+                        Log.d("Length", "" + jsonObject.getJSONArray("JSON_DATA").length());
+                    }
+                    else {
+                        generateImageArrayList(jsonObject.getJSONArray("IMAGE"));
+                        Log.d("Length", "" + jsonObject.getJSONArray("IMAGE").length());
+                    }
+
+
                 }
                 else if(jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("NO_RECORD")){
                     fullImageRecyclerBinding.noDataGif.setVisibility(View.VISIBLE);
@@ -257,24 +295,46 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
     public void generateImageArrayList(JSONArray jsonArray){
         if(jsonArray.length() > 0){
             activityImage = new ArrayList<>();
-            for(int i = 0; i < jsonArray.length(); i++ ) {
-                try {
-                    RealTimeMonitoringSystem imageOnline = new RealTimeMonitoringSystem();
-//                    imageOnline.setImageRemark(jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE_REMARK));
-                    //imageOnline.setWorkStageName(jsonArray.getJSONObject(i).getString(AppConstant.WORK_SATGE_NAME));
-                    if (!(jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE).equalsIgnoreCase("null") || jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE).equalsIgnoreCase(""))) {
-                        byte[] decodedString = Base64.decode(jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE), Base64.DEFAULT);
-                        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                        imageOnline.setImage(decodedByte);
-                        imageOnline.setPhotograph_remark(jsonArray.getJSONObject(i).getString("photograph_remark"));
-                        imageOnline.setPhotograph_serial_no(jsonArray.getJSONObject(i).getString("photograph_serial_no"));
-                        imageOnline.setMcc_id(mcc_id);
-                        activityImage.add(imageOnline);
+            if(activity.equals("Assets")){
+                for(int i = 0; i < jsonArray.length(); i++ ) {
+                    try {
+                        RealTimeMonitoringSystem imageOnline = new RealTimeMonitoringSystem();
+                        if (!(jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE).equalsIgnoreCase("null") ||
+                                jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE).equalsIgnoreCase(""))) {
+                            byte[] decodedString = Base64.decode(jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE), Base64.DEFAULT);
+                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                            imageOnline.setImage(decodedByte);
+
+                            activityImage.add(imageOnline);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
                 }
 
+            }
+            else {
+                for(int i = 0; i < jsonArray.length(); i++ ) {
+                    try {
+                        RealTimeMonitoringSystem imageOnline = new RealTimeMonitoringSystem();
+//                    imageOnline.setImageRemark(jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE_REMARK));
+                        //imageOnline.setWorkStageName(jsonArray.getJSONObject(i).getString(AppConstant.WORK_SATGE_NAME));
+                        if (!(jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE).equalsIgnoreCase("null") ||
+                                jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE).equalsIgnoreCase(""))) {
+                            byte[] decodedString = Base64.decode(jsonArray.getJSONObject(i).getString(AppConstant.KEY_IMAGE), Base64.DEFAULT);
+                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                            imageOnline.setImage(decodedByte);
+                            imageOnline.setPhotograph_remark(jsonArray.getJSONObject(i).getString("photograph_remark"));
+                            imageOnline.setPhotograph_serial_no(jsonArray.getJSONObject(i).getString("photograph_serial_no"));
+                            imageOnline.setMcc_id(mcc_id);
+                            activityImage.add(imageOnline);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
             }
         }
         if(activityImage.size()>0){
@@ -291,11 +351,18 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
     public void setAdapter(){
         if(OnOffType.equalsIgnoreCase("Offline")) {
             fullImageAdapter = new FullImageAdapter(FullImageActivity.this,
-                    activityImage, dbData,"Offline");
+                    activityImage, dbData,"Offline","");
         }
         else if(OnOffType.equalsIgnoreCase("Online")){
-            fullImageAdapter = new FullImageAdapter(FullImageActivity.this,
-                    activityImage, dbData,"Online");
+            if(activity.equals("Assets")){
+                fullImageAdapter = new FullImageAdapter(FullImageActivity.this,
+                        activityImage, dbData,"Online","Assets");
+            }
+            else {
+                fullImageAdapter = new FullImageAdapter(FullImageActivity.this,
+                        activityImage, dbData,"Online","");
+            }
+
         }
 /*
         fullImageRecyclerBinding.imagePreviewRecyclerview.addOnItemTouchListener(new FullImageAdapter.RecyclerTouchListener(getApplicationContext(), fullImageRecyclerBinding.imagePreviewRecyclerview, new FullImageAdapter.ClickListener() {

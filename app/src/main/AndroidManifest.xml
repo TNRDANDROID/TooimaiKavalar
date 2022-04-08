@@ -48,7 +48,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.ViewWasteCollectedDetails"></activity>
+        <activity android:name=".activity.SWMActivity.Add_ViewWasteDumpDetails"></activity>
+        <activity android:name=".activity.SWMActivity.SwmAddAssetDetails" />
+        <activity android:name=".activity.SWMActivity.SwmDashboard" />
+        <activity android:name=".activity.SWMActivity.SwmMasterDetailsView" />
+        <activity android:name=".activity.SWMActivity.MasterFormSwmEntry" />
+        <activity android:name=".activity.ViewWasteCollectedDetails" />
         <activity android:name=".activity.WasteCollectedForm" />
         <activity
             android:name=".activity.ViewTakeEditComponentsPhots"

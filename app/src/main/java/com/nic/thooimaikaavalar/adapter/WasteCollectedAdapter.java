@@ -3,6 +3,7 @@ package com.nic.thooimaikaavalar.adapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.util.Base64;
 import android.util.Log;
@@ -42,11 +43,20 @@ public class WasteCollectedAdapter extends RecyclerView.Adapter<WasteCollectedAd
     Context context;
     int pos=-1;
     private com.nic.thooimaikaavalar.dataBase.dbData dbData;
+    public  DBHelper dbHelper;
+    public SQLiteDatabase db;
 
     public WasteCollectedAdapter(List<RealTimeMonitoringSystem> capacityList,Context context,dbData dbData){
         this.basicDetailsList=capacityList;
         this.context=context;
         this.dbData=dbData;
+
+        try {
+            dbHelper = new DBHelper(context);
+            db = dbHelper.getWritableDatabase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @NonNull
@@ -204,7 +214,7 @@ public class WasteCollectedAdapter extends RecyclerView.Adapter<WasteCollectedAd
     public void deletePending(int position) {
         String key_id = basicDetailsList.get(position).getMcc_id();
 
-        int sdsm = NewPendingScreenActivity.db.delete(DBHelper.WASTE_COLLECTED_SAVE_TABLE, "mcc_id = ? ", new String[]{key_id});
+        int sdsm = db.delete(DBHelper.WASTE_COLLECTED_SAVE_TABLE, "mcc_id = ? ", new String[]{key_id});
         basicDetailsList.remove(position);
         notifyItemRemoved(position);
         notifyItemChanged(position, basicDetailsList.size());

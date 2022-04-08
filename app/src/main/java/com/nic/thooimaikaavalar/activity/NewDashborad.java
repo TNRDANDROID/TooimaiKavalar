@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nic.thooimaikaavalar.R;
+import com.nic.thooimaikaavalar.activity.SWMActivity.MasterFormSwmEntry;
+import com.nic.thooimaikaavalar.activity.SWMActivity.SwmMasterDetailsView;
 import com.nic.thooimaikaavalar.databinding.ActivityNewDashboradBinding;
 
 import java.text.ParseException;
@@ -59,6 +61,18 @@ public class NewDashborad extends AppCompatActivity {
                 gotoViewWasteCollectedDetailsActivity();
             }
         });
+        activityNewDashboradBinding.swmAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoAddSwm();
+            }
+        });
+        activityNewDashboradBinding.swmViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoViewSwm();
+            }
+        });
 
         activityNewDashboradBinding.backImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,10 +84,27 @@ public class NewDashborad extends AppCompatActivity {
     }
 
     public void initializeUi(){
-        String date_of_commencement= dateFormate(getIntent().getStringExtra("date_of_commencement"),"yes");
-        activityNewDashboradBinding.villageName.setText("Village : "+getIntent().getStringExtra("village_name"));
-        activityNewDashboradBinding.mccName.setText("MCC Name : "+getIntent().getStringExtra("mcc_name"));
-        activityNewDashboradBinding.dateOfCommencement.setText("Date of Commencement : "+date_of_commencement);
+        if(getIntent().getStringExtra("Layout").equals("SWM")){
+            activityNewDashboradBinding.villageName.setText("Village : "+getIntent().getStringExtra("village_name"));
+            activityNewDashboradBinding.villageName.setVisibility(View.VISIBLE);
+            activityNewDashboradBinding.dateOfCommencement.setVisibility(View.GONE);
+            activityNewDashboradBinding.dateOfCommencement.setVisibility(View.GONE);
+            activityNewDashboradBinding.swmDetailsLayout.setVisibility(View.VISIBLE);
+            activityNewDashboradBinding.mccDetailsLayout.setVisibility(View.GONE);
+
+        }
+        else {
+            activityNewDashboradBinding.swmDetailsLayout.setVisibility(View.GONE);
+            activityNewDashboradBinding.mccDetailsLayout.setVisibility(View.VISIBLE);
+            activityNewDashboradBinding.villageName.setVisibility(View.VISIBLE);
+            activityNewDashboradBinding.dateOfCommencement.setVisibility(View.VISIBLE);
+            activityNewDashboradBinding.dateOfCommencement.setVisibility(View.VISIBLE);
+            String date_of_commencement= dateFormate(getIntent().getStringExtra("date_of_commencement"),"yes");
+            activityNewDashboradBinding.villageName.setText("Village : "+getIntent().getStringExtra("village_name"));
+            activityNewDashboradBinding.mccName.setText("MCC Name : "+getIntent().getStringExtra("mcc_name"));
+            activityNewDashboradBinding.dateOfCommencement.setText("Date of Commencement : "+date_of_commencement);
+        }
+
     }
 
     public  void showAlert(){
@@ -173,6 +204,18 @@ public class NewDashborad extends AppCompatActivity {
         intent.putExtra("date_of_commencement",getIntent().getStringExtra("date_of_commencement"));
         startActivity(intent);
     }
+
+    public void gotoAddSwm(){
+        Intent intent =new Intent(NewDashborad.this, MasterFormSwmEntry.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
+    }
+    public void gotoViewSwm(){
+        Intent intent =new Intent(NewDashborad.this, SwmMasterDetailsView.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
+    }
+
     public  String dateFormate( String strDate,String type ){
         try {
             SimpleDateFormat sdfSource =null;

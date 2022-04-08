@@ -221,7 +221,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     }
 
     public void checkLoginScreen() {
-        loginScreenBinding.userName.setText("maedemo");
+        loginScreenBinding.userName.setText("kpmkcpmvp1u3");
         loginScreenBinding.userPassword.setText("test123#$");
 
         /*loginScreenBinding.userName.setText("vnrsksiac3");
@@ -330,6 +330,7 @@ Log.d("params",""+params);
                         prefManager.setParicularDCode(jsonObject.get(AppConstant.DISTRICT_CODE));
                         prefManager.setBlockCode(jsonObject.get(AppConstant.BLOCK_CODE));
                         prefManager.setPvCode(jsonObject.get(AppConstant.PV_CODE));
+                        prefManager.setKeyPvNameTa(jsonObject.get("pvname_ta"));
                         prefManager.setDistrictName(jsonObject.get(AppConstant.DISTRICT_NAME));
                         prefManager.setBlockName(jsonObject.get(AppConstant.BLOCK_NAME));
                         prefManager.setDesignation(jsonObject.get(AppConstant.DESIG_NAME));

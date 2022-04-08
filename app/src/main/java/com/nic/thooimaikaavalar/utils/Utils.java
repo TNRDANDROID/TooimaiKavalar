@@ -1274,6 +1274,22 @@ public class Utils {
         Log.d("swm_water_supply", "" + dataSet);
         return dataSet;
     }
+    public static JSONObject swm_asset_typeJsonParams(Activity activity) throws JSONException {
+        prefManager = new PrefManager(activity);
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_SERVICE_ID, AppConstant.KEY_swm_asset_type);
+        //dataSet.put(AppConstant.DISTRICT_CODE, prefManager.getDistrictCode());
+        //dataSet.put(AppConstant.BLOCK_CODE, prefManager.getBlockCode());
+        Log.d("swm_asset_type", "" + dataSet);
+        return dataSet;
+    }
+    public static JSONObject no_of_waste_dump_photosJsonParams(Activity activity) throws JSONException {
+        prefManager = new PrefManager(activity);
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_SERVICE_ID, AppConstant.no_of_waste_dump_photos);
+        Log.d("no_of_waste_dump_photos", "" + dataSet);
+        return dataSet;
+    }
 
 
 

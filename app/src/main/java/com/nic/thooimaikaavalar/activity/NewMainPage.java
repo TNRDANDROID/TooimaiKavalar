@@ -103,7 +103,7 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
     public dbData dbData = new dbData(this);
     private PrefManager prefManager;
     private SQLiteDatabase db;
-    public static DBHelper dbHelper;
+    public  DBHelper dbHelper;
     private ProgressHUD progressHUD;
     private ShimmerRecyclerView recyclerView;
     private ShimmerRecyclerView recyclerView1;

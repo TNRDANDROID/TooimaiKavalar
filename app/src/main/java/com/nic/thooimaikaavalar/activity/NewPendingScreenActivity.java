@@ -16,8 +16,10 @@ import android.widget.PopupMenu;
 
 import com.android.volley.VolleyError;
 import com.nic.thooimaikaavalar.R;
+import com.nic.thooimaikaavalar.adapter.AssetsUploadAdapter;
 import com.nic.thooimaikaavalar.adapter.BasicDetailsAdapter;
 import com.nic.thooimaikaavalar.adapter.ComponentPhotoAdapter;
+import com.nic.thooimaikaavalar.adapter.SwmMasterDetailsAdapter;
 import com.nic.thooimaikaavalar.adapter.ThooimaiKaavarListLocalAdapter;
 import com.nic.thooimaikaavalar.adapter.WasteCollectedAdapter;
 import com.nic.thooimaikaavalar.api.Api;
@@ -40,13 +42,15 @@ import java.util.ArrayList;
 public class NewPendingScreenActivity extends AppCompatActivity implements Api.ServerResponseListener{
     private PrefManager prefManager;
     public com.nic.thooimaikaavalar.dataBase.dbData dbData = new dbData(this);
-    public static DBHelper dbHelper;
-    public static SQLiteDatabase db;
+    public  DBHelper dbHelper;
+    public  SQLiteDatabase db;
     ActivityNewPendingScreenBinding activity_new_pending_screen;
     BasicDetailsAdapter basicDetailsAdapter;
     ThooimaiKaavarListLocalAdapter thooimaiKaavarListLocalAdapter;
     ComponentPhotoAdapter componentPhotoAdapter;
     WasteCollectedAdapter wasteCollectedAdapter;
+    SwmMasterDetailsAdapter swmMasterDetailsAdapter;
+    AssetsUploadAdapter assetsUploadAdapter;
     String key_id="";
     String type="";
     @SuppressLint("SourceLockedOrientationActivity")
@@ -103,6 +107,18 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
                             case R.id.waste_collected_from:
                                 getWasteCollectedList();
                                 activity_new_pending_screen.listName.setText("Waste Collected Details");
+                                break;
+                            case R.id.swm_master_details:
+                                getSwmMasterList();
+                                activity_new_pending_screen.listName.setText("Infrastructure Details");
+                                break;
+                            case R.id.assets_details:
+                                getInfraAssets();
+                                activity_new_pending_screen.listName.setText("Infrastructure Assets Details");
+                                break;
+                            case R.id.waste_dump_details:
+                                getWasteDump();
+                                activity_new_pending_screen.listName.setText("Waste Dump Details");
                                 break;
                         }
                         return true;
@@ -184,6 +200,59 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
         }
 
     }
+    public void getSwmMasterList() {
+        dbData.open();
+        ArrayList<RealTimeMonitoringSystem> getAllSwmMasterDetails =  dbData.getAllSWMMasterDetails();
+
+        if(getAllSwmMasterDetails.size()>0){
+            activity_new_pending_screen.noDataIcon.setVisibility(View.GONE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            swmMasterDetailsAdapter = new SwmMasterDetailsAdapter(getAllSwmMasterDetails,this,dbData,"Local");
+            activity_new_pending_screen.basicRecycler.setAdapter(swmMasterDetailsAdapter);
+        }
+        else {
+            activity_new_pending_screen.noDataIcon.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.GONE);
+        }
+
+    }
+    public void getInfraAssets() {
+        dbData.open();
+        int getAllSwmMasterDetails =  dbData.gettableCountAssetDetailsTable();
+        if(getAllSwmMasterDetails>0){
+            activity_new_pending_screen.noDataIcon.setVisibility(View.GONE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            assetsUploadAdapter = new AssetsUploadAdapter(this,dbData,prefManager,"Assets");
+            activity_new_pending_screen.basicRecycler.setAdapter(assetsUploadAdapter);
+        }
+        else {
+            activity_new_pending_screen.noDataIcon.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.GONE);
+        }
+
+
+
+    }
+    public void getWasteDump() {
+        dbData.open();
+        int getAllSwmMasterDetails =  dbData.gettableCountWasteDumpTable();
+        if(getAllSwmMasterDetails>0){
+            activity_new_pending_screen.noDataIcon.setVisibility(View.GONE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            assetsUploadAdapter = new AssetsUploadAdapter(this,dbData,prefManager,"Waste_Dump");
+            activity_new_pending_screen.basicRecycler.setAdapter(assetsUploadAdapter);
+        }
+        else {
+            activity_new_pending_screen.noDataIcon.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.GONE);
+        }
+
+
+
+    }
 
     public void SyncData(JSONObject jsonObject,String key_id_n,String type_){
         key_id =key_id_n;
@@ -242,6 +311,25 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
                         int sdsm = db.delete(DBHelper.WASTE_COLLECTED_SAVE_TABLE, "mcc_id = ? ", new String[]{key_id});
                         getWasteCollectedList();
                         wasteCollectedAdapter.notifyDataSetChanged();
+
+                    }
+                    else if(type.equalsIgnoreCase("SWM_Master")){
+                        int sdsm = db.delete(DBHelper.SWM_MASTER_DETAILS_TABLE, "id = ? ", new String[]{key_id});
+                        getSwmMasterList();
+                        swmMasterDetailsAdapter.notifyDataSetChanged();
+
+                    }
+                    else if(type.equalsIgnoreCase("Assets_Details")){
+                        int sdsm = db.delete(DBHelper.SWM_ASSET_DETAILS_TABLE,null,null);
+                        int sdsm1 = db.delete(DBHelper.SWM_ASSET_PHOTOS_TABLE,null,null);
+                        getInfraAssets();
+                        assetsUploadAdapter.notifyDataSetChanged();
+
+                    }
+                    else if(type.equalsIgnoreCase("Waste_Dump")){
+                        int sdsm = db.delete(DBHelper.SWM_WASTE_DUMP_PHOTOS_DETAILS,null,null);
+                        getWasteDump();
+                        assetsUploadAdapter.notifyDataSetChanged();
 
                     }
 

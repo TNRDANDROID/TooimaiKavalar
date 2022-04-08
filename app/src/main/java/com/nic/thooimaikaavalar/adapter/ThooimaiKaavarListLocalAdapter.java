@@ -2,6 +2,7 @@ package com.nic.thooimaikaavalar.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -40,11 +41,19 @@ public class ThooimaiKaavarListLocalAdapter extends RecyclerView.Adapter<Thooima
     Context context;
     private dbData dbData;
     int pos=-1;
-
+    public  DBHelper dbHelper;
+    public SQLiteDatabase db;
     public ThooimaiKaavarListLocalAdapter(List<RealTimeMonitoringSystem> capacityList, Context context,dbData dbData) {
         this.basicDetailsList = capacityList;
         this.context = context;
         this.dbData = dbData;
+
+        try {
+            dbHelper = new DBHelper(context);
+            db = dbHelper.getWritableDatabase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @NonNull
@@ -152,7 +161,7 @@ public class ThooimaiKaavarListLocalAdapter extends RecyclerView.Adapter<Thooima
     public void deletePending(int position) {
         String key_id = basicDetailsList.get(position).getKEY_ID();
 
-        int sdsm = NewPendingScreenActivity.db.delete(DBHelper.THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL, "id = ? ", new String[]{key_id});
+        int sdsm = db.delete(DBHelper.THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL, "id = ? ", new String[]{key_id});
         basicDetailsList.remove(position);
         notifyItemRemoved(position);
         notifyItemChanged(position, basicDetailsList.size());

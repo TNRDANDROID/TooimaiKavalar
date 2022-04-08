@@ -43,14 +43,16 @@ public class FullImageAdapter extends RecyclerView.Adapter<FullImageAdapter.MyVi
     private final dbData dbData;
     private LayoutInflater layoutInflater;
     String type;
+    String type_of_activity;
 
-    public FullImageAdapter(Context context, List<RealTimeMonitoringSystem> imagePreviewlistvalues, dbData dbData,String type) {
+    public FullImageAdapter(Context context, List<RealTimeMonitoringSystem> imagePreviewlistvalues, dbData dbData,String type,String type_of_activity) {
 
         this.context = context;
         prefManager = new PrefManager(context);
         this.dbData = dbData;
         this.imagePreviewlistvalues = imagePreviewlistvalues;
         this.type =type;
+        this.type_of_activity =type_of_activity;
     }
 
     @Override
@@ -85,7 +87,13 @@ public class FullImageAdapter extends RecyclerView.Adapter<FullImageAdapter.MyVi
                 .into(holder.galleryThumbnailBinding.thumbnail);
 
         if(type.equals("Online")){
-            holder.galleryThumbnailBinding.deleteIcon.setVisibility(View.VISIBLE);
+            if(type_of_activity.equals("Assets")){
+                holder.galleryThumbnailBinding.deleteIcon.setVisibility(View.GONE);
+            }
+            else {
+                holder.galleryThumbnailBinding.deleteIcon.setVisibility(View.VISIBLE);
+            }
+
         }
         else {
             holder.galleryThumbnailBinding.deleteIcon.setVisibility(View.GONE);

@@ -31,6 +31,7 @@
     <color name="grey_8">#706e6b</color>
     <color name="grey_9">#514f4d</color>
     <color name="grey_10">#3e3e3c</color>
+    <color name="greyed_out">#c7c7c7</color>
 
     <color name="grey1">#878787</color>
     <color name="grey2">#505454</color>

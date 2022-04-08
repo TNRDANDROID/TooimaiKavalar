@@ -412,6 +412,164 @@ public class RealTimeMonitoringSystem {
 
     // ///////////////////
 
+
+    //////SWM Table Details********************///////////
+    public  String swm_infra_details_id;
+    public  String no_of_thooimai_kaavalars_allocated;
+    public  String no_of_thooimai_kaavalars_working;
+    public  String whether_community_compost_pit_available_in_panchayat;
+    public  String whether_vermi_compost_pit_available_in_panchayat;
+    public  String any_integrated_nuesery_devlp_near_swm_facility;
+    public  String swm_asset_type_id;
+    public  String asset_type_name;
+    public  String no_of_photos;
+    public  String is_this_others;
+    public  String others_name;
+    public  String is_functional;
+    public  String swm_infra_assets_id;
+    public  String swm_infra_asset_detail_id;
+    public  String is_there_any_waste_dump;
+    public  String swm_waste_dump_photos_id;
+    public  String is_photo_of_waste_dump;
+
+    public String getSwm_waste_dump_photos_id() {
+        return swm_waste_dump_photos_id;
+    }
+
+    public void setSwm_waste_dump_photos_id(String swm_waste_dump_photos_id) {
+        this.swm_waste_dump_photos_id = swm_waste_dump_photos_id;
+    }
+
+    public String getIs_photo_of_waste_dump() {
+        return is_photo_of_waste_dump;
+    }
+
+    public void setIs_photo_of_waste_dump(String is_photo_of_waste_dump) {
+        this.is_photo_of_waste_dump = is_photo_of_waste_dump;
+    }
+
+    public String getIs_there_any_waste_dump() {
+        return is_there_any_waste_dump;
+    }
+
+    public void setIs_there_any_waste_dump(String is_there_any_waste_dump) {
+        this.is_there_any_waste_dump = is_there_any_waste_dump;
+    }
+
+    public String getSwm_infra_assets_id() {
+        return swm_infra_assets_id;
+    }
+
+    public void setSwm_infra_assets_id(String swm_infra_assets_id) {
+        this.swm_infra_assets_id = swm_infra_assets_id;
+    }
+
+    public String getSwm_infra_asset_detail_id() {
+        return swm_infra_asset_detail_id;
+    }
+
+    public void setSwm_infra_asset_detail_id(String swm_infra_asset_detail_id) {
+        this.swm_infra_asset_detail_id = swm_infra_asset_detail_id;
+    }
+
+    public String getIs_functional() {
+        return is_functional;
+    }
+
+    public void setIs_functional(String is_functional) {
+        this.is_functional = is_functional;
+    }
+
+    public String getOthers_name() {
+        return others_name;
+    }
+
+    public void setOthers_name(String others_name) {
+        this.others_name = others_name;
+    }
+
+    public String getSwm_asset_type_id() {
+        return swm_asset_type_id;
+    }
+
+    public void setSwm_asset_type_id(String swm_asset_type_id) {
+        this.swm_asset_type_id = swm_asset_type_id;
+    }
+
+    public String getAsset_type_name() {
+        return asset_type_name;
+    }
+
+    public void setAsset_type_name(String asset_type_name) {
+        this.asset_type_name = asset_type_name;
+    }
+
+    public String getNo_of_photos() {
+        return no_of_photos;
+    }
+
+    public void setNo_of_photos(String no_of_photos) {
+        this.no_of_photos = no_of_photos;
+    }
+
+    public String getIs_this_others() {
+        return is_this_others;
+    }
+
+    public void setIs_this_others(String is_this_others) {
+        this.is_this_others = is_this_others;
+    }
+
+    public String getSwm_infra_details_id() {
+        return swm_infra_details_id;
+    }
+
+    public void setSwm_infra_details_id(String swm_infra_details_id) {
+        this.swm_infra_details_id = swm_infra_details_id;
+    }
+
+    public String getNo_of_thooimai_kaavalars_allocated() {
+        return no_of_thooimai_kaavalars_allocated;
+    }
+
+    public void setNo_of_thooimai_kaavalars_allocated(String no_of_thooimai_kaavalars_allocated) {
+        this.no_of_thooimai_kaavalars_allocated = no_of_thooimai_kaavalars_allocated;
+    }
+
+    public String getNo_of_thooimai_kaavalars_working() {
+        return no_of_thooimai_kaavalars_working;
+    }
+
+    public void setNo_of_thooimai_kaavalars_working(String no_of_thooimai_kaavalars_working) {
+        this.no_of_thooimai_kaavalars_working = no_of_thooimai_kaavalars_working;
+    }
+
+    public String getWhether_community_compost_pit_available_in_panchayat() {
+        return whether_community_compost_pit_available_in_panchayat;
+    }
+
+    public void setWhether_community_compost_pit_available_in_panchayat(String whether_community_compost_pit_available_in_panchayat) {
+        this.whether_community_compost_pit_available_in_panchayat = whether_community_compost_pit_available_in_panchayat;
+    }
+
+    public String getWhether_vermi_compost_pit_available_in_panchayat() {
+        return whether_vermi_compost_pit_available_in_panchayat;
+    }
+
+    public void setWhether_vermi_compost_pit_available_in_panchayat(String whether_vermi_compost_pit_available_in_panchayat) {
+        this.whether_vermi_compost_pit_available_in_panchayat = whether_vermi_compost_pit_available_in_panchayat;
+    }
+
+    public String getAny_integrated_nuesery_devlp_near_swm_facility() {
+        return any_integrated_nuesery_devlp_near_swm_facility;
+    }
+
+    public void setAny_integrated_nuesery_devlp_near_swm_facility(String any_integrated_nuesery_devlp_near_swm_facility) {
+        this.any_integrated_nuesery_devlp_near_swm_facility = any_integrated_nuesery_devlp_near_swm_facility;
+    }
+
+    //////****************//////////
+
     public String getBeneficiaryFatherName() {
         return BeneficiaryFatherName;
     }

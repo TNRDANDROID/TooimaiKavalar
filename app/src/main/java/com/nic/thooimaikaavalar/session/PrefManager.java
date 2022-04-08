@@ -38,6 +38,7 @@ public class PrefManager {
     private static final String KEY_PARTICULAR_DISTRICT_CODE = "Particular_District_Code";
     private static final String KEY_BLOCK_CODE = "Block_Code";
     private static final String KEY_PV_CODE = "Pv_Code";
+    private static final String KEY_PV_NAME_TA = "pvname_ta";
     private static final String KEY_DISTRICT_NAME = "District_Name";
     private static final String KEY_DESIGNATION = "Designation";
     private static final String KEY_NAME = "Name";
@@ -63,6 +64,7 @@ public class PrefManager {
     private static final String DELETE_CD_WORK_TYPE_FLAG = "delete_cd_work_type_flag";
     private static final String DELETE_ADAPTER_POSITION = "delete_adapter_position";
     private static final String KEY_HAB_CODE = "Hab_Code";
+    private static final String KEY_no_of_waste_dump_photos = "no_of_waste_dump_photos";
 
 
     public PrefManager(Context context) {
@@ -96,6 +98,14 @@ public class PrefManager {
 
     public String getAppKey() {
         return pref.getString(APP_KEY, null);
+    }
+    public void setKEY_no_of_waste_dump_photos(String no_of_waste_dump_photos) {
+        editor.putString(KEY_no_of_waste_dump_photos, no_of_waste_dump_photos);
+        editor.commit();
+    }
+
+    public String getKEY_no_of_waste_dump_photos() {
+        return pref.getString(KEY_no_of_waste_dump_photos, null);
     }
 
 
@@ -192,6 +202,15 @@ public class PrefManager {
 
     public Object setPvCode(Object key) {
         editor.putString(KEY_PV_CODE, String.valueOf(key));
+        editor.commit();
+        return key;
+    }
+
+    public String getKeyPvNameTa() {
+        return pref.getString(KEY_PV_NAME_TA, null);
+    }
+    public Object setKeyPvNameTa(Object key) {
+        editor.putString(KEY_PV_NAME_TA, String.valueOf(key));
         editor.commit();
         return key;
     }

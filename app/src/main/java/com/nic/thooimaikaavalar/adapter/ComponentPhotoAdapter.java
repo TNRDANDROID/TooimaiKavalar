@@ -3,6 +3,7 @@ package com.nic.thooimaikaavalar.adapter;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.util.Base64;
 import android.util.Log;
@@ -45,11 +46,20 @@ public class ComponentPhotoAdapter extends RecyclerView.Adapter<ComponentPhotoAd
     Context context;
     int pos=-1;
     private dbData dbData;
+    public  DBHelper dbHelper;
+    public SQLiteDatabase db;
 
     public ComponentPhotoAdapter(List<RealTimeMonitoringSystem> capacityList,Context context,dbData dbData){
         this.basicDetailsList=capacityList;
         this.context=context;
         this.dbData=dbData;
+
+        try {
+            dbHelper = new DBHelper(context);
+            db = dbHelper.getWritableDatabase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @NonNull
@@ -90,6 +100,7 @@ public class ComponentPhotoAdapter extends RecyclerView.Adapter<ComponentPhotoAd
             public void onClick(View view) {
                 Intent intent = new Intent(context, FullImageActivity.class);
                 intent.putExtra("OnOffType","Offline");
+                intent.putExtra("Activity","");
                 intent.putExtra("mcc_id",basicDetailsList.get(position).getMcc_id());
                 intent.putExtra("work_id","");
                 intent.putExtra("component_id","");
@@ -115,7 +126,7 @@ public class ComponentPhotoAdapter extends RecyclerView.Adapter<ComponentPhotoAd
     public void deletePending(int position) {
         String key_id = basicDetailsList.get(position).getMcc_id();
 
-        int sdsm = NewPendingScreenActivity.db.delete(DBHelper.COMPOST_TUB_IMAGE_TABLE, "mcc_id = ? ", new String[]{key_id});
+        int sdsm = db.delete(DBHelper.COMPOST_TUB_IMAGE_TABLE, "mcc_id = ? ", new String[]{key_id});
         basicDetailsList.remove(position);
         notifyItemRemoved(position);
         notifyItemChanged(position, basicDetailsList.size());

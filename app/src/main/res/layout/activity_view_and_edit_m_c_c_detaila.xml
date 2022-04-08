@@ -57,6 +57,7 @@
             android:orientation="vertical"
             android:layout_below="@+id/toolbar">
         <TextView
+            android:visibility="gone"
             android:fontFamily="@string/font_regular"
             android:id="@+id/select_village_tv"
             android:layout_width="match_parent"
@@ -67,7 +68,7 @@
             android:textSize="@dimen/_12sdp"
             style="@string/font_circular_bold" />
         <RelativeLayout
-
+            android:visibility="gone"
             android:id="@+id/village_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/header"

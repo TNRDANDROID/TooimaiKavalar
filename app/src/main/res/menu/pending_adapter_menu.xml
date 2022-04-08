@@ -8,5 +8,12 @@
         android:title="Component Photo" />
     <item android:id="@+id/waste_collected_from"
         android:title="Waste Collected" />
+    <item android:id="@+id/swm_master_details"
+        android:title="Infrastructure Details" />
+    <item android:id="@+id/assets_details"
+        android:title="Infrastructure Assets Details" />
+    <item android:id="@+id/waste_dump_details"
+        android:title="Waste Dump Details"
+    />
 
 </menu>

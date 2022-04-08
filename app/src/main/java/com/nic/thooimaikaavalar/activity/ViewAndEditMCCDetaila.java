@@ -47,7 +47,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
     public com.nic.thooimaikaavalar.dataBase.dbData dbData = new dbData(this);
     private PrefManager prefManager;
     private SQLiteDatabase db;
-    public static DBHelper dbHelper;
+    public  DBHelper dbHelper;
     String pv_code;
     ArrayList<RealTimeMonitoringSystem> villageList;
     ArrayList<RealTimeMonitoringSystem> basicDetailsServerList;
@@ -63,7 +63,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activity_view_and_edit_m_c_c_detaila = DataBindingUtil.setContentView(this, R.layout.activity_view_and_edit_m_c_c_detaila);
         activity_view_and_edit_m_c_c_detaila.setActivity(this);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         prefManager = new PrefManager(this);
         try {
             dbHelper = new DBHelper(this);
@@ -78,7 +78,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
         activity_view_and_edit_m_c_c_detaila.mccRecyler.setVisibility(View.GONE);
         activity_view_and_edit_m_c_c_detaila.previewImageLayout.setVisibility(View.GONE);
 
-        activity_view_and_edit_m_c_c_detaila.villageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+       /* activity_view_and_edit_m_c_c_detaila.villageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i>0){
@@ -104,8 +104,8 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
 
             }
         });
-
-        new fetchScheduletask().execute();
+*/
+        //new fetchScheduletask().execute();
 
         activity_view_and_edit_m_c_c_detaila.backImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +125,14 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
                 activity_view_and_edit_m_c_c_detaila.previewImageLayout.setVisibility(View.GONE);
             }
         });
+
+        pv_code = prefManager.getPvCode();
+        if(Utils.isOnline()){
+            getBasicMccList();
+        }
+        else {
+            new fetchBasicDetailsFromServerTask().execute();
+        }
 
     }
 
@@ -398,6 +406,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
 
     public void gotoDashboard(int position){
         Intent intent = new Intent(ViewAndEditMCCDetaila.this,NewDashborad.class);
+        intent.putExtra("Layout","MCC");
         intent.putExtra("mcc_id",basicDetailsServerList.get(position).getMcc_id());
         intent.putExtra("village_name",basicDetailsServerList.get(position).getPvName());
         intent.putExtra("date_of_commencement",basicDetailsServerList.get(position).getDate_of_commencement());

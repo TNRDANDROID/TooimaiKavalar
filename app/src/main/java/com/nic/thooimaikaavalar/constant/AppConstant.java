@@ -162,6 +162,9 @@ public class AppConstant {
     public static String KEY_swm_no_of_thooimai_kaavalars = "swm_no_of_thooimai_kaavalars";
     public static String KEY_swm_photographs_of_mcc_components = "swm_photographs_of_mcc_components";
     public static String KEY_swm_water_supply_availability = "swm_water_supply_availability";
+    public static String KEY_swm_asset_type = "swm_asset_type";
+    public static String KEY_details_of_swm_infra_assets_view = "details_of_swm_infra_assets_view";
+    public static String no_of_waste_dump_photos = "no_of_waste_dump_photos";
 
 
     ///////////////// Response Key

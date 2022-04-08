@@ -356,6 +356,18 @@ public class dbData {
 
         return realTimeMonitoringSystem;
     }
+    public void Insertswm_asset_type(RealTimeMonitoringSystem realTimeMonitoringSystem) {
+
+        ContentValues values = new ContentValues();
+        values.put("swm_asset_type_id", realTimeMonitoringSystem.getSwm_asset_type_id());
+        values.put("asset_type_name", realTimeMonitoringSystem.getAsset_type_name());
+        values.put("no_of_photos", realTimeMonitoringSystem.getNo_of_photos());
+        values.put("is_this_others", realTimeMonitoringSystem.getIs_this_others());
+
+        long id = db.insert(DBHelper.SWM_ASSET_TYPE,null,values);
+        Log.d("Insert_swm_asset_type", String.valueOf(id));
+
+    }
 
     public ArrayList<RealTimeMonitoringSystem > getAll_capacity_of_mcc() {
 
@@ -475,6 +487,40 @@ public class dbData {
         }
         return cards;
     }
+    public ArrayList<RealTimeMonitoringSystem > getAll_swm_asset_type() {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+
+        try {
+            cursor = db.rawQuery("select * from "+DBHelper.SWM_ASSET_TYPE+" order by swm_asset_type_id asc",null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+                    card.setSwm_asset_type_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_asset_type_id")));
+                    card.setAsset_type_name(cursor.getString(cursor
+                            .getColumnIndexOrThrow("asset_type_name")));
+                    card.setNo_of_photos(cursor.getString(cursor
+                            .getColumnIndexOrThrow("no_of_photos")));
+                    card.setIs_this_others(cursor.getString(cursor
+                            .getColumnIndexOrThrow("is_this_others")));
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+
     public ArrayList<RealTimeMonitoringSystem > getParticularVillageBasicDetails(String mcc_id) {
 
         ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
@@ -567,7 +613,6 @@ public class dbData {
         }
         return cards;
     }
-
     public ArrayList<RealTimeMonitoringSystem > getAllBasicDetailsFromServer(String pvcode) {
 
         ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
@@ -936,6 +981,423 @@ public class dbData {
         }
         return cards;
     }
+
+    ////SWM table *******************/////////////////
+    public ArrayList<RealTimeMonitoringSystem > getParticularVillageSWMMasterDetails(String swm_infra_details_id,String pvcode) {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+
+        try {
+            cursor = db.rawQuery("select * from "+DBHelper.SWM_MASTER_DETAILS_TABLE+" where swm_infra_details_id = "+swm_infra_details_id+" and pvcode = "+pvcode,null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+                    card.setId(cursor.getInt(cursor
+                            .getColumnIndexOrThrow("id")));
+                    card.setSwm_infra_details_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_infra_details_id")));
+                    card.setDistictCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("dcode")));
+                    card.setBlockCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("bcode")));
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvcode")));
+                    card.setPvName(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvname")));
+                    card.setNo_of_thooimai_kaavalars_allocated(cursor.getString(cursor
+                            .getColumnIndexOrThrow("no_of_thooimai_kaavalars_allocated")));
+                    card.setNo_of_thooimai_kaavalars_working(cursor.getString(cursor
+                            .getColumnIndexOrThrow("no_of_thooimai_kaavalars_working")));
+                    card.setWhether_community_compost_pit_available_in_panchayat(cursor.getString(cursor
+                            .getColumnIndexOrThrow("whether_community_compost_pit_available_in_panchayat")));
+                    card.setWhether_vermi_compost_pit_available_in_panchayat(cursor.getString(cursor
+                            .getColumnIndexOrThrow("whether_vermi_compost_pit_available_in_panchayat")));
+                    card.setAny_integrated_nuesery_devlp_near_swm_facility(cursor.getString(cursor
+                            .getColumnIndexOrThrow("any_integrated_nuesery_devlp_near_swm_facility")));
+
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+    public ArrayList<RealTimeMonitoringSystem > getAllSWMMasterDetails() {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+
+        try {
+            cursor = db.rawQuery("select * from "+DBHelper.SWM_MASTER_DETAILS_TABLE,null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+                    card.setId(cursor.getInt(cursor
+                            .getColumnIndexOrThrow("id")));
+                    card.setSwm_infra_details_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_infra_details_id")));
+                    card.setDistictCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("dcode")));
+                    card.setBlockCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("bcode")));
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvcode")));
+                    card.setPvName(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvname")));
+                    card.setNo_of_thooimai_kaavalars_allocated(cursor.getString(cursor
+                            .getColumnIndexOrThrow("no_of_thooimai_kaavalars_allocated")));
+                    card.setNo_of_thooimai_kaavalars_working(cursor.getString(cursor
+                            .getColumnIndexOrThrow("no_of_thooimai_kaavalars_working")));
+                    card.setWhether_community_compost_pit_available_in_panchayat(cursor.getString(cursor
+                            .getColumnIndexOrThrow("whether_community_compost_pit_available_in_panchayat")));
+                    card.setWhether_vermi_compost_pit_available_in_panchayat(cursor.getString(cursor
+                            .getColumnIndexOrThrow("whether_vermi_compost_pit_available_in_panchayat")));
+                    card.setAny_integrated_nuesery_devlp_near_swm_facility(cursor.getString(cursor
+                            .getColumnIndexOrThrow("any_integrated_nuesery_devlp_near_swm_facility")));
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+
+    public void insertSwmMasterDetailsFromServer (RealTimeMonitoringSystem kvvtSurvey) {
+
+        ContentValues values = new ContentValues();
+        values.put("swm_infra_details_id", kvvtSurvey.getSwm_infra_details_id());
+        values.put("dcode", kvvtSurvey.getDistictCode());
+        values.put("bcode", kvvtSurvey.getBlockCode());
+        values.put("pvcode", kvvtSurvey.getPvCode());
+        values.put("pvname", kvvtSurvey.getPvName());
+        values.put("no_of_thooimai_kaavalars_allocated", kvvtSurvey.getNo_of_thooimai_kaavalars_allocated());
+        values.put("no_of_thooimai_kaavalars_working", kvvtSurvey.getNo_of_thooimai_kaavalars_working());
+        values.put("whether_community_compost_pit_available_in_panchayat", kvvtSurvey.getWhether_community_compost_pit_available_in_panchayat());
+        values.put("whether_vermi_compost_pit_available_in_panchayat", kvvtSurvey.getWhether_vermi_compost_pit_available_in_panchayat());
+        values.put("any_integrated_nuesery_devlp_near_swm_facility", kvvtSurvey.getAny_integrated_nuesery_devlp_near_swm_facility());
+        values.put("is_there_any_waste_dump", kvvtSurvey.getIs_there_any_waste_dump());
+
+        long id = db.insert(DBHelper.SWM_MASTER_DETAILS_SERVER_TABLE,null,values);
+        Log.d("Inserted_id_swm_server", String.valueOf(id));
+
+    }
+    public ArrayList<RealTimeMonitoringSystem > getAllSWMDetailsFromServer(String pvcode) {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+
+        try {
+            cursor = db.rawQuery("select * from "+DBHelper.SWM_MASTER_DETAILS_SERVER_TABLE+" where pvcode = "+pvcode,null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+
+                    card.setSwm_infra_details_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_infra_details_id")));
+                    card.setDistictCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("dcode")));
+                    card.setBlockCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("bcode")));
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvcode")));
+                    card.setPvName(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvname")));
+                    card.setNo_of_thooimai_kaavalars_allocated(cursor.getString(cursor
+                            .getColumnIndexOrThrow("no_of_thooimai_kaavalars_allocated")));
+                    card.setNo_of_thooimai_kaavalars_working(cursor.getString(cursor
+                            .getColumnIndexOrThrow("no_of_thooimai_kaavalars_working")));
+                    card.setWhether_community_compost_pit_available_in_panchayat(cursor.getString(cursor
+                            .getColumnIndexOrThrow("whether_community_compost_pit_available_in_panchayat")));
+                    card.setWhether_vermi_compost_pit_available_in_panchayat(cursor.getString(cursor
+                            .getColumnIndexOrThrow("whether_vermi_compost_pit_available_in_panchayat")));
+                    card.setAny_integrated_nuesery_devlp_near_swm_facility(cursor.getString(cursor
+                            .getColumnIndexOrThrow("any_integrated_nuesery_devlp_near_swm_facility")));
+                    card.setIs_there_any_waste_dump(cursor.getString(cursor
+                            .getColumnIndexOrThrow("is_there_any_waste_dump")));
+
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+
+    public int getLastInsertedIdFromAssetDetailsTable(String pvcode,String asset_type_id,String swm_infra_details_id){
+        int last_inserted_id=0;
+        Cursor cursor = null;
+        String where="";
+        String[] whereArg;
+        try{
+            String qur = "select max(id) as id from swm_asset_details_table where swm_infra_details_id = "+swm_infra_details_id+
+                    " and pvcode = "+pvcode+" and swm_asset_type_id = "+asset_type_id;
+
+           cursor = db.rawQuery(qur,null);
+        if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    last_inserted_id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return last_inserted_id;
+    }
+    public int gettableCountAssetDetailsTable(){
+        int table_count=0;
+        Cursor cursor = null;
+        try{
+            String qur = "select count(1) as table_count from swm_asset_details_table";
+
+            cursor = db.rawQuery(qur,null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    table_count = cursor.getInt(cursor.getColumnIndexOrThrow("table_count"));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return table_count;
+    }
+    public int gettableCountWasteDumpTable(){
+        int table_count=0;
+        Cursor cursor = null;
+        try{
+            String qur = "select count(1) as table_count from "+DBHelper.SWM_WASTE_DUMP_PHOTOS_DETAILS;
+
+            cursor = db.rawQuery(qur,null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    table_count = cursor.getInt(cursor.getColumnIndexOrThrow("table_count"));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return table_count;
+    }
+    public String getTables_there_any_waste_dump(){
+        String is_there_any_waste_dump="";
+        Cursor cursor = null;
+        try{
+            String qur = "select is_there_any_waste_dump from "+DBHelper.SWM_MASTER_DETAILS_SERVER_TABLE;
+
+            cursor = db.rawQuery(qur,null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    is_there_any_waste_dump = cursor.getString(cursor.getColumnIndexOrThrow("is_there_any_waste_dump"));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return is_there_any_waste_dump;
+    }
+    public ArrayList<RealTimeMonitoringSystem > getParticularAssetsList(String pvcode,String asset_type_id,String swm_infra_details_id,String type) {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+        String selection;
+        String[] selectionArgs;
+
+        try {
+            if(type.equals("All")){
+                selection = "swm_infra_details_id = ? and pvcode = ? and swm_asset_type_id = ? ";
+                selectionArgs = new String[]{swm_infra_details_id,pvcode,asset_type_id};
+            }
+            else {
+                selection = "pvcode = ? and swm_asset_type_id = ? ";
+                selectionArgs = new String[]{pvcode,asset_type_id};
+            }
+
+            //cursor = db.rawQuery("select * from "+DBHelper.SWM_ASSET_DETAILS_TABLE+" where pvcode = "+pvcode,null);
+            cursor = db.query(DBHelper.SWM_ASSET_DETAILS_TABLE,
+                    new String[]{"*"}, selection, selectionArgs, null, null, null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+
+                    card.setId(cursor.getInt(cursor
+                            .getColumnIndexOrThrow("id")));
+                    card.setSwm_infra_details_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_infra_details_id")));
+                    card.setDistictCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("dcode")));
+                    card.setBlockCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("bcode")));
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvcode")));
+                    card.setPvName(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvname")));
+                    card.setOthers_name(cursor.getString(cursor
+                            .getColumnIndexOrThrow("others_name")));
+                    card.setSwm_asset_type_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_asset_type_id")));
+                    card.setAsset_type_name(cursor.getString(cursor
+                            .getColumnIndexOrThrow("asset_type_name")));
+                    card.setIs_functional(cursor.getString(cursor
+                            .getColumnIndexOrThrow("is_functional")));
+
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+    public ArrayList<RealTimeMonitoringSystem > getParticularAssetsPhotosList(int id ,String pvcode,String asset_type_id,String swm_infra_details_id) {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+        String selection;
+        String[] selectionArgs;
+
+        try {
+                selection = "id = ? and swm_infra_details_id = ? and pvcode = ? and swm_asset_type_id = ? ";
+                selectionArgs = new String[]{String.valueOf(id),swm_infra_details_id,pvcode,asset_type_id};
+
+            //cursor = db.rawQuery("select * from "+DBHelper.SWM_ASSET_DETAILS_TABLE+" where pvcode = "+pvcode,null);
+            cursor = db.query(DBHelper.SWM_ASSET_PHOTOS_TABLE,
+                    new String[]{"*"}, selection, selectionArgs, null, null, null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+
+                    card.setId(cursor.getInt(cursor
+                            .getColumnIndexOrThrow("id")));
+                    card.setSwm_infra_details_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_infra_details_id")));
+                    card.setDistictCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("dcode")));
+                    card.setBlockCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("bcode")));
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvcode")));
+                    card.setPvName(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvname")));
+                    card.setLatitude(cursor.getString(cursor
+                            .getColumnIndexOrThrow("lattitude")));
+                    card.setLongitude(cursor.getString(cursor
+                            .getColumnIndexOrThrow("longtitude")));
+                    byte[] photo = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(photo, 0, photo.length, options);
+                    card.setImage((bitmap));
+
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+    public ArrayList<RealTimeMonitoringSystem > getWasteDumpPhotosList(String type,String swm_infra_details_id,String pvcode) {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+        String selection;
+        String[] selectionArgs;
+
+        try {
+            if(type.equals("")){
+                selection = "swm_infra_details_id = ? and pvcode = ?";
+                selectionArgs = new String[]{swm_infra_details_id,pvcode};
+            }
+            else {
+                selection = "pvcode = ?";
+                selectionArgs = new String[]{pvcode};
+            }
+
+
+            //cursor = db.rawQuery("select * from "+DBHelper.SWM_ASSET_DETAILS_TABLE+" where pvcode = "+pvcode,null);
+            cursor = db.query(DBHelper.SWM_WASTE_DUMP_PHOTOS_DETAILS,
+                    new String[]{"*"}, selection, selectionArgs, null, null, null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+
+                    card.setId(cursor.getInt(cursor
+                            .getColumnIndexOrThrow("id")));
+                    card.setSwm_infra_details_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_infra_details_id")));
+                    card.setDistictCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("dcode")));
+                    card.setBlockCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("bcode")));
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvcode")));
+                    card.setIs_there_any_waste_dump(cursor.getString(cursor
+                            .getColumnIndexOrThrow("is_there_any_waste_dump")));
+                    card.setLatitude(cursor.getString(cursor
+                            .getColumnIndexOrThrow("lattitude")));
+                    card.setLongitude(cursor.getString(cursor
+                            .getColumnIndexOrThrow("longtitude")));
+                    if(cursor.getString(cursor.getColumnIndexOrThrow("is_there_any_waste_dump")).equals("Y")) {
+                        byte[] photo = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
+                        BitmapFactory.Options options = new BitmapFactory.Options();
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(photo, 0, photo.length, options);
+                        card.setImage((bitmap));
+                    }
+
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+
+    ////////////////////****************
 
 
 
@@ -1760,6 +2222,24 @@ public class dbData {
     public void deleteWASTE_COLLECTED_SAVE_TABLE() {
         db.execSQL("delete from " + DBHelper.WASTE_COLLECTED_SAVE_TABLE);
     }
+    public void deleteSWM_MASTER_DETAILS_TABLE() {
+        db.execSQL("delete from " + DBHelper.SWM_MASTER_DETAILS_TABLE);
+    }
+    public void deleteSWM_MASTER_DETAILS_SERVER_TABLE() {
+        db.execSQL("delete from " + DBHelper.SWM_MASTER_DETAILS_SERVER_TABLE);
+    }
+    public void deleteSWM_ASSET_TYPE() {
+        db.execSQL("delete from " + DBHelper.SWM_ASSET_TYPE);
+    }
+    public void deleteSWM_ASSET_DETAILS_TABLE() {
+        db.execSQL("delete from " + DBHelper.SWM_ASSET_DETAILS_TABLE);
+    }
+    public void deleteSWM_ASSET_PHOTOS_TABLE() {
+        db.execSQL("delete from " + DBHelper.SWM_ASSET_PHOTOS_TABLE);
+    }
+    public void deleteSWM_WASTE_DUMP_PHOTOS_DETAILS() {
+        db.execSQL("delete from " + DBHelper.SWM_WASTE_DUMP_PHOTOS_DETAILS);
+    }
 
 
     public void deleteAll() {
@@ -1784,6 +2264,13 @@ public class dbData {
         deleteTHOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL();
         deleteCOMPOST_TUB_IMAGE_TABLE();
         deleteWASTE_COLLECTED_SAVE_TABLE();
+
+        deleteSWM_MASTER_DETAILS_TABLE();
+        deleteSWM_MASTER_DETAILS_SERVER_TABLE();
+        deleteSWM_ASSET_TYPE();
+        deleteSWM_ASSET_DETAILS_TABLE();
+        deleteSWM_ASSET_PHOTOS_TABLE();
+        deleteSWM_WASTE_DUMP_PHOTOS_DETAILS();
     }
 
 

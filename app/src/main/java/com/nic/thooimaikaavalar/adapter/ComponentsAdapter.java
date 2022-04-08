@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.activity.NewMainPage;
+import com.nic.thooimaikaavalar.activity.SWMActivity.SwmDashboard;
 import com.nic.thooimaikaavalar.activity.ViewTakeEditComponentsPhots;
 import com.nic.thooimaikaavalar.databinding.CapacityRecylerAdapterBinding;
 import com.nic.thooimaikaavalar.databinding.ComponentsAdapterBinding;
@@ -23,10 +24,12 @@ public class ComponentsAdapter extends RecyclerView.Adapter<ComponentsAdapter.My
     private List<RealTimeMonitoringSystem> capacityList;
     Context context;
     int pos=-1;
+    String type;
 
-    public ComponentsAdapter(List<RealTimeMonitoringSystem> capacityList, Context context) {
+    public ComponentsAdapter(List<RealTimeMonitoringSystem> capacityList, Context context,String type) {
         this.capacityList = capacityList;
         this.context = context;
+        this.type=type;
     }
 
     @NonNull
@@ -43,7 +46,13 @@ public class ComponentsAdapter extends RecyclerView.Adapter<ComponentsAdapter.My
     @Override
     public void onBindViewHolder(@NonNull final ComponentsAdapter.MyViewHolder holder, final int position) {
 
-        holder.capacityRecylerAdapterBinding.valueTv.setText(capacityList.get(position).getKEY_photographs_name());
+        if(type.equals("SWM")){
+            holder.capacityRecylerAdapterBinding.valueTv.setText(capacityList.get(position).getAsset_type_name());
+        }
+        else {
+            holder.capacityRecylerAdapterBinding.valueTv.setText(capacityList.get(position).getKEY_photographs_name());
+        }
+
 
         if(position==pos){
             holder.capacityRecylerAdapterBinding.cardView.setCardBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
@@ -59,7 +68,12 @@ public class ComponentsAdapter extends RecyclerView.Adapter<ComponentsAdapter.My
             public void onClick(View view) {
                 pos=position;
                 notifyDataSetChanged();
-                ((ViewTakeEditComponentsPhots)context).componentsAdapterItemClicked(pos);
+                if(type.equals("SWM")){
+                    ((SwmDashboard)context).assetsAdapterItemClicked(position);
+                }
+                else {
+                    ((ViewTakeEditComponentsPhots) context).componentsAdapterItemClicked(pos);
+                }
             }
         });
     }

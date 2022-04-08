@@ -37,6 +37,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String COMPOST_TUB_IMAGE_TABLE = "compost_tub_image_table";
     public static final String WASTE_COLLECTED_SAVE_TABLE = "waste_collected_save_table";
 
+    ////SWM TABLES
+    public static final String SWM_MASTER_DETAILS_TABLE = "swm_master_details_table";
+    public static final String SWM_MASTER_DETAILS_SERVER_TABLE = "swm_master_details_server_table";
+    public static final String SWM_ASSET_TYPE = "swm_asset_type";
+    public static final String SWM_ASSET_DETAILS_TABLE = "swm_asset_details_table";
+    public static final String SWM_ASSET_PHOTOS_TABLE = "swm_asset_photos_table";
+    public static final String SWM_WASTE_DUMP_PHOTOS_DETAILS = "swm_waste_dump_photos_details";
+
     ////**************///////
 
     private Context context;
@@ -89,6 +97,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + SWM_WATER_SUPPLY_AVAILABILITY_LIST + " ("
                 + "id INTEGER," +
                 "water_supply_availability_name TEXT)");
+
+        db.execSQL("CREATE TABLE " + SWM_ASSET_TYPE + " ("
+                + "swm_asset_type_id INTEGER," +
+                "asset_type_name TEXT," +
+                "no_of_photos TEXT," +
+                "is_this_others TEXT)");
 
         db.execSQL("CREATE TABLE " + BASIC_DETAILS_OF_MCC_SAVE + " ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
@@ -322,6 +336,71 @@ public class DBHelper extends SQLiteOpenHelper {
                 "individual_community TEXT," +
                 "length_channel TEXT)");
 
+
+        ///new Need SWM Tables
+        db.execSQL("CREATE TABLE " + SWM_MASTER_DETAILS_TABLE + " ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "swm_infra_details_id TEXT,"+
+                "dcode TEXT," +
+                "bcode TEXT," +
+                "pvcode TEXT," +
+                "pvname TEXT," +
+                "no_of_thooimai_kaavalars_allocated TEXT," +
+                "no_of_thooimai_kaavalars_working TEXT,"+
+                "whether_community_compost_pit_available_in_panchayat TEXT,"+
+                "whether_vermi_compost_pit_available_in_panchayat TEXT,"+
+                "any_integrated_nuesery_devlp_near_swm_facility TEXT)");
+
+        db.execSQL("CREATE TABLE " + SWM_MASTER_DETAILS_SERVER_TABLE + " ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "swm_infra_details_id TEXT,"+
+                "dcode TEXT," +
+                "bcode TEXT," +
+                "pvcode TEXT," +
+                "pvname TEXT," +
+                "no_of_thooimai_kaavalars_allocated TEXT," +
+                "no_of_thooimai_kaavalars_working TEXT,"+
+                "whether_community_compost_pit_available_in_panchayat TEXT,"+
+                "whether_vermi_compost_pit_available_in_panchayat TEXT,"+
+                "is_there_any_waste_dump TEXT,"+
+                "any_integrated_nuesery_devlp_near_swm_facility TEXT)");
+
+        db.execSQL("CREATE TABLE " + SWM_ASSET_DETAILS_TABLE + " ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "swm_infra_details_id TEXT,"+
+                "dcode TEXT," +
+                "bcode TEXT," +
+                "pvcode TEXT," +
+                "pvname TEXT," +
+                "others_name TEXT," +
+                "swm_asset_type_id TEXT," +
+                "asset_type_name TEXT," +
+                "is_functional TEXT)");
+
+        db.execSQL("CREATE TABLE " + SWM_ASSET_PHOTOS_TABLE + " ("
+                + "id INTEGER ,"+
+                "swm_infra_details_id TEXT,"+
+                "swm_asset_type_id TEXT," +
+                "dcode TEXT," +
+                "bcode TEXT," +
+                "pvcode TEXT," +
+                "pvname TEXT," +
+                "lattitude TEXT," +
+                "longtitude TEXT," +
+                "image BLOB)");
+
+        db.execSQL("CREATE TABLE " + SWM_WASTE_DUMP_PHOTOS_DETAILS + " ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "swm_infra_details_id TEXT,"+
+                "dcode TEXT," +
+                "bcode TEXT," +
+                "pvcode TEXT," +
+                "is_there_any_waste_dump TEXT," +
+                "lattitude TEXT," +
+                "longtitude TEXT," +
+                "image BLOB)");
+
+
     }
 
     @Override
@@ -347,6 +426,14 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + THOOIMAI_KAAVALARS_DETAIL_OF_MCC_SAVE_LOCAL);
             db.execSQL("DROP TABLE IF EXISTS " + COMPOST_TUB_IMAGE_TABLE);
             db.execSQL("DROP TABLE IF EXISTS " + WASTE_COLLECTED_SAVE_TABLE);
+
+            ///new SWM Tables
+            db.execSQL("DROP TABLE IF EXISTS " + SWM_MASTER_DETAILS_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + SWM_MASTER_DETAILS_SERVER_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + SWM_ASSET_TYPE);
+            db.execSQL("DROP TABLE IF EXISTS " + SWM_ASSET_DETAILS_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + SWM_ASSET_PHOTOS_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + SWM_WASTE_DUMP_PHOTOS_DETAILS);
 
             onCreate(db);
         }

@@ -20,6 +20,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.android.volley.VolleyError;
 import com.nic.thooimaikaavalar.R;
+import com.nic.thooimaikaavalar.activity.SWMActivity.MasterFormSwmEntry;
 import com.nic.thooimaikaavalar.api.Api;
 import com.nic.thooimaikaavalar.api.ApiService;
 import com.nic.thooimaikaavalar.api.ServerResponse;
@@ -121,6 +122,8 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         get_swm_no_of_thooimai_kaavalars();
         get_swm_photographs_of_mcc_components();
         get_swm_water_supply_availability();
+        get_swm_asset_type();
+        get_no_of_waste_dump_photos();
 
     }
 
@@ -145,31 +148,24 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         ArrayList<RealTimeMonitoringSystem> getTooimaiKaavalrCount =  dbData.getAllThooimaikaavalarListLocalAll();
         ArrayList<RealTimeMonitoringSystem> getComponentImageCount =  dbData.getAllComponentsPendingScreen();
         ArrayList<RealTimeMonitoringSystem> getWasteCollectedDetailsCount =  dbData.getParticularWasteCollectedSaveTableRow("","All");
+        ArrayList<RealTimeMonitoringSystem> getSwmMasterDetailsCount =  dbData.getAllSWMMasterDetails();
+        int gettableCountAssetDetailsTable =  dbData.gettableCountAssetDetailsTable();
+        int gettableCountWasteDumpTable =  dbData.gettableCountWasteDumpTable();
 
-/*        if (workImageCount.size() > 0 || workCapacityCount.size() > 0) {
-            homeScreenBinding.sync.setVisibility(View.VISIBLE);
-            try {
-                homeScreenBinding.pendingCount.setText(String.valueOf(workImageCount.size()+workCapacityCount.size()));
-            }catch (Exception e){
-                e.printStackTrace();
-            }
 
-        }else {
-            homeScreenBinding.sync.setVisibility(View.GONE);
-            homeScreenBinding.pendingCount.setText("NIL");
-        }*/
-
-        if(getAllBasicDetails.size()>0||getTooimaiKaavalrCount.size()>0||getComponentImageCount.size()>0|| getWasteCollectedDetailsCount.size()>0){
+        if(getAllBasicDetails.size()>0||getTooimaiKaavalrCount.size()>0||getComponentImageCount.size()>0|| getWasteCollectedDetailsCount.size()>0
+        || getSwmMasterDetailsCount.size()>0|| gettableCountAssetDetailsTable > 0||gettableCountWasteDumpTable>0){
             homeScreenBinding.sync.setVisibility(View.VISIBLE);
             homeScreenBinding.syncCountLayout.setVisibility(View.VISIBLE);
 
             homeScreenBinding.sync1.setVisibility(View.VISIBLE);
 
-
-
             try {
-                homeScreenBinding.pendingCount.setText(String.valueOf(getAllBasicDetails.size()+getTooimaiKaavalrCount.size()+getComponentImageCount.size()+getWasteCollectedDetailsCount.size()));
-            }catch (Exception e){
+                int count = getAllBasicDetails.size()+getTooimaiKaavalrCount.size()+getComponentImageCount.size()+getWasteCollectedDetailsCount.size()+
+                        getSwmMasterDetailsCount.size()+gettableCountAssetDetailsTable;
+                homeScreenBinding.pendingCount.setText("true");
+            }
+            catch (Exception e){
                 e.printStackTrace();
             }
 
@@ -251,6 +247,20 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             e.printStackTrace();
         }
     }
+    public void get_swm_asset_type() {
+        try {
+            new ApiService(this).makeJSONObjectRequest("swm_asset_type", Api.Method.POST, UrlGenerator.getWorkListUrl(), swm_asset_typeParams(), "not cache", this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public void get_no_of_waste_dump_photos() {
+        try {
+            new ApiService(this).makeJSONObjectRequest("no_of_waste_dump_photos", Api.Method.POST, UrlGenerator.getWorkListUrl(), no_of_waste_dump_photosParams(), "not cache", this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     public JSONObject villageListJsonParams() throws JSONException {
         String authKey = Utils.encrypt(prefManager.getUserPassKey(), getResources().getString(R.string.init_vector), Utils.villageListDistrictBlockWiseJsonParams(this).toString());
@@ -298,6 +308,22 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
         Log.d("swm_water_supply", "" + authKey);
+        return dataSet;
+    }
+    public JSONObject swm_asset_typeParams() throws JSONException {
+        String authKey = Utils.encrypt(prefManager.getUserPassKey(), getResources().getString(R.string.init_vector), Utils.swm_asset_typeJsonParams(this).toString());
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
+        dataSet.put(AppConstant.DATA_CONTENT, authKey);
+        Log.d("swm_asset_type", "" + authKey);
+        return dataSet;
+    }
+    public JSONObject no_of_waste_dump_photosParams() throws JSONException {
+        String authKey = Utils.encrypt(prefManager.getUserPassKey(), getResources().getString(R.string.init_vector), Utils.no_of_waste_dump_photosJsonParams(this).toString());
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
+        dataSet.put(AppConstant.DATA_CONTENT, authKey);
+        Log.d("no_of_waste_dump_photos", "" + authKey);
         return dataSet;
     }
 
@@ -518,6 +544,24 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
                 }
                 Log.d("swm_water_supply_availability", "" + responseDecryptedBlockKey);
             }
+            if ("swm_asset_type".equals(urlType) && responseObj != null) {
+                String key = responseObj.getString(AppConstant.ENCODE_DATA);
+                String responseDecryptedBlockKey = Utils.decrypt(prefManager.getUserPassKey(), key);
+                JSONObject jsonObject = new JSONObject(responseDecryptedBlockKey);
+                if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
+                    new Insertswm_asset_type().execute(jsonObject);
+                }
+                Log.d("swm_asset_type", "" + responseDecryptedBlockKey);
+            }
+            if ("no_of_waste_dump_photos".equals(urlType) && responseObj != null) {
+                String key = responseObj.getString(AppConstant.ENCODE_DATA);
+                String responseDecryptedBlockKey = Utils.decrypt(prefManager.getUserPassKey(), key);
+                JSONObject jsonObject = new JSONObject(responseDecryptedBlockKey);
+                if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
+                    prefManager.setKEY_no_of_waste_dump_photos(jsonObject.getString("NO_OF_PHOTOS"));
+                }
+                Log.d("no_of_waste_dump_photos", "" + responseDecryptedBlockKey);
+            }
 
 
         } catch (JSONException e) {
@@ -725,6 +769,42 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
 
                             dbData.Insertswm_water_supply_availabilityTask(waterSupplyList);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+
+            }
+            return null;
+        }
+
+    }
+    public class Insertswm_asset_type extends AsyncTask<JSONObject, Void, Void> {
+
+        @Override
+        protected Void doInBackground(JSONObject... params) {
+            dbData.open();
+            ArrayList<RealTimeMonitoringSystem> water_supply_count = dbData.getAll_swm_asset_type();
+            if (water_supply_count.size() <= 0) {
+                if (params.length > 0) {
+                    JSONArray jsonArray = new JSONArray();
+                    try {
+                        jsonArray = params[0].getJSONArray(AppConstant.JSON_DATA);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        RealTimeMonitoringSystem waterSupplyList = new RealTimeMonitoringSystem();
+                        try {
+                            waterSupplyList.setSwm_asset_type_id(jsonArray.getJSONObject(i).getString("swm_asset_type_id"));
+                            waterSupplyList.setAsset_type_name(jsonArray.getJSONObject(i).getString("asset_type_name"));
+                            waterSupplyList.setNo_of_photos(jsonArray.getJSONObject(i).getString("no_of_photos"));
+                            waterSupplyList.setIs_this_others(jsonArray.getJSONObject(i).getString("is_this_others"));
+
+
+                            dbData.Insertswm_asset_type(waterSupplyList);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -957,13 +1037,37 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
     public void viewVillageList() {
         homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
-        Intent intent = new Intent(this, VillageListScreen.class);
+        /*Intent intent = new Intent(this, VillageListScreen.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);*/
+        Intent intent = new Intent(this, NewMainPage.class);
+        intent.putExtra(AppConstant.PV_CODE,prefManager.getPvCode());
+        intent.putExtra("mcc_id","");
+        intent.putExtra("mcc_name","");
+        intent.putExtra("capacity_id","");
+        intent.putExtra("capacity_name","");
+        intent.putExtra("water_supply_availability_id","");
+        intent.putExtra("water_supply_availability_name","");
+        intent.putExtra("water_supply_availability_other","");
+        intent.putExtra("center_image","");
+        intent.putExtra("date_of_commencement","");
+        intent.putExtra("latitude","");
+        intent.putExtra("longtitude","");
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     public void viewMCCBasicDetailsList() {
         homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
         Intent intent = new Intent(this, ViewAndEditMCCDetaila.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
+    public void viewSWMDetailsList() {
+        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
+        Intent intent = new Intent(this,NewDashborad.class);
+        intent.putExtra("Layout","SWM");
+        intent.putExtra("village_name",prefManager.getKeyPvNameTa());
+        intent.putExtra("pvcode",prefManager.getPvCode());
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
@@ -1014,12 +1118,15 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         ArrayList<RealTimeMonitoringSystem> getTooimaiKaavalrCount =  dbData.getAllThooimaikaavalarListLocalAll();
         ArrayList<RealTimeMonitoringSystem> getComponentImageCount =  dbData.getAllComponentsPendingScreen();
         ArrayList<RealTimeMonitoringSystem> getWasteCollectedCount =  dbData.getParticularWasteCollectedSaveTableRow("","All");
-
+        ArrayList<RealTimeMonitoringSystem> getSwmMasterDetailsCount =  dbData.getAllSWMMasterDetails();
+        int gettableCountAssetDetailsTable =  dbData.gettableCountAssetDetailsTable();
+        int gettableCountWasteDumpTable =  dbData.gettableCountWasteDumpTable();
         ArrayList<RealTimeMonitoringSystem> activityCount = dbData.getSavedWorkImage("","","","","");
         if (!Utils.isOnline()) {
             Utils.showAlert(this, getResources().getString(R.string.logging_out_loss_data));
         } else {
-            if (!(getAllBasicDetails.size() > 0 || getTooimaiKaavalrCount.size()>0 || getComponentImageCount.size()>0 || getWasteCollectedCount.size()>0)) {
+            if (!(getAllBasicDetails.size() > 0 || getTooimaiKaavalrCount.size()>0 || getComponentImageCount.size()>0 || getWasteCollectedCount.size()>0
+            || getSwmMasterDetailsCount.size()>0 || gettableCountAssetDetailsTable>0||gettableCountWasteDumpTable>0)) {
                 closeApplication();
             }else{
                 Utils.showAlert(this,getResources().getString(R.string.sync_all_the_data_before_logout));

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_centerInParent="true"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:clipToPadding="false"
+        app:cardElevation="@dimen/_6sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/pmay_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:background="@drawable/assets_count_name_text_bg">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@+id/close_icon"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_11sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:id="@+id/asset_count_name"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/close_icon"
+                        android:contentDescription="@string/close_icon"
+                        android:src="@mipmap/close_icon"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:id="@+id/others_name_layout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/please_specify_asset_name"
+                        android:textSize="@dimen/_11sdp"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:textAlignment="center"
+                        android:id="@+id/others_tv"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/header"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_below="@+id/others_tv"
+                    android:background="@drawable/rectangle_box">
+                    <EditText
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/full_transparent"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        android:inputType="text"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:textAlignment="center"
+                        android:id="@+id/others_name"/>
+                </RelativeLayout>
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/type_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:id="@+id/is_functional_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="@string/is_functional"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_12sdp"
+                        style="@string/font_circular_bold" />
+                    <RelativeLayout
+                        android:id="@+id/compost_pit_available_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="@dimen/header"
+                        android:layout_marginTop="@dimen/padding"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:id="@+id/compost_pit_available_radio_group"
+                            android:orientation="horizontal">
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/functional_yes"
+                                android:text="@string/yes"/>
+                            <RadioButton
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/functional_no"
+                                android:text="@string/no"/>
+                        </RadioGroup>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/submit_btn_layout"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/new_bg_log_in_btn_purple"
+                    android:text="@string/submit"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                    android:layout_marginStart="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:layout_gravity="clip_horizontal"/>
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:id="@+id/capture_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:background="@drawable/add_asset_dialog_camera_bg"
+                        android:layout_marginTop="50dp"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/camera_activity"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        >
+
+
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="15dp"
+                        android:id="@+id/img"
+                        android:layout_marginTop="25dp"
+                        android:src="@drawable/camera_icon"
+                        android:background="@drawable/circle_drawable_grey"/>
+
+                    <TextView
+                        android:id="@+id/takePhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_below="@+id/img"
+                        android:text="@string/capture_photo"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="@dimen/_11sdp"
+                        />
+
+
+                </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

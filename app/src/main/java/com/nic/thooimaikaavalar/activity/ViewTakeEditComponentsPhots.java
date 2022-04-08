@@ -95,7 +95,7 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
     public com.nic.thooimaikaavalar.dataBase.dbData dbData = new dbData(this);
     private PrefManager prefManager;
     private SQLiteDatabase db;
-    public static DBHelper dbHelper;
+    public  DBHelper dbHelper;
 
     ImageView imageView, image_view_preview;
     TextView latitude_text, longtitude_text;
@@ -228,6 +228,7 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
         else {
             Intent intent = new Intent(this, FullImageActivity.class);
             intent.putExtra("OnOffType","Online");
+            intent.putExtra("Activity","");
             intent.putExtra("mcc_id",mcc_id_);
             intent.putExtra("work_id","");
             intent.putExtra("component_id",component_id_);
@@ -266,7 +267,7 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
             componentsList = new ArrayList<>();
             componentsList.addAll(capacityList);
 
-            componentsAdapter = new ComponentsAdapter(capacityList,ViewTakeEditComponentsPhots.this);
+            componentsAdapter = new ComponentsAdapter(capacityList,ViewTakeEditComponentsPhots.this,"MCC");
             recyclerView.setAdapter(componentsAdapter);
             recyclerView.showShimmerAdapter();
             recyclerView.postDelayed(new Runnable() {
