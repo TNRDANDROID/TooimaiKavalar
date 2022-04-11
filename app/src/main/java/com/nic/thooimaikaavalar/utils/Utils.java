@@ -1290,6 +1290,13 @@ public class Utils {
         Log.d("no_of_waste_dump_photos", "" + dataSet);
         return dataSet;
     }
+    public static JSONObject carried_out_date_listParams(Activity activity) throws JSONException {
+        prefManager = new PrefManager(activity);
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_SERVICE_ID, AppConstant.carried_out_date_list);
+        Log.d("carried_out_date_listParams", "" + dataSet);
+        return dataSet;
+    }
 
 
 

@@ -48,7 +48,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.SWMActivity.Add_ViewWasteDumpDetails"></activity>
+        <activity android:name=".activity.SWMActivity.AddCarriedOutsScreen"></activity>
+        <activity android:name=".activity.SWMActivity.Add_ViewWasteDumpDetails" />
         <activity android:name=".activity.SWMActivity.SwmAddAssetDetails" />
         <activity android:name=".activity.SWMActivity.SwmDashboard" />
         <activity android:name=".activity.SWMActivity.SwmMasterDetailsView" />

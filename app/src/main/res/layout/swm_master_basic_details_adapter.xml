@@ -170,6 +170,25 @@
                     android:textSize="@dimen/_11sdp"
                     android:text="@string/add_view_waste_dump_details"/>
                 </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/white"
+                    android:layout_below="@+id/waste_dump_layout"
+                    android:id="@+id/view_2"/>
+                <RelativeLayout
+                    android:layout_below="@+id/view_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/carried_out_layout">
+                    <TextView
+                        android:padding="@dimen/_11sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="@dimen/_11sdp"
+                        android:text="Activity Carried Out"/>
+                </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>
 

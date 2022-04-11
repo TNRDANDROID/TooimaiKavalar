@@ -431,6 +431,15 @@ public class RealTimeMonitoringSystem {
     public  String is_there_any_waste_dump;
     public  String swm_waste_dump_photos_id;
     public  String is_photo_of_waste_dump;
+    public  String carried_out_date;
+
+    public String getCarried_out_date() {
+        return carried_out_date;
+    }
+
+    public void setCarried_out_date(String carried_out_date) {
+        this.carried_out_date = carried_out_date;
+    }
 
     public String getSwm_waste_dump_photos_id() {
         return swm_waste_dump_photos_id;

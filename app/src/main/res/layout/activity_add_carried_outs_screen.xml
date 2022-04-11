@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.nic.thooimaikaavalar.activity.SWMActivity.AddCarriedOutsScreen" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_icon_new_1"
+        tools:context=".activity.NewMainPage">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#66B8B4B4">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:id="@+id/toolbar"
+                android:background="@color/colorPrimaryDark">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/back_img"
+                    android:src="@mipmap/back_arrow"
+                    android:tint="@color/white"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/back_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/title"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:text="@string/swm_details_entry"
+                    android:fontFamily="@string/font_regular"
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar">
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/toolbar">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:ignore="UselessParent">
+
+                        <TextView
+                            android:id="@+id/please_choose_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding"
+                            android:text="Choose Date"
+                            android:fontFamily="@string/font_regular"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            />
+
+                        <RelativeLayout
+                            android:id="@+id/choose_date_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/header"
+                            android:layout_marginTop="@dimen/padding"
+                            android:background="@drawable/rectangle_box"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginStart="15dp"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="visible"
+                                android:fontFamily="@string/font_regular"
+                                tools:ignore="RelativeOverlap" />
+
+                            <Spinner
+                                android:id="@+id/choose_date_spinner"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:gravity="center" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/please_total_quantity_of_waste"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding"
+                            android:text="Total Quantity Of Waste Collected in the Panchayat (in Kg)"
+                            android:fontFamily="@string/font_regular"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            />
+                        <RelativeLayout
+                            android:id="@+id/total_quantity_of_waste_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/header"
+                            android:layout_marginTop="@dimen/padding"
+                            android:background="@drawable/rectangle_box"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_5sdp"
+                                android:id="@+id/garbage_icon"
+                                android:src="@drawable/ic_garbage"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:contentDescription="garbage_icon" />
+
+                            <EditText
+                                android:layout_toEndOf="@+id/garbage_icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:inputType="numberDecimal"
+                                android:id="@+id/total_quantity_of_waste"
+                                android:fontFamily="@string/font_regular"
+                                android:background="@color/full_transparent"
+                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="visible"
+                                style="@string/font_normal"
+                                android:importantForAutofill="no" />
+
+
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:id="@+id/please_quantity_of_bio_degradable_waste"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/padding"
+                            android:text="Quantity Of the Bio Degradable Waste Collected (in Kg)"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:fontFamily="@string/font_regular"/>
+                        <RelativeLayout
+                            android:id="@+id/quantity_of_bio_degradable_waste_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/header"
+                            android:layout_marginTop="@dimen/padding"
+                            android:background="@drawable/rectangle_box"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_5sdp"
+                                android:id="@+id/quantity_of_bio_degradable_waste_icon"
+                                android:src="@drawable/ic_boi_degradable_waste"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:contentDescription="@string/specify_icon" />
+
+
+                            <EditText
+                                android:layout_toEndOf="@+id/quantity_of_bio_degradable_waste_icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:inputType="numberDecimal"
+                                android:id="@+id/quantity_of_bio_degradable_waste"
+                                android:fontFamily="@string/font_regular"
+                                android:background="@color/full_transparent"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="visible"
+                                style="@string/font_normal"
+                                android:importantForAutofill="no" />
+
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/please_total_quantity_of_compost_generated"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="Total Quantity of Compost Generated from the Community Compost Pit (in Kg)"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:fontFamily="@string/font_regular"/>
+                        <RelativeLayout
+                            android:id="@+id/total_quantity_of_compost_generated_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/header"
+                            android:layout_marginTop="@dimen/padding"
+                            android:background="@drawable/rectangle_box"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_5sdp"
+                                android:id="@+id/total_quantity_of_compost_generated_icon"
+                                android:src="@drawable/ic_compost_generated"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:contentDescription="garbage_icon" />
+
+                            <EditText
+                                android:layout_toEndOf="@+id/total_quantity_of_compost_generated_icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:inputType="numberDecimal"
+                                android:id="@+id/total_quantity_of_compost_generated_from_community"
+                                android:fontFamily="@string/font_regular"
+                                android:background="@color/full_transparent"
+                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="visible"
+                                style="@string/font_normal"
+                                android:importantForAutofill="no" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/please_total_quantity_of_compost_generated_from_vermi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="Total Quantity of Compost Generated from the VermiComposting Compost Pit (in Kg)"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:fontFamily="@string/font_regular"/>
+                        <RelativeLayout
+                            android:id="@+id/total_quantity_of_compost_generated_from_vermi_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/header"
+                            android:layout_marginTop="@dimen/padding"
+                            android:background="@drawable/rectangle_box"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_5sdp"
+                                android:id="@+id/total_quantity_of_compost_generated_from_vermi_icon"
+                                android:src="@drawable/ic_compost_generated"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:contentDescription="garbage_icon" />
+
+                            <EditText
+                                android:layout_toEndOf="@+id/total_quantity_of_compost_generated_from_vermi_icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:inputType="numberDecimal"
+                                android:id="@+id/total_quantity_of_compost_generated_from_vermi"
+                                android:fontFamily="@string/font_regular"
+                                android:background="@color/full_transparent"
+                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="visible"
+                                style="@string/font_normal"
+                                android:importantForAutofill="no" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rect_angle_stroke_bg"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            >
+                            <TextView
+                                android:id="@+id/please_sale_of_compost"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:textAlignment="center"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="Sale of Compost"
+                                android:textColor="@color/darkblue"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/font_regular"/>
+
+                            <TextView
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/please_quantity_of_compost_sold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="Quantity of Compost Sold (in Kg)"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/font_regular"/>
+                            <RelativeLayout
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/quantity_of_compost_sold_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/header"
+                                android:layout_marginTop="@dimen/padding"
+                                android:background="@drawable/rectangle_box"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5sdp"
+                                    android:id="@+id/quantity_of_compost_sold_icon"
+                                    android:src="@drawable/ic_compost_generated"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:contentDescription="garbage_icon" />
+
+                                <EditText
+                                    android:layout_toEndOf="@+id/quantity_of_compost_sold_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:inputType="numberDecimal"
+                                    android:id="@+id/quantity_of_compost_sold"
+                                    android:fontFamily="@string/font_regular"
+                                    android:background="@color/full_transparent"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:visibility="visible"
+                                    style="@string/font_normal"
+                                    android:importantForAutofill="no" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/please_total_revenue_generated"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="Total Revenue Generated (in Lakhs)"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/font_regular"/>
+                            <RelativeLayout
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:id="@+id/total_revenue_generated_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/header"
+                                android:layout_marginTop="@dimen/padding"
+                                android:background="@drawable/rectangle_box"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5sdp"
+                                    android:id="@+id/total_revenue_generated_icon"
+                                    android:src="@drawable/ic_compost_generated"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:contentDescription="garbage_icon" />
+
+                                <EditText
+                                    android:layout_toEndOf="@+id/total_revenue_generated_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:inputType="numberDecimal"
+                                    android:id="@+id/total_revenue_generated"
+                                    android:fontFamily="@string/font_regular"
+                                    android:background="@color/full_transparent"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:visibility="visible"
+                                    style="@string/font_normal"
+                                    android:importantForAutofill="no" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="@dimen/_10sdp">
+
+                            <TextView
+                                android:id="@+id/waste_dump_photos_list"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="Waste Dump Photos List"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/font_regular"/>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/waste_dump_recycler"
+                                android:layout_marginTop="@dimen/_10sdp"/>
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="@dimen/_30sdp"
+                            android:layout_marginRight="@dimen/_30sdp"
+                            android:background="@drawable/new_bg_log_in_btn_purple"
+                            android:layout_marginBottom="@dimen/_15sdp">
+
+                            <Button
+                                android:id="@+id/save"
+                                android:layout_centerHorizontal="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/save"
+                                android:fontFamily="@string/font_regular"
+                                android:background="@color/full_transparent"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white">
+
+                            </Button>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

@@ -165,6 +165,7 @@ public class AppConstant {
     public static String KEY_swm_asset_type = "swm_asset_type";
     public static String KEY_details_of_swm_infra_assets_view = "details_of_swm_infra_assets_view";
     public static String no_of_waste_dump_photos = "no_of_waste_dump_photos";
+    public static String carried_out_date_list = "carried_out_date_list";
 
 
     ///////////////// Response Key

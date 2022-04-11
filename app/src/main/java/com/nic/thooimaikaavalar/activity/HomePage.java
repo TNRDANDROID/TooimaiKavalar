@@ -124,6 +124,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         get_swm_water_supply_availability();
         get_swm_asset_type();
         get_no_of_waste_dump_photos();
+        get_carried_out_date_list();
 
     }
 
@@ -261,6 +262,13 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             e.printStackTrace();
         }
     }
+    public void get_carried_out_date_list() {
+        try {
+            new ApiService(this).makeJSONObjectRequest("carried_out_date_listParams", Api.Method.POST, UrlGenerator.getWorkListUrl(), carried_out_date_listParams(), "not cache", this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     public JSONObject villageListJsonParams() throws JSONException {
         String authKey = Utils.encrypt(prefManager.getUserPassKey(), getResources().getString(R.string.init_vector), Utils.villageListDistrictBlockWiseJsonParams(this).toString());
@@ -324,6 +332,14 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
         Log.d("no_of_waste_dump_photos", "" + authKey);
+        return dataSet;
+    }
+    public JSONObject carried_out_date_listParams() throws JSONException {
+        String authKey = Utils.encrypt(prefManager.getUserPassKey(), getResources().getString(R.string.init_vector), Utils.carried_out_date_listParams(this).toString());
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
+        dataSet.put(AppConstant.DATA_CONTENT, authKey);
+        Log.d("carried_out_date_listParams", "" + authKey);
         return dataSet;
     }
 
@@ -561,6 +577,15 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
                     prefManager.setKEY_no_of_waste_dump_photos(jsonObject.getString("NO_OF_PHOTOS"));
                 }
                 Log.d("no_of_waste_dump_photos", "" + responseDecryptedBlockKey);
+            }
+            if ("carried_out_date_listParams".equals(urlType) && responseObj != null) {
+                String key = responseObj.getString(AppConstant.ENCODE_DATA);
+                String responseDecryptedBlockKey = Utils.decrypt(prefManager.getUserPassKey(), key);
+                JSONObject jsonObject = new JSONObject(responseDecryptedBlockKey);
+                if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
+                    prefManager.set_carried_out_date_listJson(jsonObject.getJSONArray("DATE_LIST"));
+                }
+                Log.d("carried_out_date_listParams", "" + responseDecryptedBlockKey);
             }
 
 

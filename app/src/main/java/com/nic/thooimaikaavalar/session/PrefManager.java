@@ -65,6 +65,7 @@ public class PrefManager {
     private static final String DELETE_ADAPTER_POSITION = "delete_adapter_position";
     private static final String KEY_HAB_CODE = "Hab_Code";
     private static final String KEY_no_of_waste_dump_photos = "no_of_waste_dump_photos";
+    private static final String KEY_carried_out_date_list = "carried_out_date_list";
 
 
     public PrefManager(Context context) {
@@ -388,6 +389,29 @@ public class PrefManager {
 
         }
         Log.d("prefBlockJson",""+jsonData);
+        return jsonData;
+    }
+
+    public void set_carried_out_date_listJson(JSONArray jsonarray) {
+        editor.putString(KEY_carried_out_date_list, jsonarray.toString());
+        editor.commit();
+    }
+
+    private String get_carried_out_date_listJsonList() {
+        return pref.getString(KEY_carried_out_date_list, null);
+    }
+
+    public JSONArray get_carried_out_date_listJson() {
+        JSONArray jsonData = null;
+        String strJson = get_carried_out_date_listJsonList();//second parameter is necessary ie.,Value to return if this preference does not exist.
+        try {
+            if (strJson != null) {
+                jsonData = new JSONArray(strJson);
+            }
+        } catch (Exception e) {
+
+        }
+        Log.d("carried_out_date",""+jsonData);
         return jsonData;
     }
 

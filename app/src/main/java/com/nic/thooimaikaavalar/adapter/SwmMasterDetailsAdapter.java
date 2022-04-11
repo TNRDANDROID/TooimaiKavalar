@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.activity.NewPendingScreenActivity;
+import com.nic.thooimaikaavalar.activity.SWMActivity.AddCarriedOutsScreen;
 import com.nic.thooimaikaavalar.activity.SWMActivity.Add_ViewWasteDumpDetails;
 import com.nic.thooimaikaavalar.activity.SWMActivity.SwmDashboard;
 import com.nic.thooimaikaavalar.constant.AppConstant;
@@ -127,6 +128,12 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
                 gotoWasteDumb(position);
             }
         });
+        holder.swmMasterBasicDetailsAdapterBinding.carriedOutLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoCarriedOut(position);
+            }
+        });
     }
 
     @Override
@@ -157,6 +164,17 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
     }
     public void gotoWasteDumb(int pos){
         Intent intent = new Intent(context, Add_ViewWasteDumpDetails.class);
+        intent.putExtra("swm_infra_details_id",basicDetailsList.get(pos).getSwm_infra_details_id());
+        intent.putExtra("no_of_thooimai_kaavalars_allocated",basicDetailsList.get(pos).getNo_of_thooimai_kaavalars_allocated());
+        intent.putExtra("no_of_thooimai_kaavalars_working",basicDetailsList.get(pos).getNo_of_thooimai_kaavalars_working());
+        intent.putExtra("whether_community_compost_pit_available_in_panchayat",basicDetailsList.get(pos).getWhether_community_compost_pit_available_in_panchayat());
+        intent.putExtra("whether_vermi_compost_pit_available_in_panchayat",basicDetailsList.get(pos).getWhether_vermi_compost_pit_available_in_panchayat());
+        intent.putExtra("any_integrated_nuesery_devlp_near_swm_facility",basicDetailsList.get(pos).getAny_integrated_nuesery_devlp_near_swm_facility());
+        context.startActivity(intent);
+
+    }
+    public void gotoCarriedOut(int pos){
+        Intent intent = new Intent(context, AddCarriedOutsScreen.class);
         intent.putExtra("swm_infra_details_id",basicDetailsList.get(pos).getSwm_infra_details_id());
         intent.putExtra("no_of_thooimai_kaavalars_allocated",basicDetailsList.get(pos).getNo_of_thooimai_kaavalars_allocated());
         intent.putExtra("no_of_thooimai_kaavalars_working",basicDetailsList.get(pos).getNo_of_thooimai_kaavalars_working());
