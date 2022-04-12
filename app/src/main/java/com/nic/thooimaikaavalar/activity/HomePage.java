@@ -152,10 +152,11 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         ArrayList<RealTimeMonitoringSystem> getSwmMasterDetailsCount =  dbData.getAllSWMMasterDetails();
         int gettableCountAssetDetailsTable =  dbData.gettableCountAssetDetailsTable();
         int gettableCountWasteDumpTable =  dbData.gettableCountWasteDumpTable();
+        int gettableCountCarriedOutTable =  dbData.gettableCountCarriedOutTable("All","");
 
 
         if(getAllBasicDetails.size()>0||getTooimaiKaavalrCount.size()>0||getComponentImageCount.size()>0|| getWasteCollectedDetailsCount.size()>0
-        || getSwmMasterDetailsCount.size()>0|| gettableCountAssetDetailsTable > 0||gettableCountWasteDumpTable>0){
+        || getSwmMasterDetailsCount.size()>0|| gettableCountAssetDetailsTable > 0||gettableCountWasteDumpTable>0||gettableCountCarriedOutTable>0){
             homeScreenBinding.sync.setVisibility(View.VISIBLE);
             homeScreenBinding.syncCountLayout.setVisibility(View.VISIBLE);
 
@@ -1146,12 +1147,13 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         ArrayList<RealTimeMonitoringSystem> getSwmMasterDetailsCount =  dbData.getAllSWMMasterDetails();
         int gettableCountAssetDetailsTable =  dbData.gettableCountAssetDetailsTable();
         int gettableCountWasteDumpTable =  dbData.gettableCountWasteDumpTable();
+        int gettableCountCarriedOutTable =  dbData.gettableCountCarriedOutTable("","");
         ArrayList<RealTimeMonitoringSystem> activityCount = dbData.getSavedWorkImage("","","","","");
         if (!Utils.isOnline()) {
             Utils.showAlert(this, getResources().getString(R.string.logging_out_loss_data));
         } else {
             if (!(getAllBasicDetails.size() > 0 || getTooimaiKaavalrCount.size()>0 || getComponentImageCount.size()>0 || getWasteCollectedCount.size()>0
-            || getSwmMasterDetailsCount.size()>0 || gettableCountAssetDetailsTable>0||gettableCountWasteDumpTable>0)) {
+            || getSwmMasterDetailsCount.size()>0 || gettableCountAssetDetailsTable>0||gettableCountWasteDumpTable>0||gettableCountCarriedOutTable>0)) {
                 closeApplication();
             }else{
                 Utils.showAlert(this,getResources().getString(R.string.sync_all_the_data_before_logout));

@@ -15,5 +15,8 @@
     <item android:id="@+id/waste_dump_details"
         android:title="Waste Dump Details"
     />
+    <item android:id="@+id/carried_out_details"
+        android:title="Carried Out Details"
+    />
 
 </menu>

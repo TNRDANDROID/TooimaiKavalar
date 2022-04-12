@@ -432,6 +432,114 @@ public class RealTimeMonitoringSystem {
     public  String swm_waste_dump_photos_id;
     public  String is_photo_of_waste_dump;
     public  String carried_out_date;
+    public  Bitmap before_taken_image;
+    public  Bitmap after_taken_image;
+    public  String is_photo_of_waste_dump_after_action;
+    public  String after_taken_image_lat;
+    public  String after_taken_image_long;
+    public  String total_quantity_of_waste;
+    public  String quantity_of_bio_degradable_waste;
+    public  String total_quantity_of_compost_generated_from_community;
+    public  String total_quantity_of_compost_generated_from_vermi;
+    public  String quantity_of_compost_sold;
+    public  String total_revenue_generated;
+    public  String date_entry_for;
+
+    public String getDate_entry_for() {
+        return date_entry_for;
+    }
+
+    public void setDate_entry_for(String date_entry_for) {
+        this.date_entry_for = date_entry_for;
+    }
+
+    public String getTotal_quantity_of_waste() {
+        return total_quantity_of_waste;
+    }
+
+    public void setTotal_quantity_of_waste(String total_quantity_of_waste) {
+        this.total_quantity_of_waste = total_quantity_of_waste;
+    }
+
+    public String getQuantity_of_bio_degradable_waste() {
+        return quantity_of_bio_degradable_waste;
+    }
+
+    public void setQuantity_of_bio_degradable_waste(String quantity_of_bio_degradable_waste) {
+        this.quantity_of_bio_degradable_waste = quantity_of_bio_degradable_waste;
+    }
+
+    public String getTotal_quantity_of_compost_generated_from_community() {
+        return total_quantity_of_compost_generated_from_community;
+    }
+
+    public void setTotal_quantity_of_compost_generated_from_community(String total_quantity_of_compost_generated_from_community) {
+        this.total_quantity_of_compost_generated_from_community = total_quantity_of_compost_generated_from_community;
+    }
+
+    public String getTotal_quantity_of_compost_generated_from_vermi() {
+        return total_quantity_of_compost_generated_from_vermi;
+    }
+
+    public void setTotal_quantity_of_compost_generated_from_vermi(String total_quantity_of_compost_generated_from_vermi) {
+        this.total_quantity_of_compost_generated_from_vermi = total_quantity_of_compost_generated_from_vermi;
+    }
+
+    public String getQuantity_of_compost_sold() {
+        return quantity_of_compost_sold;
+    }
+
+    public void setQuantity_of_compost_sold(String quantity_of_compost_sold) {
+        this.quantity_of_compost_sold = quantity_of_compost_sold;
+    }
+
+    public String getTotal_revenue_generated() {
+        return total_revenue_generated;
+    }
+
+    public void setTotal_revenue_generated(String total_revenue_generated) {
+        this.total_revenue_generated = total_revenue_generated;
+    }
+
+    public String getAfter_taken_image_lat() {
+        return after_taken_image_lat;
+    }
+
+    public void setAfter_taken_image_lat(String after_taken_image_lat) {
+        this.after_taken_image_lat = after_taken_image_lat;
+    }
+
+    public String getAfter_taken_image_long() {
+        return after_taken_image_long;
+    }
+
+    public void setAfter_taken_image_long(String after_taken_image_long) {
+        this.after_taken_image_long = after_taken_image_long;
+    }
+
+    public String getIs_photo_of_waste_dump_after_action() {
+        return is_photo_of_waste_dump_after_action;
+    }
+
+    public void setIs_photo_of_waste_dump_after_action(String is_photo_of_waste_dump_after_action) {
+        this.is_photo_of_waste_dump_after_action = is_photo_of_waste_dump_after_action;
+    }
+
+    public Bitmap getBefore_taken_image() {
+        return before_taken_image;
+    }
+
+    public void setBefore_taken_image(Bitmap before_taken_image) {
+        this.before_taken_image = before_taken_image;
+    }
+
+    public Bitmap getAfter_taken_image() {
+        return after_taken_image;
+    }
+
+    public void setAfter_taken_image(Bitmap after_taken_image) {
+        this.after_taken_image = after_taken_image;
+    }
 
     public String getCarried_out_date() {
         return carried_out_date;

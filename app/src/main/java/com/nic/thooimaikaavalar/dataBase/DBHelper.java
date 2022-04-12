@@ -44,6 +44,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String SWM_ASSET_DETAILS_TABLE = "swm_asset_details_table";
     public static final String SWM_ASSET_PHOTOS_TABLE = "swm_asset_photos_table";
     public static final String SWM_WASTE_DUMP_PHOTOS_DETAILS = "swm_waste_dump_photos_details";
+    public static final String SWM_CARRIED_OUT_DETAILS = "swm_carried_out_details";
+    public static final String SWM_CARRIED_OUT_PHOTOS_DETAILS = "swm_carried_out_photos_details";
 
     ////**************///////
 
@@ -400,6 +402,31 @@ public class DBHelper extends SQLiteOpenHelper {
                 "longtitude TEXT," +
                 "image BLOB)");
 
+        db.execSQL("CREATE TABLE " + SWM_CARRIED_OUT_DETAILS + " ("
+                + "carried_out_details_id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "swm_infra_details_id TEXT,"+
+                "dcode TEXT," +
+                "bcode TEXT," +
+                "pvcode TEXT," +
+                "date_entry_for TEXT," +
+                "total_quantity_of_waste TEXT," +
+                "quantity_of_bio_degradable_waste TEXT," +
+                "total_quantity_of_compost_generated_from_community TEXT," +
+                "total_quantity_of_compost_generated_from_vermi TEXT," +
+                "quantity_of_compost_sold TEXT," +
+                "total_revenue_generated TEXT)");
+        db.execSQL("CREATE TABLE " + SWM_CARRIED_OUT_PHOTOS_DETAILS + " ("
+                + "carried_out_details_id INTEGER ,"+
+                "swm_infra_details_id TEXT,"+
+                "swm_waste_dump_photos_id TEXT,"+
+                "dcode TEXT," +
+                "bcode TEXT," +
+                "pvcode TEXT," +
+                "is_photo_of_waste_dump_after_action TEXT," +
+                "after_taken_image_lat TEXT," +
+                "after_taken_image_long TEXT," +
+                "after_taken_image BLOB)");
+
 
     }
 
@@ -434,6 +461,8 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + SWM_ASSET_DETAILS_TABLE);
             db.execSQL("DROP TABLE IF EXISTS " + SWM_ASSET_PHOTOS_TABLE);
             db.execSQL("DROP TABLE IF EXISTS " + SWM_WASTE_DUMP_PHOTOS_DETAILS);
+            db.execSQL("DROP TABLE IF EXISTS " + SWM_CARRIED_OUT_DETAILS);
+            db.execSQL("DROP TABLE IF EXISTS " + SWM_CARRIED_OUT_PHOTOS_DETAILS);
 
             onCreate(db);
         }

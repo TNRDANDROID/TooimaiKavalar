@@ -136,8 +136,11 @@ public class AssetsUploadAdapter extends RecyclerView.Adapter<AssetsUploadAdapte
                         if(type.equals("Waste_Dump")){
                             uploadWasteDump();
                         }
-                        else {
+                        else if(type.equals("Assets")){
                             uploadAssets();
+                        }
+                        else {
+                            uploadCarriedOut();
                         }
 
                         dialog.dismiss();
@@ -306,6 +309,71 @@ public class AssetsUploadAdapter extends RecyclerView.Adapter<AssetsUploadAdapte
                 e.printStackTrace();
             }
 
+
+        }
+        catch (JSONException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void uploadCarriedOut() {
+        dbData.open();
+        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject1 = new JSONObject();
+        JSONArray waste_dump_photos = new JSONArray();
+        JSONArray carried_out_details = new JSONArray();
+
+        try {
+            ArrayList<RealTimeMonitoringSystem> carriedOutDetails = dbData.getParticularCarriedOutDetails(prefManager.getPvCode());
+            for(int j = 0; j < carriedOutDetails.size(); j++) {
+                jsonObject = new JSONObject();
+                jsonObject.put("swm_infra_details_id",carriedOutDetails.get(j).getSwm_infra_details_id());
+                jsonObject.put("date_entry_for",carriedOutDetails.get(j).getDate_entry_for());
+                jsonObject.put("tot_qty_of_waste_collected_kg",carriedOutDetails.get(j).getTotal_quantity_of_waste());
+                jsonObject.put("qty_of_biodegradable_waste_collected_kg",carriedOutDetails.get(j).getQuantity_of_bio_degradable_waste());
+                jsonObject.put("tot_qty_compost_gen_from_community_compost_pit_kg",carriedOutDetails.get(j).getTotal_quantity_of_compost_generated_from_community());
+                jsonObject.put("tot_qty_of_compost_gen_from_vermicomposting_unit_kg",carriedOutDetails.get(j).getTotal_quantity_of_compost_generated_from_vermi());
+                jsonObject.put("sale_qty_of_compost_kg",carriedOutDetails.get(j).getQuantity_of_compost_sold());
+                jsonObject.put("sale_revenue_generated_in_rupees",carriedOutDetails.get(j).getTotal_revenue_generated());
+                carried_out_details.put(jsonObject);
+                ArrayList<RealTimeMonitoringSystem> waste_dump_photos_list = dbData.getParticularCarriedOutPhotosList(carriedOutDetails.get(j).getId(),prefManager.getPvCode(),carriedOutDetails.get(j).getSwm_infra_details_id());
+                for (int i = 0; i < waste_dump_photos_list.size(); i++) {
+                    JSONObject waste_dumpJson = new JSONObject();
+                    if (waste_dump_photos_list.get(i).getIs_photo_of_waste_dump_after_action().equals("Y")) {
+                        waste_dumpJson.put("is_photo_of_waste_dump_after_action", waste_dump_photos_list.get(i).getIs_photo_of_waste_dump_after_action());
+                        waste_dumpJson.put("swm_waste_dump_photos_id", waste_dump_photos_list.get(i).getSwm_waste_dump_photos_id());
+                        waste_dumpJson.put("photo_lat", waste_dump_photos_list.get(i).getAfter_taken_image_lat());
+                        waste_dumpJson.put("photo_long", waste_dump_photos_list.get(i).getAfter_taken_image_long());
+                        waste_dumpJson.put("image", BitMapToString(waste_dump_photos_list.get(i).getAfter_taken_image()));
+                    }
+                    else {
+                        waste_dumpJson.put("is_photo_of_waste_dump_after_action", waste_dump_photos_list.get(i).getIs_photo_of_waste_dump_after_action());
+                        waste_dumpJson.put("swm_waste_dump_photos_id", waste_dump_photos_list.get(i).getSwm_waste_dump_photos_id());
+                    }
+                    waste_dump_photos.put(waste_dumpJson);
+                }
+                    jsonObject.put("waste_dump_photos",waste_dump_photos);
+                    carried_out_details.put(jsonObject);
+            }
+            try {
+                for(int k=0;k<carried_out_details.length();k++){
+                    for(int l=k+1;l<carried_out_details.length();l++){
+                        if (carried_out_details.get(k) == carried_out_details.get(l)) {
+                            carried_out_details.remove(l);
+                            l--;
+                        }
+                    }
+                }
+            }
+            catch (JSONException e){
+                e.printStackTrace();
+            }
+            jsonObject1.put(AppConstant.KEY_SERVICE_ID,"swm_activity_carried_out_save");
+            jsonObject1.put("carried_out_details",carried_out_details);
+
+            Log.d("json",""+jsonObject1);
+            //((NewPendingScreenActivity)context).SyncData(jsonObject1, "","Carried_Out");
 
         }
         catch (JSONException e){

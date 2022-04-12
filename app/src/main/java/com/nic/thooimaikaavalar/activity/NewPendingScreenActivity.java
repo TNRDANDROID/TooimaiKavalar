@@ -120,6 +120,10 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
                                 getWasteDump();
                                 activity_new_pending_screen.listName.setText("Waste Dump Details");
                                 break;
+                            case R.id.carried_out_details:
+                                getCarriedOut();
+                                activity_new_pending_screen.listName.setText("CarriedOut Details");
+                                break;
                         }
                         return true;
                     }
@@ -253,6 +257,24 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
 
 
     }
+    public void getCarriedOut() {
+        dbData.open();
+        int getCarriedOutDetails =  dbData.gettableCountCarriedOutTable("All","");
+        if(getCarriedOutDetails>0){
+            activity_new_pending_screen.noDataIcon.setVisibility(View.GONE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            assetsUploadAdapter = new AssetsUploadAdapter(this,dbData,prefManager,"Carried_Out");
+            activity_new_pending_screen.basicRecycler.setAdapter(assetsUploadAdapter);
+        }
+        else {
+            activity_new_pending_screen.noDataIcon.setVisibility(View.VISIBLE);
+            activity_new_pending_screen.basicRecycler.setVisibility(View.GONE);
+        }
+
+
+
+    }
 
     public void SyncData(JSONObject jsonObject,String key_id_n,String type_){
         key_id =key_id_n;
@@ -329,6 +351,13 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
                     else if(type.equalsIgnoreCase("Waste_Dump")){
                         int sdsm = db.delete(DBHelper.SWM_WASTE_DUMP_PHOTOS_DETAILS,null,null);
                         getWasteDump();
+                        assetsUploadAdapter.notifyDataSetChanged();
+
+                    }
+                    else if(type.equalsIgnoreCase("Carried_Out")){
+                        int sdsm = db.delete(DBHelper.SWM_CARRIED_OUT_DETAILS,null,null);
+                        int sdsm1 = db.delete(DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS,null,null);
+                        getCarriedOut();
                         assetsUploadAdapter.notifyDataSetChanged();
 
                     }

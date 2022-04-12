@@ -1168,6 +1168,7 @@ public class dbData {
         }
         return last_inserted_id;
     }
+
     public int gettableCountAssetDetailsTable(){
         int table_count=0;
         Cursor cursor = null;
@@ -1202,6 +1203,32 @@ public class dbData {
         }
         return table_count;
     }
+    public int gettableCountCarriedOutTable(String type,String swm_infra_details_id){
+        int table_count=0;
+        Cursor cursor = null;
+        String qur="";
+        try{
+            if(type.equals("")){
+                 qur = "select count(1) as table_count from "+DBHelper.SWM_CARRIED_OUT_DETAILS+" where swm_infra_details_id = "+swm_infra_details_id;
+
+            }
+            else {
+                 qur = "select count(1) as table_count from "+DBHelper.SWM_CARRIED_OUT_DETAILS;
+
+            }
+
+            cursor = db.rawQuery(qur,null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    table_count = cursor.getInt(cursor.getColumnIndexOrThrow("table_count"));
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return table_count;
+    }
+
     public String getTables_there_any_waste_dump(){
         String is_there_any_waste_dump="";
         Cursor cursor = null;
@@ -1396,6 +1423,126 @@ public class dbData {
         }
         return cards;
     }
+    public ArrayList<RealTimeMonitoringSystem > getParticularCarriedOutDetails(String pvcode) {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+        String selection;
+        String[] selectionArgs;
+
+        try {
+                selection = "pvcode = ? ";
+                selectionArgs = new String[]{pvcode};
+
+
+            //cursor = db.rawQuery("select * from "+DBHelper.SWM_ASSET_DETAILS_TABLE+" where pvcode = "+pvcode,null);
+            cursor = db.query(DBHelper.SWM_CARRIED_OUT_DETAILS,
+                    new String[]{"*"}, selection, selectionArgs, null, null, null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+
+                    card.setId(cursor.getInt(cursor
+                            .getColumnIndexOrThrow("carried_out_details_id")));
+                    card.setSwm_infra_details_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_infra_details_id")));
+                    card.setDistictCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("dcode")));
+                    card.setBlockCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("bcode")));
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvcode")));
+                    card.setDate_entry_for(cursor.getString(cursor
+                            .getColumnIndexOrThrow("date_entry_for")));
+                    card.setTotal_quantity_of_waste(cursor.getString(cursor
+                            .getColumnIndexOrThrow("total_quantity_of_waste")));
+                    card.setQuantity_of_bio_degradable_waste(cursor.getString(cursor
+                            .getColumnIndexOrThrow("quantity_of_bio_degradable_waste")));
+                    card.setTotal_quantity_of_compost_generated_from_community(cursor.getString(cursor
+                            .getColumnIndexOrThrow("total_quantity_of_compost_generated_from_community")));
+                    card.setTotal_quantity_of_compost_generated_from_vermi(cursor.getString(cursor
+                            .getColumnIndexOrThrow("total_quantity_of_compost_generated_from_vermi")));
+                    card.setQuantity_of_compost_sold(cursor.getString(cursor
+                            .getColumnIndexOrThrow("quantity_of_compost_sold")));
+                    card.setTotal_revenue_generated(cursor.getString(cursor
+                            .getColumnIndexOrThrow("total_revenue_generated")));
+
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+    public ArrayList<RealTimeMonitoringSystem > getParticularCarriedOutPhotosList(int id ,String pvcode,String swm_infra_details_id) {
+
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+        String selection;
+        String[] selectionArgs;
+
+        try {
+            selection = "carried_out_details_id = ? and swm_infra_details_id = ? and pvcode = ? ";
+            selectionArgs = new String[]{String.valueOf(id),swm_infra_details_id,pvcode};
+
+            //cursor = db.rawQuery("select * from "+DBHelper.SWM_ASSET_DETAILS_TABLE+" where pvcode = "+pvcode,null);
+            cursor = db.query(DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS,
+                    new String[]{"*"}, selection, selectionArgs, null, null, null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+
+                    card.setId(cursor.getInt(cursor
+                            .getColumnIndexOrThrow("carried_out_details_id")));
+                    card.setSwm_infra_details_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_infra_details_id")));
+                    card.setSwm_waste_dump_photos_id(cursor.getString(cursor
+                            .getColumnIndexOrThrow("swm_waste_dump_photos_id")));
+                    card.setIs_photo_of_waste_dump_after_action(cursor.getString(cursor
+                            .getColumnIndexOrThrow("is_photo_of_waste_dump_after_action")));
+                    card.setDistictCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("dcode")));
+                    card.setBlockCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("bcode")));
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow("pvcode")));
+                    if(cursor.getString(cursor.getColumnIndexOrThrow("is_photo_of_waste_dump_after_action")).equals("Y")){
+                        card.setAfter_taken_image_lat(cursor.getString(cursor
+                                .getColumnIndexOrThrow("after_taken_image_lat")));
+                        card.setAfter_taken_image_long(cursor.getString(cursor
+                                .getColumnIndexOrThrow("after_taken_image_long")));
+                        byte[] photo = cursor.getBlob(cursor.getColumnIndexOrThrow("after_taken_image"));
+                        BitmapFactory.Options options = new BitmapFactory.Options();
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(photo, 0, photo.length, options);
+                        card.setAfter_taken_image((bitmap));
+                    }
+
+
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
+
+
 
     ////////////////////****************
 
@@ -2240,6 +2387,12 @@ public class dbData {
     public void deleteSWM_WASTE_DUMP_PHOTOS_DETAILS() {
         db.execSQL("delete from " + DBHelper.SWM_WASTE_DUMP_PHOTOS_DETAILS);
     }
+    public void deleteSWM_CARRIED_OUT_DETAILS() {
+        db.execSQL("delete from " + DBHelper.SWM_CARRIED_OUT_DETAILS);
+    }
+    public void deleteSWM_CARRIED_OUT_PHOTOS_DETAILS() {
+        db.execSQL("delete from " + DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS);
+    }
 
 
     public void deleteAll() {
@@ -2271,6 +2424,8 @@ public class dbData {
         deleteSWM_ASSET_DETAILS_TABLE();
         deleteSWM_ASSET_PHOTOS_TABLE();
         deleteSWM_WASTE_DUMP_PHOTOS_DETAILS();
+        deleteSWM_CARRIED_OUT_DETAILS();
+        deleteSWM_CARRIED_OUT_PHOTOS_DETAILS();
     }
 
 

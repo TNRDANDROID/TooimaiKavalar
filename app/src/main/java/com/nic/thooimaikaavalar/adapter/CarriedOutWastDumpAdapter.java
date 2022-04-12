@@ -2,33 +2,38 @@ package com.nic.thooimaikaavalar.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nic.thooimaikaavalar.Interface.AdapterCameraIntent;
 import com.nic.thooimaikaavalar.R;
-import com.nic.thooimaikaavalar.activity.SWMActivity.Add_ViewWasteDumpDetails;
-import com.nic.thooimaikaavalar.constant.AppConstant;
+import com.nic.thooimaikaavalar.activity.SWMActivity.AddCarriedOutsScreen;
 import com.nic.thooimaikaavalar.dataBase.DBHelper;
-import com.nic.thooimaikaavalar.databinding.AssetsRecyclerItemBinding;
+import com.nic.thooimaikaavalar.databinding.CarriedOutActionAdapterItemsBinding;
 import com.nic.thooimaikaavalar.model.RealTimeMonitoringSystem;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CarriedOutWastDumpAdapter extends RecyclerView.Adapter<CarriedOutWastDumpAdapter.MyViewHolder> {
+public class CarriedOutWastDumpAdapter extends RecyclerView.Adapter<CarriedOutWastDumpAdapter.MyViewHolder> implements AdapterCameraIntent {
     private LayoutInflater layoutInflater;
     private List<RealTimeMonitoringSystem> wasteDumpList;
     static JSONObject dataset = new JSONObject();
@@ -58,61 +63,77 @@ public class CarriedOutWastDumpAdapter extends RecyclerView.Adapter<CarriedOutWa
         if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(viewGroup.getContext());
         }
-        AssetsRecyclerItemBinding assetsRecyclerItemBinding =
-                DataBindingUtil.inflate(layoutInflater, R.layout.assets_recycler_item, viewGroup, false);
-        return new MyViewHolder(assetsRecyclerItemBinding);
+        CarriedOutActionAdapterItemsBinding carriedOutActionAdapterItemsBinding =
+                DataBindingUtil.inflate(layoutInflater, R.layout.carried_out_action_adapter_items, viewGroup, false);
+        return new MyViewHolder(carriedOutActionAdapterItemsBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CarriedOutWastDumpAdapter.MyViewHolder holder, int position) {
 
+            holder.carriedOutActionAdapterItemsBinding.assetName.setVisibility(View.GONE);
+            holder.carriedOutActionAdapterItemsBinding.previewImageLayout.setVisibility(View.VISIBLE);
+            holder.carriedOutActionAdapterItemsBinding.status.setText("Yes");
+            holder.carriedOutActionAdapterItemsBinding.status.setTextColor(context.getResources().getColor(R.color.account_status_green_color));
 
-        if(type.equals("Local")){
-            holder.assetsRecyclerItemBinding.assetName.setVisibility(View.GONE);
-            holder.assetsRecyclerItemBinding.ques.setText("Is There Any Waste Dump?");
-            holder.assetsRecyclerItemBinding.previewImageLayout.setVisibility(View.GONE);
+            holder.carriedOutActionAdapterItemsBinding.afterImageLat.setText(wasteDumpList.get(position).getAfter_taken_image_lat());
+            holder.carriedOutActionAdapterItemsBinding.afterImageLong.setText(wasteDumpList.get(position).getAfter_taken_image_long());
 
             if(wasteDumpList.get(position).getIs_there_any_waste_dump().equals("Y")){
-                holder.assetsRecyclerItemBinding.ans.setText("Yes");
-                holder.assetsRecyclerItemBinding.ans.setTextColor(Color.GREEN);
-                holder.assetsRecyclerItemBinding.status.setText("Yes");
-                holder.assetsRecyclerItemBinding.status.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circlegreen));
+                holder.carriedOutActionAdapterItemsBinding.beforeImageView.setImageBitmap(wasteDumpList.get(position).getBefore_taken_image());
             }
             else {
-                holder.assetsRecyclerItemBinding.ans.setText("NO");
-                holder.assetsRecyclerItemBinding.ans.setTextColor(Color.RED);
-                holder.assetsRecyclerItemBinding.status.setText("No");
-                holder.assetsRecyclerItemBinding.status.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.curved_red_bg));
+                holder.carriedOutActionAdapterItemsBinding.beforeImageView.setImageBitmap(null);
             }
-        }
-        else {
-            holder.assetsRecyclerItemBinding.assetName.setVisibility(View.GONE);
-            holder.assetsRecyclerItemBinding.ques.setText("Is There Any Waste Dump?");
-            holder.assetsRecyclerItemBinding.previewImageLayout.setVisibility(View.VISIBLE);
-
-            holder.assetsRecyclerItemBinding.ans.setText("Yes");
-            holder.assetsRecyclerItemBinding.ans.setTextColor(Color.GREEN);
-            holder.assetsRecyclerItemBinding.status.setText("Yes");
-            holder.assetsRecyclerItemBinding.status.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circlegreen));
-
-            holder.assetsRecyclerItemBinding.srcImageView.setImageBitmap(wasteDumpList.get(position).getImage());
-
-        }
-
-
-
-        holder.assetsRecyclerItemBinding.imageview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+            if(wasteDumpList.get(position).getIs_photo_of_waste_dump_after_action().equals("Y")){
+                holder.carriedOutActionAdapterItemsBinding.functionalYes.setChecked(true);
+                holder.carriedOutActionAdapterItemsBinding.afterImageLayout.setVisibility(View.VISIBLE);
+                holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageBitmap(wasteDumpList.get(position).getAfter_taken_image());
             }
-        });
-        holder.assetsRecyclerItemBinding.deleteIc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                save_and_delete_alert(position,"delete");
+            else if(wasteDumpList.get(position).getIs_photo_of_waste_dump_after_action().equals("")){
+                holder.carriedOutActionAdapterItemsBinding.radioGroup.clearCheck();
+                holder.carriedOutActionAdapterItemsBinding.afterImageLayout.setVisibility(View.GONE);
+                holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageBitmap(null);
+                holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageResource(R.drawable.capture_image);
             }
-        });
+            else {
+                holder.carriedOutActionAdapterItemsBinding.functionalNo.setChecked(true);
+                holder.carriedOutActionAdapterItemsBinding.afterImageLayout.setVisibility(View.GONE);
+                holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageBitmap(null);
+                holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageResource(R.drawable.capture_image);
+            }
+
+            holder.carriedOutActionAdapterItemsBinding.functionalNo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        wasteDumpList.get(position).setIs_photo_of_waste_dump_after_action("N");
+                        holder.carriedOutActionAdapterItemsBinding.afterImageLayout.setVisibility(View.GONE);
+                        holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageBitmap(null);
+                        holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageResource(R.drawable.capture_image);
+                        //notifyItemChanged(position);
+                    }
+                }
+            });
+            holder.carriedOutActionAdapterItemsBinding.functionalYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        holder.carriedOutActionAdapterItemsBinding.afterImageLayout.setVisibility(View.VISIBLE);
+                        holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageBitmap(null);
+                        holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageResource(R.drawable.capture_image);
+                    }
+                }
+            });
+
+
+
+            holder.carriedOutActionAdapterItemsBinding.afterImageLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((AddCarriedOutsScreen)context).getLatLong(position);
+                }
+            });
 
     }
 
@@ -121,74 +142,42 @@ public class CarriedOutWastDumpAdapter extends RecyclerView.Adapter<CarriedOutWa
         return wasteDumpList.size();
     }
 
+    @Override
+    public void OnIntentListener(Intent data, int result_code, int position,String after_image_lat,String after_image_long) {
+       if(data!=null){
+           Bitmap photo= (Bitmap) data.getExtras().get("data");
+           RealTimeMonitoringSystem realTimeMonitoringSystem = new RealTimeMonitoringSystem();
+           realTimeMonitoringSystem.setDistictCode(wasteDumpList.get(position).getDistictCode());
+           realTimeMonitoringSystem.setBlockCode(wasteDumpList.get(position).getBlockCode());
+           realTimeMonitoringSystem.setPvCode(wasteDumpList.get(position).getPvCode());
+           realTimeMonitoringSystem.setSwm_infra_details_id(wasteDumpList.get(position).getSwm_infra_details_id());
+           realTimeMonitoringSystem.setSwm_waste_dump_photos_id(wasteDumpList.get(position).getSwm_waste_dump_photos_id());
+           realTimeMonitoringSystem.setIs_there_any_waste_dump("Y");
+           realTimeMonitoringSystem.setBefore_taken_image(wasteDumpList.get(position).getBefore_taken_image());
+           realTimeMonitoringSystem.setIs_photo_of_waste_dump_after_action("Y");
+           realTimeMonitoringSystem.setAfter_taken_image(photo);
+           realTimeMonitoringSystem.setAfter_taken_image_lat(after_image_lat);
+           realTimeMonitoringSystem.setAfter_taken_image_long(after_image_long);
+           wasteDumpList.set(position,realTimeMonitoringSystem);
+           notifyItemChanged(position);
+
+       }
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private AssetsRecyclerItemBinding assetsRecyclerItemBinding;
+        private CarriedOutActionAdapterItemsBinding carriedOutActionAdapterItemsBinding;
 
-        public MyViewHolder(AssetsRecyclerItemBinding Binding) {
+        public MyViewHolder(CarriedOutActionAdapterItemsBinding Binding) {
             super(Binding.getRoot());
-            assetsRecyclerItemBinding = Binding;
+            carriedOutActionAdapterItemsBinding = Binding;
         }
     }
 
-    public void deletePending(int position) {
-        if(type.equals("Local")) {
-            String key_id = String.valueOf(wasteDumpList.get(position).getId());
-            int sdsm = db.delete(DBHelper.SWM_WASTE_DUMP_PHOTOS_DETAILS, "id = ? ", new String[]{key_id});
-            int count = dbData.gettableCountWasteDumpTable();
-            if(count==0){
-            }
-            wasteDumpList.remove(position);
-            notifyItemRemoved(position);
-            notifyItemChanged(position, wasteDumpList.size());
-            Log.d("sdsm", String.valueOf(sdsm));
-        }
-        else {
 
-        }
-    }
-
-    public void save_and_delete_alert(int position,String save_delete){
-        try {
-            final Dialog dialog = new Dialog(context);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setCancelable(false);
-            dialog.setContentView(R.layout.alert_dialog);
-
-            TextView text = (TextView) dialog.findViewById(R.id.tv_message);
-            if(save_delete.equals("save")) {
-                text.setText("Do You Want to Upload?");
-            }
-            else if(save_delete.equals("delete")){
-                text.setText("Do You Want to Delete?");
-            }
-
-            Button yesButton = (Button) dialog.findViewById(R.id.btn_ok);
-            Button noButton = (Button) dialog.findViewById(R.id.btn_cancel);
-            noButton.setVisibility(View.VISIBLE);
-            noButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dialog.dismiss();
-                }
-            });
-            yesButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(save_delete.equals("save")) {
-                        dialog.dismiss();
-                    }
-                    else if(save_delete.equals("delete")) {
-                        //deletePending(position);
-                        dialog.dismiss();
-                    }
-                }
-            });
-
-            dialog.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public ArrayList<RealTimeMonitoringSystem> getTheCarriedList(){
+        ArrayList<RealTimeMonitoringSystem> arrayList = new ArrayList<>();
+        arrayList = (ArrayList<RealTimeMonitoringSystem>) wasteDumpList;
+        return arrayList;
     }
 
 

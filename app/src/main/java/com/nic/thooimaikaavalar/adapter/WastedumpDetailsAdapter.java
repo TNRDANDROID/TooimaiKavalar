@@ -203,7 +203,7 @@ public class WastedumpDetailsAdapter extends RecyclerView.Adapter<WastedumpDetai
     public void updateswm_master_details_server_table()
     {
         String s = "";
-        db.execSQL("UPDATE swm_master_details_server_table SET is_there_any_waste_dump='"+s+"' WHERE id="+swm_infra_details_id+"");
+        db.execSQL("UPDATE swm_master_details_server_table SET is_there_any_waste_dump='"+s+"' WHERE swm_infra_details_id="+swm_infra_details_id+"");
 
     }
 
