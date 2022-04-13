@@ -124,6 +124,9 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
     LocationListener mlocListener;
 
     WastedumpDetailsAdapter wastedumpDetailsAdapter;
+
+    Uri photoURI;
+    File photoFile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -384,7 +387,7 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
 
 
                         if(imageView.getDrawable()!=null){
-                            if(!myEditTextView.getText().toString().equals("")){
+                            //if(!myEditTextView.getText().toString().equals("")){
                                 count = count+1;
                                 byte[] imageInByte = new byte[0];
                                 String image_str = "";
@@ -441,11 +444,11 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
 
                                 }
 
-                            }
+                            /*}
 
                             else {
                                 Utils.showAlert(Add_ViewWasteDumpDetails.this,getResources().getString(R.string.please_enter_description));
-                            }
+                            }*/
                         }
                         else {
                             Utils.showAlert(Add_ViewWasteDumpDetails.this,getResources().getString(R.string.please_capture_image));
@@ -464,11 +467,11 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
             @Override
             public void onClick(View v) {
                 if(viewArrayList.size() < Integer.parseInt(prefManager.getKEY_no_of_waste_dump_photos())) {
-                    if (imageView.getDrawable() != null && viewArrayList.size() > 0 && !myEditTextView.getText().toString().equals("")) {
+                    if (imageView.getDrawable() != null && viewArrayList.size() > 0) {
                         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                         updateView(Add_ViewWasteDumpDetails.this, mobileNumberLayout, "", type);
                     } else {
-                        Utils.showAlert(Add_ViewWasteDumpDetails.this, getResources().getString(R.string.first_capture_image_add_another));
+                        Utils.showAlert(Add_ViewWasteDumpDetails.this, getResources().getString(R.string.please_capture_image));
                     }
                 }
                 else {

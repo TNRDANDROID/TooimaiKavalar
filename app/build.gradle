@@ -113,4 +113,7 @@ dependencies {
 */
     ///Gif Image
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.0'
+
+    //Image Compressor
+    implementation 'com.github.amanjeetsingh150:ImageZipper:1.3'
 }

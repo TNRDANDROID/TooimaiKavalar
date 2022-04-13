@@ -157,6 +157,10 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         if(gettableCountWasteDumpTable==0){
             getOnlineWasteDumpList();
         }
+        else {
+            Utils.showAlert(AddCarriedOutsScreen.this,"First Upload Your WastDump Data");
+            onBackPressed();
+        }
 
 
         carriedOutListDetails = new ArrayList<>();

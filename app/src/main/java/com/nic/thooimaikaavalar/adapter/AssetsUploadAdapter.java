@@ -373,7 +373,7 @@ public class AssetsUploadAdapter extends RecyclerView.Adapter<AssetsUploadAdapte
             jsonObject1.put("carried_out_details",carried_out_details);
 
             Log.d("json",""+jsonObject1);
-            //((NewPendingScreenActivity)context).SyncData(jsonObject1, "","Carried_Out");
+            ((NewPendingScreenActivity)context).SyncData(jsonObject1, "","Carried_Out");
 
         }
         catch (JSONException e){
