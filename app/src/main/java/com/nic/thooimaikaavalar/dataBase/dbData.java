@@ -1203,13 +1203,13 @@ public class dbData {
         }
         return table_count;
     }
-    public int gettableCountCarriedOutTable(String type,String swm_infra_details_id){
+    public int gettableCountCarriedOutTable(String type,String swm_infra_details_id,String date_entry_for){
         int table_count=0;
         Cursor cursor = null;
         String qur="";
         try{
             if(type.equals("")){
-                 qur = "select count(1) as table_count from "+DBHelper.SWM_CARRIED_OUT_DETAILS+" where swm_infra_details_id = "+swm_infra_details_id;
+                 qur = "select count(1) as table_count from "+DBHelper.SWM_CARRIED_OUT_DETAILS+" where swm_infra_details_id = "+swm_infra_details_id+ " and "+"date_entry_for = "+date_entry_for;
 
             }
             else {
@@ -1482,7 +1482,7 @@ public class dbData {
         }
         return cards;
     }
-    public ArrayList<RealTimeMonitoringSystem > getParticularCarriedOutPhotosList(int id ,String pvcode,String swm_infra_details_id) {
+    public ArrayList<RealTimeMonitoringSystem > getParticularCarriedOutPhotosList(int id ,String pvcode,String swm_infra_details_id,String date_entry_for) {
 
         ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
         Cursor cursor = null;
@@ -1490,8 +1490,8 @@ public class dbData {
         String[] selectionArgs;
 
         try {
-            selection = "carried_out_details_id = ? and swm_infra_details_id = ? and pvcode = ? ";
-            selectionArgs = new String[]{String.valueOf(id),swm_infra_details_id,pvcode};
+            selection = "carried_out_details_id = ? and swm_infra_details_id = ? and pvcode = ? and date_entry_for = ? ";
+            selectionArgs = new String[]{String.valueOf(id),swm_infra_details_id,pvcode,date_entry_for};
 
             //cursor = db.rawQuery("select * from "+DBHelper.SWM_ASSET_DETAILS_TABLE+" where pvcode = "+pvcode,null);
             cursor = db.query(DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS,
@@ -1508,6 +1508,8 @@ public class dbData {
                             .getColumnIndexOrThrow("swm_infra_details_id")));
                     card.setSwm_waste_dump_photos_id(cursor.getString(cursor
                             .getColumnIndexOrThrow("swm_waste_dump_photos_id")));
+                    card.setDate_entry_for(cursor.getString(cursor
+                            .getColumnIndexOrThrow("date_entry_for")));
                     card.setIs_photo_of_waste_dump_after_action(cursor.getString(cursor
                             .getColumnIndexOrThrow("is_photo_of_waste_dump_after_action")));
                     card.setDistictCode(cursor.getString(cursor

@@ -212,7 +212,7 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
             activity_new_pending_screen.noDataIcon.setVisibility(View.GONE);
             activity_new_pending_screen.basicRecycler.setVisibility(View.VISIBLE);
             activity_new_pending_screen.basicRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-            swmMasterDetailsAdapter = new SwmMasterDetailsAdapter(getAllSwmMasterDetails,this,dbData,"Local");
+            swmMasterDetailsAdapter = new SwmMasterDetailsAdapter(getAllSwmMasterDetails,this,dbData,"Local","");
             activity_new_pending_screen.basicRecycler.setAdapter(swmMasterDetailsAdapter);
         }
         else {
@@ -259,7 +259,7 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
     }
     public void getCarriedOut() {
         dbData.open();
-        int getCarriedOutDetails =  dbData.gettableCountCarriedOutTable("All","");
+        int getCarriedOutDetails =  dbData.gettableCountCarriedOutTable("All","","");
         if(getCarriedOutDetails>0){
             activity_new_pending_screen.noDataIcon.setVisibility(View.GONE);
             activity_new_pending_screen.basicRecycler.setVisibility(View.VISIBLE);
@@ -379,4 +379,26 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
     public void OnError(VolleyError volleyError) {
         Utils.showAlert(this,"No Response from Server!");
     }
+
+    public void deletePending(String type) {
+        if(type.equals("Assets_Details")) {
+            int sdsm = db.delete(DBHelper.SWM_ASSET_DETAILS_TABLE,null,null);
+            int sdsm1 = db.delete(DBHelper.SWM_ASSET_PHOTOS_TABLE,null,null);
+            getInfraAssets();
+            assetsUploadAdapter.notifyDataSetChanged();
+        }
+        else if(type.equals("Waste_Dump")) {
+            int sdsm = db.delete(DBHelper.SWM_WASTE_DUMP_PHOTOS_DETAILS,null,null);
+            getWasteDump();
+            assetsUploadAdapter.notifyDataSetChanged();
+        }
+        else if(type.equalsIgnoreCase("Carried_Out")){
+            int sdsm = db.delete(DBHelper.SWM_CARRIED_OUT_DETAILS,null,null);
+            int sdsm1 = db.delete(DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS,null,null);
+            getCarriedOut();
+            assetsUploadAdapter.notifyDataSetChanged();
+
+        }
+    }
+
 }

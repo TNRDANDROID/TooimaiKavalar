@@ -160,7 +160,7 @@ public class NewThooimaiEditAdapter extends RecyclerView.Adapter<NewThooimaiEdit
 
                     TextView text = (TextView) dialog.findViewById(R.id.tv_message);
                     if(save_delete.equals("save")) {
-                        text.setText(context.getResources().getString(R.string.do_you_wnat_to_upload));
+                        text.setText(context.getResources().getString(R.string.do_you_want_to_edit));
                     }
                     else if(save_delete.equals("delete")){
                         text.setText(context.getResources().getString(R.string.do_you_wnat_to_delete));

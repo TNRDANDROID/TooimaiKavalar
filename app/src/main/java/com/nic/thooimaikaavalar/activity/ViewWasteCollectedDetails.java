@@ -71,6 +71,12 @@ public class ViewWasteCollectedDetails extends AppCompatActivity implements Api.
                 Utils.showDatePickerDialog(ViewWasteCollectedDetails.this);
             }
         });
+        activity_view_waste_collected_details.backImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     public void initializeUI(){

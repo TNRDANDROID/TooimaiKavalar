@@ -146,6 +146,7 @@ public class AssetsUploadAdapter extends RecyclerView.Adapter<AssetsUploadAdapte
                         dialog.dismiss();
                     }
                     else if(save_delete.equals("delete")) {
+                        deletePending();
                         dialog.dismiss();
                     }
                 }
@@ -337,7 +338,7 @@ public class AssetsUploadAdapter extends RecyclerView.Adapter<AssetsUploadAdapte
                 jsonObject.put("sale_qty_of_compost_kg",carriedOutDetails.get(j).getQuantity_of_compost_sold());
                 jsonObject.put("sale_revenue_generated_in_rupees",carriedOutDetails.get(j).getTotal_revenue_generated());
                 carried_out_details.put(jsonObject);
-                ArrayList<RealTimeMonitoringSystem> waste_dump_photos_list = dbData.getParticularCarriedOutPhotosList(carriedOutDetails.get(j).getId(),prefManager.getPvCode(),carriedOutDetails.get(j).getSwm_infra_details_id());
+                ArrayList<RealTimeMonitoringSystem> waste_dump_photos_list = dbData.getParticularCarriedOutPhotosList(carriedOutDetails.get(j).getId(),prefManager.getPvCode(),carriedOutDetails.get(j).getSwm_infra_details_id(),carriedOutDetails.get(j).getDate_entry_for());
                 for (int i = 0; i < waste_dump_photos_list.size(); i++) {
                     JSONObject waste_dumpJson = new JSONObject();
                     if (waste_dump_photos_list.get(i).getIs_photo_of_waste_dump_after_action().equals("Y")) {
@@ -388,6 +389,20 @@ public class AssetsUploadAdapter extends RecyclerView.Adapter<AssetsUploadAdapte
         byte [] b=baos.toByteArray();
         String temp= Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
+    }
+
+
+    public void deletePending(){
+        if(type.equals("Waste_Dump")){
+            ((NewPendingScreenActivity)context).deletePending("Waste_Dump");
+        }
+        else if(type.equals("Assets")){
+            ((NewPendingScreenActivity)context).deletePending("Assets_Details");
+        }
+        else {
+            ((NewPendingScreenActivity)context).deletePending("Carried_Out");
+        }
+
     }
 
 }

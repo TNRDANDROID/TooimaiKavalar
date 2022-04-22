@@ -152,7 +152,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         ArrayList<RealTimeMonitoringSystem> getSwmMasterDetailsCount =  dbData.getAllSWMMasterDetails();
         int gettableCountAssetDetailsTable =  dbData.gettableCountAssetDetailsTable();
         int gettableCountWasteDumpTable =  dbData.gettableCountWasteDumpTable();
-        int gettableCountCarriedOutTable =  dbData.gettableCountCarriedOutTable("All","");
+        int gettableCountCarriedOutTable =  dbData.gettableCountCarriedOutTable("All","","");
 
 
         if(getAllBasicDetails.size()>0||getTooimaiKaavalrCount.size()>0||getComponentImageCount.size()>0|| getWasteCollectedDetailsCount.size()>0
@@ -161,6 +161,10 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             homeScreenBinding.syncCountLayout.setVisibility(View.VISIBLE);
 
             homeScreenBinding.sync1.setVisibility(View.VISIBLE);
+            /*homeScreenBinding.marqueeTextLayout.setVisibility(View.VISIBLE);
+            homeScreenBinding.marqueeText.setText("Data's Stored in Local...");
+            homeScreenBinding.marqueeText.setSelected(true);*/
+
 
             try {
                 int count = getAllBasicDetails.size()+getTooimaiKaavalrCount.size()+getComponentImageCount.size()+getWasteCollectedDetailsCount.size()+
@@ -175,6 +179,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             homeScreenBinding.sync.setVisibility(View.GONE);
             homeScreenBinding.sync1.setVisibility(View.GONE);
             homeScreenBinding.syncCountLayout.setVisibility(View.GONE);
+            //homeScreenBinding.marqueeTextLayout.setVisibility(View.GONE);
 
             homeScreenBinding.pendingCount.setText("NIL");
 
@@ -1085,6 +1090,14 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
     public void viewMCCBasicDetailsList() {
         homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
         Intent intent = new Intent(this, ViewAndEditMCCDetaila.class);
+        intent.putExtra("Entry","No");
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+    }
+    public void entryMCCBasicDetailsList() {
+        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
+        Intent intent = new Intent(this, ViewAndEditMCCDetaila.class);
+        intent.putExtra("Entry","Yes");
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
@@ -1125,9 +1138,10 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
     @Override
     public void onButtonClick(AlertDialog alertDialog, String type) {
         alertDialog.dismiss();
-        if ("Exit".equalsIgnoreCase(type)) {
+        /*if ("Exit".equalsIgnoreCase(type)) {
             onBackPressed();
-        } else {
+        }
+        else {
 
             Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -1135,7 +1149,13 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             startActivity(intent);
             finish();
             overridePendingTransition(R.anim.slide_enter, R.anim.slide_exit);
-        }
+        }*/
+        Intent intent = new Intent(getApplicationContext(), LoginScreen.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.putExtra("EXIT", false);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(R.anim.slide_enter, R.anim.slide_exit);
     }
     public void logout() {
         homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
@@ -1147,7 +1167,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         ArrayList<RealTimeMonitoringSystem> getSwmMasterDetailsCount =  dbData.getAllSWMMasterDetails();
         int gettableCountAssetDetailsTable =  dbData.gettableCountAssetDetailsTable();
         int gettableCountWasteDumpTable =  dbData.gettableCountWasteDumpTable();
-        int gettableCountCarriedOutTable =  dbData.gettableCountCarriedOutTable("","");
+        int gettableCountCarriedOutTable =  dbData.gettableCountCarriedOutTable("","","");
         ArrayList<RealTimeMonitoringSystem> activityCount = dbData.getSavedWorkImage("","","","","");
         if (!Utils.isOnline()) {
             Utils.showAlert(this, getResources().getString(R.string.logging_out_loss_data));

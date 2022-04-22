@@ -26,9 +26,12 @@ import com.nic.thooimaikaavalar.model.RealTimeMonitoringSystem;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteCollectedAdapterServer.MyViewHolder>{
     private LayoutInflater layoutInflater;
@@ -63,7 +66,7 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         holder.wasteCollectedRecyclerItemServerBinding.villageName.setText(basicDetailsList.get(position).getPvName());
         if(basicDetailsList.get(position).getHouseholds_waste()!=null&&!basicDetailsList.get(position).getHouseholds_waste().equals("")){
             holder.wasteCollectedRecyclerItemServerBinding.householdsWasteLayout.setVisibility(View.VISIBLE);
-            holder.wasteCollectedRecyclerItemServerBinding.householdsWaste.setText(basicDetailsList.get(position).getHouseholds_waste()+" Kg");
+            holder.wasteCollectedRecyclerItemServerBinding.householdsWaste.setText(NumberFormatMethod(basicDetailsList.get(position).getHouseholds_waste())+" Kg");
         }
         else {
             holder.wasteCollectedRecyclerItemServerBinding.householdsWasteLayout.setVisibility(View.GONE);
@@ -71,7 +74,7 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         }
         if(basicDetailsList.get(position).getShops_waste()!=null&&!basicDetailsList.get(position).getShops_waste().equals("")){
             holder.wasteCollectedRecyclerItemServerBinding.shopsWasteLayout.setVisibility(View.VISIBLE);
-            holder.wasteCollectedRecyclerItemServerBinding.shopsWaste.setText(basicDetailsList.get(position).getShops_waste()+" Kg");
+            holder.wasteCollectedRecyclerItemServerBinding.shopsWaste.setText(NumberFormatMethod(basicDetailsList.get(position).getShops_waste())+" Kg");
         }
         else {
             holder.wasteCollectedRecyclerItemServerBinding.shopsWasteLayout.setVisibility(View.GONE);
@@ -79,7 +82,7 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         }
         if(basicDetailsList.get(position).getMarket_waste()!=null&&!basicDetailsList.get(position).getMarket_waste().equals("")){
             holder.wasteCollectedRecyclerItemServerBinding.marketWasteLayout.setVisibility(View.VISIBLE);
-            holder.wasteCollectedRecyclerItemServerBinding.marketWaste.setText(basicDetailsList.get(position).getMarket_waste()+" Kg");
+            holder.wasteCollectedRecyclerItemServerBinding.marketWaste.setText(NumberFormatMethod(basicDetailsList.get(position).getMarket_waste())+" Kg");
         }
         else {
             holder.wasteCollectedRecyclerItemServerBinding.marketWasteLayout.setVisibility(View.GONE);
@@ -87,7 +90,7 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         }
         if(basicDetailsList.get(position).getHotels_waste()!=null&&!basicDetailsList.get(position).getHotels_waste().equals("")){
             holder.wasteCollectedRecyclerItemServerBinding.hotelsWasteLayout.setVisibility(View.VISIBLE);
-            holder.wasteCollectedRecyclerItemServerBinding.hotelsWaste.setText(basicDetailsList.get(position).getHotels_waste()+" Kg");
+            holder.wasteCollectedRecyclerItemServerBinding.hotelsWaste.setText(NumberFormatMethod(basicDetailsList.get(position).getHotels_waste())+" Kg");
         }
         else {
             holder.wasteCollectedRecyclerItemServerBinding.hotelsWasteLayout.setVisibility(View.GONE);
@@ -95,7 +98,7 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         }
         if(basicDetailsList.get(position).getOthers_waste()!=null&&!basicDetailsList.get(position).getOthers_waste().equals("")){
             holder.wasteCollectedRecyclerItemServerBinding.othersWasteLayout.setVisibility(View.VISIBLE);
-            holder.wasteCollectedRecyclerItemServerBinding.othersWaste.setText(basicDetailsList.get(position).getOthers_waste()+" Kg");
+            holder.wasteCollectedRecyclerItemServerBinding.othersWaste.setText(NumberFormatMethod(basicDetailsList.get(position).getOthers_waste())+" Kg");
         }
         else {
             holder.wasteCollectedRecyclerItemServerBinding.othersWasteLayout.setVisibility(View.GONE);
@@ -103,7 +106,7 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         }
         if(basicDetailsList.get(position).getTot_bio_waste_collected()!=null&&!basicDetailsList.get(position).getTot_bio_waste_collected().equals("")){
             holder.wasteCollectedRecyclerItemServerBinding.totBioWasteCollectedLayout.setVisibility(View.VISIBLE);
-            holder.wasteCollectedRecyclerItemServerBinding.totBioWasteCollected.setText(basicDetailsList.get(position).getTot_bio_waste_collected()+" Kg");
+            holder.wasteCollectedRecyclerItemServerBinding.totBioWasteCollected.setText(NumberFormatMethod(basicDetailsList.get(position).getTot_bio_waste_collected())+" Kg");
         }
         else {
             holder.wasteCollectedRecyclerItemServerBinding.totBioWasteCollectedLayout.setVisibility(View.GONE);
@@ -111,7 +114,7 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         }
         if(basicDetailsList.get(position).getTot_bio_waste_shredded()!=null&&!basicDetailsList.get(position).getTot_bio_waste_shredded().equals("")){
             holder.wasteCollectedRecyclerItemServerBinding.totBioWasteShreddedLayout.setVisibility(View.VISIBLE);
-            holder.wasteCollectedRecyclerItemServerBinding.totBioWasteShredded.setText(basicDetailsList.get(position).getTot_bio_waste_shredded()+" Kg");
+            holder.wasteCollectedRecyclerItemServerBinding.totBioWasteShredded.setText(NumberFormatMethod(basicDetailsList.get(position).getTot_bio_waste_shredded())+" Kg");
         }
         else {
             holder.wasteCollectedRecyclerItemServerBinding.totBioWasteShreddedLayout.setVisibility(View.GONE);
@@ -119,7 +122,7 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         }
         if(basicDetailsList.get(position).getTot_bio_compost_produced()!=null&&!basicDetailsList.get(position).getTot_bio_compost_produced().equals("")){
             holder.wasteCollectedRecyclerItemServerBinding.totBioCompostProducedLayout.setVisibility(View.VISIBLE);
-            holder.wasteCollectedRecyclerItemServerBinding.totBioCompostProduced.setText(basicDetailsList.get(position).getTot_bio_compost_produced()+" Kg");
+            holder.wasteCollectedRecyclerItemServerBinding.totBioCompostProduced.setText(NumberFormatMethod(basicDetailsList.get(position).getTot_bio_compost_produced())+" Kg");
         }
         else {
             holder.wasteCollectedRecyclerItemServerBinding.totBioCompostProducedLayout.setVisibility(View.GONE);
@@ -127,7 +130,7 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         }
         if(basicDetailsList.get(position).getTot_bio_compost_sold()!=null&&!basicDetailsList.get(position).getTot_bio_compost_sold().equals("")){
             holder.wasteCollectedRecyclerItemServerBinding.totBioCompostSoldLayout.setVisibility(View.VISIBLE);
-            holder.wasteCollectedRecyclerItemServerBinding.totBioCompostSold.setText(basicDetailsList.get(position).getTot_bio_compost_sold()+" Kg");
+            holder.wasteCollectedRecyclerItemServerBinding.totBioCompostSold.setText(NumberFormatMethod(basicDetailsList.get(position).getTot_bio_compost_sold())+" Kg");
         }
         else {
             holder.wasteCollectedRecyclerItemServerBinding.totBioCompostSoldLayout.setVisibility(View.GONE);
@@ -275,6 +278,12 @@ public class WasteCollectedAdapterServer extends  RecyclerView.Adapter<WasteColl
         return strDate;
     }
 
+    public String NumberFormatMethod(String number){
+        double amount = Double.parseDouble(number);
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        String formatted = formatter.format(amount);
+        return formatted;
+    }
 
 }
 

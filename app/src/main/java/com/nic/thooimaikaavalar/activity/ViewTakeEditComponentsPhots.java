@@ -306,6 +306,7 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
 
         final LinearLayout mobileNumberLayout = (LinearLayout) dialog.findViewById(R.id.mobile_number_layout);
         TextView cancel = (TextView) dialog.findViewById(R.id.close);
+        TextView tv_create_asset_title = (TextView) dialog.findViewById(R.id.tv_create_asset_title);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -442,12 +443,14 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
     public View updateView(final Activity activity, final LinearLayout emailOrMobileLayout, final String values, final String type) {
         final View hiddenInfo = activity.getLayoutInflater().inflate(R.layout.image_with_description, emailOrMobileLayout, false);
         final ImageView imageView_close = (ImageView) hiddenInfo.findViewById(R.id.imageView_close);
+        final LinearLayout description_layout = (LinearLayout) hiddenInfo.findViewById(R.id.description_layout);
         imageView = (ImageView) hiddenInfo.findViewById(R.id.image_view);
         image_view_preview = (ImageView) hiddenInfo.findViewById(R.id.image_view_preview);
         myEditTextView = (EditText) hiddenInfo.findViewById(R.id.description);
         latitude_text = hiddenInfo.findViewById(R.id.latitude);
         longtitude_text = hiddenInfo.findViewById(R.id.longtitude);
 
+        description_layout.setVisibility(View.VISIBLE);
 
 
 

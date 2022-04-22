@@ -46,13 +46,14 @@ import java.util.List;
 public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDetailsFromServerAdapter.MyViewHolder>{
             private LayoutInflater layoutInflater;
             private List<RealTimeMonitoringSystem> basicDetailsList;
-            static JSONObject dataset=new JSONObject();
-                    Context context;
-                    int pos=-1;
+            Context context;
+            int pos=-1;
+            String entry_flag="";
 
-            public BasicDetailsFromServerAdapter(List<RealTimeMonitoringSystem> capacityList,Context context){
+            public BasicDetailsFromServerAdapter(List<RealTimeMonitoringSystem> capacityList,Context context,String entry_flag){
                     this.basicDetailsList=capacityList;
                     this.context=context;
+                    this.entry_flag=entry_flag;
                     }
 
             @NonNull
@@ -79,6 +80,15 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
                     holder.basicDetailsAdapterBinding.mccName.setText("MCC Name -"+basicDetailsList.get(position).getMcc_name());
                     holder.basicDetailsAdapterBinding.villageName.setText("Village Name -"+basicDetailsList.get(position).getPvName());
                     holder.basicDetailsAdapterBinding.waterAvailabilityName.setText("Water Available Name -"+basicDetailsList.get(position).getWater_supply_availability_name());
+
+                    if(entry_flag.equals("Yes")){
+                        holder.basicDetailsAdapterBinding.deleteUploadRl.setVisibility(View.GONE);
+                        holder.basicDetailsAdapterBinding.collectDetailsLayout.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        holder.basicDetailsAdapterBinding.deleteUploadRl.setVisibility(View.VISIBLE);
+                        holder.basicDetailsAdapterBinding.collectDetailsLayout.setVisibility(View.GONE);
+                    }
                     if(basicDetailsList.get(position).getComposting_center_image_available().equals("Y")){
                         holder.basicDetailsAdapterBinding.mccCenterImage.setImageBitmap(StringToBitMap(basicDetailsList.get(position).getCenter_image()));
                     }
@@ -207,7 +217,6 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
     }
 
     public void deletePending(int position) {
-        dataset = new JSONObject();
         String pvcode = basicDetailsList.get(position).getPvCode();
         String mcc_id = basicDetailsList.get(position).getMcc_id();
 

@@ -112,7 +112,16 @@ public class WastedumpDetailsAdapter extends RecyclerView.Adapter<WastedumpDetai
         holder.assetsRecyclerItemBinding.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, FullImageActivity.class);
+                intent.putExtra("Activity","Waste_Dump");
+                if(type.equals("Local")){
+                    intent.putExtra("OnOffType","Offline");
+                    intent.putExtra("asset_image_id",(assetDetailsList.get(position).getId()));
+                    intent.putExtra("swm_asset_type_id",(assetDetailsList.get(position).getSwm_asset_type_id()));
+                    intent.putExtra("swm_infra_details_id",(assetDetailsList.get(position).getSwm_infra_details_id()));
+                    intent.putExtra("pvcoe",(assetDetailsList.get(position).getPvCode()));
+                }
+                context.startActivity(intent);
             }
         });
         holder.assetsRecyclerItemBinding.deleteIc.setOnClickListener(new View.OnClickListener() {

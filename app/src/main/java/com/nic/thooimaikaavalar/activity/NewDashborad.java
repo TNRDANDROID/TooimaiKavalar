@@ -70,7 +70,13 @@ public class NewDashborad extends AppCompatActivity {
         activityNewDashboradBinding.swmViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gotoViewSwm();
+                gotoViewSwm("Infrastructure");
+            }
+        });
+        activityNewDashboradBinding.swmCarriedOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoViewSwm("Carried_Out");
             }
         });
 
@@ -210,8 +216,9 @@ public class NewDashborad extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
     }
-    public void gotoViewSwm(){
+    public void gotoViewSwm(String flag){
         Intent intent =new Intent(NewDashborad.this, SwmMasterDetailsView.class);
+        intent.putExtra("Flag",flag);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
     }

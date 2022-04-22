@@ -142,7 +142,16 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
         @Override
         protected void onPostExecute(final ArrayList<RealTimeMonitoringSystem> imageList) {
             super.onPostExecute(imageList);
-            setAdapter();
+            if(imageList.size()>0){
+                fullImageRecyclerBinding.noDataGif.setVisibility(View.GONE);
+                fullImageRecyclerBinding.imagePreviewRecyclerview.setVisibility(View.VISIBLE);
+                setAdapter();
+            }
+            else {
+                fullImageRecyclerBinding.noDataGif.setVisibility(View.VISIBLE);
+                fullImageRecyclerBinding.imagePreviewRecyclerview.setVisibility(View.GONE);
+            }
+
         }
     }
     public class fetchComponentImageTask extends AsyncTask<Void, Void,

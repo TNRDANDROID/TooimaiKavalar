@@ -41,15 +41,17 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
     Context context;
     int pos=-1;
     String type;
+    String which_flag;
     private com.nic.thooimaikaavalar.dataBase.dbData dbData;
     public  DBHelper dbHelper;
     public SQLiteDatabase db;
 
-    public SwmMasterDetailsAdapter(List<RealTimeMonitoringSystem> capacityList, Context context,dbData dbData,String type) {
+    public SwmMasterDetailsAdapter(List<RealTimeMonitoringSystem> capacityList, Context context,dbData dbData,String type,String which_flag) {
         this.basicDetailsList = capacityList;
         this.context = context;
         this.type=type;
         this.dbData=dbData;
+        this.which_flag=which_flag;
 
         try {
             dbHelper = new DBHelper(context);
@@ -75,9 +77,27 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
         holder.swmMasterBasicDetailsAdapterBinding.pvName.setText(basicDetailsList.get(position).getPvName());
         holder.swmMasterBasicDetailsAdapterBinding.workersAllocated.setText("Workers Allocated "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_allocated());
         holder.swmMasterBasicDetailsAdapterBinding.workersWorking.setText("Workers Working "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_working());
-        holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText("WCC Pit "+basicDetailsList.get(position).getWhether_community_compost_pit_available_in_panchayat());
-        holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText("WVC Pit "+basicDetailsList.get(position).getWhether_vermi_compost_pit_available_in_panchayat());
-        holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText("WVC Pit "+basicDetailsList.get(position).getAny_integrated_nuesery_devlp_near_swm_facility());
+        if(basicDetailsList.get(position).getWhether_community_compost_pit_available_in_panchayat().equals("Y")){
+            holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText("WCC Pit "+context.getResources().getString(R.string.yes));
+        }
+        else {
+            holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText("WCC Pit "+context.getResources().getString(R.string.no));
+        }
+        if(basicDetailsList.get(position).getWhether_vermi_compost_pit_available_in_panchayat().equals("Y")){
+            holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText("WVC Pit "+context.getResources().getString(R.string.yes));
+
+        }
+        else {
+            holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText("WVC Pit "+context.getResources().getString(R.string.no));
+
+        }
+        if(basicDetailsList.get(position).getAny_integrated_nuesery_devlp_near_swm_facility().equals("Y")){
+            holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText("Nursery developed "+context.getResources().getString(R.string.yes));
+        }
+        else {
+            holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText("Nursery developed "+context.getResources().getString(R.string.no));
+        }
+
 
 
         if(type.equals("Local")) {
@@ -88,6 +108,14 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
             holder.swmMasterBasicDetailsAdapterBinding.serverSideLayout.setVisibility(View.GONE);
         }
         else {
+            if(which_flag.equals("Carried_Out")){
+                holder.swmMasterBasicDetailsAdapterBinding.linearLayout.setVisibility(View.GONE);
+                holder.swmMasterBasicDetailsAdapterBinding.carriedOutLayout.setVisibility(View.VISIBLE);
+            }
+            else {
+                holder.swmMasterBasicDetailsAdapterBinding.linearLayout.setVisibility(View.VISIBLE);
+                holder.swmMasterBasicDetailsAdapterBinding.carriedOutLayout.setVisibility(View.GONE);
+            }
             holder.swmMasterBasicDetailsAdapterBinding.uploadIcon.setVisibility(View.GONE);
             holder.swmMasterBasicDetailsAdapterBinding.deleteIcon.setVisibility(View.GONE);
             holder.swmMasterBasicDetailsAdapterBinding.uploadIcon.setImageResource(R.drawable.ic_visibility_grey_900_24dp);

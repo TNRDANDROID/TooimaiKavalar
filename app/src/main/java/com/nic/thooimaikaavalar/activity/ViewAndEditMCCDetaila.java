@@ -57,6 +57,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
 
     ActivityViewAndEditMCCDetailaBinding activity_view_and_edit_m_c_c_detaila;
     String delete_mcc_id="";
+    String entry_flag="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +79,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
         activity_view_and_edit_m_c_c_detaila.mccRecyler.setVisibility(View.GONE);
         activity_view_and_edit_m_c_c_detaila.previewImageLayout.setVisibility(View.GONE);
 
+        entry_flag = getIntent().getStringExtra("Entry");
        /* activity_view_and_edit_m_c_c_detaila.villageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -264,7 +266,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
                 activity_view_and_edit_m_c_c_detaila.mccReclclerRl.setVisibility(View.VISIBLE);
                 activity_view_and_edit_m_c_c_detaila.noDataText.setVisibility(View.GONE);
                 activity_view_and_edit_m_c_c_detaila.mccRecyler.setVisibility(View.VISIBLE);
-                basicDetailsFromServerAdapter = new BasicDetailsFromServerAdapter(basicDetailsServerList,ViewAndEditMCCDetaila.this);
+                basicDetailsFromServerAdapter = new BasicDetailsFromServerAdapter(basicDetailsServerList,ViewAndEditMCCDetaila.this,entry_flag);
                 activity_view_and_edit_m_c_c_detaila.mccRecyler.setAdapter(basicDetailsFromServerAdapter);
             }
             else {

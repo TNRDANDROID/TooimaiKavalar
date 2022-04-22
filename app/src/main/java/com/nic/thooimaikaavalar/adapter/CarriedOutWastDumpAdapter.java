@@ -119,6 +119,7 @@ public class CarriedOutWastDumpAdapter extends RecyclerView.Adapter<CarriedOutWa
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
+                        wasteDumpList.get(position).setIs_photo_of_waste_dump_after_action("Y");
                         holder.carriedOutActionAdapterItemsBinding.afterImageLayout.setVisibility(View.VISIBLE);
                         holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageBitmap(null);
                         holder.carriedOutActionAdapterItemsBinding.afterImageView.setImageResource(R.drawable.capture_image);

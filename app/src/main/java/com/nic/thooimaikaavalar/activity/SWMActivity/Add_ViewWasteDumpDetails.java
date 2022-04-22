@@ -279,12 +279,16 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
                                 contentValues.put("whether_vermi_compost_pit_available_in_panchayat", whether_vermi_compost_pit_available_in_panchayat);
                                 contentValues.put("any_integrated_nuesery_devlp_near_swm_facility", any_integrated_nuesery_devlp_near_swm_facility);
                                 long update_id = db.update(DBHelper.SWM_MASTER_DETAILS_SERVER_TABLE, contentValues, "swm_infra_details_id" + "= ?", new String[] {swm_infra_details_id});
-                                Toasty.success(Add_ViewWasteDumpDetails.this, "Success", Toast.LENGTH_LONG, true).show();
                                 alert.dismiss();
+                                //Toasty.success(Add_ViewWasteDumpDetails.this, "Success", Toast.LENGTH_LONG, true).show();
+                                Toast.makeText(Add_ViewWasteDumpDetails.this, "Success", Toast.LENGTH_SHORT).show();
+
                             }
                             else {
-                                Toasty.error(Add_ViewWasteDumpDetails.this, "Fail", Toast.LENGTH_LONG, true).show();
                                 alert.dismiss();
+                                //Toasty.error(Add_ViewWasteDumpDetails.this, "Fail", Toast.LENGTH_LONG, true).show();
+                                Toast.makeText(Add_ViewWasteDumpDetails.this, "Fail", Toast.LENGTH_SHORT).show();
+
                             }
                         }
                         catch (Exception e){
@@ -436,10 +440,10 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
                                         contentValues.put("whether_vermi_compost_pit_available_in_panchayat", whether_vermi_compost_pit_available_in_panchayat);
                                         contentValues.put("any_integrated_nuesery_devlp_near_swm_facility", any_integrated_nuesery_devlp_near_swm_facility);
                                         long update_id = db.update(DBHelper.SWM_MASTER_DETAILS_SERVER_TABLE, contentValues, "swm_infra_details_id" + "= ?", new String[] {swm_infra_details_id});
-
-                                        Toasty.success(Add_ViewWasteDumpDetails.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
                                         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                                         dialog.dismiss();
+                                        Toasty.success(Add_ViewWasteDumpDetails.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
+
                                     }
 
                                 }
@@ -497,12 +501,13 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
     public View updateView(final Activity activity, final LinearLayout emailOrMobileLayout, final String values, final String type) {
         final View hiddenInfo = activity.getLayoutInflater().inflate(R.layout.image_with_description, emailOrMobileLayout, false);
         final ImageView imageView_close = (ImageView) hiddenInfo.findViewById(R.id.imageView_close);
+        final LinearLayout description_layout = (LinearLayout) hiddenInfo.findViewById(R.id.description_layout);
         imageView = (ImageView) hiddenInfo.findViewById(R.id.image_view);
         image_view_preview = (ImageView) hiddenInfo.findViewById(R.id.image_view_preview);
         myEditTextView = (EditText) hiddenInfo.findViewById(R.id.description);
         latitude_text = hiddenInfo.findViewById(R.id.latitude);
         longtitude_text = hiddenInfo.findViewById(R.id.longtitude);
-
+        description_layout.setVisibility(View.GONE);
         imageView_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

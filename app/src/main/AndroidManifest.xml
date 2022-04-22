@@ -48,23 +48,32 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.SWMActivity.AddCarriedOutsScreen"></activity>
-        <activity android:name=".activity.SWMActivity.Add_ViewWasteDumpDetails" />
-        <activity android:name=".activity.SWMActivity.SwmAddAssetDetails" />
-        <activity android:name=".activity.SWMActivity.SwmDashboard" />
-        <activity android:name=".activity.SWMActivity.SwmMasterDetailsView" />
-        <activity android:name=".activity.SWMActivity.MasterFormSwmEntry" />
-        <activity android:name=".activity.ViewWasteCollectedDetails" />
-        <activity android:name=".activity.WasteCollectedForm" />
+
+        <activity android:name=".activity.SWMActivity.AddCarriedOutsScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SWMActivity.Add_ViewWasteDumpDetails"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SWMActivity.SwmAddAssetDetails"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SWMActivity.SwmDashboard"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SWMActivity.SwmMasterDetailsView"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SWMActivity.MasterFormSwmEntry"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ViewWasteCollectedDetails"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.WasteCollectedForm"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ViewTakeEditComponentsPhots"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.NewThooimaiKavalarEdit"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.NewDashborad"
@@ -74,22 +83,22 @@
         <activity
             android:name=".activity.ViewAndEditMCCDetaila"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.NewPendingScreenActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.AddThooimaiKaavalarDetails"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.NewMainPage"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
 
         <uses-library
@@ -99,7 +108,7 @@
         <activity
             android:name=".activity.SplashScreen"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan">
             <meta-data
                 android:name="android.app.searchable"
@@ -117,47 +126,47 @@
         <activity
             android:name=".activity.LoginScreen"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.HomePage"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.VillageListScreen"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.WorkListScreen"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.CameraScreen"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.AdditionalWorkScreen"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.FullImageActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.PendingScreen"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity
             android:name=".activity.AppUpdateDialog"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateUnchanged|adjustPan" />
         <activity android:name=".activity.SampleHome" />
 

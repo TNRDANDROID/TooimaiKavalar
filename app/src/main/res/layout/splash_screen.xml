@@ -9,7 +9,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/swm_logo"
     tools:context="com.nic.thooimaikaavalar.activity.SplashScreen">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,7 +44,21 @@
             android:gravity="center_horizontal"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="@string/app_name"
+            android:text="@string/micro_composting_center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/_15sdp" />
+        <TextView
+            android:layout_marginTop="@dimen/_7sdp"
+            android:id="@+id/headtext1"
+            android:fontFamily="@string/font_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headtext"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/solid_waste_management"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/_15sdp" />
 

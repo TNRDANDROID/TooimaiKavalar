@@ -412,7 +412,7 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
 
 
                         if(imageView.getDrawable()!=null){
-                            if(!myEditTextView.getText().toString().equals("")){
+                            //if(!myEditTextView.getText().toString().equals("")){
                                 count = count+1;
                                 byte[] imageInByte = new byte[0];
                                 String image_str = "";
@@ -457,6 +457,7 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
                                     if(rowInserted>0){
                                         //Toast.makeText(ViewTakeEditComponentsPhots.this, "Success", Toast.LENGTH_SHORT).show();
                                         Toasty.success(SwmAddAssetDetails.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
+                                        getOfflineAssetsList();
                                         //onBackPressed();
                                         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                                         dialog.dismiss();
@@ -464,11 +465,11 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
 
                                 }
 
-                            }
+                            /*}
 
                             else {
                                 Utils.showAlert(SwmAddAssetDetails.this,getResources().getString(R.string.please_enter_description));
-                            }
+                            }*/
                         }
                         else {
                             Utils.showAlert(SwmAddAssetDetails.this,getResources().getString(R.string.please_capture_image));
@@ -491,11 +492,11 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
             @Override
             public void onClick(View v) {
                 if(viewArrayList.size() < Integer.parseInt(no_of_photos)) {
-                    if (imageView.getDrawable() != null && viewArrayList.size() > 0 && !myEditTextView.getText().toString().equals("")) {
+                    if (imageView.getDrawable() != null && viewArrayList.size() > 0 ) {
                         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                         updateView(SwmAddAssetDetails.this, mobileNumberLayout, "", type);
                     } else {
-                        Utils.showAlert(SwmAddAssetDetails.this, getResources().getString(R.string.first_capture_image_add_another));
+                        Utils.showAlert(SwmAddAssetDetails.this, getResources().getString(R.string.please_capture_image));
                     }
                 }
                 else {
@@ -521,13 +522,14 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
     public View updateView(final Activity activity, final LinearLayout emailOrMobileLayout, final String values, final String type) {
         final View hiddenInfo = activity.getLayoutInflater().inflate(R.layout.image_with_description, emailOrMobileLayout, false);
         final ImageView imageView_close = (ImageView) hiddenInfo.findViewById(R.id.imageView_close);
+        final LinearLayout description_layout = (LinearLayout) hiddenInfo.findViewById(R.id.description_layout);
         imageView = (ImageView) hiddenInfo.findViewById(R.id.image_view);
         image_view_preview = (ImageView) hiddenInfo.findViewById(R.id.image_view_preview);
         myEditTextView = (EditText) hiddenInfo.findViewById(R.id.description);
         latitude_text = hiddenInfo.findViewById(R.id.latitude);
         longtitude_text = hiddenInfo.findViewById(R.id.longtitude);
 
-
+        description_layout.setVisibility(View.GONE);
 
 
 

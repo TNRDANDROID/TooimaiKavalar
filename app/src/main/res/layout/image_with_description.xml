@@ -41,7 +41,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_100sdp"
                         android:scaleType="fitXY"
-                        android:background="@drawable/capture_new_icon"
+                        android:background="@drawable/phone_camera"
                         android:contentDescription="@string/camera_icon" />
 
                     <ImageView
@@ -83,10 +83,9 @@
 
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:id="@+id/description_layout"
                         android:orientation="horizontal">
 
 

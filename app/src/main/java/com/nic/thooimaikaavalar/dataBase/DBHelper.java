@@ -419,6 +419,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "carried_out_details_id INTEGER ,"+
                 "swm_infra_details_id TEXT,"+
                 "swm_waste_dump_photos_id TEXT,"+
+                "date_entry_for TEXT,"+
                 "dcode TEXT," +
                 "bcode TEXT," +
                 "pvcode TEXT," +

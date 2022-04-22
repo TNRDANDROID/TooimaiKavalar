@@ -41,10 +41,22 @@
                     android:id="@+id/title"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
-                    android:text="@string/swm_details_entry"
+                    android:text="@string/activity_carried_out"
                     android:fontFamily="@string/font_regular"
                     android:layout_centerInParent="true"
                     android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/waste_dump_img"
+                    android:src="@drawable/ic_boi_degradable_waste"
+                    android:padding="@dimen/_10sdp"
+                    android:tint="@color/white"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/back_icon"/>
+
             </RelativeLayout>
 
             <androidx.core.widget.NestedScrollView
@@ -56,9 +68,11 @@
                     android:layout_marginRight="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/toolbar">
+                    android:layout_below="@id/toolbar"
+                    android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/carried_out_details_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -74,7 +88,6 @@
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
                             />
-
                         <RelativeLayout
                             android:id="@+id/choose_date_layout"
                             android:layout_width="match_parent"
@@ -222,7 +235,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/_5sdp"
                                 android:id="@+id/total_quantity_of_compost_generated_icon"
-                                android:src="@drawable/ic_compost_generated"
+                                android:src="@drawable/ic_bio_degrade"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/_5sdp"
                                 android:contentDescription="garbage_icon" />
@@ -267,7 +280,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/_5sdp"
                                 android:id="@+id/total_quantity_of_compost_generated_from_vermi_icon"
-                                android:src="@drawable/ic_compost_generated"
+                                android:src="@drawable/ic_compost_bio"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/_5sdp"
                                 android:contentDescription="garbage_icon" />
@@ -335,7 +348,7 @@
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/_5sdp"
                                     android:id="@+id/quantity_of_compost_sold_icon"
-                                    android:src="@drawable/ic_compost_generated"
+                                    android:src="@drawable/ic_quantity_icon"
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="@dimen/_5sdp"
                                     android:contentDescription="garbage_icon" />
@@ -385,7 +398,7 @@
                                     android:layout_height="wrap_content"
                                     android:padding="@dimen/_5sdp"
                                     android:id="@+id/total_revenue_generated_icon"
-                                    android:src="@drawable/ic_compost_generated"
+                                    android:src="@drawable/ic_revenue_icon"
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="@dimen/_5sdp"
                                     android:contentDescription="garbage_icon" />
@@ -459,6 +472,29 @@
                             </Button>
                         </RelativeLayout>
 
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/clear_waste_dump_recycler_layout"
+                        android:layout_marginTop="@dimen/_10sdp">
+
+                        <TextView
+                            android:id="@+id/clear_waste_dump_recycler_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="Cleared Waste Dump Photos List"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:fontFamily="@string/font_regular"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/clear_waste_dump_recycler"
+                            android:layout_marginTop="@dimen/_10sdp"/>
                     </LinearLayout>
 
                 </LinearLayout>

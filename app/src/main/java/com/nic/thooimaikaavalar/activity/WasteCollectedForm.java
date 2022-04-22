@@ -16,6 +16,7 @@ import com.nic.thooimaikaavalar.dataBase.DBHelper;
 import com.nic.thooimaikaavalar.dataBase.dbData;
 import com.nic.thooimaikaavalar.databinding.ActivityWasteCollectedFormBinding;
 import com.nic.thooimaikaavalar.model.RealTimeMonitoringSystem;
+import com.nic.thooimaikaavalar.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -138,6 +139,65 @@ public class WasteCollectedForm extends AppCompatActivity {
         shredded_text=activityWasteCollectedFormBinding.shopsText.getText().toString();
         compost_produced_text=activityWasteCollectedFormBinding.compostProducedText.getText().toString();
         compost_sold_text=activityWasteCollectedFormBinding.compostSoldText.getText().toString();
+        if(!market_places_text.equals("")){
+            if(!house_hold_text.equals("")){
+                if(!shops_text.equals("")){
+                    if(!hotels_text.equals("")){
+                        if(!others_text.equals("")){
+                            if(!total_quantity_waste_text.equals("")){
+                                if(!shredded_text.equals("")){
+                                    if(!compost_produced_text.equals("")){
+                                        if(!compost_sold_text.equals("")){
+                                            saveDetails();
+                                        }
+                                        else {
+                                            Utils.showAlert(WasteCollectedForm.this,getResources().getString(R.string.total_quantity_of_compost_sold_in_kg));
+
+                                        }
+                                    }
+                                    else {
+                                        Utils.showAlert(WasteCollectedForm.this,getResources().getString(R.string.total_quantity_of_compost_produced_in_kg));
+
+                                    }
+                                }
+                                else {
+                                    Utils.showAlert(WasteCollectedForm.this,getResources().getString(R.string.quantity_of_bio_degradable_waste_shredded_in_kg));
+
+                                }
+                            }
+                            else {
+                                Utils.showAlert(WasteCollectedForm.this,getResources().getString(R.string.total_quantity_of_bio_degradable_waste_collected_in_kg));
+                            }
+                        }
+                        else {
+                            Utils.showAlert(WasteCollectedForm.this,getResources().getString(R.string.others));
+                        }
+                    }
+                    else {
+                        Utils.showAlert(WasteCollectedForm.this,getResources().getString(R.string.hotels));
+                    }
+                }
+                else {
+                    Utils.showAlert(WasteCollectedForm.this,getResources().getString(R.string.shops));
+                }
+            }
+            else {
+                Utils.showAlert(WasteCollectedForm.this,getResources().getString(R.string.households));
+            }
+        }
+        else {
+            Utils.showAlert(WasteCollectedForm.this,getResources().getString(R.string.market_places));
+        }
+
+    }
+
+    public String getCurrentDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
+        String currentDateandTime = sdf.format(new Date());
+        return currentDateandTime;
+    }
+
+    public void saveDetails(){
         try {
             ContentValues values = new ContentValues();
             values.put("pvcode",pvcode);
@@ -177,12 +237,6 @@ public class WasteCollectedForm extends AppCompatActivity {
         catch (Exception e){
 
         }
-    }
-
-    public String getCurrentDate(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
-        String currentDateandTime = sdf.format(new Date());
-        return currentDateandTime;
     }
 
 

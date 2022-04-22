@@ -325,8 +325,9 @@
                             <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:inputType="numberDecimal"
+                                android:textAlignment="center"
                                 android:id="@+id/total_quantity_waste_text"
                                 android:fontFamily="@string/font_regular"
                                 android:background="@color/full_transparent"
@@ -360,8 +361,9 @@
                             <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:inputType="numberDecimal"
+                                android:textAlignment="center"
                                 android:id="@+id/shredded_text"
                                 android:fontFamily="@string/font_regular"
                                 android:background="@color/full_transparent"
@@ -395,8 +397,9 @@
                             <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:inputType="numberDecimal"
+                                android:textAlignment="center"
                                 android:id="@+id/compost_produced_text"
                                 android:fontFamily="@string/font_regular"
                                 android:background="@color/full_transparent"
@@ -430,8 +433,9 @@
                             <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginStart="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
                                 android:inputType="numberDecimal"
+                                android:textAlignment="center"
                                 android:id="@+id/compost_sold_text"
                                 android:fontFamily="@string/font_regular"
                                 android:background="@color/full_transparent"

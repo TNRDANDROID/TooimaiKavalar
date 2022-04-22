@@ -46,6 +46,7 @@ public class SwmMasterDetailsView extends AppCompatActivity implements Api.Serve
     private ProgressHUD progressHUD;
 
     SwmMasterDetailsAdapter swmMasterDetailsAdapter;
+    String which_flag="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +70,7 @@ public class SwmMasterDetailsView extends AppCompatActivity implements Api.Serve
         activitySwmMasterDetailsViewBinding.previewImageLayout.setVisibility(View.GONE);
 
 
+        which_flag = getIntent().getStringExtra("Flag");
 
         activitySwmMasterDetailsViewBinding.backImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,7 +214,7 @@ public class SwmMasterDetailsView extends AppCompatActivity implements Api.Serve
                 activitySwmMasterDetailsViewBinding.mccReclclerRl.setVisibility(View.VISIBLE);
                 activitySwmMasterDetailsViewBinding.noDataText.setVisibility(View.GONE);
                 activitySwmMasterDetailsViewBinding.swmMasterDetailsRecyler.setVisibility(View.VISIBLE);
-                swmMasterDetailsAdapter = new SwmMasterDetailsAdapter(swmMasterDetailsServerList,SwmMasterDetailsView.this,dbData,"Server");
+                swmMasterDetailsAdapter = new SwmMasterDetailsAdapter(swmMasterDetailsServerList,SwmMasterDetailsView.this,dbData,"Server",which_flag);
                 activitySwmMasterDetailsViewBinding.swmMasterDetailsRecyler.setAdapter(swmMasterDetailsAdapter);
             }
             else {

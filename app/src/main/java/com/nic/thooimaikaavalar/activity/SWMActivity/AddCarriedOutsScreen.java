@@ -35,6 +35,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ import com.nic.thooimaikaavalar.Interface.AdapterCameraIntent;
 import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.activity.NewMainPage;
 import com.nic.thooimaikaavalar.adapter.CarriedOutWastDumpAdapter;
+import com.nic.thooimaikaavalar.adapter.ClearedWasteDumbAdapter;
 import com.nic.thooimaikaavalar.adapter.CommonAdapter;
 import com.nic.thooimaikaavalar.adapter.WastedumpDetailsAdapter;
 import com.nic.thooimaikaavalar.api.Api;
@@ -98,8 +100,10 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
     ArrayList<RealTimeMonitoringSystem> carriedOutDateList;
     private String choose_date_string="";
     CarriedOutWastDumpAdapter carriedOutWastDumpAdapter;
+    ClearedWasteDumbAdapter clearedWasteDumbAdapter;
 
     ArrayList<RealTimeMonitoringSystem> carriedOutListDetails;
+    ArrayList<RealTimeMonitoringSystem> viewClearedWasteDumpList;
 
     public static final int MEDIA_TYPE_IMAGE = 1;
 
@@ -153,16 +157,17 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             }
         });
 
-        int gettableCountWasteDumpTable = dbData.gettableCountWasteDumpTable();
+        /*int gettableCountWasteDumpTable = dbData.gettableCountWasteDumpTable();
         if(gettableCountWasteDumpTable==0){
             getOnlineWasteDumpList();
         }
         else {
-            Utils.showAlert(AddCarriedOutsScreen.this,"First Upload Your WastDump Data");
+            //Utils.showAlert(AddCarriedOutsScreen.this,"First Upload Your WastDump Data");
+            Toasty.error(AddCarriedOutsScreen.this,"First Upload Your WastDump Data",Toasty.LENGTH_LONG);
             onBackPressed();
         }
 
-
+*/
         carriedOutListDetails = new ArrayList<>();
         //carriedOutWastDumpAdapter = new CarriedOutWastDumpAdapter(carriedOutListDetails,this,"Server",dbData);
 
@@ -171,15 +176,48 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position>0){
                     choose_date_string = carriedOutDateList.get(position).getCarried_out_date();
+                    carriedOutsScreenBinding.totalQuantityOfWaste.setText("");
+                    carriedOutsScreenBinding.quantityOfBioDegradableWaste.setText("");
+                    carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromCommunity.setText("");
+                    carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromVermi.setText("");
+                    carriedOutsScreenBinding.quantityOfCompostSold.setText("");
+                    carriedOutsScreenBinding.totalRevenueGenerated.setText("");
+                    carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(null);
+                    getOnlineWasteDumpList();
                 }
                 else {
                     choose_date_string = "";
+                    carriedOutsScreenBinding.totalQuantityOfWaste.setText("");
+                    carriedOutsScreenBinding.quantityOfBioDegradableWaste.setText("");
+                    carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromCommunity.setText("");
+                    carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromVermi.setText("");
+                    carriedOutsScreenBinding.quantityOfCompostSold.setText("");
+                    carriedOutsScreenBinding.totalRevenueGenerated.setText("");
+                    carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(null);
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        carriedOutsScreenBinding.wasteDumpImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewClearedWasteDumpList.size()>0){
+                    carriedOutsScreenBinding.clearWasteDumpRecyclerLayout.setVisibility(View.VISIBLE);
+                    carriedOutsScreenBinding.carriedOutDetailsLayout.setVisibility(View.GONE);
+                    clearedWasteDumbAdapter = new ClearedWasteDumbAdapter(viewClearedWasteDumpList,AddCarriedOutsScreen.this,"Server",dbData);
+                    adapterCameraIntent =carriedOutWastDumpAdapter;
+                    carriedOutsScreenBinding.clearWasteDumpRecycler.setAdapter(clearedWasteDumbAdapter);
+
+                }
+                else {
+                    carriedOutsScreenBinding.clearWasteDumpRecyclerLayout.setVisibility(View.GONE);
+                    carriedOutsScreenBinding.carriedOutDetailsLayout.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
@@ -191,11 +229,18 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         whether_community_compost_pit_available_in_panchayat = getIntent().getStringExtra("whether_community_compost_pit_available_in_panchayat");
         whether_vermi_compost_pit_available_in_panchayat = getIntent().getStringExtra("whether_vermi_compost_pit_available_in_panchayat");
         any_integrated_nuesery_devlp_near_swm_facility = getIntent().getStringExtra("any_integrated_nuesery_devlp_near_swm_facility");
+        carriedOutsScreenBinding.wasteDumpImg.setVisibility(View.GONE);
+        carriedOutsScreenBinding.clearWasteDumpRecyclerLayout.setVisibility(View.GONE);
+        carriedOutsScreenBinding.carriedOutDetailsLayout.setVisibility(View.VISIBLE);
     }
     private void initialiseRecyclerView() {
         carriedOutsScreenBinding.wasteDumpRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL);
         carriedOutsScreenBinding.wasteDumpRecycler.addItemDecoration(itemDecoration);
+
+        carriedOutsScreenBinding.clearWasteDumpRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        RecyclerView.ItemDecoration itemDecoration1 = new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL);
+        carriedOutsScreenBinding.clearWasteDumpRecycler.addItemDecoration(itemDecoration1);
     }
 
     public void loadCarriedOutDateList(){
@@ -243,6 +288,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         JSONObject dataSet = new JSONObject();
         dataSet.put(AppConstant.KEY_SERVICE_ID, "swm_activity_carried_out_view");
         dataSet.put("swm_infra_details_id", swm_infra_details_id);
+        dataSet.put("date_entry_for",choose_date_string);
         Log.d("OnlineWasteDump", "" + dataSet);
         return dataSet;
     }
@@ -287,6 +333,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         protected ArrayList<RealTimeMonitoringSystem> doInBackground(JSONObject... params) {
 
             ArrayList<RealTimeMonitoringSystem> carriedOutList = new ArrayList<>();
+            viewClearedWasteDumpList= new ArrayList<>();
             if (params.length > 0) {
                 JSONArray jsonArray = new JSONArray();
                 JSONArray jsonArray1 = new JSONArray();
@@ -328,6 +375,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     RealTimeMonitoringSystem carriedOutItems = new RealTimeMonitoringSystem();
+                    RealTimeMonitoringSystem carriedOutItems1 = new RealTimeMonitoringSystem();
                     try {
                         carriedOutItems.setDistictCode(jsonArray.getJSONObject(i).getString("dcode"));
                         carriedOutItems.setBlockCode(jsonArray.getJSONObject(i).getString("bcode"));
@@ -341,15 +389,38 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                             carriedOutItems.setBefore_taken_image(decodedByte);
                         }
-                        if(jsonArray.getJSONObject(i).getString("is_photo_of_waste_dump_after_action").equals("Y")){
+                        /*if(jsonArray.getJSONObject(i).getString("is_photo_of_waste_dump_after_action").equals("Y")){
                             byte[] decodedString = Base64.decode(jsonArray.getJSONObject(i).getString("after_taken_image"), Base64.DEFAULT);
                             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                             carriedOutItems.setAfter_taken_image(decodedByte);
-                        }
+                        }*/
                         carriedOutItems.setAfter_taken_image_lat("");
                         carriedOutItems.setAfter_taken_image_long("");
 
                         carriedOutList.add(carriedOutItems);
+
+                        ///This for Cleared WasteDUmpList ***///
+                        carriedOutItems1.setDistictCode(jsonArray.getJSONObject(i).getString("dcode"));
+                        carriedOutItems1.setBlockCode(jsonArray.getJSONObject(i).getString("bcode"));
+                        carriedOutItems1.setPvCode(jsonArray.getJSONObject(i).getString("pvcode"));
+                        carriedOutItems1.setSwm_infra_details_id(jsonArray.getJSONObject(i).getString("swm_infra_details_id"));
+                        carriedOutItems1.setSwm_waste_dump_photos_id(jsonArray.getJSONObject(i).getString("swm_waste_dump_photos_id"));
+                        carriedOutItems1.setIs_there_any_waste_dump(jsonArray.getJSONObject(i).getString("is_photo_of_waste_dump"));
+                        carriedOutItems1.setIs_photo_of_waste_dump_after_action(jsonArray.getJSONObject(i).getString("is_photo_of_waste_dump_after_action"));
+                        if(jsonArray.getJSONObject(i).getString("is_photo_of_waste_dump").equals("Y")){
+                            byte[] decodedString = Base64.decode(jsonArray.getJSONObject(i).getString("before_taken_image"), Base64.DEFAULT);
+                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                            carriedOutItems1.setBefore_taken_image(decodedByte);
+                        }
+                        if(jsonArray.getJSONObject(i).getString("is_photo_of_waste_dump_after_action").equals("Y")){
+                            byte[] decodedString = Base64.decode(jsonArray.getJSONObject(i).getString("after_taken_image"), Base64.DEFAULT);
+                            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                            carriedOutItems1.setAfter_taken_image(decodedByte);
+                        }
+                        carriedOutItems1.setAfter_taken_image_lat("");
+                        carriedOutItems1.setAfter_taken_image_long("");
+                        /////*******///////////
+                        viewClearedWasteDumpList.add(carriedOutItems1);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -367,24 +438,59 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             if(carriedOutList.size()>0){
                 carriedOutListDetails = new ArrayList<>();
                 carriedOutListDetails.addAll(carriedOutList);
-                carriedOutWastDumpAdapter = new CarriedOutWastDumpAdapter(carriedOutListDetails,AddCarriedOutsScreen.this,"Server",dbData);
-                adapterCameraIntent =carriedOutWastDumpAdapter;
-                carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(carriedOutWastDumpAdapter);
-                carriedOutsScreenBinding.wasteDumpRecycler.setVisibility(View.VISIBLE);
+                for(int i= carriedOutListDetails.size()-1;i >= 0;i--){
+                    if(carriedOutListDetails.get(i).getIs_photo_of_waste_dump_after_action().equals("Y")){
+                        carriedOutListDetails.remove(i);
+                    }
+                }
+                if(carriedOutListDetails.size()>0){
+                    carriedOutWastDumpAdapter = new CarriedOutWastDumpAdapter(carriedOutListDetails,AddCarriedOutsScreen.this,"Server",dbData);
+                    adapterCameraIntent =carriedOutWastDumpAdapter;
+                    carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(carriedOutWastDumpAdapter);
+                    carriedOutsScreenBinding.wasteDumpRecycler.setVisibility(View.VISIBLE);
+                }
+                else {
+                    carriedOutsScreenBinding.wasteDumpRecycler.setVisibility(View.GONE);
+                }
+
 
             }
             else {
                 carriedOutsScreenBinding.wasteDumpRecycler.setVisibility(View.GONE);
             }
+            /*try {
+                carriedOutsScreenBinding.chooseDateSpinner.setSelection(getSpinnerIndex(carriedOutsScreenBinding.chooseDateSpinner,date_entry_for));
+            }
+            catch (Exception e){
+
+            }*/
             carriedOutsScreenBinding.totalQuantityOfWaste.setText(total_quantity_of_waste);
             carriedOutsScreenBinding.quantityOfBioDegradableWaste.setText(quantity_of_bio_degradable_waste);
             carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromCommunity.setText(total_quantity_of_compost_generated_from_community);
             carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromVermi.setText(total_quantity_of_compost_generated_from_vermi);
             carriedOutsScreenBinding.quantityOfCompostSold.setText(quantity_of_compost_sold);
             carriedOutsScreenBinding.totalRevenueGenerated.setText(total_revenue_generated);
+
+            if(viewClearedWasteDumpList.size()>0){
+                carriedOutsScreenBinding.wasteDumpImg.setVisibility(View.VISIBLE);
+            }
+            else {
+                carriedOutsScreenBinding.wasteDumpImg.setVisibility(View.GONE);
+            }
         }
     }
 
+    private int getSpinnerIndex(Spinner spinner, String myString){
+
+        int index = 0;
+
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).equals(myString)){
+                index = i;
+            }
+        }
+        return index;
+    }
     private void captureImage() {
         if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
 
@@ -671,29 +777,111 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         dbData.open();
         ArrayList <RealTimeMonitoringSystem> carriedOutAdapterList = new ArrayList<>();
         boolean all_is_correct= false;
-
-
-        carriedOutAdapterList = carriedOutWastDumpAdapter.getTheCarriedList();
-        for (int j=0;j<carriedOutAdapterList.size();j++){
-            if(!carriedOutAdapterList.get(j).getIs_photo_of_waste_dump_after_action().equals("")) {
-                if (carriedOutAdapterList.get(j).getIs_photo_of_waste_dump_after_action().equals("Y")) {
-                    if (carriedOutAdapterList.get(j).getAfter_taken_image() != null) {
+        if(carriedOutListDetails.size()>0){
+            carriedOutAdapterList = carriedOutWastDumpAdapter.getTheCarriedList();
+            for (int j=0;j<carriedOutAdapterList.size();j++){
+                if(!carriedOutAdapterList.get(j).getIs_photo_of_waste_dump_after_action().equals("")) {
+                    if (carriedOutAdapterList.get(j).getIs_photo_of_waste_dump_after_action().equals("Y")) {
+                        if (carriedOutAdapterList.get(j).getAfter_taken_image() != null) {
+                            all_is_correct = true;
+                        } else {
+                            all_is_correct = false;
+                            break;
+                        }
+                    }
+                    else {
                         all_is_correct = true;
-                    } else {
-                        all_is_correct = false;
-                        break;
+                    }
+                }
+                else {
+                    all_is_correct = false;
+                    break;
+                }
+            }
+            if(all_is_correct){
+                long insert_updated_id =0;
+                int count = 0;
+                long rowInserted = 0;
+                try {
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put("swm_infra_details_id",swm_infra_details_id);
+                    contentValues.put("dcode",prefManager.getDistrictCode());
+                    contentValues.put("bcode",prefManager.getBlockCode());
+                    contentValues.put("pvcode",prefManager.getPvCode());
+                    contentValues.put("date_entry_for",choose_date_string);
+                    contentValues.put("total_quantity_of_waste",total_quantity_of_waste);
+                    contentValues.put("quantity_of_bio_degradable_waste",quantity_of_bio_degradable_waste);
+                    contentValues.put("total_quantity_of_compost_generated_from_community",total_quantity_of_compost_generated_from_community);
+                    contentValues.put("total_quantity_of_compost_generated_from_vermi",total_quantity_of_compost_generated_from_vermi);
+                    contentValues.put("quantity_of_compost_sold",quantity_of_compost_sold);
+                    contentValues.put("total_revenue_generated",total_revenue_generated);
+
+                    if(dbData.gettableCountCarriedOutTable("",swm_infra_details_id,choose_date_string)>0){
+                        insert_updated_id = db.update(DBHelper.SWM_CARRIED_OUT_DETAILS,contentValues,null,null);
+                        if (insert_updated_id>0){
+                            Toasty.success(AddCarriedOutsScreen.this,getResources().getString(R.string.updated_success),Toasty.LENGTH_SHORT);
+                        }
+
+                    }
+                    else {
+                        insert_updated_id = db.insert(DBHelper.SWM_CARRIED_OUT_DETAILS,null,contentValues);
+                        if (insert_updated_id>0){
+                            Toasty.success(AddCarriedOutsScreen.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
+
+                        }
+                    }
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+                if(dbData.getParticularCarriedOutPhotosList((int) insert_updated_id,prefManager.getPvCode(),swm_infra_details_id,choose_date_string).size()>0){
+                    long delete_id = db.delete(DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS,null,null);
+                }
+                for(int j=0;j<carriedOutAdapterList.size();j++){
+                    byte[] imageInByte = new byte[0];
+                    count = count+1;
+                    ContentValues values =  new ContentValues();
+                    try {
+                        values.put("carried_out_details_id",insert_updated_id);
+                        values.put("swm_infra_details_id",carriedOutAdapterList.get(j).getSwm_infra_details_id());
+                        values.put("swm_waste_dump_photos_id",carriedOutAdapterList.get(j).getSwm_waste_dump_photos_id());
+                        values.put("dcode",prefManager.getDistrictCode());
+                        values.put("bcode",prefManager.getBlockCode());
+                        values.put("pvcode",prefManager.getPvCode());
+                        values.put("date_entry_for",choose_date_string);
+                        values.put("is_photo_of_waste_dump_after_action",carriedOutAdapterList.get(j).getIs_photo_of_waste_dump_after_action());
+                        if(carriedOutAdapterList.get(j).getIs_photo_of_waste_dump_after_action().equals("Y")){
+                            Bitmap bitmap = carriedOutAdapterList.get(j).getAfter_taken_image();
+                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                            imageInByte = baos.toByteArray();
+                            values.put("after_taken_image_lat",carriedOutAdapterList.get(j).getAfter_taken_image_lat());
+                            values.put("after_taken_image_long",carriedOutAdapterList.get(j).getAfter_taken_image_long());
+                            values.put("after_taken_image",imageInByte);
+                        }
+
+                            rowInserted = db.insert(DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS, null, values);
+                            if (count == carriedOutAdapterList.size()) {
+                                if (rowInserted > 0) {
+                                    Toasty.success(AddCarriedOutsScreen.this, getResources().getString(R.string.inserted_success), Toasty.LENGTH_SHORT);
+                                    onBackPressed();
+                                }
+                            }
+
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
                     }
                 }
             }
             else {
-                all_is_correct = false;
-                break;
+                //Utils.showAlert(AddCarriedOutsScreen.this,"Please Choose This ");
+                Utils.showAlert(AddCarriedOutsScreen.this,"Please fill All the Details");
             }
         }
-        if(all_is_correct){
+        else {
+
             long insert_updated_id =0;
-            int count = 0;
-            long rowInserted = 0;
             try {
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("swm_infra_details_id",swm_infra_details_id);
@@ -708,10 +896,11 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                 contentValues.put("quantity_of_compost_sold",quantity_of_compost_sold);
                 contentValues.put("total_revenue_generated",total_revenue_generated);
 
-                if(dbData.gettableCountCarriedOutTable("",swm_infra_details_id)>0){
+                if(dbData.gettableCountCarriedOutTable("",swm_infra_details_id,choose_date_string)>0){
                     insert_updated_id = db.update(DBHelper.SWM_CARRIED_OUT_DETAILS,contentValues,null,null);
                     if (insert_updated_id>0){
                         Toasty.success(AddCarriedOutsScreen.this,getResources().getString(R.string.updated_success),Toasty.LENGTH_SHORT);
+                        onBackPressed();
                     }
 
                 }
@@ -719,53 +908,27 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                     insert_updated_id = db.insert(DBHelper.SWM_CARRIED_OUT_DETAILS,null,contentValues);
                     if (insert_updated_id>0){
                         Toasty.success(AddCarriedOutsScreen.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
-
+                        onBackPressed();
                     }
                 }
             }
             catch (Exception e){
                 e.printStackTrace();
             }
-            for(int j=0;j<carriedOutAdapterList.size();j++){
-                byte[] imageInByte = new byte[0];
-                count = count+1;
-                ContentValues values =  new ContentValues();
-                try {
-                    values.put("carried_out_details_id",insert_updated_id);
-                    values.put("swm_infra_details_id",carriedOutAdapterList.get(j).getSwm_infra_details_id());
-                    values.put("swm_waste_dump_photos_id",carriedOutAdapterList.get(j).getSwm_waste_dump_photos_id());
-                    values.put("dcode",prefManager.getDistrictCode());
-                    values.put("bcode",prefManager.getBlockCode());
-                    values.put("pvcode",prefManager.getPvCode());
-                    values.put("is_photo_of_waste_dump_after_action",carriedOutAdapterList.get(j).getIs_photo_of_waste_dump_after_action());
-                    if(carriedOutAdapterList.get(j).getIs_photo_of_waste_dump_after_action().equals("Y")){
-                        Bitmap bitmap = carriedOutAdapterList.get(j).getAfter_taken_image();
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                        imageInByte = baos.toByteArray();
-                        values.put("after_taken_image_lat",carriedOutAdapterList.get(j).getAfter_taken_image_lat());
-                        values.put("after_taken_image_long",carriedOutAdapterList.get(j).getAfter_taken_image_long());
-                        values.put("after_taken_image",imageInByte);
-                    }
+        }
 
-                    rowInserted = db.insert(DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS, null, values);
-                    if(count == carriedOutAdapterList.size()){
-                        if (rowInserted>0){
-                            Toasty.success(AddCarriedOutsScreen.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
-                            onBackPressed();
-                        }
-                    }
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }
-        else {
-            //Utils.showAlert(AddCarriedOutsScreen.this,"Please Choose This ");
-            Utils.showAlert(AddCarriedOutsScreen.this,"Please fill All the Details");
-        }
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if(carriedOutsScreenBinding.clearWasteDumpRecyclerLayout.getVisibility()==View.VISIBLE){
+            carriedOutsScreenBinding.clearWasteDumpRecyclerLayout.setVisibility(View.GONE);
+            carriedOutsScreenBinding.carriedOutDetailsLayout.setVisibility(View.VISIBLE);
+        }
+        else {
+            super.onBackPressed();
+            overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
+        }
+    }
 }
