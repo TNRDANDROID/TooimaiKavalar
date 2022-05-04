@@ -48,7 +48,7 @@ public class AddThooimaiKaavalarDetails extends AppCompatActivity {
         activityAddThooimaiKaavalarDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_thooimai_kaavalar_details);
         activityAddThooimaiKaavalarDetailsBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+        Utils.setLocale("ta",this);
 
         count =getIntent().getIntExtra("count",0);
 

@@ -8,6 +8,7 @@
             name="activity"
             type="com.nic.thooimaikaavalar.activity.SWMActivity.MasterFormSwmEntry" />
     </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,12 +46,14 @@
                     android:fontFamily="@string/font_regular"
                     android:layout_centerInParent="true"
                     android:textStyle="bold"/>
+
             </RelativeLayout>
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/toolbar">
+
                 <LinearLayout
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_marginRight="@dimen/_10sdp"
@@ -173,6 +176,7 @@
                             android:layout_marginTop="@dimen/padding"
                             android:background="@drawable/rectangle_box"
                             android:orientation="vertical">
+
                             <ImageView
                                 android:layout_width="@dimen/_30sdp"
                                 android:layout_height="@dimen/_30sdp"
@@ -183,7 +187,6 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/_5sdp"
                                 android:contentDescription="@string/specify_icon" />
-
 
                             <EditText
                                 android:layout_toEndOf="@+id/specify_icon"
@@ -200,7 +203,6 @@
                                 android:visibility="visible"
                                 style="@string/font_normal"
                                 android:importantForAutofill="no" />
-
 
                         </RelativeLayout>
 
@@ -234,12 +236,14 @@
                                    android:layout_height="wrap_content"
                                    android:id="@+id/compost_pit_available_yes"
                                    android:text="@string/yes"/>
+
                                <RadioButton
                                    android:layout_marginStart="@dimen/_20sdp"
                                    android:layout_width="wrap_content"
                                    android:layout_height="wrap_content"
                                    android:id="@+id/compost_pit_available_no"
                                    android:text="@string/no"/>
+
                            </RadioGroup>
 
                         </RelativeLayout>
@@ -274,12 +278,14 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/vermi_compost_facility_available_yes"
                                     android:text="@string/yes"/>
+
                                 <RadioButton
                                     android:layout_marginStart="@dimen/_20sdp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/vermi_compost_facility_available_no"
                                     android:text="@string/no"/>
+
                             </RadioGroup>
 
                         </RelativeLayout>
@@ -314,12 +320,56 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/nursery_developed_available_yes"
                                     android:text="@string/yes"/>
+
                                 <RadioButton
                                     android:layout_marginStart="@dimen/_20sdp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/nursery_developed_available_no"
                                     android:text="@string/no"/>
+
+                            </RadioGroup>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/select_plastic_connected__tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:text="@string/is_there_any_plastic_waste_connected_facility"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_12sdp"
+                            style="@string/font_circular_bold" />
+                        <RelativeLayout
+                            android:id="@+id/plastic_connected_available_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/header"
+                            android:layout_marginTop="@dimen/padding"
+                            android:background="@drawable/rectangle_box"
+                            android:orientation="vertical">
+
+                            <RadioGroup
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:id="@+id/plastic_connected_available_radio_group"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/plastic_connected_available_yes"
+                                    android:text="@string/yes"/>
+
+                                <RadioButton
+                                    android:layout_marginStart="@dimen/_20sdp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/plastic_connected_available_no"
+                                    android:text="@string/no"/>
+
                             </RadioGroup>
 
                         </RelativeLayout>
@@ -346,15 +396,17 @@
                                 android:textColor="@color/white">
 
                             </Button>
-                        </RelativeLayout>
 
+                        </RelativeLayout>
 
                     </LinearLayout>
 
                 </LinearLayout>
+
             </androidx.core.widget.NestedScrollView>
 
         </RelativeLayout>
 
     </RelativeLayout>
+
 </layout>

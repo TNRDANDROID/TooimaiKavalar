@@ -76,7 +76,7 @@ public class PendingScreen extends AppCompatActivity implements Api.ServerRespon
             e.printStackTrace();
         }
         prefManager = new PrefManager(this);
-
+        Utils.setLocale("ta",this);
         Utils.setupUI(pendingScreenBinding.parentLayout,this);
         pendingList = new ArrayList<>();
         pendingScreenAdapter = new PendingScreenAdapter(PendingScreen.this,pendingList);

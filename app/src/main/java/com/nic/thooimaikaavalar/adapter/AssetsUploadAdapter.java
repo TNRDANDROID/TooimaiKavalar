@@ -114,10 +114,10 @@ public class AssetsUploadAdapter extends RecyclerView.Adapter<AssetsUploadAdapte
 
             TextView text = (TextView) dialog.findViewById(R.id.tv_message);
             if(save_delete.equals("save")) {
-                text.setText("Do You Want to Upload?");
+                text.setText(context.getResources().getString(R.string.do_you_wnat_to_upload));
             }
             else if(save_delete.equals("delete")){
-                text.setText("Do You Want to Delete?");
+                text.setText(context.getResources().getString(R.string.do_you_wnat_to_delete));
             }
 
             Button yesButton = (Button) dialog.findViewById(R.id.btn_ok);
@@ -337,6 +337,12 @@ public class AssetsUploadAdapter extends RecyclerView.Adapter<AssetsUploadAdapte
                 jsonObject.put("tot_qty_of_compost_gen_from_vermicomposting_unit_kg",carriedOutDetails.get(j).getTotal_quantity_of_compost_generated_from_vermi());
                 jsonObject.put("sale_qty_of_compost_kg",carriedOutDetails.get(j).getQuantity_of_compost_sold());
                 jsonObject.put("sale_revenue_generated_in_rupees",carriedOutDetails.get(j).getTotal_revenue_generated());
+
+                jsonObject.put("amount_of_compostable_waste_sent_for_recycling_in_kg",carriedOutDetails.get(j).getAmount_of_compostable_waste_sent_for_recycling_in_kg());
+                jsonObject.put("amount_of_compostable_waste_sent_for_recycling_revenue_in_rs",carriedOutDetails.get(j).getAmount_of_compostable_waste_sent_for_recycling_revenue_in_rs());
+                jsonObject.put("amount_of_plastic_waste_sent_to_pwm_unit_in_kg",carriedOutDetails.get(j).getAmount_of_plastic_waste_sent_to_pwm_unit_in_kg());
+                jsonObject.put("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs",carriedOutDetails.get(j).getAmount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs());
+
                 carried_out_details.put(jsonObject);
                 ArrayList<RealTimeMonitoringSystem> waste_dump_photos_list = dbData.getParticularCarriedOutPhotosList(carriedOutDetails.get(j).getId(),prefManager.getPvCode(),carriedOutDetails.get(j).getSwm_infra_details_id(),carriedOutDetails.get(j).getDate_entry_for());
                 for (int i = 0; i < waste_dump_photos_list.size(); i++) {

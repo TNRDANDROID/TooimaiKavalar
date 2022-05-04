@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
+
         <variable
             name="activity"
             type="com.nic.thooimaikaavalar.activity.NewThooimaiKavalarEdit"/>
+
     </data>
 
     <RelativeLayout
@@ -27,6 +30,7 @@
                 android:padding="@dimen/_10sdp"
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/back_icon" />
+
             <ImageView
                 android:visibility="gone"
                 android:layout_alignParentEnd="true"
@@ -49,6 +53,7 @@
                 android:text="@string/thooimai_kaavalar_screen"
                 android:layout_centerInParent="true"
                 android:textStyle="bold"/>
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -82,9 +87,8 @@
                 android:layout_centerInParent="true"
                 android:src="@drawable/new_no_result_image_1_"/>
 
-
         </RelativeLayout>
 
-
     </RelativeLayout>
+
 </layout>

@@ -8,6 +8,7 @@
             name="activity"
             type="com.nic.thooimaikaavalar.activity.SWMActivity.AddCarriedOutsScreen" />
     </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -63,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/toolbar">
+
                 <LinearLayout
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:layout_marginRight="@dimen/_10sdp"
@@ -83,7 +85,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/padding"
-                            android:text="Choose Date"
+                            android:text="@string/choose_date"
                             android:fontFamily="@string/font_regular"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
@@ -125,7 +127,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/padding"
-                            android:text="Total Quantity Of Waste Collected in the Panchayat (in Kg)"
+                            android:text="@string/total_quantity_of_waste_collected_in_the_panchayat_in_kg"
                             android:fontFamily="@string/font_regular"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
@@ -164,7 +166,6 @@
                                 style="@string/font_normal"
                                 android:importantForAutofill="no" />
 
-
                         </RelativeLayout>
 
 
@@ -173,7 +174,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/padding"
-                            android:text="Quantity Of the Bio Degradable Waste Collected (in Kg)"
+                            android:text="@string/quantity_of_the_bio_degradable_waste_collected_in_kg"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
                             android:fontFamily="@string/font_regular"/>
@@ -184,6 +185,7 @@
                             android:layout_marginTop="@dimen/padding"
                             android:background="@drawable/rectangle_box"
                             android:orientation="vertical">
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -193,7 +195,6 @@
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/_5sdp"
                                 android:contentDescription="@string/specify_icon" />
-
 
                             <EditText
                                 android:layout_toEndOf="@+id/quantity_of_bio_degradable_waste_icon"
@@ -210,7 +211,6 @@
                                 style="@string/font_normal"
                                 android:importantForAutofill="no" />
 
-
                         </RelativeLayout>
 
                         <TextView
@@ -218,7 +218,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:text="Total Quantity of Compost Generated from the Community Compost Pit (in Kg)"
+                            android:text="@string/total_quantity_of_compost_generated_from_the_community_compost_pit_in_kg"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
                             android:fontFamily="@string/font_regular"/>
@@ -263,7 +263,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:text="Total Quantity of Compost Generated from the VermiComposting Compost Pit (in Kg)"
+                            android:text="@string/total_quantity_of_compost_generated_from_the_vermi_composting_compost_pit_in_kg"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
                             android:fontFamily="@string/font_regular"/>
@@ -308,8 +308,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/rect_angle_stroke_bg"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            >
+                            android:layout_marginTop="@dimen/_10sdp">
+
                             <TextView
                                 android:id="@+id/please_sale_of_compost"
                                 android:layout_width="wrap_content"
@@ -317,7 +317,7 @@
                                 android:textAlignment="center"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:text="Sale of Compost"
+                                android:text="@string/sale_of_compost"
                                 android:textColor="@color/darkblue"
                                 android:textSize="@dimen/_12sdp"
                                 android:fontFamily="@string/font_regular"/>
@@ -329,7 +329,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:text="Quantity of Compost Sold (in Kg)"
+                                android:text="@string/quantity_of_compost_sold_in_kg"
                                 android:textColor="@android:color/black"
                                 android:textSize="@dimen/_12sdp"
                                 android:fontFamily="@string/font_regular"/>
@@ -378,7 +378,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:text="Total Revenue Generated (in Lakhs)"
+                                android:text="@string/total_revenue_generated_in_lakhs"
                                 android:textColor="@android:color/black"
                                 android:textSize="@dimen/_12sdp"
                                 android:fontFamily="@string/font_regular"/>
@@ -423,7 +423,226 @@
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/plastic_connected_layout"
+                            android:background="@drawable/rect_angle_stroke_bg"
+                            android:layout_marginTop="@dimen/_10sdp">
 
+                            <TextView
+                                android:id="@+id/plastic_waste_title"
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:textAlignment="center"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="@string/plastic_waste_management"
+                                android:textColor="@color/darkblue"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/font_regular"/>
+
+                            <TextView
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/compostable_waste_recycle_title_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="@string/compostable_waste_recycle_text"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/font_regular"/>
+                            <RelativeLayout
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/quantity_of_compostable_waste_recycle_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/header"
+                                android:layout_marginTop="@dimen/padding"
+                                android:background="@drawable/rectangle_box"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5sdp"
+                                    android:id="@+id/quantity_of_compostable_waste_recycle_icon"
+                                    android:src="@drawable/ic_plastic_waste_icon"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:contentDescription="garbage_icon" />
+
+                                <EditText
+                                    android:layout_toEndOf="@+id/quantity_of_compostable_waste_recycle_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:inputType="numberDecimal"
+                                    android:id="@+id/quantity_of_compostable_waste_recycle"
+                                    android:fontFamily="@string/font_regular"
+                                    android:background="@color/full_transparent"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:visibility="visible"
+                                    style="@string/font_normal"
+                                    android:importantForAutofill="no" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/please_recycle_total_plastic_waste_revenue_generated"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="@string/revenue_rs"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/font_regular"/>
+                            <RelativeLayout
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:id="@+id/total_recycle_plastic_waste_revenue_generated_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/header"
+                                android:layout_marginTop="@dimen/padding"
+                                android:background="@drawable/rectangle_box"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5sdp"
+                                    android:id="@+id/total_recycle_plastic_waste_revenue_generated_icon"
+                                    android:src="@drawable/ic_revenue_icon"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:contentDescription="garbage_icon" />
+
+                                <EditText
+                                    android:layout_toEndOf="@+id/total_recycle_plastic_waste_revenue_generated_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:inputType="numberDecimal"
+                                    android:id="@+id/total_recycle_plastic_waste_revenue_generated"
+                                    android:fontFamily="@string/font_regular"
+                                    android:background="@color/full_transparent"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:visibility="visible"
+                                    style="@string/font_normal"
+                                    android:importantForAutofill="no" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/please_total_plastic_waste_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="@string/plastic_waste_unit"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/font_regular"/>
+                            <RelativeLayout
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:id="@+id/total_plastic_waste_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/header"
+                                android:layout_marginTop="@dimen/padding"
+                                android:background="@drawable/rectangle_box"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5sdp"
+                                    android:id="@+id/total_plastic_waste_icon"
+                                    android:src="@drawable/ic_plastic_waste_icon"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:contentDescription="garbage_icon" />
+
+                                <EditText
+                                    android:layout_toEndOf="@+id/total_plastic_waste_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:inputType="numberDecimal"
+                                    android:id="@+id/total_plastic_waste"
+                                    android:fontFamily="@string/font_regular"
+                                    android:background="@color/full_transparent"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:visibility="visible"
+                                    style="@string/font_normal"
+                                    android:importantForAutofill="no" />
+
+                            </RelativeLayout>
+
+                            <TextView
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/please_total_plastic_waste_revenue_generated"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="@string/revenue_rs"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/font_regular"/>
+                            <RelativeLayout
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:id="@+id/total_plastic_waste_revenue_generated_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/header"
+                                android:layout_marginTop="@dimen/padding"
+                                android:background="@drawable/rectangle_box"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5sdp"
+                                    android:id="@+id/total_plastic_waste_revenue_generated_icon"
+                                    android:src="@drawable/ic_revenue_icon"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:contentDescription="garbage_icon" />
+
+                                <EditText
+                                    android:layout_toEndOf="@+id/total_plastic_waste_revenue_generated_icon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:inputType="numberDecimal"
+                                    android:id="@+id/total_plastic_waste_revenue_generated"
+                                    android:fontFamily="@string/font_regular"
+                                    android:background="@color/full_transparent"
+                                    android:singleLine="true"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:visibility="visible"
+                                    style="@string/font_normal"
+                                    android:importantForAutofill="no" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -446,6 +665,7 @@
                                 android:layout_height="wrap_content"
                                 android:id="@+id/waste_dump_recycler"
                                 android:layout_marginTop="@dimen/_10sdp"/>
+
                         </LinearLayout>
 
                         <RelativeLayout
@@ -468,11 +688,12 @@
                                 android:background="@color/full_transparent"
                                 android:textAllCaps="false"
                                 android:textColor="@color/white">
-
                             </Button>
+
                         </RelativeLayout>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -495,12 +716,15 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/clear_waste_dump_recycler"
                             android:layout_marginTop="@dimen/_10sdp"/>
+
                     </LinearLayout>
 
                 </LinearLayout>
+
             </androidx.core.widget.NestedScrollView>
 
         </RelativeLayout>
 
     </RelativeLayout>
+
 </layout>

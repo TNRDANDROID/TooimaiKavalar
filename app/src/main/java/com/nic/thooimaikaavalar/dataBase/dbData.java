@@ -361,6 +361,7 @@ public class dbData {
         ContentValues values = new ContentValues();
         values.put("swm_asset_type_id", realTimeMonitoringSystem.getSwm_asset_type_id());
         values.put("asset_type_name", realTimeMonitoringSystem.getAsset_type_name());
+        values.put("asset_type_name_ta", realTimeMonitoringSystem.getAsset_type_name_ta());
         values.put("no_of_photos", realTimeMonitoringSystem.getNo_of_photos());
         values.put("is_this_others", realTimeMonitoringSystem.getIs_this_others());
 
@@ -503,6 +504,8 @@ public class dbData {
                             .getColumnIndexOrThrow("swm_asset_type_id")));
                     card.setAsset_type_name(cursor.getString(cursor
                             .getColumnIndexOrThrow("asset_type_name")));
+                    card.setAsset_type_name_ta(cursor.getString(cursor
+                            .getColumnIndexOrThrow("asset_type_name_ta")));
                     card.setNo_of_photos(cursor.getString(cursor
                             .getColumnIndexOrThrow("no_of_photos")));
                     card.setIs_this_others(cursor.getString(cursor
@@ -1017,6 +1020,8 @@ public class dbData {
                             .getColumnIndexOrThrow("whether_vermi_compost_pit_available_in_panchayat")));
                     card.setAny_integrated_nuesery_devlp_near_swm_facility(cursor.getString(cursor
                             .getColumnIndexOrThrow("any_integrated_nuesery_devlp_near_swm_facility")));
+                    card.setIs_plastic_connected_to_waste_management_unit(cursor.getString(cursor
+                            .getColumnIndexOrThrow("is_plastic_connected_to_waste_management_unit")));
 
 
                     cards.add(card);
@@ -1065,6 +1070,8 @@ public class dbData {
                             .getColumnIndexOrThrow("whether_vermi_compost_pit_available_in_panchayat")));
                     card.setAny_integrated_nuesery_devlp_near_swm_facility(cursor.getString(cursor
                             .getColumnIndexOrThrow("any_integrated_nuesery_devlp_near_swm_facility")));
+                    card.setIs_plastic_connected_to_waste_management_unit(cursor.getString(cursor
+                            .getColumnIndexOrThrow("is_plastic_connected_to_waste_management_unit")));
 
                     cards.add(card);
                 }
@@ -1092,6 +1099,7 @@ public class dbData {
         values.put("whether_community_compost_pit_available_in_panchayat", kvvtSurvey.getWhether_community_compost_pit_available_in_panchayat());
         values.put("whether_vermi_compost_pit_available_in_panchayat", kvvtSurvey.getWhether_vermi_compost_pit_available_in_panchayat());
         values.put("any_integrated_nuesery_devlp_near_swm_facility", kvvtSurvey.getAny_integrated_nuesery_devlp_near_swm_facility());
+        values.put("is_plastic_connected_to_waste_management_unit", kvvtSurvey.getIs_plastic_connected_to_waste_management_unit());
         values.put("is_there_any_waste_dump", kvvtSurvey.getIs_there_any_waste_dump());
 
         long id = db.insert(DBHelper.SWM_MASTER_DETAILS_SERVER_TABLE,null,values);
@@ -1133,6 +1141,8 @@ public class dbData {
                             .getColumnIndexOrThrow("any_integrated_nuesery_devlp_near_swm_facility")));
                     card.setIs_there_any_waste_dump(cursor.getString(cursor
                             .getColumnIndexOrThrow("is_there_any_waste_dump")));
+                    card.setIs_plastic_connected_to_waste_management_unit(cursor.getString(cursor
+                            .getColumnIndexOrThrow("is_plastic_connected_to_waste_management_unit")));
 
 
                     cards.add(card);
@@ -1468,6 +1478,14 @@ public class dbData {
                             .getColumnIndexOrThrow("quantity_of_compost_sold")));
                     card.setTotal_revenue_generated(cursor.getString(cursor
                             .getColumnIndexOrThrow("total_revenue_generated")));
+                    card.setAmount_of_compostable_waste_sent_for_recycling_in_kg(cursor.getString(cursor
+                            .getColumnIndexOrThrow("amount_of_compostable_waste_sent_for_recycling_in_kg")));
+                    card.setAmount_of_compostable_waste_sent_for_recycling_revenue_in_rs(cursor.getString(cursor
+                            .getColumnIndexOrThrow("amount_of_compostable_waste_sent_for_recycling_revenue_in_rs")));
+                    card.setAmount_of_plastic_waste_sent_to_pwm_unit_in_kg(cursor.getString(cursor
+                            .getColumnIndexOrThrow("amount_of_plastic_waste_sent_to_pwm_unit_in_kg")));
+                    card.setAmount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs(cursor.getString(cursor
+                            .getColumnIndexOrThrow("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs")));
 
 
                     cards.add(card);

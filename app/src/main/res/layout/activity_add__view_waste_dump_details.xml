@@ -42,6 +42,7 @@
                 android:fontFamily="@string/font_regular"
                 android:layout_centerInParent="true"
                 android:textStyle="bold"/>
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -49,7 +50,6 @@
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
             android:background="#66B8B4B4">
-
 
             <ScrollView
                 android:visibility="gone"
@@ -61,6 +61,7 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <LinearLayout
                         android:id="@+id/swm_details_layout"
                         android:orientation="vertical"
@@ -104,9 +105,8 @@
                                         android:fontFamily="@string/font_regular"
                                         android:layout_centerHorizontal="true"
                                         android:text="@string/add_wast_dump"
-                                        android:textAllCaps="false"
-                                        >
-                                    </Button>
+                                        android:textAllCaps="false"/>
+
 
                                     <ImageView
                                         android:layout_centerHorizontal="true"
@@ -133,11 +133,13 @@
                                 android:foreground="?android:attr/selectableItemBackground"
                                 android:outlineSpotShadowColor="@color/purple"
                                 tools:ignore="UnusedAttribute">
+
                                 <RelativeLayout
                                     android:layout_width="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_height="wrap_content"
                                     >
+
                                     <Button
                                         android:padding="@dimen/_5sdp"
                                         android:clickable="false"
@@ -160,12 +162,13 @@
                                         android:contentDescription="@string/view_edit_icon" />
 
                                 </RelativeLayout>
+
                             </androidx.cardview.widget.CardView>
 
                         </LinearLayout>
 
-
                     </LinearLayout>
+
                 </RelativeLayout>
 
             </ScrollView>
@@ -180,11 +183,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/waste_dump_recycler"/>
-            </RelativeLayout>
 
+            </RelativeLayout>
 
         </RelativeLayout>
 
-
     </RelativeLayout>
+
 </layout>

@@ -73,7 +73,7 @@ public class CarriedOutWastDumpAdapter extends RecyclerView.Adapter<CarriedOutWa
 
             holder.carriedOutActionAdapterItemsBinding.assetName.setVisibility(View.GONE);
             holder.carriedOutActionAdapterItemsBinding.previewImageLayout.setVisibility(View.VISIBLE);
-            holder.carriedOutActionAdapterItemsBinding.status.setText("Yes");
+            holder.carriedOutActionAdapterItemsBinding.status.setText(context.getResources().getString(R.string.yes));
             holder.carriedOutActionAdapterItemsBinding.status.setTextColor(context.getResources().getColor(R.color.account_status_green_color));
 
             holder.carriedOutActionAdapterItemsBinding.afterImageLat.setText(wasteDumpList.get(position).getAfter_taken_image_lat());

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
         <variable
             name="activity"
             type="com.nic.thooimaikaavalar.activity.AdditionalWorkScreen" />
+
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -17,7 +17,6 @@
         android:layout_height="match_parent"
         android:background="#f8f8f8"
         android:orientation="vertical">
-
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -44,7 +43,6 @@
                         android:layout_gravity="start"
                         android:tint="@color/white"
                         android:onClick="@{()-> activity.onBackPressed()}"
-
                         android:src="@mipmap/back_arrow"
                         android:contentDescription="@string/back_icon" />
 
@@ -60,11 +58,9 @@
 
                 </RelativeLayout>
 
-
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
-
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll_view"
@@ -103,13 +99,11 @@
                     android:visibility="gone">
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerInParent="true"
                         android:layout_marginStart="15dp"
-
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_15sdp"
                         android:visibility="visible"
@@ -155,13 +149,11 @@
                     android:visibility="gone">
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_centerInParent="true"
                         android:layout_marginStart="15dp"
-
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_15sdp"
                         android:visibility="visible"
@@ -179,8 +171,6 @@
                         android:gravity="center" />
 
                 </RelativeLayout>
-
-
 
                 <TextView
                     android:id="@+id/habitation_tv"
@@ -220,9 +210,11 @@
                     android:textSize="@dimen/_16sdp"
                     android:textStyle="bold"
                     android:visibility="gone" />
+
             </RelativeLayout>
+
         </androidx.core.widget.NestedScrollView>
 
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

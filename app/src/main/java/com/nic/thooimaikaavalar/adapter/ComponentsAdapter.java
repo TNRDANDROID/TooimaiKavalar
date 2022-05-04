@@ -47,7 +47,7 @@ public class ComponentsAdapter extends RecyclerView.Adapter<ComponentsAdapter.My
     public void onBindViewHolder(@NonNull final ComponentsAdapter.MyViewHolder holder, final int position) {
 
         if(type.equals("SWM")){
-            holder.capacityRecylerAdapterBinding.valueTv.setText(capacityList.get(position).getAsset_type_name());
+            holder.capacityRecylerAdapterBinding.valueTv.setText(capacityList.get(position).getAsset_type_name_ta());
         }
         else {
             holder.capacityRecylerAdapterBinding.valueTv.setText(capacityList.get(position).getKEY_photographs_name());

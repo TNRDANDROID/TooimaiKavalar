@@ -27,7 +27,7 @@ android {
             def version = variant.versionName
             def date = new Date()
             def formattedDate = date.format('ddMMyy')
-            outputFileName = "Thooimaikaavalar${variant.buildType.name}_v${version}_${formattedDate}.apk"
+            outputFileName = "MCC_SWM${variant.buildType.name}_v${version}_${formattedDate}.apk"
         }
     }
     buildTypes {
@@ -50,15 +50,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         production {
-            debuggable true
+            debuggable false
             minifyEnabled false
             shrinkResources false
-            testCoverageEnabled true
             signingConfig signingConfigs.debug
             resValue "string", "LOGIN_URL", "https://drdpr.tn.gov.in/project/webservices_forms/login_service/login_services.php"
             resValue "string", "BASE_SERVICES_URL", "https://drdpr.tn.gov.in/project/webservices_forms/master_services/master_services.php"
             //resValue "string", "APP_MAIN_SERVICES_URL", "https://tnrd.gov.in/project/webservices_forms/work_monitoring/work_monitoring_services.php"
-            resValue "string", "APP_MAIN_SERVICES_URL", "https://drdpr.tn.gov.in/rdweb/project/webservices_forms/village/swm/swm_services.php"
+            resValue "string", "APP_MAIN_SERVICES_URL", "https://drdpr.tn.gov.in/project/webservices_forms/village/swm/swm_services.php"
             resValue "string", "TNRD_HOST_NAME", "drdpr.tn.gov.in"
             resValue "string", "SUB_DOMAIN", "www.drdpr.tn.gov.in"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

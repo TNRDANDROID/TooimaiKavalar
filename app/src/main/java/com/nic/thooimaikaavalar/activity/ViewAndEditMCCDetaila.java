@@ -66,6 +66,7 @@ public class ViewAndEditMCCDetaila extends AppCompatActivity implements Api.Serv
         activity_view_and_edit_m_c_c_detaila.setActivity(this);
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();

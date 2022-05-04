@@ -135,7 +135,7 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
         }
 
         prefManager = new PrefManager(this);
-
+        Utils.setLocale("ta",this);
         viewTakeEditComponentsPhotsBinding.view1.setVisibility(View.VISIBLE);
         viewTakeEditComponentsPhotsBinding.view2.setVisibility(View.GONE);
         viewTakeEditComponentsPhotsBinding.tv1.setTextColor(getResources().getColor(R.color.white));
@@ -180,9 +180,9 @@ public class ViewTakeEditComponentsPhots extends AppCompatActivity {
 
     public void initializeUi(){
         String date_of_commencement= dateFormate(getIntent().getStringExtra("date_of_commencement"),"yes");
-        viewTakeEditComponentsPhotsBinding.villageName.setText("Village : "+getIntent().getStringExtra("village_name"));
-        viewTakeEditComponentsPhotsBinding.mccName.setText("MCC Name : "+getIntent().getStringExtra("mcc_name"));
-        viewTakeEditComponentsPhotsBinding.dateOfCommencement.setText("Date of Commencement : "+date_of_commencement);
+        viewTakeEditComponentsPhotsBinding.villageName.setText(getResources().getString(R.string.village)+" : "+getIntent().getStringExtra("village_name"));
+        viewTakeEditComponentsPhotsBinding.mccName.setText(getResources().getString(R.string.mcc_name)+" : "+getIntent().getStringExtra("mcc_name"));
+        viewTakeEditComponentsPhotsBinding.dateOfCommencement.setText(getResources().getString(R.string.date_of_commencement)+" : "+date_of_commencement);
     }
     public  String dateFormate( String strDate,String type ){
         try {

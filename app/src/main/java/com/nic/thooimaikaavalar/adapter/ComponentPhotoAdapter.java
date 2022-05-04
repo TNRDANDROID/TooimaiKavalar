@@ -75,8 +75,8 @@ public class ComponentPhotoAdapter extends RecyclerView.Adapter<ComponentPhotoAd
 
     @Override
     public void onBindViewHolder(@NonNull final ComponentPhotoAdapter.MyViewHolder holder,final int position){
-        holder.basicDetailsAdapterBinding.date.setText("Date of Commencement -"+basicDetailsList.get(position).getDate_of_commencement());
-        holder.basicDetailsAdapterBinding.mccName.setText("MCC Name -"+basicDetailsList.get(position).getMcc_name());
+        holder.basicDetailsAdapterBinding.date.setText(context.getResources().getString(R.string.date_of_commencement)+" - "+basicDetailsList.get(position).getDate_of_commencement());
+        holder.basicDetailsAdapterBinding.mccName.setText(context.getResources().getString(R.string.mcc_name)+" - "+basicDetailsList.get(position).getMcc_name());
         //holder.basicDetailsAdapterBinding.villageName.setText("Village Name -"+basicDetailsList.get(position).getPvName());
         //holder.basicDetailsAdapterBinding.waterAvailabilityName.setText("Water Available Name -"+basicDetailsList.get(position).getWater_supply_availability_name());
         //holder.basicDetailsAdapterBinding.mccCenterImage.setImageBitmap(stringtoBitmap(basicDetailsList.get(position).getCenter_image()));

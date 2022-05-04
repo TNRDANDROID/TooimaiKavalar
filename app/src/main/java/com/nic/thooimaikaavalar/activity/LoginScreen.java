@@ -80,6 +80,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         loginScreenBinding = DataBindingUtil.setContentView(this, R.layout.login_screen);
         loginScreenBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        Utils.setLocale("ta",this);
         intializeUI();
 
         loginScreenBinding.visible.setVisibility(View.GONE);
@@ -150,7 +151,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         try {
             String versionName = getPackageManager()
                     .getPackageInfo(getPackageName(), 0).versionName;
-            loginScreenBinding.tvVersionNumber.setText("Version" + " " + versionName);
+            loginScreenBinding.tvVersionNumber.setText(getResources().getString(R.string.version) + " " + versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }

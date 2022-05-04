@@ -103,6 +103,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + SWM_ASSET_TYPE + " ("
                 + "swm_asset_type_id INTEGER," +
                 "asset_type_name TEXT," +
+                "asset_type_name_ta TEXT," +
                 "no_of_photos TEXT," +
                 "is_this_others TEXT)");
 
@@ -351,6 +352,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "no_of_thooimai_kaavalars_working TEXT,"+
                 "whether_community_compost_pit_available_in_panchayat TEXT,"+
                 "whether_vermi_compost_pit_available_in_panchayat TEXT,"+
+                "is_plastic_connected_to_waste_management_unit TEXT,"+
                 "any_integrated_nuesery_devlp_near_swm_facility TEXT)");
 
         db.execSQL("CREATE TABLE " + SWM_MASTER_DETAILS_SERVER_TABLE + " ("
@@ -364,6 +366,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "no_of_thooimai_kaavalars_working TEXT,"+
                 "whether_community_compost_pit_available_in_panchayat TEXT,"+
                 "whether_vermi_compost_pit_available_in_panchayat TEXT,"+
+                "is_plastic_connected_to_waste_management_unit TEXT,"+
                 "is_there_any_waste_dump TEXT,"+
                 "any_integrated_nuesery_devlp_near_swm_facility TEXT)");
 
@@ -414,6 +417,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 "total_quantity_of_compost_generated_from_community TEXT," +
                 "total_quantity_of_compost_generated_from_vermi TEXT," +
                 "quantity_of_compost_sold TEXT," +
+                "amount_of_compostable_waste_sent_for_recycling_in_kg TEXT," +
+                "amount_of_compostable_waste_sent_for_recycling_revenue_in_rs TEXT," +
+                "amount_of_plastic_waste_sent_to_pwm_unit_in_kg TEXT," +
+                "amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs TEXT," +
                 "total_revenue_generated TEXT)");
         db.execSQL("CREATE TABLE " + SWM_CARRIED_OUT_PHOTOS_DETAILS + " ("
                 + "carried_out_details_id INTEGER ,"+

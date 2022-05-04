@@ -37,9 +37,9 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_toEndOf="@id/image_rl"
+                android:layout_marginTop="@dimen/_7sdp"
                 android:layout_toStartOf="@+id/delete_upload_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -89,7 +89,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_7sdp"
                 android:layout_alignParentEnd="true"
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_100sdp"
@@ -128,35 +128,75 @@
 
             </RelativeLayout>
 
+
+
             <RelativeLayout
+                android:layout_below="@+id/image_rl"
+                android:id="@+id/collect_details_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/collect_details_layout"
-                android:layout_below="@+id/image_rl"
                 android:background="@drawable/bottom_cureved_bg_new">
-
-                <TextView
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/enter_collected_details"
-                    android:padding="@dimen/_7sdp"/>
+                    android:orientation="vertical"
+                    android:id="@+id/linear_layout">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/collect_details_layout_new"
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/go_icon"
-                    android:src="@drawable/ic_next"
-                    android:layout_centerVertical="true"
-                    android:padding="@dimen/_4sdp"
-                    android:visibility="gone"
-                    android:tint="@color/grey_5"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="@dimen/_7sdp"
-                    android:contentDescription="@string/back_icon" />
+                        >
+
+                        <TextView
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/enter_collected_details"
+                            android:textSize="@dimen/_12sdp"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:padding="@dimen/_11sdp"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/go_icon"
+                            android:src="@drawable/ic_next"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/_4sdp"
+                            android:visibility="gone"
+                            android:tint="@color/grey_5"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/_7sdp"
+                            android:contentDescription="@string/back_icon" />
+
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/white"
+                        android:layout_below="@+id/asset_layout"
+                        android:id="@+id/view_1"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/view_collected_details_layout">
+                        <TextView
+                            android:padding="@dimen/_11sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="@dimen/_12sdp"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:text="@string/waste_collected_details"/>
+                    </RelativeLayout>
+                </LinearLayout>
 
             </RelativeLayout>
-
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

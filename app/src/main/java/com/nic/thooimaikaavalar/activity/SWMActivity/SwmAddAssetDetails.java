@@ -130,6 +130,7 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
         addAssetDetailsBinding.setActivity(this);
 
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();
@@ -284,7 +285,7 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
                                         alert.dismiss();
                                     }
                                     else {
-                                        Toasty.error(SwmAddAssetDetails.this, "Fail", Toast.LENGTH_LONG, true).show();
+                                        Toasty.error(SwmAddAssetDetails.this, getResources().getString(R.string.fail), Toast.LENGTH_LONG, true).show();
                                         alert.dismiss();
                                     }
                                 }
@@ -293,11 +294,11 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
                                 }
                             }
                             else {
-                                Utils.showAlert(SwmAddAssetDetails.this,"Please Choose IsFunctional");
+                                Utils.showAlert(SwmAddAssetDetails.this,getResources().getString(R.string.is_functional));
                             }
                         }
                         else {
-                            Utils.showAlert(SwmAddAssetDetails.this,"Please Enter Others Name");
+                            Utils.showAlert(SwmAddAssetDetails.this,getResources().getString(R.string.please_specify));
                         }
                     }
                     else {
@@ -325,7 +326,7 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
                                     alert.dismiss();
                                 }
                                 else {
-                                    Toasty.error(SwmAddAssetDetails.this, "Fail", Toast.LENGTH_LONG, true).show();
+                                    Toasty.error(SwmAddAssetDetails.this, getResources().getString(R.string.fail), Toast.LENGTH_LONG, true).show();
                                     alert.dismiss();
                                 }
                             }
@@ -334,7 +335,7 @@ public class SwmAddAssetDetails extends AppCompatActivity implements Api.ServerR
                             }
                         }
                         else {
-                            Utils.showAlert(SwmAddAssetDetails.this,"Please Choose IsFunctional");
+                            Utils.showAlert(SwmAddAssetDetails.this,getResources().getString(R.string.is_functional));
                         }
                     }
 

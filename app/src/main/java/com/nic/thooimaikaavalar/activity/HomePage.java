@@ -60,6 +60,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         homeScreenBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         dbData.open();
         homeScreenBinding.tvName.setText(prefManager.getDesignation());
         homeScreenBinding.designation.setText(prefManager.getDesignation());
@@ -297,7 +298,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         JSONObject dataSet = new JSONObject();
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
-        Log.d("swm_capacity_of", "" + authKey);
+        Log.d("swm_capacity_of", "" + dataSet);
         return dataSet;
     }
     public JSONObject swm_no_of_thooimai_kaavalarsParams() throws JSONException {
@@ -305,7 +306,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         JSONObject dataSet = new JSONObject();
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
-        Log.d("swm_no_of_thooimai", "" + authKey);
+        Log.d("swm_no_of_thooimai", "" + dataSet);
         return dataSet;
     }
     public JSONObject swm_photographs_of_mcc_componentsParams() throws JSONException {
@@ -313,7 +314,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         JSONObject dataSet = new JSONObject();
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
-        Log.d("swm_photographs_o", "" + authKey);
+        Log.d("swm_photographs_o", "" + dataSet);
         return dataSet;
     }
     public JSONObject swm_water_supply_availabilityParams() throws JSONException {
@@ -321,7 +322,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         JSONObject dataSet = new JSONObject();
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
-        Log.d("swm_water_supply", "" + authKey);
+        Log.d("swm_water_supply", "" + dataSet);
         return dataSet;
     }
     public JSONObject swm_asset_typeParams() throws JSONException {
@@ -329,7 +330,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         JSONObject dataSet = new JSONObject();
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
-        Log.d("swm_asset_type", "" + authKey);
+        Log.d("swm_asset_type", "" + dataSet);
         return dataSet;
     }
     public JSONObject no_of_waste_dump_photosParams() throws JSONException {
@@ -337,7 +338,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         JSONObject dataSet = new JSONObject();
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
-        Log.d("no_of_waste_dump_photos", "" + authKey);
+        Log.d("no_of_waste_dump_photos", "" + dataSet);
         return dataSet;
     }
     public JSONObject carried_out_date_listParams() throws JSONException {
@@ -345,7 +346,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         JSONObject dataSet = new JSONObject();
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
-        Log.d("carried_out_date_listParams", "" + authKey);
+        Log.d("carried_out_date_listParams", "" + dataSet);
         return dataSet;
     }
 
@@ -831,6 +832,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
                         try {
                             waterSupplyList.setSwm_asset_type_id(jsonArray.getJSONObject(i).getString("swm_asset_type_id"));
                             waterSupplyList.setAsset_type_name(jsonArray.getJSONObject(i).getString("asset_type_name"));
+                            waterSupplyList.setAsset_type_name_ta(jsonArray.getJSONObject(i).getString("asset_type_name_ta"));
                             waterSupplyList.setNo_of_photos(jsonArray.getJSONObject(i).getString("no_of_photos"));
                             waterSupplyList.setIs_this_others(jsonArray.getJSONObject(i).getString("is_this_others"));
 

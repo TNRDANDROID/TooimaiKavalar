@@ -74,30 +74,30 @@ public class WastedumpDetailsAdapter extends RecyclerView.Adapter<WastedumpDetai
 
         if(type.equals("Local")){
             holder.assetsRecyclerItemBinding.assetName.setVisibility(View.GONE);
-            holder.assetsRecyclerItemBinding.ques.setText("Is There Any Waste Dump?");
+            holder.assetsRecyclerItemBinding.ques.setText(context.getResources().getString(R.string.is_there_any_waste_dump_seen));
             holder.assetsRecyclerItemBinding.previewImageLayout.setVisibility(View.GONE);
 
             if(assetDetailsList.get(position).getIs_there_any_waste_dump().equals("Y")){
-                holder.assetsRecyclerItemBinding.ans.setText("Yes");
+                holder.assetsRecyclerItemBinding.ans.setText(context.getResources().getString(R.string.yes));
                 holder.assetsRecyclerItemBinding.ans.setTextColor(Color.GREEN);
-                holder.assetsRecyclerItemBinding.status.setText("Yes");
+                holder.assetsRecyclerItemBinding.status.setText(context.getResources().getString(R.string.yes));
                 holder.assetsRecyclerItemBinding.status.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circlegreen));
             }
             else {
-                holder.assetsRecyclerItemBinding.ans.setText("NO");
+                holder.assetsRecyclerItemBinding.ans.setText(context.getResources().getString(R.string.no));
                 holder.assetsRecyclerItemBinding.ans.setTextColor(Color.RED);
-                holder.assetsRecyclerItemBinding.status.setText("No");
+                holder.assetsRecyclerItemBinding.status.setText(context.getResources().getString(R.string.no));
                 holder.assetsRecyclerItemBinding.status.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.curved_red_bg));
             }
         }
         else {
             holder.assetsRecyclerItemBinding.assetName.setVisibility(View.GONE);
-            holder.assetsRecyclerItemBinding.ques.setText("Is There Any Waste Dump?");
+            holder.assetsRecyclerItemBinding.ques.setText(context.getResources().getString(R.string.is_there_any_waste_dump_seen));
             holder.assetsRecyclerItemBinding.previewImageLayout.setVisibility(View.VISIBLE);
 
-            holder.assetsRecyclerItemBinding.ans.setText("Yes");
+            holder.assetsRecyclerItemBinding.ans.setText(context.getResources().getString(R.string.yes));
             holder.assetsRecyclerItemBinding.ans.setTextColor(Color.GREEN);
-            holder.assetsRecyclerItemBinding.status.setText("Yes");
+            holder.assetsRecyclerItemBinding.status.setText(context.getResources().getString(R.string.yes));
             holder.assetsRecyclerItemBinding.status.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circlegreen));
 
             holder.assetsRecyclerItemBinding.srcImageView.setImageBitmap(assetDetailsList.get(position).getImage());
@@ -174,10 +174,10 @@ public class WastedumpDetailsAdapter extends RecyclerView.Adapter<WastedumpDetai
 
             TextView text = (TextView) dialog.findViewById(R.id.tv_message);
             if(save_delete.equals("save")) {
-                text.setText("Do You Want to Upload?");
+                text.setText(context.getResources().getString(R.string.do_you_wnat_to_upload));
             }
             else if(save_delete.equals("delete")){
-                text.setText("Do You Want to Delete?");
+                text.setText(context.getResources().getString(R.string.do_you_wnat_to_delete));
             }
 
             Button yesButton = (Button) dialog.findViewById(R.id.btn_ok);

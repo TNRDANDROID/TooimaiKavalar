@@ -80,10 +80,10 @@ public class NewThooimaiEditAdapter extends RecyclerView.Adapter<NewThooimaiEdit
         @Override
 
         public void onBindViewHolder(@NonNull final NewThooimaiEditAdapter.MyViewHolder holder, final int position) {
-            holder.newThooimaiEditAdapterBinding.dateOfEngage.setText("Date Of Engage "+basicDetailsList.get(position).getDate_of_engagement());
-            holder.newThooimaiEditAdapterBinding.dateOfTraining.setText("Date Of Training "+basicDetailsList.get(position).getDate_of_training_given());
-            holder.newThooimaiEditAdapterBinding.name.setText("Name "+basicDetailsList.get(position).getName_of_the_thooimai_kaavalars());
-            holder.newThooimaiEditAdapterBinding.mobileNumber.setText("Mobile "+basicDetailsList.get(position).getMobile_no());
+            holder.newThooimaiEditAdapterBinding.dateOfEngage.setText(context.getResources().getString(R.string.date_of_engage)+" - "+basicDetailsList.get(position).getDate_of_engagement());
+            holder.newThooimaiEditAdapterBinding.dateOfTraining.setText(context.getResources().getString(R.string.date_of_training)+" - "+basicDetailsList.get(position).getDate_of_training_given());
+            holder.newThooimaiEditAdapterBinding.name.setText(context.getResources().getString(R.string.name)+" - "+basicDetailsList.get(position).getName_of_the_thooimai_kaavalars());
+            holder.newThooimaiEditAdapterBinding.mobileNumber.setText(context.getResources().getString(R.string.mobile)+" - "+basicDetailsList.get(position).getMobile_no());
 
             holder.newThooimaiEditAdapterBinding.deleteIcon.setOnClickListener(new View.OnClickListener() {
             @Override

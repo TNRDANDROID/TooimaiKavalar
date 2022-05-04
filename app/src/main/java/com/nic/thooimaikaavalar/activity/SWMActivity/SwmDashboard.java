@@ -21,6 +21,7 @@ import com.nic.thooimaikaavalar.dataBase.dbData;
 import com.nic.thooimaikaavalar.databinding.ActivitySwmDashboardBinding;
 import com.nic.thooimaikaavalar.model.RealTimeMonitoringSystem;
 import com.nic.thooimaikaavalar.session.PrefManager;
+import com.nic.thooimaikaavalar.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -55,7 +56,7 @@ public class SwmDashboard extends AppCompatActivity {
             e.printStackTrace();
         }
         prefManager = new PrefManager(this);
-
+        Utils.setLocale("ta",this);
         activitySwmDashboardBinding.view2.setVisibility(View.GONE);
         activitySwmDashboardBinding.view1.setVisibility(View.VISIBLE);
         activitySwmDashboardBinding.tv2.setTextColor(getResources().getColor(R.color.black));
@@ -143,7 +144,7 @@ public class SwmDashboard extends AppCompatActivity {
 
     public void assetsAdapterItemClicked(int position){
         assets_id = swmAssetsList.get(position).getSwm_asset_type_id();
-        assets_name = swmAssetsList.get(position).getAsset_type_name();
+        assets_name = swmAssetsList.get(position).getAsset_type_name_ta();
         swm_infra_details_id = getIntent().getStringExtra("swm_infra_details_id");
         is_this_others = swmAssetsList.get(position).getIs_this_others();
         no_of_photos = swmAssetsList.get(position).getNo_of_photos();

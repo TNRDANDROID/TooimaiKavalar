@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -107,6 +108,7 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
     String whether_community_compost_pit_available_in_panchayat ="";
     String whether_vermi_compost_pit_available_in_panchayat ="";
     String any_integrated_nuesery_devlp_near_swm_facility ="";
+    String is_plastic_connected_to_waste_management_unit ="";
 
     ///Image With Description
     ImageView imageView, image_view_preview;
@@ -135,6 +137,7 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
         wasteDumpDetailsBinding.setActivity(this);
 
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();
@@ -154,7 +157,7 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
                     imageWithDescription(getTables_there_any_waste_dump,wasteDumpDetailsBinding.scrollView);
                 }
                 else if(getTables_there_any_waste_dump.equals("N")){
-                    Utils.showAlert(Add_ViewWasteDumpDetails.this,"You Can't take photos Please delete old record");
+                    Utils.showAlert(Add_ViewWasteDumpDetails.this,getResources().getString(R.string.you_cant_take_photos_delete_old_records));
                 }
 
             }
@@ -192,6 +195,7 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
         whether_community_compost_pit_available_in_panchayat = getIntent().getStringExtra("whether_community_compost_pit_available_in_panchayat");
         whether_vermi_compost_pit_available_in_panchayat = getIntent().getStringExtra("whether_vermi_compost_pit_available_in_panchayat");
         any_integrated_nuesery_devlp_near_swm_facility = getIntent().getStringExtra("any_integrated_nuesery_devlp_near_swm_facility");
+        is_plastic_connected_to_waste_management_unit = getIntent().getStringExtra("is_plastic_connected_to_waste_management_unit");
     }
     private void initialiseRecyclerView() {
         wasteDumpDetailsBinding.wasteDumpRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -278,16 +282,17 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
                                 contentValues.put("whether_community_compost_pit_available_in_panchayat", whether_community_compost_pit_available_in_panchayat);
                                 contentValues.put("whether_vermi_compost_pit_available_in_panchayat", whether_vermi_compost_pit_available_in_panchayat);
                                 contentValues.put("any_integrated_nuesery_devlp_near_swm_facility", any_integrated_nuesery_devlp_near_swm_facility);
+                                contentValues.put("is_plastic_connected_to_waste_management_unit", is_plastic_connected_to_waste_management_unit);
                                 long update_id = db.update(DBHelper.SWM_MASTER_DETAILS_SERVER_TABLE, contentValues, "swm_infra_details_id" + "= ?", new String[] {swm_infra_details_id});
                                 alert.dismiss();
                                 //Toasty.success(Add_ViewWasteDumpDetails.this, "Success", Toast.LENGTH_LONG, true).show();
-                                Toast.makeText(Add_ViewWasteDumpDetails.this, "Success", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Add_ViewWasteDumpDetails.this, "Success", Toast.LENGTH_SHORT).show();
 
                             }
                             else {
                                 alert.dismiss();
                                 //Toasty.error(Add_ViewWasteDumpDetails.this, "Fail", Toast.LENGTH_LONG, true).show();
-                                Toast.makeText(Add_ViewWasteDumpDetails.this, "Fail", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(Add_ViewWasteDumpDetails.this, "Fail", Toast.LENGTH_SHORT).show();
 
                             }
                         }
@@ -296,7 +301,7 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
                         }
                     }
                     else {
-                        Utils.showAlert(Add_ViewWasteDumpDetails.this,"Please Choose is_there_any_waste_dump");
+                        Utils.showAlert(Add_ViewWasteDumpDetails.this,getResources().getString(R.string.is_there_any_waste_dump_seen));
                     }
 
                 }
@@ -315,7 +320,7 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
                                 }
                             }
                             else {
-                                Utils.showAlert(Add_ViewWasteDumpDetails.this,"Please Choose is_there_any_waste_dump");
+                                Utils.showAlert(Add_ViewWasteDumpDetails.this,getResources().getString(R.string.is_there_any_waste_dump_seen));
                             }
 
 
@@ -439,10 +444,13 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
                                         contentValues.put("whether_community_compost_pit_available_in_panchayat", whether_community_compost_pit_available_in_panchayat);
                                         contentValues.put("whether_vermi_compost_pit_available_in_panchayat", whether_vermi_compost_pit_available_in_panchayat);
                                         contentValues.put("any_integrated_nuesery_devlp_near_swm_facility", any_integrated_nuesery_devlp_near_swm_facility);
+                                        contentValues.put("is_plastic_connected_to_waste_management_unit", is_plastic_connected_to_waste_management_unit);
+
                                         long update_id = db.update(DBHelper.SWM_MASTER_DETAILS_SERVER_TABLE, contentValues, "swm_infra_details_id" + "= ?", new String[] {swm_infra_details_id});
+
+                                        showToast();
                                         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
                                         dialog.dismiss();
-                                        Toasty.success(Add_ViewWasteDumpDetails.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
 
                                     }
 
@@ -1012,6 +1020,7 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
                         swmMasterDetailsList.setWhether_vermi_compost_pit_available_in_panchayat(jsonArray.getJSONObject(i).getString("whether_vermi_compost_pit_available_in_panchayat"));
                         swmMasterDetailsList.setAny_integrated_nuesery_devlp_near_swm_facility(jsonArray.getJSONObject(i).getString("any_integrated_nuesery_devlp_near_swm_facility"));
                         swmMasterDetailsList.setIs_there_any_waste_dump(jsonArray.getJSONObject(i).getString("any_waste_dump_seen_in_the_panchayat"));
+                        swmMasterDetailsList.setIs_plastic_connected_to_waste_management_unit(jsonArray.getJSONObject(i).getString("is_plastic_connected_to_waste_management_unit"));
                         //swmMasterDetailsList.setIs_there_any_waste_dump("");
 
                         dbData.insertSwmMasterDetailsFromServer(swmMasterDetailsList);
@@ -1053,4 +1062,9 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
         return dataSet;
     }
 
+    @SuppressLint("CheckResult")
+    public void showToast(){
+        Toasty.success(Add_ViewWasteDumpDetails.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
+
+    }
 }

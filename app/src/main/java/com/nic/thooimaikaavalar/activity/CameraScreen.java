@@ -111,6 +111,7 @@ public class CameraScreen extends AppCompatActivity implements View.OnClickListe
         cameraScreenBinding = DataBindingUtil.setContentView(this, R.layout.camera_screen);
         cameraScreenBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        Utils.setLocale("ta",this);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();
@@ -238,19 +239,19 @@ public class CameraScreen extends AppCompatActivity implements View.OnClickListe
                 }
 
                 if(id > 0){
-                    Toasty.success(this, "Success!", Toast.LENGTH_LONG, true).show();
+                    Toasty.success(this, getResources().getString(R.string.success), Toast.LENGTH_LONG, true).show();
                     onBackPressed();
                 }
                 Log.d("insIdsaveImageLatLong", String.valueOf(id));
 
             }
             else{
-                Utils.showAlert(CameraScreen.this, "Please Select Stage");
+                Utils.showAlert(CameraScreen.this, getResources().getString(R.string.select_stage));
             }
 
 
         } catch (Exception e) {
-            Utils.showAlert(CameraScreen.this, "Atleast Capture one Photo");
+            Utils.showAlert(CameraScreen.this, getResources().getString(R.string.at_least_capture_one_photo));
             //e.printStackTrace();
         }
     }
@@ -288,7 +289,7 @@ public class CameraScreen extends AppCompatActivity implements View.OnClickListe
 
         StageList.clear();
         RealTimeMonitoringSystem stageListValue = new RealTimeMonitoringSystem();
-        stageListValue.setWorkStageName("Select Stage");
+        stageListValue.setWorkStageName(getResources().getString(R.string.select_stage));
         StageList.add(stageListValue);
         if (Stage.getCount() > 0) {
             if (Stage.moveToFirst()) {
@@ -385,10 +386,10 @@ public class CameraScreen extends AppCompatActivity implements View.OnClickListe
                     captureImage();
                 }
             } else {
-                Utils.showAlert(CameraScreen.this, "Satellite communication not available to get GPS Co-ordination Please Capture Photo in Open Area..");
+                Utils.showAlert(CameraScreen.this, getResources().getString(R.string.satellite));
             }
         } else {
-            Utils.showAlert(CameraScreen.this, "GPS is not turned on...");
+            Utils.showAlert(CameraScreen.this, getResources().getString(R.string.gps_is_not_turned_on));
         }
     }
 
@@ -423,14 +424,14 @@ public class CameraScreen extends AppCompatActivity implements View.OnClickListe
 
     private void showPermissionsAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Permissions required!")
-                .setMessage("Camera needs few permissions to work properly. Grant them in settings.")
-                .setPositiveButton("GOTO SETTINGS", new DialogInterface.OnClickListener() {
+        builder.setTitle(getResources().getString(R.string.permission_required))
+                .setMessage(getResources().getString(R.string.camera_need_permission))
+                .setPositiveButton(getResources().getString(R.string.goto_settings), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         CameraUtils.openSettings(CameraScreen.this);
                     }
                 })
-                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
@@ -515,12 +516,12 @@ public class CameraScreen extends AppCompatActivity implements View.OnClickListe
             } else if (resultCode == RESULT_CANCELED) {
                 // user cancelled Image capture
                 Toast.makeText(getApplicationContext(),
-                        "User cancelled image capture", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.user_canceled_image_capture), Toast.LENGTH_SHORT)
                         .show();
             } else {
                 // failed to capture image
                 Toast.makeText(getApplicationContext(),
-                        "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.sorry_failed_to_capture), Toast.LENGTH_SHORT)
                         .show();
             }
         } else if (requestCode == CAMERA_CAPTURE_VIDEO_REQUEST_CODE) {
@@ -534,12 +535,12 @@ public class CameraScreen extends AppCompatActivity implements View.OnClickListe
             } else if (resultCode == RESULT_CANCELED) {
                 // user cancelled recording
                 Toast.makeText(getApplicationContext(),
-                        "User cancelled video recording", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.user_canceled_video), Toast.LENGTH_SHORT)
                         .show();
             } else {
                 // failed to record video
                 Toast.makeText(getApplicationContext(),
-                        "Sorry! Failed to record video", Toast.LENGTH_SHORT)
+                        getResources().getString(R.string.sorry_failed_capture_video), Toast.LENGTH_SHORT)
                         .show();
             }
         }

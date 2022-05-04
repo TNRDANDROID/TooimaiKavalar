@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
     <data>
 
         <variable
             name="activity"
             type="com.nic.thooimaikaavalar.activity.SWMActivity.SwmAddAssetDetails" />
+
     </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#0AD62C78">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
@@ -43,6 +47,7 @@
                     android:text="@string/infrastructure_assets"
                     android:layout_centerInParent="true"
                     android:textStyle="bold"/>
+
             </RelativeLayout>
 
             <ScrollView
@@ -53,23 +58,22 @@
                 >
 
                 <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/toolbar"
-                android:background="@color/white">
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/swm_asset_recycler"
                     android:layout_width="match_parent"
-                    android:layout_margin="@dimen/_5sdp"
                     android:layout_height="match_parent"
-                    />
+                    android:layout_below="@+id/toolbar"
+                    android:background="@color/white">
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/swm_asset_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_height="match_parent"
+                        />
 
                 </RelativeLayout>
 
             </ScrollView>
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,5 +86,7 @@
                 android:id="@+id/add_btn_layout"/>
 
         </RelativeLayout>
+
     </RelativeLayout>
+
 </layout>

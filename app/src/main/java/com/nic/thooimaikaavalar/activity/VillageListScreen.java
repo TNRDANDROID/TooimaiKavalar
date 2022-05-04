@@ -30,6 +30,7 @@ import com.nic.thooimaikaavalar.adapter.VillageListAdapter;
 import com.nic.thooimaikaavalar.dataBase.dbData;
 import com.nic.thooimaikaavalar.databinding.VillageListActivityBinding;
 import com.nic.thooimaikaavalar.model.RealTimeMonitoringSystem;
+import com.nic.thooimaikaavalar.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -49,6 +50,7 @@ public class VillageListScreen extends AppCompatActivity implements View.OnClick
         setSupportActionBar(villageListActivityBinding.toolbar);
         intializeUI();
         initRecyclerView();
+        Utils.setLocale("ta",this);
     }
     private void initRecyclerView() {
         recyclerView = villageListActivityBinding.villageList;

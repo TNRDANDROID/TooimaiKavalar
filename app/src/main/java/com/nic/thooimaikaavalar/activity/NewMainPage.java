@@ -153,7 +153,7 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
         }
 
         prefManager = new PrefManager(this);
-
+        Utils.setLocale("ta",this);
         activityNewMainPageBinding.pleaseSpecify.setVisibility(View.GONE);
         activityNewMainPageBinding.specifyLayout.setVisibility(View.GONE);
         //habitationFilterSpinner(prefManager.getDistrictCode(),prefManager.getBlockCode(),prefManager.getPvCode());

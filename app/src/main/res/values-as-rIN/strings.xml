@@ -265,6 +265,7 @@
     <string name="whether_community_compost_pit_available_in_the_panchayat">Whether Community Compost Pit Available in the Panchayat</string>
     <string name="whether_community_vermi_compost_facility_available_in_the_panchayat">Whether Vermi Compost Facility Available in the Panchayat</string>
     <string name="is_there_any_integrated_nursery_developed_near_swm_facility">Is There any Integrated Nursery Developed near SWM Facility</string>
+    <string name="is_there_any_plastic_waste_connected_facility">Is There any Plastic Waste Connected Facility</string>
     <string name="wastdump_details">WastDump Details</string>
     <string name="add_wast_dump">Add Wast Dump</string>
     <string name="view_waste_dump">View Waste Dump</string>
@@ -281,8 +282,38 @@
     <string name="waste_collected_details">Waste Collected Details</string>
     <string name="activity_carried_out">Activity Carried Out</string>
     <string name="micro_composting_center">Micro Composting Center</string>
-    <string name="add_carried_out">Add Carried Out</string>
+    <string name="add_carried_out">Activity Carried Out</string>
     <string name="solid_waste_management">Solid Waste Management</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="plastic_waste_management">Plastic Waste ManageMent</string>
+    <string name="compostable_waste_recycle_text">Amount of compostable waste sent for recycling (kg)</string>
+    <string name="revenue_rs">Revenue (Rs)</string>
+    <string name="plastic_waste_unit">Amount of plastic waste sent to the plastic waste management unit (s)</string>
+    <string name="choose_date">Choose Date</string>
+    <string name="total_quantity_of_waste_collected_in_the_panchayat_in_kg">Total Quantity Of Waste Collected in the Panchayat (in Kg)</string>
+    <string name="quantity_of_the_bio_degradable_waste_collected_in_kg">Quantity Of the Bio Degradable Waste Collected (in Kg)</string>
+    <string name="total_quantity_of_compost_generated_from_the_community_compost_pit_in_kg">Total Quantity of Compost Generated from the Community Compost Pit (in Kg)</string>
+    <string name="total_quantity_of_compost_generated_from_the_vermi_composting_compost_pit_in_kg">Total Quantity of Compost Generated from the Vermi Composting Compost Pit (in Kg)</string>
+    <string name="sale_of_compost">Sale of Compost</string>
+    <string name="quantity_of_compost_sold_in_kg">Quantity of Compost Sold (in Kg)</string>
+    <string name="total_revenue_generated_in_lakhs">Total Revenue Generated (in Lakhs)</string>
+
+    <string name="you_cant_take_photos_delete_old_records">You Cant take photos Please delete old record</string>
+    <string name="select_date">Select Date</string>
+    <string name="fail">Fail</string>
+    <string name="success">Success</string>
+    <string name="basic_details_of_mcc">Basic Details of MCC</string>
+    <string name="mcc_thooimai_kaavalar_details">MCC Thooimai Kaavalar Details</string>
+    <string name="mcc_components_details">MCC Components Details</string>
+    <string name="no_response_from_server">No Response From Server!</string>
+    <string name="water_available_name">Water Available Name</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="workers_allocated">Workers Allocated</string>
+    <string name="workers_working">Workers Working</string>
+    <string name="wcc_pit">WCC Pit</string>
+    <string name="wvc_pit">WVC Pit</string>
+    <string name="nursery_developed">Nursery developed</string>
 
 
 </resources>

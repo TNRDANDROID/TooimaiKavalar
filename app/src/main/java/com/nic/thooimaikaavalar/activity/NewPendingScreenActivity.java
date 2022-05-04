@@ -9,6 +9,7 @@ import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -68,10 +69,11 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Utils.setLocale("ta",this);
         Utils.setupUI(activity_new_pending_screen.parentLayout,this);
 
         getBasicList();
-        activity_new_pending_screen.listName.setText("Basic Details of MCC");
+        activity_new_pending_screen.listName.setText(getResources().getString(R.string.basic_details_of_mcc));
         activity_new_pending_screen.backImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,36 +95,37 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
                         // Toast.makeText(NewPendingScreenActivity.this,"You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
                         switch (item.getItemId()){
                             case R.id.basic_recycler:
+
                                 getBasicList();
-                                activity_new_pending_screen.listName.setText("Basic Details of MCC");
+                                activity_new_pending_screen.listName.setText(getResources().getString(R.string.basic_details_of_mcc));
                                 break;
                             case R.id.thooimai_kavalar_recyler:
                                 getThooimaiKaavalrList();
-                                activity_new_pending_screen.listName.setText("MCC Thooimai Kaavalar Details");
+                                activity_new_pending_screen.listName.setText(getResources().getString(R.string.mcc_thooimai_kaavalar_details));
                                 break;
                             case R.id.component_photo_recyler:
                                 getComponentsPhotoList();
-                                activity_new_pending_screen.listName.setText("MCC Component Details");
+                                activity_new_pending_screen.listName.setText(getResources().getString(R.string.mcc_components_details));
                                 break;
                             case R.id.waste_collected_from:
                                 getWasteCollectedList();
-                                activity_new_pending_screen.listName.setText("Waste Collected Details");
+                                activity_new_pending_screen.listName.setText(getResources().getString(R.string.waste_collected_details));
                                 break;
                             case R.id.swm_master_details:
                                 getSwmMasterList();
-                                activity_new_pending_screen.listName.setText("Infrastructure Details");
+                                activity_new_pending_screen.listName.setText(getResources().getString(R.string.infrastructure_details));
                                 break;
                             case R.id.assets_details:
                                 getInfraAssets();
-                                activity_new_pending_screen.listName.setText("Infrastructure Assets Details");
+                                activity_new_pending_screen.listName.setText(getResources().getString(R.string.infrastructure_assets));
                                 break;
                             case R.id.waste_dump_details:
                                 getWasteDump();
-                                activity_new_pending_screen.listName.setText("Waste Dump Details");
+                                activity_new_pending_screen.listName.setText(getResources().getString(R.string.wastdump_details));
                                 break;
                             case R.id.carried_out_details:
                                 getCarriedOut();
-                                activity_new_pending_screen.listName.setText("CarriedOut Details");
+                                activity_new_pending_screen.listName.setText(getResources().getString(R.string.activity_carried_out));
                                 break;
                         }
                         return true;
@@ -135,6 +138,13 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
         });
 
     }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.basic_recycler).setIcon(R.drawable.ic_upload_icon);
+        return super.onPrepareOptionsMenu(menu);
+    }
+
     public void getBasicList() {
         dbData.open();
         ArrayList<RealTimeMonitoringSystem> getAllBasicDetails =  dbData.getAllBasicDetails();
@@ -377,7 +387,7 @@ public class NewPendingScreenActivity extends AppCompatActivity implements Api.S
 
     @Override
     public void OnError(VolleyError volleyError) {
-        Utils.showAlert(this,"No Response from Server!");
+        Utils.showAlert(this,getResources().getString(R.string.no_response_from_server));
     }
 
     public void deletePending(String type) {

@@ -27,9 +27,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nic.thooimaikaavalar.ImageZoom.ImageMatrixTouchHandler;
 import com.nic.thooimaikaavalar.R;
+import com.nic.thooimaikaavalar.activity.NewDashborad;
 import com.nic.thooimaikaavalar.activity.NewPendingScreenActivity;
 import com.nic.thooimaikaavalar.activity.ViewAndEditMCCDetaila;
 import com.nic.thooimaikaavalar.activity.ViewTakeEditComponentsPhots;
+import com.nic.thooimaikaavalar.activity.ViewWasteCollectedDetails;
 import com.nic.thooimaikaavalar.activity.WasteCollectedForm;
 import com.nic.thooimaikaavalar.constant.AppConstant;
 import com.nic.thooimaikaavalar.databinding.BasicDetailsAdapterBinding;
@@ -76,10 +78,10 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
                 holder.basicDetailsAdapterBinding.villageName.setTypeface(typeface);
                 holder.basicDetailsAdapterBinding.waterAvailabilityName.setTypeface(typeface);*/
                     String date = dateFormate(basicDetailsList.get(position).getDate_of_commencement(),"yes");
-                    holder.basicDetailsAdapterBinding.date.setText("Date of Commencement -"+date);
-                    holder.basicDetailsAdapterBinding.mccName.setText("MCC Name -"+basicDetailsList.get(position).getMcc_name());
-                    holder.basicDetailsAdapterBinding.villageName.setText("Village Name -"+basicDetailsList.get(position).getPvName());
-                    holder.basicDetailsAdapterBinding.waterAvailabilityName.setText("Water Available Name -"+basicDetailsList.get(position).getWater_supply_availability_name());
+                    holder.basicDetailsAdapterBinding.date.setText(context.getResources().getString(R.string.date_of_commencement)+" - "+date);
+                    holder.basicDetailsAdapterBinding.mccName.setText(context.getResources().getString(R.string.mcc_name)+" - "+basicDetailsList.get(position).getMcc_name());
+                    holder.basicDetailsAdapterBinding.villageName.setText(context.getResources().getString(R.string.village)+" - "+basicDetailsList.get(position).getPvName());
+                    holder.basicDetailsAdapterBinding.waterAvailabilityName.setText(context.getResources().getString(R.string.water_available_name)+" - "+basicDetailsList.get(position).getWater_supply_availability_name());
 
                     if(entry_flag.equals("Yes")){
                         holder.basicDetailsAdapterBinding.deleteUploadRl.setVisibility(View.GONE);
@@ -139,6 +141,19 @@ public class BasicDetailsFromServerAdapter extends RecyclerView.Adapter<BasicDet
                             intent.putExtra("pv_name",basicDetailsList.get(position).getPvName());
                             intent.putExtra("mcc_id",basicDetailsList.get(position).getMcc_id());
                             intent.putExtra("mcc_name",basicDetailsList.get(position).getMcc_name());
+                            context.startActivity(intent);
+
+                        }
+                    });
+                    holder.basicDetailsAdapterBinding.viewCollectedDetailsLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent =new Intent(context, ViewWasteCollectedDetails.class);
+                            intent.putExtra("mcc_id",basicDetailsList.get(position).getMcc_id());
+                            intent.putExtra("village_name",basicDetailsList.get(position).getPvName());
+                            intent.putExtra("pvcode",basicDetailsList.get(position).getPvCode());
+                            intent.putExtra("mcc_name",basicDetailsList.get(position).getMcc_name());
+                            intent.putExtra("date_of_commencement",basicDetailsList.get(position).getDate_of_commencement());
                             context.startActivity(intent);
 
                         }

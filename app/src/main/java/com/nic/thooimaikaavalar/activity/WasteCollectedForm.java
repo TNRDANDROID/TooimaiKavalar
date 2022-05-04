@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.dataBase.DBHelper;
 import com.nic.thooimaikaavalar.dataBase.dbData;
 import com.nic.thooimaikaavalar.databinding.ActivityWasteCollectedFormBinding;
+import com.nic.thooimaikaavalar.databinding.NewWasteCollectedEntryBinding;
 import com.nic.thooimaikaavalar.model.RealTimeMonitoringSystem;
 import com.nic.thooimaikaavalar.utils.Utils;
 
@@ -25,7 +27,7 @@ import es.dmoral.toasty.Toasty;
 
 public class WasteCollectedForm extends AppCompatActivity {
 
-    public ActivityWasteCollectedFormBinding activityWasteCollectedFormBinding;
+    public NewWasteCollectedEntryBinding activityWasteCollectedFormBinding;
     public com.nic.thooimaikaavalar.dataBase.dbData dbData = new dbData(this);
     public static DBHelper dbHelper;
     public static SQLiteDatabase db;
@@ -45,7 +47,7 @@ public class WasteCollectedForm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activityWasteCollectedFormBinding = DataBindingUtil.setContentView(this, R.layout.activity_waste_collected_form);
+        activityWasteCollectedFormBinding = DataBindingUtil.setContentView(this, R.layout.new_waste_collected_entry);
         activityWasteCollectedFormBinding.setActivity(this);
 
         try {
@@ -54,11 +56,18 @@ public class WasteCollectedForm extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Utils.setLocale("ta",this);
         pvcode = getIntent().getStringExtra("pvcode");
         pvname= getIntent().getStringExtra("pv_name");
         mcc_id = getIntent().getStringExtra("mcc_id");
         mcc_name = getIntent().getStringExtra("mcc_name");
 
+        if(Build.VERSION_CODES.O >= Build.VERSION.SDK_INT){
+            activityWasteCollectedFormBinding.wasteCollectedDetailsImageLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.waste_collected_image_new));
+        }
+        else {
+            activityWasteCollectedFormBinding.wasteCollectedDetailsImageLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.waste_collected_recyle));
+        }
         activityWasteCollectedFormBinding.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -96,6 +96,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
     String whether_community_compost_pit_available_in_panchayat ="";
     String whether_vermi_compost_pit_available_in_panchayat ="";
     String any_integrated_nuesery_devlp_near_swm_facility ="";
+    String is_plastic_connected_to_waste_management_unit ="";
 
     ArrayList<RealTimeMonitoringSystem> carriedOutDateList;
     private String choose_date_string="";
@@ -126,6 +127,13 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
     String total_quantity_of_compost_generated_from_vermi="";
     String quantity_of_compost_sold = "";
     String total_revenue_generated = "";
+    String toast_flag="";
+
+
+    String quantity_of_compostable_waste_recycle="";
+    String total_recycle_plastic_waste_revenue_generated="";
+    String total_plastic_waste="";
+    String total_plastic_waste_revenue_generated="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +143,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         carriedOutsScreenBinding.setActivity(this);
 
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();
@@ -182,6 +191,12 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                     carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromVermi.setText("");
                     carriedOutsScreenBinding.quantityOfCompostSold.setText("");
                     carriedOutsScreenBinding.totalRevenueGenerated.setText("");
+
+                    carriedOutsScreenBinding.quantityOfCompostableWasteRecycle.setText("");
+                    carriedOutsScreenBinding.totalRecyclePlasticWasteRevenueGenerated.setText("");
+                    carriedOutsScreenBinding.totalPlasticWaste.setText("");
+                    carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.setText("");
+
                     carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(null);
                     getOnlineWasteDumpList();
                 }
@@ -193,6 +208,12 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                     carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromVermi.setText("");
                     carriedOutsScreenBinding.quantityOfCompostSold.setText("");
                     carriedOutsScreenBinding.totalRevenueGenerated.setText("");
+
+                    carriedOutsScreenBinding.quantityOfCompostableWasteRecycle.setText("");
+                    carriedOutsScreenBinding.totalRecyclePlasticWasteRevenueGenerated.setText("");
+                    carriedOutsScreenBinding.totalPlasticWaste.setText("");
+                    carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.setText("");
+
                     carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(null);
                 }
             }
@@ -229,9 +250,17 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         whether_community_compost_pit_available_in_panchayat = getIntent().getStringExtra("whether_community_compost_pit_available_in_panchayat");
         whether_vermi_compost_pit_available_in_panchayat = getIntent().getStringExtra("whether_vermi_compost_pit_available_in_panchayat");
         any_integrated_nuesery_devlp_near_swm_facility = getIntent().getStringExtra("any_integrated_nuesery_devlp_near_swm_facility");
+        is_plastic_connected_to_waste_management_unit = getIntent().getStringExtra("is_plastic_connected_to_waste_management_unit");
         carriedOutsScreenBinding.wasteDumpImg.setVisibility(View.GONE);
         carriedOutsScreenBinding.clearWasteDumpRecyclerLayout.setVisibility(View.GONE);
         carriedOutsScreenBinding.carriedOutDetailsLayout.setVisibility(View.VISIBLE);
+
+        if(is_plastic_connected_to_waste_management_unit.equals("Y")){
+            carriedOutsScreenBinding.plasticConnectedLayout.setVisibility(View.VISIBLE);
+        }
+        else {
+            carriedOutsScreenBinding.plasticConnectedLayout.setVisibility(View.GONE);
+        }
     }
     private void initialiseRecyclerView() {
         carriedOutsScreenBinding.wasteDumpRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -246,7 +275,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
     public void loadCarriedOutDateList(){
         carriedOutDateList = new ArrayList<>();
         RealTimeMonitoringSystem carriedOutItem1 = new RealTimeMonitoringSystem();
-        carriedOutItem1.setCarried_out_date("Select Date");
+        carriedOutItem1.setCarried_out_date(getResources().getString(R.string.select_date));
         carriedOutDateList.add(carriedOutItem1);
         JSONArray jArray = (JSONArray)prefManager.get_carried_out_date_listJson();
         for (int i =0; i<jArray.length();i++){
@@ -329,6 +358,11 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         String date_entry_for = "";
         String action_taken_on_waste_dump_seen_in_panchayat = "";
 
+        String amount_of_compostable_waste_sent_for_recycling_in_kg="";
+        String amount_of_compostable_waste_sent_for_recycling_revenue_in_rs="";
+        String amount_of_plastic_waste_sent_to_pwm_unit_in_kg="";
+        String amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs="";
+
         @Override
         protected ArrayList<RealTimeMonitoringSystem> doInBackground(JSONObject... params) {
 
@@ -354,7 +388,13 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                             quantity_of_compost_sold= (jsonArray1.getJSONObject(i).getString("sale_qty_of_compost_kg"));
                             total_revenue_generated= (jsonArray1.getJSONObject(i).getString("sale_revenue_generated_in_rupees"));
                             date_entry_for= (jsonArray1.getJSONObject(i).getString("date_entry_for"));
-                            action_taken_on_waste_dump_seen_in_panchayat= (jsonArray1.getJSONObject(i).getString("action_taken_on_waste_dump_seen_in_panchayat"));
+                            action_taken_on_waste_dump_seen_in_panchayat= (jsonArray1.getJSONObject(i).getString("waste_dump_seen_in_panchayat"));
+
+                            amount_of_compostable_waste_sent_for_recycling_in_kg=(jsonArray1.getJSONObject(i).getString("amount_of_compostable_waste_sent_for_recycling_in_kg"));
+                            amount_of_compostable_waste_sent_for_recycling_revenue_in_rs=(jsonArray1.getJSONObject(i).getString("amount_of_compostable_waste_sent_for_recycling_revenue_in_rs"));
+                            amount_of_plastic_waste_sent_to_pwm_unit_in_kg=(jsonArray1.getJSONObject(i).getString("amount_of_plastic_waste_sent_to_pwm_unit_in_kg"));
+                            amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs=(jsonArray1.getJSONObject(i).getString("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs"));
+
                         }
                     }
                     else {
@@ -365,6 +405,11 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                         quantity_of_compost_sold = "";
                         total_revenue_generated = "";
                         date_entry_for = "";
+
+                        amount_of_compostable_waste_sent_for_recycling_in_kg="";
+                        amount_of_compostable_waste_sent_for_recycling_revenue_in_rs="";
+                        amount_of_plastic_waste_sent_to_pwm_unit_in_kg="";
+                        amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs="";
                     }
 
                 }
@@ -470,6 +515,12 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromVermi.setText(total_quantity_of_compost_generated_from_vermi);
             carriedOutsScreenBinding.quantityOfCompostSold.setText(quantity_of_compost_sold);
             carriedOutsScreenBinding.totalRevenueGenerated.setText(total_revenue_generated);
+
+            carriedOutsScreenBinding.quantityOfCompostableWasteRecycle.setText(amount_of_compostable_waste_sent_for_recycling_in_kg);
+            carriedOutsScreenBinding.totalRecyclePlasticWasteRevenueGenerated.setText(amount_of_compostable_waste_sent_for_recycling_revenue_in_rs);
+            carriedOutsScreenBinding.totalPlasticWaste.setText(amount_of_plastic_waste_sent_to_pwm_unit_in_kg);
+            carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.setText(amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs);
+
 
             if(viewClearedWasteDumpList.size()>0){
                 carriedOutsScreenBinding.wasteDumpImg.setVisibility(View.VISIBLE);
@@ -731,6 +782,12 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         quantity_of_compost_sold = carriedOutsScreenBinding.quantityOfCompostSold.getText().toString();
         total_revenue_generated = carriedOutsScreenBinding.totalRevenueGenerated.getText().toString();
 
+        quantity_of_compostable_waste_recycle=carriedOutsScreenBinding.quantityOfCompostableWasteRecycle.getText().toString();
+        total_recycle_plastic_waste_revenue_generated=carriedOutsScreenBinding.totalRecyclePlasticWasteRevenueGenerated.getText().toString();
+        total_plastic_waste=carriedOutsScreenBinding.totalPlasticWaste.getText().toString();
+        total_plastic_waste_revenue_generated=carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.getText().toString();
+
+
         if(!choose_date_string.equals("")){
             if(!total_quantity_of_waste.equals("")){
                 if(!quantity_of_bio_degradable_waste.equals("")){
@@ -738,38 +795,59 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                         if (!total_quantity_of_compost_generated_from_vermi.equals("")){
                             if(!quantity_of_compost_sold.equals("")){
                                 if(!total_revenue_generated.equals("")){
-                                    adapterItemValuesCheck();
+                                    if(!quantity_of_compostable_waste_recycle.equals("")){
+                                        if(!total_recycle_plastic_waste_revenue_generated.equals("")){
+                                            if(!total_plastic_waste.equals("")){
+                                                if(!total_plastic_waste_revenue_generated.equals("")){
+                                                    adapterItemValuesCheck();
+                                                }
+                                                else {
+                                                    Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.revenue_rs));
+                                                }
+                                            }
+                                            else {
+                                                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.plastic_waste_unit));
+                                            }
+                                        }
+                                        else {
+                                            Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.revenue_rs));
+                                        }
+                                    }
+                                    else {
+                                        Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.compostable_waste_recycle_text));
+                                    }
+
                                 }
                                 else {
-                                    Utils.showAlert(AddCarriedOutsScreen.this,"Please Enter Total Revenue Generated");
+                                    Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.total_revenue_generated_in_lakhs));
 
                                 }
 
                             }
                             else {
-                                Utils.showAlert(AddCarriedOutsScreen.this,"Please Enter Total Quantity of Compost Sold");
+                                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.total_quantity_of_compost_sold_in_kg));
 
                             }
 
                         }
                         else {
-                            Utils.showAlert(AddCarriedOutsScreen.this,"Please Enter Total Quantity of Compost Generated From Community Vermi");
+                            Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.total_quantity_of_compost_generated_from_the_vermi_composting_compost_pit_in_kg));
                         }
                     }
                     else {
-                        Utils.showAlert(AddCarriedOutsScreen.this,"Please Enter Total Quantity of Compost Generated From Community");
+                        Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.total_quantity_of_compost_generated_from_the_community_compost_pit_in_kg));
                     }
                 }
                 else {
-                    Utils.showAlert(AddCarriedOutsScreen.this,"Please Enter Quantity of Bio Degradable Waste");
+                    Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.total_quantity_of_bio_degradable_waste_collected_in_kg));
                 }
             }
             else {
-                Utils.showAlert(AddCarriedOutsScreen.this,"Please Enter Total Quantity of Waste");
+                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.total_quantity_of_waste_collected_in_the_panchayat_in_kg));
             }
         }
         else {
-            Utils.showAlert(AddCarriedOutsScreen.this,"Please Choose Date");
+            Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.select_date));
         }
     }
 
@@ -815,6 +893,11 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                     contentValues.put("total_quantity_of_compost_generated_from_vermi",total_quantity_of_compost_generated_from_vermi);
                     contentValues.put("quantity_of_compost_sold",quantity_of_compost_sold);
                     contentValues.put("total_revenue_generated",total_revenue_generated);
+
+                    contentValues.put("amount_of_compostable_waste_sent_for_recycling_in_kg",quantity_of_compostable_waste_recycle);
+                    contentValues.put("amount_of_compostable_waste_sent_for_recycling_revenue_in_rs",total_recycle_plastic_waste_revenue_generated);
+                    contentValues.put("amount_of_plastic_waste_sent_to_pwm_unit_in_kg",total_plastic_waste);
+                    contentValues.put("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs",total_plastic_waste_revenue_generated);
 
                     if(dbData.gettableCountCarriedOutTable("",swm_infra_details_id,choose_date_string)>0){
                         insert_updated_id = db.update(DBHelper.SWM_CARRIED_OUT_DETAILS,contentValues,null,null);
@@ -863,6 +946,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                             rowInserted = db.insert(DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS, null, values);
                             if (count == carriedOutAdapterList.size()) {
                                 if (rowInserted > 0) {
+                                    toast_flag = "Inserted";
                                     Toasty.success(AddCarriedOutsScreen.this, getResources().getString(R.string.inserted_success), Toasty.LENGTH_SHORT);
                                     onBackPressed();
                                 }
@@ -876,7 +960,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             }
             else {
                 //Utils.showAlert(AddCarriedOutsScreen.this,"Please Choose This ");
-                Utils.showAlert(AddCarriedOutsScreen.this,"Please fill All the Details");
+                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.please_enter_all_the_details));
             }
         }
         else {
@@ -896,9 +980,15 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                 contentValues.put("quantity_of_compost_sold",quantity_of_compost_sold);
                 contentValues.put("total_revenue_generated",total_revenue_generated);
 
+                contentValues.put("amount_of_compostable_waste_sent_for_recycling_in_kg",quantity_of_compostable_waste_recycle);
+                contentValues.put("amount_of_compostable_waste_sent_for_recycling_revenue_in_rs",total_recycle_plastic_waste_revenue_generated);
+                contentValues.put("amount_of_plastic_waste_sent_to_pwm_unit_in_kg",total_plastic_waste);
+                contentValues.put("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs",total_plastic_waste_revenue_generated);
+
                 if(dbData.gettableCountCarriedOutTable("",swm_infra_details_id,choose_date_string)>0){
                     insert_updated_id = db.update(DBHelper.SWM_CARRIED_OUT_DETAILS,contentValues,null,null);
                     if (insert_updated_id>0){
+                        toast_flag = "Updated";
                         Toasty.success(AddCarriedOutsScreen.this,getResources().getString(R.string.updated_success),Toasty.LENGTH_SHORT);
                         onBackPressed();
                     }
@@ -907,6 +997,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                 else {
                     insert_updated_id = db.insert(DBHelper.SWM_CARRIED_OUT_DETAILS,null,contentValues);
                     if (insert_updated_id>0){
+                        toast_flag = "Inserted";
                         Toasty.success(AddCarriedOutsScreen.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
                         onBackPressed();
                     }
@@ -927,6 +1018,12 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             carriedOutsScreenBinding.carriedOutDetailsLayout.setVisibility(View.VISIBLE);
         }
         else {
+            if(toast_flag.equals("Inserted")){
+                Toasty.success(AddCarriedOutsScreen.this,getResources().getString(R.string.inserted_success),Toasty.LENGTH_SHORT);
+            }
+            else if(toast_flag.equals("Updated")) {
+                Toasty.success(AddCarriedOutsScreen.this,getResources().getString(R.string.updated_success),Toasty.LENGTH_SHORT);
+            }
             super.onBackPressed();
             overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
         }

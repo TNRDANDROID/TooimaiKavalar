@@ -77,6 +77,7 @@ public class WorkListScreen extends AppCompatActivity implements View.OnClickLis
             e.printStackTrace();
         }
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         prefManager.setPvCode(getIntent().getStringExtra(AppConstant.PV_CODE));
         setSupportActionBar(activityWorkListBinding.toolbar);
         initRecyclerView();

@@ -61,6 +61,7 @@ public class FullImageActivity extends AppCompatActivity implements View.OnClick
         fullImageRecyclerBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         OnOffType = getIntent().getStringExtra("OnOffType");
         activity = getIntent().getStringExtra("Activity");
         if(activity.equals("Assets")){

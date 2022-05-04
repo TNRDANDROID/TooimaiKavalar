@@ -52,6 +52,7 @@ public class NewThooimaiKavalarEdit extends AppCompatActivity implements Api.Ser
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();

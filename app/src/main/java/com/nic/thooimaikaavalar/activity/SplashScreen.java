@@ -3,6 +3,7 @@ package com.nic.thooimaikaavalar.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
@@ -35,6 +36,7 @@ public class SplashScreen extends AppCompatActivity implements
         splashScreenBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
        /* if (BuildConfig.BUILD_TYPE.equalsIgnoreCase("production")) {
             if (Utils.isOnline()) {
                 checkAppVersion();
@@ -43,6 +45,12 @@ public class SplashScreen extends AppCompatActivity implements
 
             }
         }*/
+        if(Build.VERSION_CODES.O >= Build.VERSION.SDK_INT){
+            splashScreenBinding.mainLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.waste_collected_image_new));
+        }
+        else {
+            splashScreenBinding.mainLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.waste_collected_recyle));
+        }
         if (Utils.isOnline()) {
             checkAppVersion();
             //showSignInScreen();

@@ -55,6 +55,7 @@ public class SwmMasterDetailsView extends AppCompatActivity implements Api.Serve
         activitySwmMasterDetailsViewBinding.setActivity(this);
 
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();
@@ -264,6 +265,7 @@ public class SwmMasterDetailsView extends AppCompatActivity implements Api.Serve
                         swmMasterDetailsList.setWhether_vermi_compost_pit_available_in_panchayat(jsonArray.getJSONObject(i).getString("whether_vermi_compost_pit_available_in_panchayat"));
                         swmMasterDetailsList.setAny_integrated_nuesery_devlp_near_swm_facility(jsonArray.getJSONObject(i).getString("any_integrated_nuesery_devlp_near_swm_facility"));
                         swmMasterDetailsList.setIs_there_any_waste_dump(jsonArray.getJSONObject(i).getString("any_waste_dump_seen_in_the_panchayat"));
+                        swmMasterDetailsList.setIs_plastic_connected_to_waste_management_unit(jsonArray.getJSONObject(i).getString("is_plastic_connected_to_waste_management_unit"));
                         //swmMasterDetailsList.setIs_there_any_waste_dump("");
 
 

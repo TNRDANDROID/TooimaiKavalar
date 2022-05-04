@@ -21,6 +21,7 @@ import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.activity.SWMActivity.MasterFormSwmEntry;
 import com.nic.thooimaikaavalar.activity.SWMActivity.SwmMasterDetailsView;
 import com.nic.thooimaikaavalar.databinding.ActivityNewDashboradBinding;
+import com.nic.thooimaikaavalar.utils.Utils;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -36,7 +37,7 @@ public class NewDashborad extends AppCompatActivity {
         activityNewDashboradBinding = DataBindingUtil.setContentView(this, R.layout.activity_new_dashborad);
         activityNewDashboradBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
+        Utils.setLocale("ta",this);
         activityNewDashboradBinding.btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +92,7 @@ public class NewDashborad extends AppCompatActivity {
 
     public void initializeUi(){
         if(getIntent().getStringExtra("Layout").equals("SWM")){
-            activityNewDashboradBinding.villageName.setText("Village : "+getIntent().getStringExtra("village_name"));
+            activityNewDashboradBinding.villageName.setText(getResources().getString(R.string.village)+" : "+getIntent().getStringExtra("village_name"));
             activityNewDashboradBinding.villageName.setVisibility(View.VISIBLE);
             activityNewDashboradBinding.dateOfCommencement.setVisibility(View.GONE);
             activityNewDashboradBinding.dateOfCommencement.setVisibility(View.GONE);
@@ -106,9 +107,9 @@ public class NewDashborad extends AppCompatActivity {
             activityNewDashboradBinding.dateOfCommencement.setVisibility(View.VISIBLE);
             activityNewDashboradBinding.dateOfCommencement.setVisibility(View.VISIBLE);
             String date_of_commencement= dateFormate(getIntent().getStringExtra("date_of_commencement"),"yes");
-            activityNewDashboradBinding.villageName.setText("Village : "+getIntent().getStringExtra("village_name"));
-            activityNewDashboradBinding.mccName.setText("MCC Name : "+getIntent().getStringExtra("mcc_name"));
-            activityNewDashboradBinding.dateOfCommencement.setText("Date of Commencement : "+date_of_commencement);
+            activityNewDashboradBinding.villageName.setText(getResources().getString(R.string.village)+" : "+getIntent().getStringExtra("village_name"));
+            activityNewDashboradBinding.mccName.setText(getResources().getString(R.string.mcc_name)+" : "+getIntent().getStringExtra("mcc_name"));
+            activityNewDashboradBinding.dateOfCommencement.setText(getResources().getString(R.string.date_of_commencement)+" : "+date_of_commencement);
         }
 
     }

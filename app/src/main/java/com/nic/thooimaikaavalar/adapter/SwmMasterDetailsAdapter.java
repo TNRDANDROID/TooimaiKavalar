@@ -75,27 +75,27 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
     @Override
     public void onBindViewHolder(@NonNull final SwmMasterDetailsAdapter.MyViewHolder holder, final int position) {
         holder.swmMasterBasicDetailsAdapterBinding.pvName.setText(basicDetailsList.get(position).getPvName());
-        holder.swmMasterBasicDetailsAdapterBinding.workersAllocated.setText("Workers Allocated "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_allocated());
-        holder.swmMasterBasicDetailsAdapterBinding.workersWorking.setText("Workers Working "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_working());
+        holder.swmMasterBasicDetailsAdapterBinding.workersAllocated.setText(context.getResources().getString(R.string.workers_allocated)+" "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_allocated());
+        holder.swmMasterBasicDetailsAdapterBinding.workersWorking.setText(context.getResources().getString(R.string.workers_working)+" "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_working());
         if(basicDetailsList.get(position).getWhether_community_compost_pit_available_in_panchayat().equals("Y")){
-            holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText("WCC Pit "+context.getResources().getString(R.string.yes));
+            holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText(context.getResources().getString(R.string.wcc_pit)+" "+context.getResources().getString(R.string.yes));
         }
         else {
-            holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText("WCC Pit "+context.getResources().getString(R.string.no));
+            holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText(context.getResources().getString(R.string.wcc_pit)+" "+context.getResources().getString(R.string.no));
         }
         if(basicDetailsList.get(position).getWhether_vermi_compost_pit_available_in_panchayat().equals("Y")){
-            holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText("WVC Pit "+context.getResources().getString(R.string.yes));
+            holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText(context.getResources().getString(R.string.wvc_pit)+" "+context.getResources().getString(R.string.yes));
 
         }
         else {
-            holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText("WVC Pit "+context.getResources().getString(R.string.no));
+            holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText(context.getResources().getString(R.string.wvc_pit)+" "+context.getResources().getString(R.string.no));
 
         }
         if(basicDetailsList.get(position).getAny_integrated_nuesery_devlp_near_swm_facility().equals("Y")){
-            holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText("Nursery developed "+context.getResources().getString(R.string.yes));
+            holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText(context.getResources().getString(R.string.nursery_developed)+" "+context.getResources().getString(R.string.yes));
         }
         else {
-            holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText("Nursery developed "+context.getResources().getString(R.string.no));
+            holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText(context.getResources().getString(R.string.nursery_developed)+" "+context.getResources().getString(R.string.no));
         }
 
 
@@ -114,6 +114,7 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
             }
             else {
                 holder.swmMasterBasicDetailsAdapterBinding.linearLayout.setVisibility(View.VISIBLE);
+                holder.swmMasterBasicDetailsAdapterBinding.view2.setVisibility(View.GONE);
                 holder.swmMasterBasicDetailsAdapterBinding.carriedOutLayout.setVisibility(View.GONE);
             }
             holder.swmMasterBasicDetailsAdapterBinding.uploadIcon.setVisibility(View.GONE);
@@ -198,6 +199,7 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
         intent.putExtra("whether_community_compost_pit_available_in_panchayat",basicDetailsList.get(pos).getWhether_community_compost_pit_available_in_panchayat());
         intent.putExtra("whether_vermi_compost_pit_available_in_panchayat",basicDetailsList.get(pos).getWhether_vermi_compost_pit_available_in_panchayat());
         intent.putExtra("any_integrated_nuesery_devlp_near_swm_facility",basicDetailsList.get(pos).getAny_integrated_nuesery_devlp_near_swm_facility());
+        intent.putExtra("is_plastic_connected_to_waste_management_unit",basicDetailsList.get(pos).getIs_plastic_connected_to_waste_management_unit());
         context.startActivity(intent);
 
     }
@@ -209,6 +211,7 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
         intent.putExtra("whether_community_compost_pit_available_in_panchayat",basicDetailsList.get(pos).getWhether_community_compost_pit_available_in_panchayat());
         intent.putExtra("whether_vermi_compost_pit_available_in_panchayat",basicDetailsList.get(pos).getWhether_vermi_compost_pit_available_in_panchayat());
         intent.putExtra("any_integrated_nuesery_devlp_near_swm_facility",basicDetailsList.get(pos).getAny_integrated_nuesery_devlp_near_swm_facility());
+        intent.putExtra("is_plastic_connected_to_waste_management_unit",basicDetailsList.get(pos).getIs_plastic_connected_to_waste_management_unit());
         context.startActivity(intent);
 
     }
@@ -237,13 +240,13 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
 
             TextView text = (TextView) dialog.findViewById(R.id.tv_message);
             if(save_delete.equals("save")) {
-                text.setText("Do You Want to Upload?");
+                text.setText(context.getResources().getString(R.string.do_you_wnat_to_upload));
             }
             else if(save_delete.equals("delete")){
-                text.setText("Do You Want to Delete?");
+                text.setText(context.getResources().getString(R.string.do_you_wnat_to_delete));
             }
             else if(save_delete.equals("edit")){
-                text.setText("Do You Want to Edit?");
+                text.setText(context.getResources().getString(R.string.do_you_want_to_edit));
             }
 
             Button yesButton = (Button) dialog.findViewById(R.id.btn_ok);
@@ -300,6 +303,7 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
             jsonObject.put("whether_community_compost_pit_available_in_panchayat",basicDetailsList.get(position).getWhether_community_compost_pit_available_in_panchayat());
             jsonObject.put("whether_vermi_compost_pit_available_in_panchayat",basicDetailsList.get(position).getWhether_vermi_compost_pit_available_in_panchayat());
             jsonObject.put("any_integrated_nuesery_devlp_near_swm_facility",basicDetailsList.get(position).getAny_integrated_nuesery_devlp_near_swm_facility());
+            jsonObject.put("is_plastic_connected_to_waste_management_unit",basicDetailsList.get(position).getIs_plastic_connected_to_waste_management_unit());
 
             ((NewPendingScreenActivity)context).SyncData(jsonObject, String.valueOf(basicDetailsList.get(position).getId()),"SWM_Master");
 

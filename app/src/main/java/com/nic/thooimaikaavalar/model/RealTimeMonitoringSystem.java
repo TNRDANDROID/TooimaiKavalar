@@ -422,6 +422,7 @@ public class RealTimeMonitoringSystem {
     public  String any_integrated_nuesery_devlp_near_swm_facility;
     public  String swm_asset_type_id;
     public  String asset_type_name;
+    public  String asset_type_name_ta;
     public  String no_of_photos;
     public  String is_this_others;
     public  String others_name;
@@ -444,6 +445,60 @@ public class RealTimeMonitoringSystem {
     public  String quantity_of_compost_sold;
     public  String total_revenue_generated;
     public  String date_entry_for;
+    public  String is_plastic_connected_to_waste_management_unit;
+
+    public  String amount_of_compostable_waste_sent_for_recycling_in_kg;
+    public  String amount_of_compostable_waste_sent_for_recycling_revenue_in_rs;
+    public  String amount_of_plastic_waste_sent_to_pwm_unit_in_kg;
+    public  String amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs;
+
+    public String getAsset_type_name_ta() {
+        return asset_type_name_ta;
+    }
+
+    public void setAsset_type_name_ta(String asset_type_name_ta) {
+        this.asset_type_name_ta = asset_type_name_ta;
+    }
+
+    public String getAmount_of_compostable_waste_sent_for_recycling_in_kg() {
+        return amount_of_compostable_waste_sent_for_recycling_in_kg;
+    }
+
+    public void setAmount_of_compostable_waste_sent_for_recycling_in_kg(String amount_of_compostable_waste_sent_for_recycling_in_kg) {
+        this.amount_of_compostable_waste_sent_for_recycling_in_kg = amount_of_compostable_waste_sent_for_recycling_in_kg;
+    }
+
+    public String getAmount_of_compostable_waste_sent_for_recycling_revenue_in_rs() {
+        return amount_of_compostable_waste_sent_for_recycling_revenue_in_rs;
+    }
+
+    public void setAmount_of_compostable_waste_sent_for_recycling_revenue_in_rs(String amount_of_compostable_waste_sent_for_recycling_revenue_in_rs) {
+        this.amount_of_compostable_waste_sent_for_recycling_revenue_in_rs = amount_of_compostable_waste_sent_for_recycling_revenue_in_rs;
+    }
+
+    public String getAmount_of_plastic_waste_sent_to_pwm_unit_in_kg() {
+        return amount_of_plastic_waste_sent_to_pwm_unit_in_kg;
+    }
+
+    public void setAmount_of_plastic_waste_sent_to_pwm_unit_in_kg(String amount_of_plastic_waste_sent_to_pwm_unit_in_kg) {
+        this.amount_of_plastic_waste_sent_to_pwm_unit_in_kg = amount_of_plastic_waste_sent_to_pwm_unit_in_kg;
+    }
+
+    public String getAmount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs() {
+        return amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs;
+    }
+
+    public void setAmount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs(String amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs) {
+        this.amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs = amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs;
+    }
+
+    public String getIs_plastic_connected_to_waste_management_unit() {
+        return is_plastic_connected_to_waste_management_unit;
+    }
+
+    public void setIs_plastic_connected_to_waste_management_unit(String is_plastic_connected_to_waste_management_unit) {
+        this.is_plastic_connected_to_waste_management_unit = is_plastic_connected_to_waste_management_unit;
+    }
 
     public String getDate_entry_for() {
         return date_entry_for;

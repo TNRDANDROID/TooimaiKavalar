@@ -202,7 +202,7 @@ public class FullImageAdapter extends RecyclerView.Adapter<FullImageAdapter.MyVi
 
             TextView text = (TextView) dialog.findViewById(R.id.tv_message);
             if(save_delete.equals("save")) {
-                text.setText("Do You Want to Edit?");
+                text.setText(context.getResources().getString(R.string.do_you_want_to_edit));
             }
             else if(save_delete.equals("delete")){
                 text.setText(context.getResources().getString(R.string.do_you_wnat_to_delete));

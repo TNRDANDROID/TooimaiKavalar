@@ -47,6 +47,7 @@ public class MasterFormSwmEntry extends AppCompatActivity {
     String compostPitAvailableYes_No="";
     String vermiCompostFacilityAvailableYes_No="";
     String nurseryDevelopedAvailableYes_No="";
+    String is_plastic_connected_to_waste_management_unitYes_No="";
 
     String swm_infra_details_id="";
 
@@ -61,6 +62,7 @@ public class MasterFormSwmEntry extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         try {
             dbHelper = new DBHelper(this);
             db = dbHelper.getWritableDatabase();
@@ -141,6 +143,23 @@ public class MasterFormSwmEntry extends AppCompatActivity {
             }
         });
 
+        activityMasterFormSwmEntryBinding.plasticConnectedAvailableYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    is_plastic_connected_to_waste_management_unitYes_No="Y";
+                }
+            }
+        });
+        activityMasterFormSwmEntryBinding.plasticConnectedAvailableNo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    is_plastic_connected_to_waste_management_unitYes_No="N";
+                }
+            }
+        });
+
         activityMasterFormSwmEntryBinding.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,7 +224,12 @@ public class MasterFormSwmEntry extends AppCompatActivity {
                         if(!compostPitAvailableYes_No.equals("")){
                             if(!vermiCompostFacilityAvailableYes_No.equals("")){
                                 if(!nurseryDevelopedAvailableYes_No.equals("")){
-                                    saveMasterFormLocally();
+                                    if(!is_plastic_connected_to_waste_management_unitYes_No.equals("")){
+                                        saveMasterFormLocally();
+                                    }
+                                    else {
+                                        Utils.showAlert(MasterFormSwmEntry.this,getResources().getString(R.string.is_there_any_plastic_waste_connected_facility));
+                                    }
                                 }
                                 else {
                                     Utils.showAlert(MasterFormSwmEntry.this,getResources().getString(R.string.is_there_any_integrated_nursery_developed_near_swm_facility));
@@ -254,6 +278,7 @@ public class MasterFormSwmEntry extends AppCompatActivity {
             values.put("whether_community_compost_pit_available_in_panchayat",compostPitAvailableYes_No);
             values.put("whether_vermi_compost_pit_available_in_panchayat",vermiCompostFacilityAvailableYes_No);
             values.put("any_integrated_nuesery_devlp_near_swm_facility",nurseryDevelopedAvailableYes_No);
+            values.put("is_plastic_connected_to_waste_management_unit",is_plastic_connected_to_waste_management_unitYes_No);
 
             whereClause = "swm_infra_details_id = ? and pvcode = ?";
             whereArgs = new String[]{swm_infra_details_id,pvcode};

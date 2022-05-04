@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.databinding.AppUpdateDialogBinding;
 import com.nic.thooimaikaavalar.support.MyCustomTextView;
+import com.nic.thooimaikaavalar.utils.Utils;
 
 
 public class AppUpdateDialog extends AppCompatActivity implements View.OnClickListener {
@@ -28,6 +29,7 @@ public class AppUpdateDialog extends AppCompatActivity implements View.OnClickLi
         appUpdateDialogBinding = DataBindingUtil.setContentView(this,R.layout.app_update_dialog);
         appUpdateDialogBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        Utils.setLocale("ta",this);
         intializeUI();
 
     }

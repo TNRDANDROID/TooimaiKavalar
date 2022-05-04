@@ -53,6 +53,7 @@ public class ViewWasteCollectedDetails extends AppCompatActivity implements Api.
         activity_view_waste_collected_details = DataBindingUtil.setContentView(this, R.layout.activity_view_waste_collected_details);
         activity_view_waste_collected_details.setActivity(this);
         prefManager = new PrefManager(this);
+        Utils.setLocale("ta",this);
         initializeUI();
         activity_view_waste_collected_details.dateOfSave.setText(getCurrentDate()+" to "+getCurrentDate());
         if(Utils.isOnline()){
@@ -81,9 +82,9 @@ public class ViewWasteCollectedDetails extends AppCompatActivity implements Api.
 
     public void initializeUI(){
         String date_of_commencement= dateFormate(getIntent().getStringExtra("date_of_commencement"),"yes");
-        activity_view_waste_collected_details.villageName.setText("Village : "+getIntent().getStringExtra("village_name"));
-        activity_view_waste_collected_details.mccName.setText("MCC Name : "+getIntent().getStringExtra("mcc_name"));
-        activity_view_waste_collected_details.dateOfCommencement.setText("Date of Commencement : "+date_of_commencement);
+        activity_view_waste_collected_details.villageName.setText(getResources().getString(R.string.village)+" : "+getIntent().getStringExtra("village_name"));
+        activity_view_waste_collected_details.mccName.setText(getResources().getString(R.string.mcc_name)+" : "+getIntent().getStringExtra("mcc_name"));
+        activity_view_waste_collected_details.dateOfCommencement.setText(getResources().getString(R.string.date_of_commencement)+" : "+date_of_commencement);
         activity_view_waste_collected_details.sampleRl.setVisibility(View.GONE);
     }
     public  String dateFormate( String strDate,String type ){
@@ -231,7 +232,7 @@ public class ViewWasteCollectedDetails extends AppCompatActivity implements Api.
             get_details_of_swachh_bharat_view("");
         }
         else {
-            Utils.showAlert(ViewWasteCollectedDetails.this,"No Internet Connection");
+            Utils.showAlert(ViewWasteCollectedDetails.this,getResources().getString(R.string.no_internet));
         }
     }
 
