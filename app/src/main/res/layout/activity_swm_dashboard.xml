@@ -41,8 +41,8 @@
                     android:id="@+id/title"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
-                    android:fontFamily="@string/font_regular"
-                    android:text="SWM Assets"
+                    android:fontFamily="@string/tamil_font"
+                    android:text="@string/swm_assets"
                     android:layout_centerInParent="true"
                     android:textStyle="bold"/>
             </RelativeLayout>
@@ -72,8 +72,8 @@
                             android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@string/font_regular"
-                            android:text="Add SWM Asset Details"/>
+                            android:fontFamily="@string/tamil_font"
+                            android:text="@string/add_swm_asset_details"/>
                         <View
                             android:id="@+id/view_1"
                             android:layout_width="match_parent"
@@ -89,13 +89,13 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1">
                         <TextView
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:id="@+id/tv_2"
                             android:layout_centerInParent="true"
                             android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="View SWM Assets"/>
+                            android:text="@string/view_swm_assets"/>
                         <View
                             android:id="@+id/view_2"
                             android:layout_width="match_parent"

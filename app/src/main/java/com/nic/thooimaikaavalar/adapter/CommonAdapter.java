@@ -62,7 +62,7 @@ public class CommonAdapter extends BaseAdapter {
             tv_type.setText(realTimeMonitoringSystem.getHabitationName());
         }
         else if (type.equalsIgnoreCase("waterSupplyList")) {
-            tv_type.setText(realTimeMonitoringSystem.getKEY_water_supply_availability_name());
+            tv_type.setText(realTimeMonitoringSystem.getKEY_water_supply_availability_name_ta());
         }
         else if (type.equalsIgnoreCase("villageList")) {
             tv_type.setText(realTimeMonitoringSystem.getPvName());

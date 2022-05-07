@@ -20,12 +20,12 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/close_icon"
             android:id="@+id/tv_1"
-            android:fontFamily="@string/font_regular"
+            android:fontFamily="@string/tamil_font"
             android:text="@string/how_many_thooimai_kaavalars_add"
             >
         </TextView>
         <TextView
-            android:fontFamily="@string/font_regular"
+            android:fontFamily="@string/tamil_font"
             android:layout_below="@+id/tv_1"
             android:id="@+id/tv_create_asset_title"
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
             android:background="@drawable/log_in_bg_background">
 
             <TextView
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:textSize="@dimen/_12sdp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -79,7 +79,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:id="@+id/number"
                 android:text="@string/_1"
                 />
@@ -94,7 +94,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:id="@+id/add"
                 android:text="@string/plus_symbol"
                 />
@@ -107,7 +107,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:id="@+id/btn_cancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                 tools:ignore="ButtonStyle,SpUsage" />
 
             <Button
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:id="@+id/btn_ok"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

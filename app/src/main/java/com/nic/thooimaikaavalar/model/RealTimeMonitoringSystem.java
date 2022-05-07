@@ -39,7 +39,9 @@ public class RealTimeMonitoringSystem {
     public  String KEY_capacity_of_mcc_name;
     public  String KEY_thooimai_kaavalars_name;
     public  String KEY_photographs_name;
+    public  String KEY_photographs_name_ta;
     public  String KEY_water_supply_availability_name;
+    public  String KEY_water_supply_availability_name_ta;
     private String HabCode;
     private String HabitationName;
     private String HabitationNameTa;
@@ -76,12 +78,28 @@ public class RealTimeMonitoringSystem {
         this.KEY_photographs_name = KEY_photographs_name;
     }
 
+    public String getKEY_photographs_name_ta() {
+        return KEY_photographs_name_ta;
+    }
+
+    public void setKEY_photographs_name_ta(String KEY_photographs_name_ta) {
+        this.KEY_photographs_name_ta = KEY_photographs_name_ta;
+    }
+
     public String getKEY_water_supply_availability_name() {
         return KEY_water_supply_availability_name;
     }
 
     public void setKEY_water_supply_availability_name(String KEY_water_supply_availability_name) {
         this.KEY_water_supply_availability_name = KEY_water_supply_availability_name;
+    }
+
+    public String getKEY_water_supply_availability_name_ta() {
+        return KEY_water_supply_availability_name_ta;
+    }
+
+    public void setKEY_water_supply_availability_name_ta(String KEY_water_supply_availability_name_ta) {
+        this.KEY_water_supply_availability_name_ta = KEY_water_supply_availability_name_ta;
     }
 
     public String getHabCode() {

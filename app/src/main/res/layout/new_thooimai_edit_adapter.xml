@@ -50,7 +50,7 @@
 
                 <TextView
                     android:visibility="gone"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                     android:text="@string/thooimai_kavalar_name"/>
 
                 <TextView
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/name"
@@ -68,7 +68,7 @@
 
                 <TextView
                     android:visibility="gone"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                     android:text="@string/thooimai_kavalar_mobile_number"/>
 
                 <TextView
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/mobile_number"
@@ -86,7 +86,7 @@
 
                 <TextView
                     android:visibility="gone"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
 
 
                 <TextView
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/date_of_engage"
@@ -106,7 +106,7 @@
 
                 <TextView
                     android:visibility="gone"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textSize="@dimen/_10sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                     android:text="@string/date_of_training"/>
 
                 <TextView
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/date_of_training"

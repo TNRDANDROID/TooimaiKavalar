@@ -41,7 +41,7 @@
                 android:id="@+id/title"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:text="@string/components_photos"
                 android:layout_centerInParent="true"
                 android:textStyle="bold"/>
@@ -72,7 +72,7 @@
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:text="@string/view_delete_images"/>
                     <View
                         android:id="@+id/view_1"
@@ -89,7 +89,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1">
                     <TextView
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:id="@+id/tv_2"
                         android:layout_centerInParent="true"
                         android:textColor="@color/white"
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     >
                     <TextView
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
                         android:layout_marginTop="@dimen/_7sdp"
@@ -144,7 +144,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/village_name"/>
                     <TextView
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
                         android:layout_marginTop="@dimen/_7sdp"
@@ -153,7 +153,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/mcc_name"/>
                     <TextView
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
                         android:layout_below="@id/mcc_name"

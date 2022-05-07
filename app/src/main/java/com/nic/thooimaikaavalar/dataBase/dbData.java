@@ -337,6 +337,7 @@ public class dbData {
         ContentValues values = new ContentValues();
         values.put(AppConstant.KEY_ID, realTimeMonitoringSystem.getKEY_ID());
         values.put(AppConstant.KEY_photographs_name, realTimeMonitoringSystem.getKEY_photographs_name());
+        values.put(AppConstant.KEY_photographs_name_ta, realTimeMonitoringSystem.getKEY_photographs_name_ta());
 
 
         long id = db.insert(DBHelper.SWM_PHOTOGRAPHS_OF_MCC_COMPONENTS_LIST,null,values);
@@ -349,6 +350,7 @@ public class dbData {
         ContentValues values = new ContentValues();
         values.put(AppConstant.KEY_ID, realTimeMonitoringSystem.getKEY_ID());
         values.put(AppConstant.KEY_water_supply_availability_name, realTimeMonitoringSystem.getKEY_water_supply_availability_name());
+        values.put(AppConstant.KEY_water_supply_availability_name_ta, realTimeMonitoringSystem.getKEY_water_supply_availability_name_ta());
 
 
         long id = db.insert(DBHelper.SWM_WATER_SUPPLY_AVAILABILITY_LIST,null,values);
@@ -445,6 +447,8 @@ public class dbData {
                             .getColumnIndexOrThrow(AppConstant.KEY_ID)));
                     card.setKEY_photographs_name(cursor.getString(cursor
                             .getColumnIndexOrThrow(AppConstant.KEY_photographs_name)));
+                    card.setKEY_photographs_name_ta(cursor.getString(cursor
+                            .getColumnIndexOrThrow(AppConstant.KEY_photographs_name_ta)));
 
 
                     cards.add(card);
@@ -475,6 +479,8 @@ public class dbData {
                             .getColumnIndexOrThrow(AppConstant.KEY_ID)));
                     card.setKEY_water_supply_availability_name(cursor.getString(cursor
                             .getColumnIndexOrThrow(AppConstant.KEY_water_supply_availability_name)));
+                    card.setKEY_water_supply_availability_name_ta(cursor.getString(cursor
+                            .getColumnIndexOrThrow(AppConstant.KEY_water_supply_availability_name_ta)));
 
                     cards.add(card);
                 }

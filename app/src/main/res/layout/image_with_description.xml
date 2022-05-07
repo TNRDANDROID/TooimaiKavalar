@@ -90,7 +90,7 @@
 
 
                         <EditText
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:layout_marginTop="@dimen/_7sdp"
                             android:id="@+id/description"
                             android:layout_width="fill_parent"

@@ -39,7 +39,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 android:text="@string/dashboard"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:layout_centerInParent="true"
                 android:textStyle="bold"/>
 
@@ -81,7 +81,7 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
                             android:layout_marginTop="@dimen/_7sdp"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/village_name"/>
@@ -92,7 +92,7 @@
                             android:layout_marginTop="@dimen/_7sdp"
                             android:layout_below="@id/village_name"
                             android:layout_width="wrap_content"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:layout_height="wrap_content"
                             android:id="@+id/mcc_name"/>
 
@@ -100,7 +100,7 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
                             android:layout_below="@id/mcc_name"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:layout_marginTop="@dimen/_7sdp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                                     android:background="@color/full_transparent"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@string/font_regular"
+                                    android:fontFamily="@string/tamil_font"
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/add_thooimai_kaavalar_details"
                                     android:textAllCaps="false"
@@ -210,7 +210,7 @@
                                         android:layout_below="@+id/icon_3"
                                         android:background="@color/full_transparent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@string/font_regular"
+                                        android:fontFamily="@string/tamil_font"
                                         android:text="@string/view_edit_thooimai_kaavalar_details"
                                         android:textAllCaps="false"
                                         />
@@ -266,7 +266,7 @@
                                         android:background="@color/full_transparent"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@string/font_regular"
+                                        android:fontFamily="@string/tamil_font"
                                         android:layout_centerHorizontal="true"
                                         android:text="@string/waste_collected_from"
                                         android:textAllCaps="false"
@@ -317,7 +317,7 @@
                                     android:text="@string/view_take_component_photos"
                                     android:textAllCaps="false"
                                     android:layout_below="@+id/icon_2"
-                                    android:fontFamily="@string/font_regular"
+                                    android:fontFamily="@string/tamil_font"
                                     android:background="@color/full_transparent"/>
 
                                 <ImageView
@@ -376,7 +376,7 @@
                                         android:background="@color/full_transparent"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@string/font_regular"
+                                        android:fontFamily="@string/tamil_font"
                                         android:layout_centerHorizontal="true"
                                         android:text="Add Infrastructure"
                                         android:textAllCaps="false"
@@ -423,7 +423,7 @@
                                         android:layout_below="@+id/swm_icon_1"
                                         android:background="@color/full_transparent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@string/font_regular"
+                                        android:fontFamily="@string/tamil_font"
                                         android:text="View Infrastructure"
                                         android:textAllCaps="false"
                                     />
@@ -470,7 +470,7 @@
                                     android:background="@color/full_transparent"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@string/font_regular"
+                                    android:fontFamily="@string/tamil_font"
                                     android:layout_centerHorizontal="true"
                                     android:text="@string/add_carried_out"
                                     android:textAllCaps="false"

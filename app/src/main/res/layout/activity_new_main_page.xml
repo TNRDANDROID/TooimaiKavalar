@@ -44,7 +44,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
                     android:text="@string/add"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:layout_centerInParent="true"
                     android:textStyle="bold"/>
 
@@ -74,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding"
                         android:text="@string/enter_mcc_name"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_12sdp"
                         />
@@ -104,7 +104,7 @@
                             android:layout_marginStart="@dimen/_5sdp"
                             android:inputType="text"
                             android:id="@+id/mcc_name"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:background="@color/full_transparent"
                             android:hint="@string/enter_mcc_name"
                             android:textColor="@color/black"
@@ -166,7 +166,7 @@
                         android:textSize="@dimen/_12sdp"
                         android:textColor="@color/black"
                         android:padding="@dimen/_5sdp"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:text="@string/choose_capacity_of_mcc_in_tonnes">
 
                      </TextView>
@@ -184,7 +184,7 @@
                         android:id="@+id/select_water_supply_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:layout_marginTop="@dimen/padding"
                         android:text="@string/select_water_supply"
                         android:textColor="@android:color/black"
@@ -207,7 +207,7 @@
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/_12sdp"
                             android:visibility="visible"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             tools:ignore="RelativeOverlap" />
 
                         <Spinner
@@ -230,7 +230,7 @@
                         android:text="@string/please_specify"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_12sdp"
-                        android:fontFamily="@string/font_regular"/>
+                        android:fontFamily="@string/tamil_font"/>
                     <RelativeLayout
                         android:id="@+id/specify_layout"
                         android:layout_width="match_parent"
@@ -257,7 +257,7 @@
                             android:layout_marginStart="@dimen/_5sdp"
                             android:inputType="text"
                             android:id="@+id/specify_text"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:background="@color/full_transparent"
                             android:hint="@string/please_specify"
                             android:textColor="@color/black"
@@ -276,7 +276,7 @@
                         android:text="@string/select_date_of_commencement"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_12sdp"
-                        android:fontFamily="@string/font_regular" />
+                        android:fontFamily="@string/tamil_font" />
                     <RelativeLayout
                         android:id="@+id/date_of_commencement_layout"
                         android:layout_width="match_parent"
@@ -307,7 +307,7 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
                             android:visibility="visible"
-                            android:fontFamily="@string/font_regular" />
+                            android:fontFamily="@string/tamil_font" />
 
                     </RelativeLayout>
 
@@ -319,7 +319,7 @@
                         android:text="@string/capture_mcc_center"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_12sdp"
-                        android:fontFamily="@string/font_regular" />
+                        android:fontFamily="@string/tamil_font" />
                     <androidx.cardview.widget.CardView
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="@dimen/_20sdp"
@@ -370,7 +370,7 @@
                         android:id="@+id/choose_no_of_thooimai_kavalar"
                         android:textSize="@dimen/_12sdp"
                         android:textColor="@color/black"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:padding="@dimen/_5sdp"
                         android:text="@string/choose_no_of_thooimai_kavalar">
                     </TextView>
@@ -401,7 +401,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/save"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:background="@color/full_transparent"
                             android:textAllCaps="false"
                             android:textColor="@color/white">

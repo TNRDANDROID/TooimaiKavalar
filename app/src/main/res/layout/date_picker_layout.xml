@@ -38,6 +38,7 @@
                         android:gravity="center"
                         android:layout_height="wrap_content"
                         android:text="@string/from"
+                        android:fontFamily="@string/tamil_font"
                         android:textSize="@dimen/_13sdp"
                         android:textColor="@color/white"
                         android:id="@+id/from"/>
@@ -45,6 +46,7 @@
                         android:layout_width="match_parent"
                         android:gravity="center"
                         android:textSize="@dimen/_13sdp"
+                        android:fontFamily="@string/tamil_font"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:id="@+id/fromDateValue"/>
@@ -64,12 +66,14 @@
                         android:textSize="@dimen/_13sdp"
                         android:id="@+id/to"
                         android:text="@string/to"
+                        android:fontFamily="@string/tamil_font"
                         android:textColor="@color/unselect"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:gravity="center"
                         android:textSize="@dimen/_13sdp"
+                        android:fontFamily="@string/tamil_font"
                         android:layout_height="wrap_content"
                         android:textColor="@color/unselect"
                         android:id="@+id/toDateValue"/>
@@ -97,6 +101,7 @@
                     android:gravity="top|center_horizontal"
                     android:layout_toStartOf="@+id/ok"
                     android:textColor="@color/colorAccent"
+                    android:fontFamily="@string/tamil_font"
                     android:layout_marginEnd="20dp"
                     android:paddingBottom="10dp"/>
                 <TextView
@@ -105,6 +110,7 @@
                     android:text="@string/ok"
                     android:layout_alignParentEnd="true"
                     android:id="@+id/ok"
+                    android:fontFamily="@string/tamil_font"
                     android:gravity="top|center_horizontal"
                     android:textColor="@color/colorAccent"
                     android:paddingBottom="10dp"/>

@@ -44,7 +44,7 @@
                 android:contentDescription="@string/menu_icon" />
 
             <TextView
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/title"

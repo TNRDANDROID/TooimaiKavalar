@@ -173,7 +173,9 @@ public class AppConstant {
     public static String KEY_capacity_of_mcc_name= "capacity_of_mcc_name";
     public static String KEY_thooimai_kaavalars_name= "thooimai_kaavalars_name";
     public static String KEY_photographs_name= "photographs_name";
+    public static String KEY_photographs_name_ta= "photographs_name_ta";
     public static String KEY_water_supply_availability_name= "water_supply_availability_name";
+    public static String KEY_water_supply_availability_name_ta= "water_supply_availability_name_ta";
 
 
     public static String HABB_CODE = "habitation_code";

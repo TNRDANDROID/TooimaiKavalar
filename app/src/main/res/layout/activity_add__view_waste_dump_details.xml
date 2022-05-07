@@ -39,7 +39,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 android:text="@string/wastdump_details"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:layout_centerInParent="true"
                 android:textStyle="bold"/>
 
@@ -102,7 +102,7 @@
                                         android:background="@color/full_transparent"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@string/font_regular"
+                                        android:fontFamily="@string/tamil_font"
                                         android:layout_centerHorizontal="true"
                                         android:text="@string/add_wast_dump"
                                         android:textAllCaps="false"/>
@@ -148,7 +148,7 @@
                                         android:layout_below="@+id/swm_icon_1"
                                         android:background="@color/full_transparent"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@string/font_regular"
+                                        android:fontFamily="@string/tamil_font"
                                         android:text="@string/view_waste_dump"
                                         android:textAllCaps="false"
                                         />

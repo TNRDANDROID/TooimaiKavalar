@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/mcc_name"
                     android:textColor="@color/black"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     />
                 <TextView
                     android:textSize="@dimen/_10sdp"
@@ -60,7 +60,7 @@
                     android:layout_below="@id/mcc_name"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textColor="@color/black"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     />
 
                 <TextView
@@ -71,7 +71,7 @@
                     android:layout_below="@id/village_name"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textColor="@color/black"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     />
 
                 <TextView
@@ -82,7 +82,7 @@
                     android:layout_below="@id/date"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:textColor="@color/black"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     />
 
 
@@ -157,7 +157,8 @@
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:padding="@dimen/_11sdp"/>
+                            android:padding="@dimen/_11sdp"
+                            android:fontFamily="@string/tamil_font"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -192,7 +193,8 @@
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:text="@string/waste_collected_details"/>
+                            android:text="@string/waste_collected_details"
+                            android:fontFamily="@string/tamil_font"/>
                     </RelativeLayout>
                 </LinearLayout>
 

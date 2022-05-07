@@ -94,10 +94,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + SWM_PHOTOGRAPHS_OF_MCC_COMPONENTS_LIST + " ("
                 + "id INTEGER," +
+                "photographs_name_ta TEXT," +
                 "photographs_name TEXT)");
 
         db.execSQL("CREATE TABLE " + SWM_WATER_SUPPLY_AVAILABILITY_LIST + " ("
                 + "id INTEGER," +
+                "water_supply_availability_name_ta TEXT," +
                 "water_supply_availability_name TEXT)");
 
         db.execSQL("CREATE TABLE " + SWM_ASSET_TYPE + " ("

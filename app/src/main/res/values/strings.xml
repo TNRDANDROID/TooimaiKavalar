@@ -91,6 +91,8 @@
     <string name="please_choose_date_of_engagement">Please Choose Date of Engagement</string>
 
     <string name="font_regular">yanonekaffeesatz_regular.ttf</string>
+    <string name="tamil_font">Aniezhai.ttf</string>
+
     <string name="back_icon">back_icon</string>
     <string name="cd_work_list">CD Work List</string>
     <string name="select_financial_year">Select Financial Year</string>
@@ -313,8 +315,9 @@
     <string name="wcc_pit">WCC Pit</string>
     <string name="wvc_pit">WVC Pit</string>
     <string name="nursery_developed">Nursery developed</string>
-
-
+    <string name="swm_assets">SWM Assets</string>
+    <string name="add_swm_asset_details">Add SWM Asset Details</string>
+    <string name="view_swm_assets">View SWM Assets</string>
 
 
 </resources>

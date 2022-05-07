@@ -42,7 +42,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 android:text="@string/waste_collected_entry_form"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:layout_centerInParent="true"
                 android:textStyle="bold"/>
         </RelativeLayout>
@@ -85,7 +85,8 @@
                                 android:layout_weight="1"
                                 android:textColor="@color/grey2"
                                 android:text="@string/waste_collected_from"
-                                android:gravity="center"/>
+                                android:gravity="center"
+                                android:fontFamily="@string/tamil_font"/>
 
                             <View
                                 android:layout_width="@dimen/_1sdp"
@@ -100,7 +101,8 @@
                                 android:layout_weight="1"
                                 android:textColor="@color/grey2"
                                 android:text="@string/quantity_of_bio_degradable_waste_collected_in_kg"
-                                android:gravity="center"/>
+                                android:gravity="center"
+                                android:fontFamily="@string/tamil_font"/>
                         </LinearLayout>
                         <View
                             android:layout_width="match_parent"
@@ -121,7 +123,8 @@
                                 android:layout_weight="1"
                                 android:text="@string/market_places"
                                 android:textColor="@color/tool_bar_blue"
-                                android:gravity="end"/>
+                                android:gravity="end"
+                                android:fontFamily="@string/tamil_font"/>
 
                             <RelativeLayout
                                 android:padding="@dimen/_7sdp"
@@ -139,7 +142,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/full_transparent"
-                                    android:gravity="center"/>
+                                    android:gravity="center"
+                                    android:fontFamily="@string/tamil_font"/>
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -158,7 +162,8 @@
                                 android:layout_weight="1"
                                 android:textColor="@color/tool_bar_blue"
                                 android:text="@string/households"
-                                android:gravity="end"/>
+                                android:gravity="end"
+                                android:fontFamily="@string/tamil_font"/>
 
                             <RelativeLayout
                                 android:padding="@dimen/_7sdp"
@@ -176,7 +181,8 @@
                                     android:textColor="@color/black"
                                     android:layout_height="wrap_content"
                                     android:background="@color/full_transparent"
-                                    android:gravity="center"/>
+                                    android:gravity="center"
+                                    android:fontFamily="@string/tamil_font"/>
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -195,7 +201,8 @@
                                 android:layout_weight="1"
                                 android:text="@string/shops"
                                 android:textColor="@color/tool_bar_blue"
-                                android:gravity="end"/>
+                                android:gravity="end"
+                                android:fontFamily="@string/tamil_font"/>
 
                             <RelativeLayout
                                 android:padding="@dimen/_7sdp"
@@ -213,7 +220,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/full_transparent"
-                                    android:gravity="center"/>
+                                    android:gravity="center"
+                                    android:fontFamily="@string/tamil_font"/>
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -232,7 +240,8 @@
                                 android:layout_weight="1"
                                 android:text="@string/hotels"
                                 android:textColor="@color/tool_bar_blue"
-                                android:gravity="end"/>
+                                android:gravity="end"
+                                android:fontFamily="@string/tamil_font"/>
 
                             <RelativeLayout
                                 android:padding="@dimen/_7sdp"
@@ -250,7 +259,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@color/full_transparent"
-                                    android:gravity="center"/>
+                                    android:gravity="center"
+                                    android:fontFamily="@string/tamil_font"/>
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -269,8 +279,8 @@
                                 android:layout_weight="1"
                                 android:text="@string/others"
                                 android:textColor="@color/tool_bar_blue"
-                                android:gravity="end
-"/>
+                                android:gravity="end"
+                                android:fontFamily="@string/tamil_font"/>
 
                             <RelativeLayout
                                 android:padding="@dimen/_7sdp"
@@ -288,7 +298,8 @@
                                     android:textColor="@color/black"
                                     android:layout_height="wrap_content"
                                     android:background="@color/full_transparent"
-                                    android:gravity="center"/>
+                                    android:gravity="center"
+                                    android:fontFamily="@string/tamil_font"/>
                             </RelativeLayout>
 
                         </LinearLayout>
@@ -306,7 +317,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/padding"
                             android:text="@string/total_quantity_of_bio_degradable_waste_collected_in_kg"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
                             />
@@ -326,7 +337,7 @@
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:id="@+id/total_quantity_waste_text"
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:background="@color/full_transparent"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_11sdp"
@@ -342,7 +353,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/padding"
                             android:text="@string/quantity_of_bio_degradable_waste_shredded_in_kg"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
                             />
@@ -362,7 +373,7 @@
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:id="@+id/shredded_text"
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:background="@color/full_transparent"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_11sdp"
@@ -378,7 +389,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/padding"
                             android:text="@string/total_quantity_of_compost_produced_in_kg"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
                             />
@@ -398,7 +409,7 @@
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:id="@+id/compost_produced_text"
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:background="@color/full_transparent"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_11sdp"
@@ -414,7 +425,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/padding"
                             android:text="@string/total_quantity_of_compost_sold_in_kg"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_12sdp"
                             />
@@ -434,7 +445,7 @@
                                 android:inputType="numberDecimal"
                                 android:textAlignment="center"
                                 android:id="@+id/compost_sold_text"
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:background="@color/full_transparent"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_11sdp"
@@ -465,7 +476,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/save"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:background="@color/full_transparent"
                             android:textAllCaps="false"
                             android:textColor="@color/white">

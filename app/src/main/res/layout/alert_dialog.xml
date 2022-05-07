@@ -23,7 +23,7 @@
             android:gravity="center"
             android:padding="@dimen/padding"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:fontFamily="@string/font_regular" />
+            android:fontFamily="@string/tamil_font" />
 
         <View
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/cancel"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/menu_title_size"
                 android:visibility="gone"
@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:text="@string/ok"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/menu_title_size"
                 tools:ignore="ButtonStyle,SpUsage" />

@@ -43,7 +43,7 @@
                 <TextView
                     android:layout_marginTop="@dimen/_7sdp"
                     android:id="@+id/headtext"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imageView1"
@@ -58,7 +58,7 @@
                 <TextView
                     android:layout_marginTop="@dimen/_7sdp"
                     android:id="@+id/headtext1"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/headtext"

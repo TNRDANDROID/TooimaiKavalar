@@ -69,7 +69,7 @@
                             android:textSize="13sp"
                             android:id="@+id/asset_name"
                             android:text="Is there any waste dump ?"
-                            android:fontFamily="sans-serif" />
+                            android:fontFamily="@string/tamil_font" />
 
                         <TextView
                             android:visibility="gone"
@@ -81,7 +81,7 @@
                             android:textSize="13sp"
                             android:id="@+id/ans1"
                             android:text="@string/yes"
-                            android:fontFamily="sans-serif" />
+                            android:fontFamily="@string/tamil_font" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                             android:layout_marginTop="@dimen/_2sdp"
                             android:layout_below="@+id/ans1"
                             android:text="Is this waste dump cleaned or not ?"
-                            android:fontFamily="sans-serif" />
+                            android:fontFamily="@string/tamil_font" />
                         <RelativeLayout
                             android:id="@+id/yesno_layout"
                             android:layout_width="wrap_content"
@@ -112,13 +112,15 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/functional_yes"
-                                    android:text="@string/yes"/>
+                                    android:text="@string/yes"
+                                    android:fontFamily="@string/tamil_font"/>
                                 <RadioButton
                                     android:layout_marginStart="@dimen/_20sdp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/functional_no"
-                                    android:text="@string/no"/>
+                                    android:text="@string/no"
+                                    android:fontFamily="@string/tamil_font"/>
                             </RadioGroup>
 
                         </RelativeLayout>
@@ -137,7 +139,7 @@
                         android:layout_below="@+id/delete_ic"
                         android:textSize="@dimen/_11sdp"
                         android:id="@+id/status"
-                        android:fontFamily="sans-serif" />
+                        android:fontFamily="@string/tamil_font" />
                     <ImageView
                         android:visibility="gone"
                         android:padding="@dimen/_3sdp"
@@ -180,7 +182,7 @@
                                 android:textSize="13sp"
                                 android:id="@+id/before"
                                 android:text="Before"
-                                android:fontFamily="sans-serif" />
+                                android:fontFamily="@string/tamil_font" />
 
                             <ImageView
                                 android:layout_width="@dimen/_150sdp"
@@ -215,7 +217,7 @@
                                 android:textSize="13sp"
                                 android:id="@+id/after"
                                 android:text="After"
-                                android:fontFamily="sans-serif" />
+                                android:fontFamily="@string/tamil_font" />
 
                             <ImageView
                                 android:layout_width="@dimen/_150sdp"

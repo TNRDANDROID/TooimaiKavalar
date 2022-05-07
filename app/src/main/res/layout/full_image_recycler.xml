@@ -18,7 +18,7 @@
             android:background="@color/colorPrimaryDark">
 
             <TextView
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -41,6 +41,7 @@
                 android:contentDescription="@string/back_icon" />
 
             <ImageView
+                android:visibility="gone"
                 android:tint="@color/white"
                 android:id="@+id/home_img"
                 android:layout_width="30dp"

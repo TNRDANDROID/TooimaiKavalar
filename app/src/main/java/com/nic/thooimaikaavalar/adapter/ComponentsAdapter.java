@@ -50,7 +50,7 @@ public class ComponentsAdapter extends RecyclerView.Adapter<ComponentsAdapter.My
             holder.capacityRecylerAdapterBinding.valueTv.setText(capacityList.get(position).getAsset_type_name_ta());
         }
         else {
-            holder.capacityRecylerAdapterBinding.valueTv.setText(capacityList.get(position).getKEY_photographs_name());
+            holder.capacityRecylerAdapterBinding.valueTv.setText(capacityList.get(position).getKEY_photographs_name_ta());
         }
 
 

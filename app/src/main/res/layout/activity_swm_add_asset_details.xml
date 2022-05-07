@@ -43,7 +43,7 @@
                     android:id="@+id/title"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:text="@string/infrastructure_assets"
                     android:layout_centerInParent="true"
                     android:textStyle="bold"/>

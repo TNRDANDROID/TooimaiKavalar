@@ -22,7 +22,7 @@
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:fontFamily="@string/font_regular"
+            android:fontFamily="@string/tamil_font"
             android:layout_marginEnd="@dimen/margin"
             android:gravity="center"
             android:text="@string/close"
@@ -39,7 +39,7 @@
         android:background="#CCC"
         android:gravity="center"
         android:padding="15dp"
-        android:fontFamily="@string/font_regular"
+        android:fontFamily="@string/tamil_font"
         android:text="@string/you_can_capture_upto_3_photos"
         android:textSize="@dimen/menu_title_size"
         android:visibility="visible"
@@ -73,7 +73,7 @@
                 android:background="@drawable/new_bg_log_in_btn_purple"
                 android:text="@string/add_photo"
                 android:textAllCaps="false"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:textColor="@android:color/white"
                 tools:ignore="RtlHardcoded" />
 
@@ -93,7 +93,7 @@
                     android:layout_margin="5dp"
                     android:background="@drawable/new_bg_log_in_btn_purple"
                     android:text="@string/save_image_local"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     />

@@ -491,9 +491,11 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
                     RealTimeMonitoringSystem habList = new RealTimeMonitoringSystem();
                     String id = waterSupplyListDb.getString(waterSupplyListDb.getColumnIndexOrThrow(AppConstant.KEY_ID));
                     String water_supply_name = waterSupplyListDb.getString(waterSupplyListDb.getColumnIndexOrThrow(AppConstant.KEY_water_supply_availability_name));
+                    String water_supply_name_ta = waterSupplyListDb.getString(waterSupplyListDb.getColumnIndexOrThrow(AppConstant.KEY_water_supply_availability_name_ta));
 
                     habList.setKEY_ID(id);
                     habList.setKEY_water_supply_availability_name(water_supply_name);
+                    habList.setKEY_water_supply_availability_name_ta(water_supply_name_ta);
 
                     waterSupplyListOrdered.add(habList);
                 } while (waterSupplyListDb.moveToNext());
@@ -505,15 +507,18 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
         RealTimeMonitoringSystem habitationListValue = new RealTimeMonitoringSystem();
         habitationListValue.setKEY_ID("0");
         habitationListValue.setKEY_water_supply_availability_name(getResources().getString(R.string.select_water_supply));
+        habitationListValue.setKEY_water_supply_availability_name_ta(getResources().getString(R.string.select_water_supply));
         waterSupplyList.add(habitationListValue);
         for (int i = 0; i < waterSupplyListOrdered.size(); i++) {
             RealTimeMonitoringSystem habList = new RealTimeMonitoringSystem();
             String id = waterSupplyListOrdered.get(i).getKEY_ID();
             String water_supply_name = waterSupplyListOrdered.get(i).getKEY_water_supply_availability_name();
+            String water_supply_name_ta = waterSupplyListOrdered.get(i).getKEY_water_supply_availability_name_ta();
 
 
             habList.setKEY_ID(id);
             habList.setKEY_water_supply_availability_name(water_supply_name);
+            habList.setKEY_water_supply_availability_name_ta(water_supply_name_ta);
 
             waterSupplyList.add(habList);
         }

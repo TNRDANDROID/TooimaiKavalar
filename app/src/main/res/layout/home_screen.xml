@@ -33,7 +33,7 @@
                     android:text="@string/home_title"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     tools:ignore="RelativeOverlap" />
 
                 <TextView
@@ -46,7 +46,7 @@
                     android:text="@string/hi_welcomeback"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
-                    android:fontFamily="@string/font_regular"/>
+                    android:fontFamily="@string/tamil_font"/>
 
                 <ImageView
                     android:id="@+id/log_out"
@@ -112,7 +112,7 @@
                             tools:ignore="UselessParent">
 
                             <TextView
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                                 android:textColor="@color/border_line"/>
 
                             <TextView
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                                 android:textColor="@color/border_line"/>
 
                             <TextView
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                                 android:textColor="@color/border_line"/>
 
                             <TextView
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:textColor="@color/white"
                         android:singleLine="true"
                         android:layout_centerVertical="true"
@@ -216,7 +216,7 @@
                     android:layout_below="@+id/imgUser"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15sp"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp" />
 
@@ -227,7 +227,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_name"
                     android:layout_centerHorizontal="true"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_10sdp" />
@@ -256,7 +256,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:text="@string/pending_works_for_upload"
                         android:textAlignment="center"
                         android:textColor="@color/white"
@@ -279,14 +279,14 @@
                         android:id="@+id/pendingCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14sdp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:text=""
                         android:textAllCaps="true"
                         android:textColor="@color/white"
@@ -371,7 +371,7 @@
                                             android:layout_centerHorizontal="true"
                                             android:layout_height="match_parent"
                                             android:text="@string/add_new_mcc"
-                                            android:fontFamily="@string/font_regular"
+                                            android:fontFamily="@string/tamil_font"
                                             android:background="@color/full_transparent"
                                             android:textAlignment="center"
                                             android:textAllCaps="false"
@@ -416,7 +416,7 @@
                                             android:background="@drawable/line_shape_curved_bg"/>
 
                                         <Button
-                                            android:fontFamily="@string/font_regular"
+                                            android:fontFamily="@string/tamil_font"
                                             android:onClick="@{()-> activity.viewMCCBasicDetailsList()}"
                                             android:clickable="true"
                                             android:layout_toEndOf="@+id/v_2"
@@ -470,7 +470,7 @@
                                             android:background="@drawable/line_shape_curved_bg"/>
 
                                         <Button
-                                            android:fontFamily="@string/font_regular"
+                                            android:fontFamily="@string/tamil_font"
                                             android:onClick="@{()-> activity.entryMCCBasicDetailsList()}"
                                             android:clickable="true"
                                             android:layout_toEndOf="@+id/daily_entry_v_2"
@@ -543,7 +543,7 @@
                                             android:background="@drawable/line_shape_curved_bg"/>
 
                                         <Button
-                                            android:fontFamily="@string/font_regular"
+                                            android:fontFamily="@string/tamil_font"
                                             android:onClick="@{()-> activity.viewSWMDetailsList()}"
                                             android:clickable="true"
                                             android:layout_toEndOf="@+id/v_3"
@@ -581,7 +581,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:layout_gravity="center"
-                                    android:fontFamily="@string/font_regular"
+                                    android:fontFamily="@string/tamil_font"
                                     android:text="@string/view_works"
                                     android:textAlignment="center"
                                     android:textColor="#000000"
@@ -614,14 +614,14 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/sync"
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:textColor="#000080"
                                 android:textSize="@dimen/_10sdp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@string/font_regular"
+                                android:fontFamily="@string/tamil_font"
                                 android:text="@string/pending_uploads"
                                 android:textColor="#000000"
                                 android:textSize="@dimen/_14sdp" />
@@ -654,7 +654,7 @@
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_13sdp"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 />
 
         </RelativeLayout>
@@ -712,7 +712,7 @@
                             android:id="@+id/time_image"
                             android:contentDescription="@string/profile_icon" />
                         <TextView
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:textStyle="bold"
                             android:padding="@dimen/_3sdp"
                             android:layout_centerVertical="true"
@@ -732,7 +732,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/imgUser1"
                         android:layout_marginTop="5sp"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/_14sdp" />
                     <TextView
@@ -742,7 +742,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_name1"
-                        android:fontFamily="@string/font_regular"
+                        android:fontFamily="@string/tamil_font"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/_10sdp" />
@@ -752,7 +752,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_below="@+id/designation1"
                             android:id="@+id/timer"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@color/white"
                             android:textStyle="bold"
                             android:textSize="@dimen/_12sdp"
@@ -793,7 +793,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:text="@string/pending_works_for_upload"
                             android:textAlignment="center"
                             android:textColor="@color/white"
@@ -816,14 +816,14 @@
                             android:id="@+id/pendingCount1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:text=""
                             android:textAllCaps="true"
                             android:textColor="@color/white"
@@ -886,7 +886,7 @@
                                                 android:layout_centerHorizontal="true"
                                                 android:layout_height="match_parent"
                                                 android:text="@string/add_new_mcc"
-                                                android:fontFamily="@string/font_regular"
+                                                android:fontFamily="@string/tamil_font"
                                                 android:background="@color/full_transparent"
                                                 android:textAlignment="textStart"
                                                 android:textAllCaps="false"
@@ -939,7 +939,7 @@
                                                 android:clickable="true"
                                                 android:background="@color/full_transparent"
                                                 android:id="@+id/edit_mcc1"
-                                                android:fontFamily="@string/font_regular"
+                                                android:fontFamily="@string/tamil_font"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="match_parent"
                                                 android:layout_centerHorizontal="true"
@@ -972,7 +972,7 @@
                                         android:gravity="center"
                                         android:layout_gravity="center"
                                         android:text="@string/view_works"
-                                        android:fontFamily="@string/font_regular"
+                                        android:fontFamily="@string/tamil_font"
                                         android:textAlignment="center"
                                         android:textColor="#000000"
                                         android:textSize="18sp"
@@ -1014,7 +1014,7 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:text="@string/logout"
-                                            android:fontFamily="@string/font_regular"
+                                            android:fontFamily="@string/tamil_font"
                                             android:textAlignment="textStart"
                                             android:background="@color/full_transparent"
                                             android:textAllCaps="false"
@@ -1070,14 +1070,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/sync"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="#000080"
                             android:textSize="@dimen/_10sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@string/font_regular"
+                            android:fontFamily="@string/tamil_font"
                             android:text="@string/pending_uploads"
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />

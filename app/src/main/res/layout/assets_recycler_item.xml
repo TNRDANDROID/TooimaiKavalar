@@ -63,7 +63,7 @@
                 android:textSize="13sp"
                 android:id="@+id/asset_name"
                 android:text="Is This Working ?"
-                android:fontFamily="sans-serif" />
+                android:fontFamily="@string/tamil_font" />
 
             <TextView
                 android:layout_below="@+id/asset_name"
@@ -74,7 +74,7 @@
                 android:textSize="13sp"
                 android:id="@+id/ques"
                 android:text="Is This Working ?"
-                android:fontFamily="sans-serif" />
+                android:fontFamily="@string/tamil_font" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_marginTop="@dimen/_2sdp"
                 android:layout_below="@+id/ques"
                 android:text="@string/yes"
-                android:fontFamily="sans-serif" />
+                android:fontFamily="@string/tamil_font" />
 
         </RelativeLayout>
         <TextView
@@ -99,7 +99,7 @@
             android:layout_below="@+id/delete_ic"
             android:textSize="@dimen/_11sdp"
             android:id="@+id/status"
-            android:fontFamily="sans-serif" />
+            android:fontFamily="@string/tamil_font" />
         <ImageView
             android:padding="@dimen/_3sdp"
             android:layout_width="@dimen/_20sdp"

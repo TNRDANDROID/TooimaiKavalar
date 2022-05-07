@@ -38,7 +38,7 @@
                 android:textSize="@dimen/_13sdp"
                 android:text="@string/add_thooimai_kaavalar"
                 android:layout_centerInParent="true"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 android:textStyle="bold"/>
 
         </RelativeLayout>
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/log_in_btn"
                     android:text="@string/submit"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textSize="18sp"
                     android:textColor="@color/white"
                     android:textStyle="bold"

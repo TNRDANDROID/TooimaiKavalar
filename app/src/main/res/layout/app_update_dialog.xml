@@ -26,7 +26,7 @@
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp"
-            android:fontFamily="@string/font_regular" />
+            android:fontFamily="@string/tamil_font" />
 
     </RelativeLayout>
 
@@ -55,7 +55,7 @@
             android:padding="@dimen/padding"
             android:text="@string/you_need_to_update"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:fontFamily="@string/font_regular"/>
+            android:fontFamily="@string/tamil_font"/>
 
         <TextView
             android:id="@+id/tv_message"
@@ -67,7 +67,7 @@
             android:padding="@dimen/padding"
             android:text="@string/this_version_of_swm_is_no_longer_supported_please_go_to_official_site_and_install_new_version"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:fontFamily="@string/font_regular" />
+            android:fontFamily="@string/tamil_font" />
 
 
         <LinearLayout
@@ -85,7 +85,7 @@
                 android:text="@string/cancel"
                 android:textColor="@android:color/black"
                 android:visibility="gone"
-                android:fontFamily="@string/font_regular" />
+                android:fontFamily="@string/tamil_font" />
 
             <TextView
                 android:id="@+id/btn_ok"
@@ -101,7 +101,7 @@
                 android:onClick="@{()->activity.showGooglePlay()}"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/menu_title_size"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 tools:ignore="SpUsage" />
         </LinearLayout>
 

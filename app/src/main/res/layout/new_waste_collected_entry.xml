@@ -41,10 +41,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/title"
+                    android:layout_toEndOf="@+id/back_img"
+                    android:layout_alignParentEnd="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
                     android:text="@string/waste_collected_entry_form"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:layout_centerInParent="true"
                     android:textStyle="bold"/>
             </RelativeLayout>
@@ -396,7 +398,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/padding"
                                     android:text="@string/total_quantity_of_bio_degradable_waste_collected_in_kg"
-                                    android:fontFamily="@string/font_regular"
+                                    android:fontFamily="@string/tamil_font"
                                     android:textColor="@android:color/black"
                                     android:textSize="@dimen/_12sdp"
                                 />
@@ -452,7 +454,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/padding"
                                     android:text="@string/quantity_of_bio_degradable_waste_shredded_in_kg"
-                                    android:fontFamily="@string/font_regular"
+                                    android:fontFamily="@string/tamil_font"
                                     android:textColor="@android:color/black"
                                     android:textSize="@dimen/_12sdp"
                                 />
@@ -508,7 +510,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/padding"
                                     android:text="@string/total_quantity_of_compost_produced_in_kg"
-                                    android:fontFamily="@string/font_regular"
+                                    android:fontFamily="@string/tamil_font"
                                     android:textColor="@android:color/black"
                                     android:textSize="@dimen/_12sdp"
                                 />
@@ -564,7 +566,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/padding"
                                     android:text="@string/total_quantity_of_compost_sold_in_kg"
-                                    android:fontFamily="@string/font_regular"
+                                    android:fontFamily="@string/tamil_font"
                                     android:textColor="@android:color/black"
                                     android:textSize="@dimen/_12sdp"
                                 />

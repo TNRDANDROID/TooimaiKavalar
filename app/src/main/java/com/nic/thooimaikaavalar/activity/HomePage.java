@@ -765,6 +765,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
                         try {
                             photoGraphList.setKEY_ID(jsonArray.getJSONObject(i).getString("component_id"));
                             photoGraphList.setKEY_photographs_name(jsonArray.getJSONObject(i).getString("component_name"));
+                            photoGraphList.setKEY_photographs_name_ta(jsonArray.getJSONObject(i).getString("component_name_ta"));
 
                             dbData.Insertswm_photographs_of_mcc_componentsTask(photoGraphList);
                         } catch (JSONException e) {
@@ -798,6 +799,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
                         try {
                             waterSupplyList.setKEY_ID(jsonArray.getJSONObject(i).getString(AppConstant.KEY_ID));
                             waterSupplyList.setKEY_water_supply_availability_name(jsonArray.getJSONObject(i).getString(AppConstant.KEY_water_supply_availability_name));
+                            waterSupplyList.setKEY_water_supply_availability_name_ta(jsonArray.getJSONObject(i).getString(AppConstant.KEY_water_supply_availability_name_ta));
 
 
                             dbData.Insertswm_water_supply_availabilityTask(waterSupplyList);

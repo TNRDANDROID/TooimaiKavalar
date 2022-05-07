@@ -33,7 +33,7 @@
                 mask:ignore="UselessParent">
 
                 <TextView
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                     android:text="@string/thooimai_kavalar_name" />
 
                 <EditText
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                     android:inputType="text" />
 
                 <TextView
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                     android:text="@string/thooimai_kavalar_mobile_number" />
 
                 <EditText
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:singleLine="true"
                     android:backgroundTint="@color/colorPrimary"
                     android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                     android:importantForAutofill="no" />
 
                 <TextView
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
 
 
                 <EditText
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:id="@+id/date_of_engage"
                     android:focusable="false"
                     android:layout_width="match_parent"
@@ -99,7 +99,7 @@
 
 
                 <TextView
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                     android:text="@string/date_of_training" />
 
                 <EditText
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     android:backgroundTint="@color/colorPrimary"
                     android:focusable="false"
                     android:id="@+id/date_of_training"

@@ -10,7 +10,7 @@
     <string name="font_circular_black">circular-black.ttf</string>
     <string name="font_normal">din_pro_light.otf</string>
     <string name="no_internet">உங்கள் இணையம் ஆஃப்லைனில் இருப்பது போல் தெரிகிறது!</string>
-    <string name="view_image">பரிசோதிக்கப்பட்ட படத்தைப் பார்க்கவும்</string>
+    <string name="view_image">புகைப்படத்தை பார்க்கவும்</string>
     <string name="take_action">நடவடிக்கை எடு</string>
     <string name="view_action">செயலைக் காண்க</string>
     <string name="action_taken_tv">உயர் மதிப்பு திட்டத்திற்கான ஆய்வு அறிக்கைக்கு எதிராக நடவடிக்கை எடுக்கப்பட்டது</string>
@@ -21,7 +21,7 @@
     <string name="view_works">View Works</string>
     <string name="pending_uploads">நிலுவையில் உள்ள பதிவேற்றங்கள்</string>
     <string name="village_list">கிராமப் பட்டியல்</string>
-    <string name="choose_capacity_of_mcc_in_tonnes">நுண்ணுயிர் உரம் தயோரிக்கும் மையத்தின் அளவு</string>
+    <string name="choose_capacity_of_mcc_in_tonnes">நுண்ணுயிர் உரம் தயாரிக்கும் மையத்தின் அளவு</string>
     <string name="choose_no_of_thooimai_kavalar">துாய்மை காவலர்களின் எண்ணிக்கையைத் தேர்ந்தெடுக்கவும்</string>
     <string name="capacity">திறன்</string>
     <string name="thooimai_kavalar_name">பெயர்</string>
@@ -42,7 +42,7 @@
     <string name="please_enter_data_of_engage">தூய்மை காவலர் நிச்சயதார்த்த தேதியை உள்ளிடவும்</string>
     <string name="please_enter_date_of_training">தூய்மை காவலர் பயிற்சி தேதியை உள்ளிடவும்</string>
     <string name="add_new_mcc">புதிய MCC சேர்க்க</string>
-    <string name="edit_mcc">பார்க்க/திருத்த MCC</string>
+    <string name="edit_mcc">MCC பார்க்க/திருத்த</string>
     <string name="enter_mcc_name">MCC பெயரை உள்ளிடவும்</string>
     <string name="please_enter_mcc_name">MCC பெயரை உள்ளிடவும்</string>
     <string name="select_date_of_commencement">தொடங்கும் தேதியைத் தேர்ந்தெடுக்கவும்</string>
@@ -55,7 +55,7 @@
     <string name="no_data_available_for_offline">ஆஃப்லைனில் தரவு இல்லை. உங்கள் நெட்வொர்க்கை இயக்கவும்</string>
     <string name="log_in_again">மீண்டும் உள்நுழைக</string>
     <string name="invalid_user_name_password">தவறான பயனர்பெயர் அல்லது கடவுச்சொல்</string>
-    <string name="internet_connection_is_not_available">இணைய இணைப்பு கிடைக்கவில்லை..தயவுசெய்து இணைய இணைப்பை இயக்கவும் அல்லது ஆஃப்லைன் பயன்முறையில் தொடரவும்...</string>
+    <string name="internet_connection_is_not_available">இணைய இணைப்பு கிடைக்கவில்லை..தயவுசெய்து இணைய இணைப்பை இயக்கவும் அல்லது ஆஃப்லைன் பயன்முறையில் தொடரவும்…</string>
     <string name="settings">அமைப்புகள்</string>
     <string name="continue_with_off_line">ஆஃப்லைனில் தொடரவும்</string>
     <string name="please_enter_user_name_password">உங்கள் பயனர்பெயர் மற்றும் கடவுச்சொல்லை உள்ளிடவும்!</string>
@@ -65,8 +65,8 @@
     <string name="sync_all_the_data_before_logout">வெளியேறும் முன் எல்லா தரவையும் ஒத்திசைக்கவும்!</string>
     <string name="you_want_to_log_out">நிச்சயமாக வெளியேற விரும்புகிறீர்களா?</string>
     <string name="you_want_to_exit">நிச்சயமாக நீங்கள் வெளியேற வேண்டுமா ?</string>
-    <string name="gps_is_not_turned_on">ஜிபிஎஸ் இயக்கப்படவில்லை...</string>
-    <string name="satellite">ஜிபிஎஸ் ஒருங்கிணைப்பைப் பெற செயற்கைக்கோள் தொடர்பு கிடைக்கவில்லை, திறந்த பகுதியில் புகைப்படம் எடுக்கவும்...</string>
+    <string name="gps_is_not_turned_on">ஜிபிஎஸ் இயக்கப்படவில்லை…</string>
+    <string name="satellite">ஜிபிஎஸ் ஒருங்கிணைப்பைப் பெற செயற்கைக்கோள் தொடர்பு கிடைக்கவில்லை, திறந்த பகுதியில் புகைப்படம் எடுக்கவும்…</string>
     <string name="permission_required">அனுமதி தேவை!</string>
     <string name="camera_need_permission">கேமரா சரியாக வேலை செய்ய சில அனுமதிகள் தேவை. அமைப்புகளில் அவற்றை வழங்கவும்.</string>
     <string name="goto_settings">அமைப்புகளுக்குச் செல்லவும்</string>
@@ -92,6 +92,8 @@
     <string name="please_choose_date_of_engagement">நிச்சயதார்த்த தேதியைத் தேர்ந்தெடுக்கவும்</string>
 
     <string name="font_regular">yanonekaffeesatz_regular.ttf</string>
+    <string name="tamil_font">Aniezhai.ttf</string>
+
     <string name="back_icon">back_icon</string>
     <string name="cd_work_list">CD Work List</string>
     <string name="select_financial_year">Select Financial Year</string>
@@ -235,17 +237,17 @@
     <string name="waste_collected_entry_form">கழிவு சேகரிக்கப்பட்ட நுழைவு படிவம்</string>
     <string name="waste_collected_from">இதிலிருந்து சேகரிக்கப்படும் கழிவுகள்</string>
     <string name="quantity_of_bio_degradable_waste_collected_in_kg">சேகரிக்கப்பட்ட உயிர் மக்கக்கூடிய கழிவுகளின் அளவு (கி)</string>
-    <string name="households">Households</string>
-    <string name="shops">Shops</string>
-    <string name="market_places">Market Places</string>
-    <string name="hotels">Hotels</string>
+    <string name="households">வீட்டுக் கழிவுகள்</string>
+    <string name="shops">கடைகள்</string>
+    <string name="market_places">சந்தை கழிவுகள்</string>
+    <string name="hotels">ஹோட்டல் கழிவுகள்</string>
     <string name="others">Others</string>
     <string name="total_quantity_of_bio_degradable_waste_collected_in_kg">சேகரிக்கப்படும் மக்கும் கழிவுகளின் மொத்த அளவு (கி)</string>
     <string name="quantity_of_bio_degradable_waste_shredded_in_kg">துண்டாக்கப்பட்ட உயிர் சிதைக்கக்கூடிய கழிவுகளின் அளவு (கி)</string>
     <string name="total_quantity_of_compost_produced_in_kg">உற்பத்தி செய்யப்பட்ட உரத்தின் மொத்த அளவு (கி)</string>
     <string name="total_quantity_of_compost_sold_in_kg">விற்கப்பட்ட உரத்தின் மொத்த அளவு (கி)</string>
     <string name="semi_colan">:</string>
-    <string name="village_name">Village Name</string>
+    <string name="village_name">கிராமத்தின் பெயர்</string>
     <string name="household_waste">வீட்டுக் கழிவுகள்</string>
     <string name="shops_waste">கடைகள் கழிவுகள்</string>
     <string name="market_waste">சந்தை கழிவுகள்</string>
@@ -314,7 +316,9 @@
     <string name="wcc_pit">WCC Pit</string>
     <string name="wvc_pit">WVC Pit</string>
     <string name="nursery_developed">Nursery developed</string>
-
+    <string name="swm_assets">SWM Assets</string>
+    <string name="add_swm_asset_details">Add SWM Asset Details</string>
+    <string name="view_swm_assets">View SWM Assets</string>
 
 
 </resources>

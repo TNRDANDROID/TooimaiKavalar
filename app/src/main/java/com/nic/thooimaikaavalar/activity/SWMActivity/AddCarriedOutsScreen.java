@@ -795,26 +795,31 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                         if (!total_quantity_of_compost_generated_from_vermi.equals("")){
                             if(!quantity_of_compost_sold.equals("")){
                                 if(!total_revenue_generated.equals("")){
-                                    if(!quantity_of_compostable_waste_recycle.equals("")){
-                                        if(!total_recycle_plastic_waste_revenue_generated.equals("")){
-                                            if(!total_plastic_waste.equals("")){
-                                                if(!total_plastic_waste_revenue_generated.equals("")){
-                                                    adapterItemValuesCheck();
+                                    if (is_plastic_connected_to_waste_management_unit.equals("Y")){
+                                        if(!quantity_of_compostable_waste_recycle.equals("")){
+                                            if(!total_recycle_plastic_waste_revenue_generated.equals("")){
+                                                if(!total_plastic_waste.equals("")){
+                                                    if(!total_plastic_waste_revenue_generated.equals("")){
+                                                        adapterItemValuesCheck();
+                                                    }
+                                                    else {
+                                                        Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.revenue_rs));
+                                                    }
                                                 }
                                                 else {
-                                                    Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.revenue_rs));
+                                                    Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.plastic_waste_unit));
                                                 }
                                             }
                                             else {
-                                                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.plastic_waste_unit));
+                                                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.revenue_rs));
                                             }
                                         }
                                         else {
-                                            Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.revenue_rs));
+                                            Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.compostable_waste_recycle_text));
                                         }
                                     }
                                     else {
-                                        Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.compostable_waste_recycle_text));
+                                        adapterItemValuesCheck();
                                     }
 
                                 }
