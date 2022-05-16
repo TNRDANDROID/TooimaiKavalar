@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -33,10 +33,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -47,11 +44,9 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.nic.thooimaikaavalar.Interface.AdapterCameraIntent;
 import com.nic.thooimaikaavalar.R;
-import com.nic.thooimaikaavalar.activity.NewMainPage;
 import com.nic.thooimaikaavalar.adapter.CarriedOutWastDumpAdapter;
 import com.nic.thooimaikaavalar.adapter.ClearedWasteDumbAdapter;
 import com.nic.thooimaikaavalar.adapter.CommonAdapter;
-import com.nic.thooimaikaavalar.adapter.WastedumpDetailsAdapter;
 import com.nic.thooimaikaavalar.api.Api;
 import com.nic.thooimaikaavalar.api.ApiService;
 import com.nic.thooimaikaavalar.api.ServerResponse;
@@ -59,7 +54,6 @@ import com.nic.thooimaikaavalar.constant.AppConstant;
 import com.nic.thooimaikaavalar.dataBase.DBHelper;
 import com.nic.thooimaikaavalar.dataBase.dbData;
 import com.nic.thooimaikaavalar.databinding.ActivityAddCarriedOutsScreenBinding;
-import com.nic.thooimaikaavalar.databinding.ActivitySwmMasterDetailsViewBinding;
 import com.nic.thooimaikaavalar.model.RealTimeMonitoringSystem;
 import com.nic.thooimaikaavalar.session.PrefManager;
 import com.nic.thooimaikaavalar.support.MyLocationListener;
@@ -75,6 +69,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
@@ -135,6 +130,11 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
     String total_plastic_waste="";
     String total_plastic_waste_revenue_generated="";
 
+    String amt_of_compostable_garbage_collected="";
+    String where_the_attached_pwm_unit_is_located="";
+
+    private List<RealTimeMonitoringSystem> pwmVillageOrderList = new ArrayList<>();
+    private List<RealTimeMonitoringSystem> pwmVillageList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,6 +153,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         dbData.open();
         getIntentData();
         loadCarriedOutDateList();
+        pwmVillageSpinner();
         carriedOutsScreenBinding.backImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,6 +198,11 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                     carriedOutsScreenBinding.totalPlasticWaste.setText("");
                     carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.setText("");
 
+                    carriedOutsScreenBinding.amtOfCompostableGarbageCollected.setText("");
+                    carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setSelection(0);
+                    where_the_attached_pwm_unit_is_located="";
+                    amt_of_compostable_garbage_collected="";
+
                     carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(null);
                     getOnlineWasteDumpList();
                 }
@@ -213,6 +219,11 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                     carriedOutsScreenBinding.totalRecyclePlasticWasteRevenueGenerated.setText("");
                     carriedOutsScreenBinding.totalPlasticWaste.setText("");
                     carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.setText("");
+
+                    carriedOutsScreenBinding.amtOfCompostableGarbageCollected.setText("");
+                    carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setSelection(0);
+                    where_the_attached_pwm_unit_is_located="";
+                    amt_of_compostable_garbage_collected="";
 
                     carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(null);
                 }
@@ -239,6 +250,23 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                     carriedOutsScreenBinding.clearWasteDumpRecyclerLayout.setVisibility(View.GONE);
                     carriedOutsScreenBinding.carriedOutDetailsLayout.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position>0){
+                    where_the_attached_pwm_unit_is_located = pwmVillageList.get(position).getPvCode();
+                }
+                else {
+                    where_the_attached_pwm_unit_is_located = "";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
@@ -271,7 +299,60 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         RecyclerView.ItemDecoration itemDecoration1 = new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL);
         carriedOutsScreenBinding.clearWasteDumpRecycler.addItemDecoration(itemDecoration1);
     }
+    public void pwmVillageSpinner() {
+        Cursor PWMvillageList = null;
+        PWMvillageList = db.rawQuery("SELECT * FROM " + DBHelper.PWM_VILLAGE_TABLE_NAME, null);
+        pwmVillageList = new ArrayList<>();
+        pwmVillageOrderList = new ArrayList<>();
+        pwmVillageList.clear();
+        pwmVillageOrderList.clear();
 
+        if (PWMvillageList.getCount() > 0) {
+            if (PWMvillageList.moveToFirst()) {
+                do {
+                    RealTimeMonitoringSystem habList = new RealTimeMonitoringSystem();
+                    String districtCode = PWMvillageList.getString(PWMvillageList.getColumnIndexOrThrow(AppConstant.DISTRICT_CODE));
+                    String blockCode = PWMvillageList.getString(PWMvillageList.getColumnIndexOrThrow(AppConstant.BLOCK_CODE));
+                    String pvCode = PWMvillageList.getString(PWMvillageList.getColumnIndexOrThrow(AppConstant.PV_CODE));
+                    String pv_name = PWMvillageList.getString(PWMvillageList.getColumnIndexOrThrow(AppConstant.PV_NAME));
+                    String pvname_ta = PWMvillageList.getString(PWMvillageList.getColumnIndexOrThrow("pvname_ta"));
+
+                    habList.setDistictCode(districtCode);
+                    habList.setBlockCode(blockCode);
+                    habList.setPvCode(pvCode);
+                    habList.setPvName(pv_name);
+                    habList.setPv_name_ta(pvname_ta);
+
+                    pwmVillageOrderList.add(habList);
+                } while (PWMvillageList.moveToNext());
+            }
+            Log.d("pwmVillage", "" + pwmVillageOrderList.size());
+
+        }
+        Collections.sort(pwmVillageOrderList, (lhs, rhs) -> lhs.getPv_name_ta().compareTo(rhs.getPv_name_ta()));
+        RealTimeMonitoringSystem habitationListValue = new RealTimeMonitoringSystem();
+        habitationListValue.setPvCode("0");
+        habitationListValue.setPvName(getResources().getString(R.string.where_the_attached_pwm_unit_is_located));
+        habitationListValue.setPv_name_ta(getResources().getString(R.string.where_the_attached_pwm_unit_is_located));
+        pwmVillageList.add(habitationListValue);
+        for (int i = 0; i < pwmVillageOrderList.size(); i++) {
+            RealTimeMonitoringSystem habList = new RealTimeMonitoringSystem();
+            String districtCode = pwmVillageOrderList.get(i).getDistictCode();
+            String blockCode = pwmVillageOrderList.get(i).getBlockCode();
+            String pvCode = pwmVillageOrderList.get(i).getPvCode();
+            String pvname = pwmVillageOrderList.get(i).getPvName();
+            String pvname_ta = pwmVillageOrderList.get(i).getPv_name_ta();
+
+            habList.setDistictCode(districtCode);
+            habList.setBlockCode(blockCode);
+            habList.setPvCode(pvCode);
+            habList.setPvName(pvname);
+            habList.setPv_name_ta(pvname_ta);
+
+            pwmVillageList.add(habList);
+        }
+        carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setAdapter(new CommonAdapter(this, pwmVillageList, "pwmVillageList"));
+    }
     public void loadCarriedOutDateList(){
         carriedOutDateList = new ArrayList<>();
         RealTimeMonitoringSystem carriedOutItem1 = new RealTimeMonitoringSystem();
@@ -362,6 +443,8 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         String amount_of_compostable_waste_sent_for_recycling_revenue_in_rs="";
         String amount_of_plastic_waste_sent_to_pwm_unit_in_kg="";
         String amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs="";
+        String amt_of_compostable_garbage_collected="";
+        String where_the_attached_pwm_unit_is_located="";
 
         @Override
         protected ArrayList<RealTimeMonitoringSystem> doInBackground(JSONObject... params) {
@@ -395,6 +478,9 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                             amount_of_plastic_waste_sent_to_pwm_unit_in_kg=(jsonArray1.getJSONObject(i).getString("amount_of_plastic_waste_sent_to_pwm_unit_in_kg"));
                             amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs=(jsonArray1.getJSONObject(i).getString("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs"));
 
+                            where_the_attached_pwm_unit_is_located=(jsonArray1.getJSONObject(i).getString("where_the_attached_pwm_unit_is_located"));
+                            amt_of_compostable_garbage_collected=(jsonArray1.getJSONObject(i).getString("amt_of_compostable_garbage_collected"));
+
                         }
                     }
                     else {
@@ -410,6 +496,9 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                         amount_of_compostable_waste_sent_for_recycling_revenue_in_rs="";
                         amount_of_plastic_waste_sent_to_pwm_unit_in_kg="";
                         amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs="";
+
+                        amt_of_compostable_garbage_collected="";
+                        where_the_attached_pwm_unit_is_located="";
                     }
 
                 }
@@ -521,6 +610,13 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             carriedOutsScreenBinding.totalPlasticWaste.setText(amount_of_plastic_waste_sent_to_pwm_unit_in_kg);
             carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.setText(amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs);
 
+            carriedOutsScreenBinding.amtOfCompostableGarbageCollected.setText(amt_of_compostable_garbage_collected);
+            if(where_the_attached_pwm_unit_is_located!=null&&!where_the_attached_pwm_unit_is_located.equals("")){
+                carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setSelection(getIndex(where_the_attached_pwm_unit_is_located));
+            }
+            else {
+                carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setSelection(0);
+            }
 
             if(viewClearedWasteDumpList.size()>0){
                 carriedOutsScreenBinding.wasteDumpImg.setVisibility(View.VISIBLE);
@@ -531,12 +627,12 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         }
     }
 
-    private int getSpinnerIndex(Spinner spinner, String myString){
+    private int getIndex(String myString){
 
         int index = 0;
 
-        for (int i=0;i<spinner.getCount();i++){
-            if (spinner.getItemAtPosition(i).equals(myString)){
+        for (int i=0;i<pwmVillageList.size();i++){
+            if (pwmVillageList.get(i).getPvCode().equals(myString)){
                 index = i;
             }
         }
@@ -786,6 +882,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         total_recycle_plastic_waste_revenue_generated=carriedOutsScreenBinding.totalRecyclePlasticWasteRevenueGenerated.getText().toString();
         total_plastic_waste=carriedOutsScreenBinding.totalPlasticWaste.getText().toString();
         total_plastic_waste_revenue_generated=carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.getText().toString();
+        amt_of_compostable_garbage_collected=carriedOutsScreenBinding.amtOfCompostableGarbageCollected.getText().toString();
 
 
         if(!choose_date_string.equals("")){
@@ -904,6 +1001,9 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                     contentValues.put("amount_of_plastic_waste_sent_to_pwm_unit_in_kg",total_plastic_waste);
                     contentValues.put("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs",total_plastic_waste_revenue_generated);
 
+                    contentValues.put("where_the_attached_pwm_unit_is_located",where_the_attached_pwm_unit_is_located);
+                    contentValues.put("amt_of_compostable_garbage_collected",amt_of_compostable_garbage_collected);
+
                     if(dbData.gettableCountCarriedOutTable("",swm_infra_details_id,choose_date_string)>0){
                         insert_updated_id = db.update(DBHelper.SWM_CARRIED_OUT_DETAILS,contentValues,null,null);
                         if (insert_updated_id>0){
@@ -989,6 +1089,9 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                 contentValues.put("amount_of_compostable_waste_sent_for_recycling_revenue_in_rs",total_recycle_plastic_waste_revenue_generated);
                 contentValues.put("amount_of_plastic_waste_sent_to_pwm_unit_in_kg",total_plastic_waste);
                 contentValues.put("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs",total_plastic_waste_revenue_generated);
+
+                contentValues.put("where_the_attached_pwm_unit_is_located",where_the_attached_pwm_unit_is_located);
+                contentValues.put("amt_of_compostable_garbage_collected",amt_of_compostable_garbage_collected);
 
                 if(dbData.gettableCountCarriedOutTable("",swm_infra_details_id,choose_date_string)>0){
                     insert_updated_id = db.update(DBHelper.SWM_CARRIED_OUT_DETAILS,contentValues,null,null);

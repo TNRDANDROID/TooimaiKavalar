@@ -18,7 +18,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="wrap_content"
             android:id="@+id/toolbar"
             android:background="@color/colorPrimaryDark">
 
@@ -33,6 +33,10 @@
                 android:contentDescription="@string/back_icon" />
 
             <TextView
+                android:layout_toEndOf="@+id/back_img"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/title"
@@ -52,7 +56,7 @@
             android:background="#66B8B4B4">
 
             <ScrollView
-                android:visibility="gone"
+                android:visibility="visible"
                 android:id="@+id/scroll_view"
                 android:layout_width="match_parent"
                 android:layout_centerVertical="true"

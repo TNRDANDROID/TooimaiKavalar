@@ -203,7 +203,7 @@
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold"
-                        android:text="Activity Carried Out"/>
+                        android:text="@string/activity_carried_out"/>
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>

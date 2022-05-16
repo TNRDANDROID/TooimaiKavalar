@@ -1438,5 +1438,31 @@ public class RealTimeMonitoringSystem {
         return id;
     }
     private Integer id;
+    private String where_the_attached_pwm_unit_is_located;
+    private String amt_of_compostable_garbage_collected;
+    private String pv_name_ta;
 
+    public String getPv_name_ta() {
+        return pv_name_ta;
+    }
+
+    public void setPv_name_ta(String pv_name_ta) {
+        this.pv_name_ta = pv_name_ta;
+    }
+
+    public String getWhere_the_attached_pwm_unit_is_located() {
+        return where_the_attached_pwm_unit_is_located;
+    }
+
+    public void setWhere_the_attached_pwm_unit_is_located(String where_the_attached_pwm_unit_is_located) {
+        this.where_the_attached_pwm_unit_is_located = where_the_attached_pwm_unit_is_located;
+    }
+
+    public String getAmt_of_compostable_garbage_collected() {
+        return amt_of_compostable_garbage_collected;
+    }
+
+    public void setAmt_of_compostable_garbage_collected(String amt_of_compostable_garbage_collected) {
+        this.amt_of_compostable_garbage_collected = amt_of_compostable_garbage_collected;
+    }
 }

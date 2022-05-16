@@ -62,28 +62,6 @@
                 android:baselineAligned="false"
                 tools:ignore="UselessParent">
                 <RelativeLayout
-                    android:id="@+id/view_image_rl"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                    <TextView
-                        android:id="@+id/tv_1"
-                        android:layout_centerInParent="true"
-                        android:textColor="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@string/tamil_font"
-                        android:text="@string/view_delete_images"/>
-                    <View
-                        android:id="@+id/view_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_5sdp"
-                        android:background="@color/white"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="-5dp"/>
-                </RelativeLayout>
-
-                <RelativeLayout
                     android:id="@+id/add_image_rl"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -104,7 +82,27 @@
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="-5dp"/>
                 </RelativeLayout>
-
+                <RelativeLayout
+                    android:id="@+id/view_image_rl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/tv_1"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@string/tamil_font"
+                        android:text="@string/view_delete_images"/>
+                    <View
+                        android:id="@+id/view_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_5sdp"
+                        android:background="@color/white"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="-5dp"/>
+                </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
 

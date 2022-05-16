@@ -67,6 +67,9 @@ public class CommonAdapter extends BaseAdapter {
         else if (type.equalsIgnoreCase("villageList")) {
             tv_type.setText(realTimeMonitoringSystem.getPvName());
         }
+        else if (type.equalsIgnoreCase("pwmVillageList")) {
+            tv_type.setText(realTimeMonitoringSystem.getPv_name_ta());
+        }
         else if (type.equalsIgnoreCase("carriedOutDateList")) {
             tv_type.setText(realTimeMonitoringSystem.getCarried_out_date());
         }

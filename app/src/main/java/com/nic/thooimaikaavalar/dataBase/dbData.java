@@ -239,6 +239,20 @@ public class dbData {
         return realTimeMonitoringSystem;
     }
 
+    public void insertPWMVillage(RealTimeMonitoringSystem realTimeMonitoringSystem) {
+
+        ContentValues values = new ContentValues();
+        values.put(AppConstant.DISTRICT_CODE, realTimeMonitoringSystem.getDistictCode());
+        values.put(AppConstant.BLOCK_CODE, realTimeMonitoringSystem.getBlockCode());
+        values.put(AppConstant.PV_CODE, realTimeMonitoringSystem.getPvCode());
+        values.put(AppConstant.PV_NAME, realTimeMonitoringSystem.getPvName());
+        values.put("pvname_ta", realTimeMonitoringSystem.getPv_name_ta());
+
+        long id = db.insert(DBHelper.PWM_VILLAGE_TABLE_NAME,null,values);
+        Log.d("Inserted_id_pwm_village", String.valueOf(id));
+
+    }
+
     public ArrayList<RealTimeMonitoringSystem > getAll_Village() {
 
         ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
@@ -307,7 +321,39 @@ public class dbData {
         }
         return cards;
     }
+    public ArrayList<RealTimeMonitoringSystem > getAll_PWMVillage() {
 
+        ArrayList<RealTimeMonitoringSystem > cards = new ArrayList<>();
+        Cursor cursor = null;
+
+        try {
+            cursor = db.rawQuery("select * from "+DBHelper.PWM_VILLAGE_TABLE_NAME+" order by pvname asc",null);
+            // cursor = db.query(CardsDBHelper.TABLE_CARDS,
+            //       COLUMNS, null, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    RealTimeMonitoringSystem  card = new RealTimeMonitoringSystem ();
+                    card.setDistictCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow(AppConstant.DISTRICT_CODE)));
+                    card.setBlockCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow(AppConstant.BLOCK_CODE)));
+                    card.setPvCode(cursor.getString(cursor
+                            .getColumnIndexOrThrow(AppConstant.PV_CODE)));
+                    card.setPvName(cursor.getString(cursor
+                            .getColumnIndexOrThrow(AppConstant.PV_NAME)));
+
+                    cards.add(card);
+                }
+            }
+        } catch (Exception e){
+            //   Log.d(DEBUG_TAG, "Exception raised with a value of " + e);
+        } finally{
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return cards;
+    }
 
     public RealTimeMonitoringSystem Insertswm_capacity_of_mcc_in_tonesTask(RealTimeMonitoringSystem realTimeMonitoringSystem) {
 
@@ -1492,6 +1538,10 @@ public class dbData {
                             .getColumnIndexOrThrow("amount_of_plastic_waste_sent_to_pwm_unit_in_kg")));
                     card.setAmount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs(cursor.getString(cursor
                             .getColumnIndexOrThrow("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs")));
+                    card.setWhere_the_attached_pwm_unit_is_located(cursor.getString(cursor
+                            .getColumnIndexOrThrow("where_the_attached_pwm_unit_is_located")));
+                    card.setAmt_of_compostable_garbage_collected(cursor.getString(cursor
+                            .getColumnIndexOrThrow("amt_of_compostable_garbage_collected")));
 
 
                     cards.add(card);
@@ -2419,6 +2469,9 @@ public class dbData {
     public void deleteSWM_CARRIED_OUT_PHOTOS_DETAILS() {
         db.execSQL("delete from " + DBHelper.SWM_CARRIED_OUT_PHOTOS_DETAILS);
     }
+    public void deletePWMVillageTable() {
+        db.execSQL("delete from " + DBHelper.PWM_VILLAGE_TABLE_NAME);
+    }
 
 
     public void deleteAll() {
@@ -2452,6 +2505,7 @@ public class dbData {
         deleteSWM_WASTE_DUMP_PHOTOS_DETAILS();
         deleteSWM_CARRIED_OUT_DETAILS();
         deleteSWM_CARRIED_OUT_PHOTOS_DETAILS();
+        deletePWMVillageTable();
     }
 
 

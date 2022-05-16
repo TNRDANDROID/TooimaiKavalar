@@ -45,6 +45,8 @@ public class SplashScreen extends AppCompatActivity implements
 
             }
         }*/
+        splashScreenBinding.headtext.setText(getResources().getString(R.string.micro_composting_center));
+        splashScreenBinding.headtext1.setText(getResources().getString(R.string.solid_waste_management));
         if(Build.VERSION_CODES.O >= Build.VERSION.SDK_INT){
             splashScreenBinding.mainLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.waste_collected_image_new));
         }

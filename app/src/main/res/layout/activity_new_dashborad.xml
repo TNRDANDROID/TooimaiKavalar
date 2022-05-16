@@ -18,7 +18,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="wrap_content"
             android:id="@+id/toolbar"
             android:background="@color/colorPrimaryDark">
 
@@ -33,6 +33,10 @@
                 android:contentDescription="@string/back_icon" />
 
             <TextView
+                android:layout_toEndOf="@id/back_img"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/title"
@@ -378,7 +382,7 @@
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@string/tamil_font"
                                         android:layout_centerHorizontal="true"
-                                        android:text="Add Infrastructure"
+                                        android:text="@string/add_infrastructure"
                                         android:textAllCaps="false"
                                     >
                                     </Button>
@@ -424,7 +428,7 @@
                                         android:background="@color/full_transparent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@string/tamil_font"
-                                        android:text="View Infrastructure"
+                                        android:text="@string/view_infrastructure"
                                         android:textAllCaps="false"
                                     />
 

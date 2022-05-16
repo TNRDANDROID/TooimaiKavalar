@@ -87,7 +87,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
                     SimpleDateFormat datetimeformat =new SimpleDateFormat("E dd-MM-yyyy\n hh:mm:ss a");
                     try {
                         String datetimetext =datetimeformat.format(date);
-                        homeScreenBinding.timer.setText(datetimetext);
+
                     }
                     catch (Exception e){
 
@@ -118,6 +118,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
         /////////////////**************** //////
         getVillageList();
+        getPwmVillageList();
         getHabList();
         get_swm_capacity_of_mcc_in_tones();
         get_swm_no_of_thooimai_kaavalars();
@@ -161,10 +162,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             homeScreenBinding.sync.setVisibility(View.VISIBLE);
             homeScreenBinding.syncCountLayout.setVisibility(View.VISIBLE);
 
-            homeScreenBinding.sync1.setVisibility(View.VISIBLE);
-            /*homeScreenBinding.marqueeTextLayout.setVisibility(View.VISIBLE);
-            homeScreenBinding.marqueeText.setText("Data's Stored in Local...");
-            homeScreenBinding.marqueeText.setSelected(true);*/
+
 
 
             try {
@@ -178,7 +176,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
         }else {
             homeScreenBinding.sync.setVisibility(View.GONE);
-            homeScreenBinding.sync1.setVisibility(View.GONE);
+
             homeScreenBinding.syncCountLayout.setVisibility(View.GONE);
             //homeScreenBinding.marqueeTextLayout.setVisibility(View.GONE);
 
@@ -189,7 +187,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
     }
     public void openPendingScreen() {
-        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
+
         Intent intent = new Intent(this, NewPendingScreenActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
@@ -204,10 +202,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
     }
 
     public void showMenuLayout(){
-        homeScreenBinding.tvName1.setText(prefManager.getDesignation());
-        homeScreenBinding.tvName1.setTextColor(getResources().getColor(R.color.white));
-        homeScreenBinding.designation1.setText(prefManager.getBlockName()+" : "+prefManager.getDesignation());
-        homeScreenBinding.designation1.setTextColor(getResources().getColor(R.color.white));
+
         getTimeMange();
     }
 
@@ -215,6 +210,13 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
     public void getVillageList() {
         try {
             new ApiService(this).makeJSONObjectRequest("VillageList", Api.Method.POST, UrlGenerator.getServicesListUrl(), villageListJsonParams(), "not cache", this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public void getPwmVillageList() {
+        try {
+            new ApiService(this).makeJSONObjectRequest("PWMVillageList", Api.Method.POST, UrlGenerator.getWorkListUrl(), pwmvillageListJsonParams(), "not cache", this);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -283,6 +285,14 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
         Log.d("villageListDistrictWise", "" + authKey);
+        return dataSet;
+    }
+    public JSONObject pwmvillageListJsonParams() throws JSONException {
+        String authKey = Utils.encrypt(prefManager.getUserPassKey(), getResources().getString(R.string.init_vector), Utils.pwmvillageListDistrictBlockWiseJsonParams(this).toString());
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
+        dataSet.put(AppConstant.DATA_CONTENT, authKey);
+        Log.d("pwmvillageList", "" + dataSet);
         return dataSet;
     }
     public JSONObject habitationListJsonParams() throws JSONException {
@@ -521,6 +531,15 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
                 }
                 Log.d("VillageList", "" + responseDecryptedBlockKey);
             }
+            if ("PWMVillageList".equals(urlType) && responseObj != null) {
+                String key = responseObj.getString(AppConstant.ENCODE_DATA);
+                String responseDecryptedBlockKey = Utils.decrypt(prefManager.getUserPassKey(), key);
+                JSONObject jsonObject = new JSONObject(responseDecryptedBlockKey);
+                if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
+                    new InsertPWMVillageTask().execute(jsonObject);
+                }
+                Log.d("PWMVillageList", "" + responseDecryptedBlockKey);
+            }
             if ("HabitationList".equals(urlType) && responseObj != null) {
                 String key = responseObj.getString(AppConstant.ENCODE_DATA);
                 String responseDecryptedBlockKey = Utils.decrypt(prefManager.getUserPassKey(), key);
@@ -675,6 +694,42 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
 
         }
+    }
+    public class InsertPWMVillageTask extends AsyncTask<JSONObject, Void, Void> {
+
+        @Override
+        protected Void doInBackground(JSONObject... params) {
+            dbData.open();
+            ArrayList<RealTimeMonitoringSystem> villagelist_count = dbData.getAll_PWMVillage();
+            if (villagelist_count.size() <= 0) {
+                if (params.length > 0) {
+                    JSONArray jsonArray = new JSONArray();
+                    try {
+                        jsonArray = params[0].getJSONArray(AppConstant.JSON_DATA);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        RealTimeMonitoringSystem villageListValue = new RealTimeMonitoringSystem();
+                        try {
+                            villageListValue.setDistictCode(jsonArray.getJSONObject(i).getString(AppConstant.DISTRICT_CODE));
+                            villageListValue.setBlockCode(jsonArray.getJSONObject(i).getString(AppConstant.BLOCK_CODE));
+                            villageListValue.setPvCode(jsonArray.getJSONObject(i).getString(AppConstant.PV_CODE));
+                            villageListValue.setPvName(jsonArray.getJSONObject(i).getString(AppConstant.PV_NAME));
+                            villageListValue.setPv_name_ta(jsonArray.getJSONObject(i).getString("llpvname"));
+
+                            dbData.insertPWMVillage(villageListValue);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+
+            }
+            return null;
+        }
+
     }
 
 
@@ -1071,7 +1126,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
     }
 
     public void viewVillageList() {
-        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
+
         /*Intent intent = new Intent(this, VillageListScreen.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);*/
@@ -1092,21 +1147,21 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     public void viewMCCBasicDetailsList() {
-        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
+
         Intent intent = new Intent(this, ViewAndEditMCCDetaila.class);
         intent.putExtra("Entry","No");
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     public void entryMCCBasicDetailsList() {
-        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
+
         Intent intent = new Intent(this, ViewAndEditMCCDetaila.class);
         intent.putExtra("Entry","Yes");
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
     public void viewSWMDetailsList() {
-        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
+
         Intent intent = new Intent(this,NewDashborad.class);
         intent.putExtra("Layout","SWM");
         intent.putExtra("village_name",prefManager.getKeyPvNameTa());
@@ -1162,7 +1217,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         overridePendingTransition(R.anim.slide_enter, R.anim.slide_exit);
     }
     public void logout() {
-        homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
+
         dbData.open();
         ArrayList<RealTimeMonitoringSystem> getAllBasicDetails =  dbData.getAllBasicDetails();
         ArrayList<RealTimeMonitoringSystem> getTooimaiKaavalrCount =  dbData.getAllThooimaikaavalarListLocalAll();
@@ -1192,7 +1247,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
     }
 
     public void getTimeMange(){
-        homeScreenBinding.timeImageText.setTextColor(getResources().getColor(R.color.white));
+
         try {
             DateTimeFormatter dtf = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -1209,33 +1264,9 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
 
-        if(timeOfDay >= 0 && timeOfDay < 12){
-            //Toast.makeText(this, "Good Morning", Toast.LENGTH_SHORT).show();
-            homeScreenBinding.timeImage.setImageResource(R.drawable.good_morning_image);
-            homeScreenBinding.timeImageText.setText("Good Morning");
-        }else if(timeOfDay >= 12 && timeOfDay < 16){
-            //Toast.makeText(this, "Good Afternoon", Toast.LENGTH_SHORT).show();
-            homeScreenBinding.timeImage.setImageResource(R.drawable.good_after_noon_image);
-            homeScreenBinding.timeImageText.setText("Good Afternoon");
-        }else if(timeOfDay >= 16 && timeOfDay < 21){
-            //Toast.makeText(this, "Good Evening", Toast.LENGTH_SHORT).show();
-            homeScreenBinding.timeImage.setImageResource(R.drawable.good_evening_image);
-            homeScreenBinding.timeImageText.setText("Good Evening");
-        }
-        else if(timeOfDay >= 21 && timeOfDay < 24){
-            //Toast.makeText(this, "Good Night", Toast.LENGTH_SHORT).show();
-            homeScreenBinding.timeImage.setImageResource(R.drawable.good_night_image);
-            homeScreenBinding.timeImageText.setText("Good Night");
-        }
+
     }
 
-    public void openMenuDrawer(){
-        if(homeScreenBinding.drawerLayout.isDrawerOpen(Gravity.LEFT)){
-            homeScreenBinding.drawerLayout.closeDrawer(Gravity.LEFT);
-        }else{
-            homeScreenBinding.drawerLayout.openDrawer(Gravity.LEFT);
-        }
-    }
 
     public void initialUINew(){
         homeScreenBinding.title.setText("Micro Composting Center");

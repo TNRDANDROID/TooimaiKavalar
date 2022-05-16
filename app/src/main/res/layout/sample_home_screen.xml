@@ -7,17 +7,15 @@
 
         <variable
             name="activity"
-            type="com.nic.thooimaikaavalar.activity.HomePage" />
+            type="com.nic.thooimaikaavalar.activity.SampleHome" />
     </data>
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg_icon_new_1">
+        android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#548E8C8D"
             tools:context="com.nic.thooimaikaavalar.activity.HomePage">
 
             <RelativeLayout
@@ -35,7 +33,7 @@
                     android:text="@string/home_title"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
-                    android:fontFamily="@string/font_regular"
+                    android:fontFamily="@string/tamil_font"
                     tools:ignore="RelativeOverlap" />
 
                 <TextView
@@ -48,12 +46,12 @@
                     android:text="@string/hi_welcomeback"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
-                    style="@style/font_circular_bold"/>
+                    android:fontFamily="@string/tamil_font"/>
 
                 <ImageView
                     android:id="@+id/log_out"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_38sdp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="@dimen/_5sdp"
@@ -63,6 +61,7 @@
                     android:contentDescription="@string/log_out_icon" />
 
                 <ImageView
+                    android:visibility="visible"
                     android:id="@+id/menu_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -113,6 +112,7 @@
                             tools:ignore="UselessParent">
 
                             <TextView
+                                android:fontFamily="@string/tamil_font"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -121,6 +121,7 @@
                                 android:textColor="@color/border_line"/>
 
                             <TextView
+                                android:fontFamily="@string/tamil_font"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -129,6 +130,7 @@
                                 android:textColor="@color/border_line"/>
 
                             <TextView
+                                android:fontFamily="@string/tamil_font"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -137,6 +139,7 @@
                                 android:textColor="@color/border_line"/>
 
                             <TextView
+                                android:fontFamily="@string/tamil_font"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -158,9 +161,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/header_layout"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_above="@+id/textView1">
                 <RelativeLayout
-                    android:visibility="gone"
                     android:id="@+id/rellay1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -168,9 +171,29 @@
                     android:paddingBottom="20dp">
 
                     <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:id="@+id/marquee_text_layout"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/_7sdp">
+
+                        <TextView
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:id="@+id/marquee_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@string/tamil_font"
+                            android:textColor="@color/white"
+                            android:singleLine="true"
+                            android:layout_centerVertical="true"
+                            android:textSize="@dimen/_14sdp" />
+                    </RelativeLayout>
+                    <RelativeLayout
                         android:id="@+id/imgUser"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp"
                         >
@@ -193,7 +216,7 @@
                         android:layout_below="@+id/imgUser"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15sp"
-                        android:fontFamily="sans-serif-light"
+                        android:fontFamily="@string/tamil_font"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14sdp" />
 
@@ -204,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_name"
                         android:layout_centerHorizontal="true"
-                        android:fontFamily="sans-serif"
+                        android:fontFamily="@string/tamil_font"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10sdp" />
@@ -233,7 +256,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@string/tamil_font"
                             android:text="@string/pending_works_for_upload"
                             android:textAlignment="center"
                             android:textColor="@color/white"
@@ -256,14 +279,14 @@
                             android:id="@+id/pendingCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@string/tamil_font"
                             android:text=""
                             android:textAllCaps="true"
                             android:textColor="@color/white"
@@ -278,12 +301,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/sync_count_layout"
-                    >
+                    android:layout_marginBottom="@dimen/_10sdp">
 
                     <ScrollView
-                        android:visibility="gone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        tools:ignore="UselessParent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -299,137 +322,280 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
-                                <androidx.cardview.widget.CardView
-                                    android:clickable="true"
-                                    android:layout_centerHorizontal="true"
+                                <LinearLayout
                                     android:layout_margin="@dimen/_10sdp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_45sdp"
-                                    app:cardBackgroundColor="@color/white"
-                                    android:id="@+id/add_mcc_card"
-                                    app:cardCornerRadius="@dimen/_10sdp"
-                                    app:cardElevation="@dimen/_12sdp"
-                                    android:outlineSpotShadowColor="@color/purple"
-                                    tools:ignore="UnusedAttribute">
-
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical"
-                                        tools:ignore="TooDeepLayout">
-
-                                        <View
-                                            android:id="@+id/v_1"
-                                            android:layout_width="@dimen/_4sdp"
-                                            android:layout_height="match_parent"
-                                            android:background="@drawable/line_shape_curved_bg"/>
-
-                                        <Button
-                                            android:onClick="@{()-> activity.viewVillageList()}"
-                                            android:clickable="true"
-                                            android:padding="@dimen/_4sdp"
-                                            android:layout_marginStart="@dimen/_4sdp"
-                                            android:id="@+id/add_new_mcc"
-                                            android:layout_width="match_parent"
-                                            android:layout_centerHorizontal="true"
-                                            android:layout_height="match_parent"
-                                            android:text="@string/add_new_mcc"
-                                            android:background="@color/full_transparent"
-                                            android:textAlignment="center"
-                                            android:textAllCaps="false"
-                                            android:textColor="@color/black"
-                                            android:textSize="@dimen/_14sdp"
-                                            />
-                                        <ImageView
-                                            android:padding="@dimen/_3sdp"
-                                            android:id="@+id/icon_1"
-                                            android:layout_centerVertical="true"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentEnd="true"
-                                            android:layout_marginEnd="@dimen/_10sdp"
-                                            android:src="@drawable/add_user"
-                                            android:contentDescription="@string/add_icon" />
-
-
-                                    </RelativeLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-                                <androidx.cardview.widget.CardView
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_below="@+id/add_mcc_card"
-                                    android:layout_margin="@dimen/_10sdp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_45sdp"
-                                    app:cardBackgroundColor="@color/white"
-                                    android:id="@+id/edit_mcc_card"
-                                    app:cardCornerRadius="@dimen/_10sdp"
-                                    app:cardElevation="@dimen/_12sdp"
-                                    android:outlineSpotShadowColor="@color/purple"
-                                    tools:ignore="UnusedAttribute">
-
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-
-                                        <View
-                                            android:id="@+id/v_2"
-                                            android:layout_width="@dimen/_4sdp"
-                                            android:layout_height="match_parent"
-                                            android:background="@drawable/line_shape_curved_bg"/>
-
-                                        <Button
-                                            android:onClick="@{()-> activity.viewMCCBasicDetailsList()}"
-                                            android:clickable="true"
-                                            android:layout_toEndOf="@+id/v_2"
-                                            android:background="@color/full_transparent"
-                                            android:id="@+id/edit_mcc"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_centerHorizontal="true"
-                                            android:text="@string/edit_mcc"
-                                            android:textAlignment="center"
-                                            android:textAllCaps="false"
-                                            android:textColor="@color/black"
-                                            android:textSize="@dimen/_14sdp"
-                                            />
-
-                                        <ImageView
-                                            android:padding="@dimen/_3sdp"
-                                            android:id="@+id/icon_3"
-                                            android:layout_centerVertical="true"
-                                            android:layout_width="@dimen/_25sdp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentEnd="true"
-                                            android:layout_marginEnd="@dimen/_10sdp"
-                                            android:src="@drawable/view_and_edit_icon"
-                                            android:contentDescription="@string/view_edit_icon" />
-
-
-                                    </RelativeLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-                                <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:layout_gravity="center"
-                                    android:fontFamily="sans-serif-light"
-                                    android:text="@string/view_works"
-                                    android:textAlignment="center"
-                                    android:textColor="#000000"
-                                    android:textSize="18sp"
-                                    android:visibility="gone"/>
+                                    android:orientation="vertical"
+                                    android:id="@+id/mcc_layout_"
+                                    android:background="@drawable/line_curved_bg_new">
 
-                                <View
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:text="@string/micro_composting_center"
+                                        android:textColor="@color/colorPrimaryDark"
+                                        android:textSize="@dimen/_13sdp"/>
+                                    <androidx.cardview.widget.CardView
+                                        android:clickable="true"
+                                        android:layout_margin="@dimen/_10sdp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_45sdp"
+                                        app:cardBackgroundColor="@color/white"
+                                        android:id="@+id/add_mcc_card"
+                                        app:cardCornerRadius="@dimen/_10sdp"
+                                        app:cardElevation="@dimen/_12sdp"
+                                        android:outlineSpotShadowColor="@color/purple"
+                                        tools:ignore="UnusedAttribute">
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            tools:ignore="TooDeepLayout">
+
+                                            <View
+                                                android:id="@+id/v_1"
+                                                android:layout_width="@dimen/_4sdp"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/line_shape_curved_bg"/>
+
+                                            <Button
+                                                android:onClick="@{()-> activity.viewVillageList()}"
+                                                android:clickable="true"
+                                                android:padding="@dimen/_4sdp"
+                                                android:layout_marginStart="@dimen/_4sdp"
+                                                android:id="@+id/add_new_mcc"
+                                                android:layout_width="match_parent"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_height="match_parent"
+                                                android:text="@string/add_new_mcc"
+                                                android:fontFamily="@string/tamil_font"
+                                                android:background="@color/full_transparent"
+                                                android:textAlignment="center"
+                                                android:textAllCaps="false"
+                                                android:textColor="@color/black"
+                                                android:textSize="@dimen/_14sdp"
+                                                />
+                                            <ImageView
+                                                android:padding="@dimen/_3sdp"
+                                                android:id="@+id/icon_1"
+                                                android:layout_centerVertical="true"
+                                                android:layout_width="@dimen/_25sdp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_marginEnd="@dimen/_10sdp"
+                                                android:src="@drawable/add_user"
+                                                android:contentDescription="@string/add_icon" />
+
+
+                                        </RelativeLayout>
+
+                                    </androidx.cardview.widget.CardView>
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_margin="@dimen/_10sdp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_45sdp"
+                                        app:cardBackgroundColor="@color/white"
+                                        android:id="@+id/edit_mcc_card"
+                                        app:cardCornerRadius="@dimen/_10sdp"
+                                        app:cardElevation="@dimen/_12sdp"
+                                        android:outlineSpotShadowColor="@color/purple"
+                                        tools:ignore="UnusedAttribute">
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <View
+                                                android:id="@+id/v_2"
+                                                android:layout_width="@dimen/_4sdp"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/line_shape_curved_bg"/>
+
+                                            <Button
+                                                android:fontFamily="@string/tamil_font"
+                                                android:onClick="@{()-> activity.viewMCCBasicDetailsList()}"
+                                                android:clickable="true"
+                                                android:layout_toEndOf="@+id/v_2"
+                                                android:background="@color/full_transparent"
+                                                android:id="@+id/edit_mcc"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_centerHorizontal="true"
+                                                android:text="@string/edit_mcc"
+                                                android:textAlignment="center"
+                                                android:textAllCaps="false"
+                                                android:textColor="@color/black"
+                                                android:textSize="@dimen/_14sdp"
+                                                />
+
+                                            <ImageView
+                                                android:padding="@dimen/_3sdp"
+                                                android:id="@+id/icon_3"
+                                                android:layout_centerVertical="true"
+                                                android:layout_width="@dimen/_25sdp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_marginEnd="@dimen/_10sdp"
+                                                android:src="@drawable/view_and_edit_icon"
+                                                android:contentDescription="@string/view_take_icon" />
+
+
+                                        </RelativeLayout>
+
+                                    </androidx.cardview.widget.CardView>
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_margin="@dimen/_10sdp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_45sdp"
+                                        app:cardBackgroundColor="@color/white"
+                                        android:id="@+id/daily_entry"
+                                        app:cardCornerRadius="@dimen/_10sdp"
+                                        app:cardElevation="@dimen/_12sdp"
+                                        android:outlineSpotShadowColor="@color/purple"
+                                        tools:ignore="UnusedAttribute">
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <View
+                                                android:id="@+id/daily_entry_v_2"
+                                                android:layout_width="@dimen/_4sdp"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/line_shape_curved_bg"/>
+
+                                            <Button
+                                                android:fontFamily="@string/tamil_font"
+                                                android:onClick="@{()-> activity.entryMCCBasicDetailsList()}"
+                                                android:clickable="true"
+                                                android:layout_toEndOf="@+id/daily_entry_v_2"
+                                                android:background="@color/full_transparent"
+                                                android:id="@+id/daily_entry_mcc"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_centerHorizontal="true"
+                                                android:text="@string/daily_collected_entry"
+                                                android:textAlignment="center"
+                                                android:textAllCaps="false"
+                                                android:textColor="@color/black"
+                                                android:textSize="@dimen/_14sdp"
+                                                />
+
+                                            <ImageView
+                                                android:padding="@dimen/_3sdp"
+                                                android:id="@+id/daily_entry_mcc_icon_3"
+                                                android:layout_centerVertical="true"
+                                                android:layout_width="@dimen/_25sdp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_marginEnd="@dimen/_10sdp"
+                                                android:src="@drawable/daily_entry"
+                                                android:contentDescription="@string/view_take_icon" />
+
+
+                                        </RelativeLayout>
+
+                                    </androidx.cardview.widget.CardView>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_margin="@dimen/_10sdp"
                                     android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:layout_marginTop="15dp"
-                                    android:visibility="gone"
-                                    android:background="@color/grey" />
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/swm_layout_1"
+                                    android:layout_below="@+id/mcc_layout_"
+                                    android:orientation="vertical"
+                                    android:background="@drawable/line_curved_bg_new">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal"
+                                        android:text="SWM"
+                                        android:textColor="@color/colorPrimaryDark"
+                                        android:textSize="@dimen/_13sdp"/>
+
+                                    <androidx.cardview.widget.CardView
+                                        android:layout_margin="@dimen/_10sdp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_45sdp"
+                                        app:cardBackgroundColor="@color/white"
+                                        android:id="@+id/another_detail_collection1"
+                                        app:cardCornerRadius="@dimen/_10sdp"
+                                        app:cardElevation="@dimen/_12sdp"
+                                        android:outlineSpotShadowColor="@color/purple"
+                                        tools:ignore="UnusedAttribute">
+
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical">
+
+                                            <View
+                                                android:id="@+id/v_31"
+                                                android:layout_width="@dimen/_4sdp"
+                                                android:layout_height="match_parent"
+                                                android:background="@drawable/line_shape_curved_bg"/>
+
+                                            <Button
+                                                android:fontFamily="@string/tamil_font"
+                                                android:onClick="@{()-> activity.viewSWMDetailsList()}"
+                                                android:clickable="true"
+                                                android:layout_toEndOf="@+id/v_31"
+                                                android:background="@color/full_transparent"
+                                                android:id="@+id/another_details_mcc1"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:layout_centerHorizontal="true"
+                                                android:text="@string/solid_waste_management"
+                                                android:textAlignment="center"
+                                                android:textAllCaps="false"
+                                                android:textColor="@color/black"
+                                                android:textSize="@dimen/_14sdp"
+                                                />
+
+                                            <ImageView
+                                                android:padding="@dimen/_3sdp"
+                                                android:id="@+id/icon_41"
+                                                android:layout_centerVertical="true"
+                                                android:layout_width="@dimen/_25sdp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_marginEnd="@dimen/_10sdp"
+                                                android:src="@drawable/ic_boi_degradable_waste"
+                                                android:tint="@color/colorPrimary"
+                                                android:contentDescription="@string/view_take_icon" />
+
+
+                                        </RelativeLayout>
+
+                                    </androidx.cardview.widget.CardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:layout_gravity="center"
+                                        android:fontFamily="@string/tamil_font"
+                                        android:text="@string/view_works"
+                                        android:textAlignment="center"
+                                        android:textColor="#000000"
+                                        android:textSize="18sp"
+                                        android:visibility="gone"/>
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1dp"
+                                        android:layout_marginTop="15dp"
+                                        android:visibility="gone"
+                                        android:background="@color/grey" />
+                                </LinearLayout>
+
 
                             </RelativeLayout>
 
@@ -448,14 +614,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/sync"
-                                    style="@style/font_circular_bold"
+                                    android:fontFamily="@string/tamil_font"
                                     android:textColor="#000080"
                                     android:textSize="@dimen/_10sdp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-light"
+                                    android:fontFamily="@string/tamil_font"
                                     android:text="@string/pending_uploads"
                                     android:textColor="#000000"
                                     android:textSize="@dimen/_14sdp" />
@@ -471,214 +637,6 @@
 
                         </LinearLayout>
 
-
-
-                    </ScrollView>
-                    <ScrollView
-                        android:layout_margin="@dimen/_10sdp"
-                        android:layout_centerInParent="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="2">
-                                <androidx.cardview.widget.CardView
-                                    android:clickable="true"
-                                    android:layout_margin="@dimen/_10sdp"
-                                    android:layout_width="0dp"
-                                    android:layout_height="@dimen/_150sdp"
-                                    android:layout_weight="1"
-                                    android:foreground="?android:attr/selectableItemBackground"
-                                    app:cardBackgroundColor="@color/white"
-                                    android:id="@+id/add_mcc_card3"
-                                    app:cardCornerRadius="@dimen/_20sdp"
-                                    app:cardElevation="@dimen/_5sdp"
-                                    >
-
-                                    <RelativeLayout
-                                        android:id="@+id/first"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="center">
-                                        <RelativeLayout
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerInParent="true"
-                                            tools:ignore="UselessParent">
-
-                                            <ImageView
-                                                android:layout_centerHorizontal="true"
-                                                android:layout_width="@dimen/_30sdp"
-                                                android:layout_height="@dimen/_30sdp"
-                                                android:id="@+id/img_29"
-                                                android:src="@drawable/add_user"
-                                                android:contentDescription="@string/add_icon" />
-                                            <TextView
-                                                android:fontFamily="@string/font_regular"
-                                                android:id="@+id/tt_1"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_below="@+id/img_29"
-                                                android:textColor="@color/black"
-                                                android:layout_centerHorizontal="true"
-                                                android:textSize="@dimen/_10sdp"
-                                                android:text="@string/add_new_mcc"/>
-                                        </RelativeLayout>
-                                    </RelativeLayout>
-                                </androidx.cardview.widget.CardView>
-                                <androidx.cardview.widget.CardView
-                                    android:clickable="true"
-                                    android:layout_margin="@dimen/_10sdp"
-                                    android:layout_width="0dp"
-                                    android:layout_height="@dimen/_150sdp"
-                                    android:layout_weight="1"
-                                    android:foreground="?android:attr/selectableItemBackground"
-                                    app:cardBackgroundColor="@color/white"
-                                    android:id="@+id/add_mcc_card2"
-                                    app:cardCornerRadius="@dimen/_20sdp"
-                                    app:cardElevation="@dimen/_5sdp"
-                                    >
-
-                                    <RelativeLayout
-                                        android:id="@+id/second"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="center">
-                                        <RelativeLayout
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerInParent="true"
-                                            tools:ignore="UselessParent">
-
-                                            <ImageView
-                                                android:layout_centerHorizontal="true"
-                                                android:layout_width="@dimen/_30sdp"
-                                                android:layout_height="@dimen/_30sdp"
-                                                android:id="@+id/img_39"
-                                                android:src="@drawable/view_and_edit_icon"
-                                                android:contentDescription="@string/view_edit_icon" />
-                                            <TextView
-                                                android:fontFamily="@string/font_regular"
-                                                android:id="@+id/tt_2"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_below="@+id/img_39"
-                                                android:textColor="@color/black"
-                                                android:layout_centerHorizontal="true"
-                                                android:textSize="@dimen/_10sdp"
-                                                android:text="@string/edit_mcc"/>
-                                        </RelativeLayout>
-                                    </RelativeLayout>
-                                </androidx.cardview.widget.CardView>
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:weightSum="2">
-                                <androidx.cardview.widget.CardView
-                                    android:clickable="true"
-                                    android:layout_margin="@dimen/_10sdp"
-                                    android:layout_width="0dp"
-                                    android:foreground="?android:attr/selectableItemBackground"
-                                    android:layout_height="@dimen/_150sdp"
-                                    android:layout_weight="1"
-                                    app:cardBackgroundColor="@color/white"
-                                    android:id="@+id/add_mcc_card4"
-                                    app:cardCornerRadius="@dimen/_20sdp"
-                                    app:cardElevation="@dimen/_5sdp"
-                                    >
-
-                                    <RelativeLayout
-                                        android:id="@+id/three"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="center">
-                                        <RelativeLayout
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerInParent="true"
-                                            tools:ignore="UselessParent">
-
-                                            <ImageView
-                                                android:layout_centerHorizontal="true"
-                                                android:layout_width="@dimen/_30sdp"
-                                                android:layout_height="@dimen/_30sdp"
-                                                android:id="@+id/img_49"
-                                                android:src="@drawable/upload_icon"
-                                                android:contentDescription="@string/upload_icon" />
-                                            <TextView
-                                                android:fontFamily="@string/font_regular"
-                                                android:id="@+id/tt_3"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_below="@+id/img_49"
-                                                android:textColor="@color/black"
-                                                android:layout_centerHorizontal="true"
-                                                android:textSize="@dimen/_10sdp"
-                                                android:text="@string/pending_uploads"/>
-                                        </RelativeLayout>
-                                    </RelativeLayout>
-                                </androidx.cardview.widget.CardView>
-                                <androidx.cardview.widget.CardView
-                                    android:clickable="true"
-                                    android:layout_margin="@dimen/_10sdp"
-                                    android:layout_width="0dp"
-                                    android:layout_height="@dimen/_150sdp"
-                                    android:layout_weight="1"
-                                    android:foreground="?android:attr/selectableItemBackground"
-                                    app:cardBackgroundColor="@color/white"
-                                    android:id="@+id/add_mcc_card5"
-                                    app:cardCornerRadius="@dimen/_20sdp"
-                                    app:cardElevation="@dimen/_5sdp"
-                                    >
-
-                                    <RelativeLayout
-                                        android:id="@+id/fourth"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_gravity="center">
-                                        <RelativeLayout
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerInParent="true"
-                                            tools:ignore="UselessParent">
-
-                                            <ImageView
-                                                android:layout_centerHorizontal="true"
-                                                android:layout_width="@dimen/_30sdp"
-                                                android:layout_height="@dimen/_30sdp"
-                                                android:id="@+id/img_59"
-                                                android:src="@mipmap/avatar"
-                                                android:contentDescription="@string/profile_icon" />
-                                            <TextView
-                                                android:fontFamily="@string/font_regular"
-                                                android:id="@+id/tt_4"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:layout_below="@+id/img_59"
-                                                android:textColor="@color/black"
-                                                android:layout_centerHorizontal="true"
-                                                android:textSize="@dimen/_10sdp"
-                                                />
-                                        </RelativeLayout>
-                                    </RelativeLayout>
-
-                                </androidx.cardview.widget.CardView>
-
-
-                            </LinearLayout>
-                        </LinearLayout>
                     </ScrollView>
 
                 </RelativeLayout>
@@ -696,7 +654,7 @@
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_13sdp"
-                android:fontFamily="@string/font_regular"
+                android:fontFamily="@string/tamil_font"
                 />
 
         </RelativeLayout>
@@ -706,6 +664,7 @@
         <!-- The navigation drawer -->
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigation"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
@@ -733,7 +692,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            tools:ignore="TooManyViews">
+                            >
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:layout_width="@dimen/_50sdp"
@@ -751,8 +710,9 @@
                                 android:layout_height="@dimen/_30sdp"
                                 android:layout_toEndOf="@+id/profile_icon"
                                 android:id="@+id/time_image"
-                                android:contentDescription="@string/time_icon" />
+                                android:contentDescription="@string/profile_icon" />
                             <TextView
+                                android:fontFamily="@string/tamil_font"
                                 android:textStyle="bold"
                                 android:padding="@dimen/_3sdp"
                                 android:layout_centerVertical="true"
@@ -772,7 +732,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/imgUser1"
                             android:layout_marginTop="5sp"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="@dimen/_14sdp" />
                         <TextView
@@ -782,7 +742,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_name1"
-                            android:fontFamily="sans-serif"
+                            android:fontFamily="@string/tamil_font"
                             android:textAllCaps="true"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="@dimen/_10sdp" />
@@ -792,6 +752,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_below="@+id/designation1"
                             android:id="@+id/timer"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@color/white"
                             android:textStyle="bold"
                             android:textSize="@dimen/_12sdp"
@@ -832,7 +793,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@string/tamil_font"
                             android:text="@string/pending_works_for_upload"
                             android:textAlignment="center"
                             android:textColor="@color/white"
@@ -855,14 +816,14 @@
                             android:id="@+id/pendingCount1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@string/tamil_font"
                             android:text=""
                             android:textAllCaps="true"
                             android:textColor="@color/white"
@@ -885,142 +846,146 @@
                         android:layout_height="wrap_content"
                         tools:ignore="UselessParent">
 
-                        <LinearLayout
+                        <!--<LinearLayout
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
 
+&lt;!&ndash;
 
-                            <androidx.cardview.widget.CardView
-                                android:clickable="true"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_45sdp"
-                                app:cardBackgroundColor="@color/white"
-                                android:id="@+id/add_mcc_card1"
-                                app:cardElevation="@dimen/_12sdp"
-                                android:outlineSpotShadowColor="@color/purple"
-                                tools:ignore="UnusedAttribute">
+                                <androidx.cardview.widget.CardView
+                                    android:clickable="true"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_45sdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:id="@+id/add_mcc_card1"
+                                    app:cardElevation="@dimen/_12sdp"
+                                    android:outlineSpotShadowColor="@color/purple"
+                                    tools:ignore="UnusedAttribute">
 
-                                <RelativeLayout
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <View
+                                            android:visibility="gone"
+                                            android:id="@+id/v_11"
+                                            android:layout_width="@dimen/_4sdp"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/line_shape_curved_bg"/>
+
+                                        <Button
+                                            android:layout_toEndOf="@+id/icon_11"
+                                            android:layout_marginStart="@dimen/_5sdp"
+                                            android:onClick="@{()-> activity.viewVillageList()}"
+                                            android:clickable="true"
+                                            android:padding="@dimen/_4sdp"
+                                            android:id="@+id/add_new_mcc1"
+                                            android:layout_width="match_parent"
+                                            android:layout_centerHorizontal="true"
+                                            android:layout_height="match_parent"
+                                            android:text="@string/add_new_mcc"
+                                            android:fontFamily="@string/tamil_font"
+                                            android:background="@color/full_transparent"
+                                            android:textAlignment="textStart"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_12sdp"
+                                            />
+                                        <ImageView
+                                            android:padding="@dimen/_3sdp"
+                                            android:id="@+id/icon_11"
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="@dimen/_25sdp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_marginStart="@dimen/_10sdp"
+                                            android:src="@drawable/add_user"
+                                            android:contentDescription="@string/add_icon" />
+
+
+                                    </RelativeLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_marginTop="0.2dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_45sdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:id="@+id/edit_mcc_card1"
+                                    app:cardElevation="@dimen/_12sdp"
+                                    android:outlineSpotShadowColor="@color/purple"
+                                    tools:ignore="UnusedAttribute">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <View
+                                            android:visibility="gone"
+                                            android:id="@+id/v_21"
+                                            android:layout_width="@dimen/_4sdp"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/line_shape_curved_bg"
+                                            tools:ignore="TooManyViews" />
+
+                                        <Button
+                                            android:layout_toEndOf="@+id/icon_31"
+                                            android:layout_marginStart="@dimen/_5sdp"
+                                            android:onClick="@{()-> activity.viewMCCBasicDetailsList()}"
+                                            android:clickable="true"
+                                            android:background="@color/full_transparent"
+                                            android:id="@+id/edit_mcc1"
+                                            android:fontFamily="@string/tamil_font"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_centerHorizontal="true"
+                                            android:text="@string/edit_mcc"
+                                            android:textAlignment="textStart"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_12sdp"
+                                            />
+
+                                        <ImageView
+                                            android:padding="@dimen/_3sdp"
+                                            android:id="@+id/icon_31"
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="@dimen/_25sdp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_marginStart="@dimen/_10sdp"
+                                            android:src="@drawable/view_and_edit_icon"
+                                            android:contentDescription="@string/view_edit_icon" />
+
+
+                                    </RelativeLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="vertical">
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:text="@string/view_works"
+                                    android:fontFamily="@string/tamil_font"
+                                    android:textAlignment="center"
+                                    android:textColor="#000000"
+                                    android:textSize="18sp"
+                                    android:visibility="gone"/>
 
-                                    <View
-                                        android:visibility="gone"
-                                        android:id="@+id/v_11"
-                                        android:layout_width="@dimen/_4sdp"
-                                        android:layout_height="match_parent"
-                                        android:background="@drawable/line_shape_curved_bg" />
-
-                                    <Button
-                                        android:layout_toEndOf="@+id/icon_11"
-                                        android:layout_marginStart="@dimen/_5sdp"
-                                        android:onClick="@{()-> activity.viewVillageList()}"
-                                        android:clickable="true"
-                                        android:padding="@dimen/_4sdp"
-                                        android:id="@+id/add_new_mcc1"
-                                        android:layout_width="match_parent"
-                                        android:layout_centerHorizontal="true"
-                                        android:layout_height="match_parent"
-                                        android:text="@string/add_new_mcc"
-                                        android:background="@color/full_transparent"
-                                        android:textAlignment="textStart"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp"
-                                        />
-
-                                    <ImageView
-                                        android:padding="@dimen/_3sdp"
-                                        android:id="@+id/icon_11"
-                                        android:layout_centerVertical="true"
-                                        android:layout_width="@dimen/_25sdp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentStart="true"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:src="@drawable/add_user"
-                                        android:contentDescription="@string/add_icon" />
-
-
-                                </RelativeLayout>
-
-                            </androidx.cardview.widget.CardView>
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_marginTop="0.2dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_45sdp"
-                                app:cardBackgroundColor="@color/white"
-                                android:id="@+id/edit_mcc_card1"
-                                app:cardElevation="@dimen/_12sdp"
-                                android:outlineSpotShadowColor="@color/purple"
-                                tools:ignore="UnusedAttribute">
-
-                                <RelativeLayout
+                                <View
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <View
-                                        android:visibility="gone"
-                                        android:id="@+id/v_21"
-                                        android:layout_width="@dimen/_4sdp"
-                                        android:layout_height="match_parent"
-                                        android:background="@drawable/line_shape_curved_bg" />
-
-                                    <Button
-                                        android:layout_toEndOf="@+id/icon_31"
-                                        android:layout_marginStart="@dimen/_5sdp"
-                                        android:onClick="@{()-> activity.viewMCCBasicDetailsList()}"
-                                        android:clickable="true"
-                                        android:background="@color/full_transparent"
-                                        android:id="@+id/edit_mcc1"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_centerHorizontal="true"
-                                        android:text="@string/edit_mcc"
-                                        android:textAlignment="textStart"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp"
-                                        />
-
-                                    <ImageView
-                                        android:padding="@dimen/_3sdp"
-                                        android:id="@+id/icon_31"
-                                        android:layout_centerVertical="true"
-                                        android:layout_width="@dimen/_25sdp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentStart="true"
-                                        android:layout_marginStart="@dimen/_10sdp"
-                                        android:src="@drawable/view_and_edit_icon"
-                                        android:contentDescription="@string/view_edit_icon" />
-
-
-                                </RelativeLayout>
-
-                            </androidx.cardview.widget.CardView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:fontFamily="sans-serif-light"
-                                android:text="@string/view_works"
-                                android:textAlignment="center"
-                                android:textColor="#000000"
-                                android:textSize="18sp"
-                                android:visibility="gone"/>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginTop="15dp"
-                                android:visibility="gone"
-                                android:background="@color/grey" />
+                                    android:layout_height="1dp"
+                                    android:layout_marginTop="15dp"
+                                    android:visibility="gone"
+                                    android:background="@color/grey" />
 
 
 
@@ -1051,13 +1016,13 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:text="@string/logout"
+                                        android:fontFamily="@string/tamil_font"
                                         android:textAlignment="textStart"
                                         android:background="@color/full_transparent"
                                         android:textAllCaps="false"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_12sdp"
                                         />
-
                                     <ImageView
                                         android:id="@+id/img_1"
                                         android:padding="@dimen/_3sdp"
@@ -1076,8 +1041,291 @@
                             </androidx.cardview.widget.CardView>
 
 
+&ndash;&gt;
 
-                        </LinearLayout>
+                        </LinearLayout>-->
+                        <RelativeLayout
+                            android:id="@+id/view_housing_works1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_margin="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:id="@+id/mcc_layout_1"
+                                android:background="@drawable/line_curved_bg_new">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="@string/micro_composting_center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="@dimen/_13sdp"/>
+                                <androidx.cardview.widget.CardView
+                                    android:clickable="true"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_45sdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:id="@+id/add_mcc_card1"
+                                    app:cardCornerRadius="@dimen/_10sdp"
+                                    app:cardElevation="@dimen/_12sdp"
+                                    android:outlineSpotShadowColor="@color/purple"
+                                    tools:ignore="UnusedAttribute">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        tools:ignore="TooDeepLayout">
+
+                                        <View
+                                            android:id="@+id/v_11"
+                                            android:layout_width="@dimen/_4sdp"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/line_shape_curved_bg"/>
+
+                                        <Button
+                                            android:onClick="@{()-> activity.viewVillageList()}"
+                                            android:clickable="true"
+                                            android:padding="@dimen/_4sdp"
+                                            android:layout_marginStart="@dimen/_4sdp"
+                                            android:id="@+id/add_new_mcc1"
+                                            android:layout_width="match_parent"
+                                            android:layout_centerHorizontal="true"
+                                            android:layout_height="match_parent"
+                                            android:text="@string/add_new_mcc"
+                                            android:fontFamily="@string/tamil_font"
+                                            android:background="@color/full_transparent"
+                                            android:textAlignment="center"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_14sdp"
+                                            />
+                                        <ImageView
+                                            android:padding="@dimen/_3sdp"
+                                            android:id="@+id/icon_11"
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="@dimen/_25sdp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_marginEnd="@dimen/_10sdp"
+                                            android:src="@drawable/add_user"
+                                            android:contentDescription="@string/add_icon" />
+
+
+                                    </RelativeLayout>
+
+                                </androidx.cardview.widget.CardView>
+                                <androidx.cardview.widget.CardView
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_45sdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:id="@+id/edit_mcc_card1"
+                                    app:cardCornerRadius="@dimen/_10sdp"
+                                    app:cardElevation="@dimen/_12sdp"
+                                    android:outlineSpotShadowColor="@color/purple"
+                                    tools:ignore="UnusedAttribute">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <View
+                                            android:id="@+id/v_21"
+                                            android:layout_width="@dimen/_4sdp"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/line_shape_curved_bg"/>
+
+                                        <Button
+                                            android:fontFamily="@string/tamil_font"
+                                            android:onClick="@{()-> activity.viewMCCBasicDetailsList()}"
+                                            android:clickable="true"
+                                            android:layout_toEndOf="@+id/v_21"
+                                            android:background="@color/full_transparent"
+                                            android:id="@+id/edit_mcc1"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_centerHorizontal="true"
+                                            android:text="@string/edit_mcc"
+                                            android:textAlignment="center"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_14sdp"
+                                            />
+
+                                        <ImageView
+                                            android:padding="@dimen/_3sdp"
+                                            android:id="@+id/icon_31"
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="@dimen/_25sdp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_marginEnd="@dimen/_10sdp"
+                                            android:src="@drawable/view_and_edit_icon"
+                                            android:contentDescription="@string/view_take_icon" />
+
+
+                                    </RelativeLayout>
+
+                                </androidx.cardview.widget.CardView>
+                                <androidx.cardview.widget.CardView
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_45sdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:id="@+id/daily_entry1"
+                                    app:cardCornerRadius="@dimen/_10sdp"
+                                    app:cardElevation="@dimen/_12sdp"
+                                    android:outlineSpotShadowColor="@color/purple"
+                                    tools:ignore="UnusedAttribute">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <View
+                                            android:id="@+id/daily_entry_v_21"
+                                            android:layout_width="@dimen/_4sdp"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/line_shape_curved_bg"/>
+
+                                        <Button
+                                            android:fontFamily="@string/tamil_font"
+                                            android:onClick="@{()-> activity.entryMCCBasicDetailsList()}"
+                                            android:clickable="true"
+                                            android:layout_toEndOf="@+id/daily_entry_v_21"
+                                            android:background="@color/full_transparent"
+                                            android:id="@+id/daily_entry_mcc1"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_centerHorizontal="true"
+                                            android:text="@string/daily_collected_entry"
+                                            android:textAlignment="center"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_14sdp"
+                                            />
+
+                                        <ImageView
+                                            android:padding="@dimen/_3sdp"
+                                            android:id="@+id/daily_entry_mcc_icon_31"
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="@dimen/_25sdp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_marginEnd="@dimen/_10sdp"
+                                            android:src="@drawable/daily_entry"
+                                            android:contentDescription="@string/view_take_icon" />
+
+
+                                    </RelativeLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_margin="@dimen/_10sdp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/swm_layout_"
+                                android:layout_below="@+id/mcc_layout_1"
+                                android:orientation="vertical"
+                                android:background="@drawable/line_curved_bg_new">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="SWM"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="@dimen/_13sdp"/>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_45sdp"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:id="@+id/another_detail_collection"
+                                    app:cardCornerRadius="@dimen/_10sdp"
+                                    app:cardElevation="@dimen/_12sdp"
+                                    android:outlineSpotShadowColor="@color/purple"
+                                    tools:ignore="UnusedAttribute">
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <View
+                                            android:id="@+id/v_3"
+                                            android:layout_width="@dimen/_4sdp"
+                                            android:layout_height="match_parent"
+                                            android:background="@drawable/line_shape_curved_bg"/>
+
+                                        <Button
+                                            android:fontFamily="@string/tamil_font"
+                                            android:onClick="@{()-> activity.viewSWMDetailsList()}"
+                                            android:clickable="true"
+                                            android:layout_toEndOf="@+id/v_3"
+                                            android:background="@color/full_transparent"
+                                            android:id="@+id/another_details_mcc"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_centerHorizontal="true"
+                                            android:text="@string/solid_waste_management"
+                                            android:textAlignment="center"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_14sdp"
+                                            />
+
+                                        <ImageView
+                                            android:padding="@dimen/_3sdp"
+                                            android:id="@+id/icon_4"
+                                            android:layout_centerVertical="true"
+                                            android:layout_width="@dimen/_25sdp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_marginEnd="@dimen/_10sdp"
+                                            android:src="@drawable/ic_boi_degradable_waste"
+                                            android:tint="@color/colorPrimary"
+                                            android:contentDescription="@string/view_take_icon" />
+
+
+                                    </RelativeLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@string/tamil_font"
+                                    android:text="@string/view_works"
+                                    android:textAlignment="center"
+                                    android:textColor="#000000"
+                                    android:textSize="18sp"
+                                    android:visibility="gone"/>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginTop="15dp"
+                                    android:visibility="gone"
+                                    android:background="@color/grey" />
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
 
                     </ScrollView>
 
@@ -1107,14 +1355,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/sync"
-                            style="@style/font_circular_bold"
+                            android:fontFamily="@string/tamil_font"
                             android:textColor="#000080"
                             android:textSize="@dimen/_10sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
+                            android:fontFamily="@string/tamil_font"
                             android:text="@string/pending_uploads"
                             android:textColor="#000000"
                             android:textSize="@dimen/_12sdp" />

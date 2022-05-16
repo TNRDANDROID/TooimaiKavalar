@@ -20,6 +20,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/close_icon"
             android:id="@+id/tv_1"
+            android:textAlignment="center"
             android:fontFamily="@string/tamil_font"
             android:text="@string/how_many_thooimai_kaavalars_add"
             >

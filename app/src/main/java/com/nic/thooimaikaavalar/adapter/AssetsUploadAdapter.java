@@ -343,6 +343,9 @@ public class AssetsUploadAdapter extends RecyclerView.Adapter<AssetsUploadAdapte
                 jsonObject.put("amount_of_plastic_waste_sent_to_pwm_unit_in_kg",carriedOutDetails.get(j).getAmount_of_plastic_waste_sent_to_pwm_unit_in_kg());
                 jsonObject.put("amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs",carriedOutDetails.get(j).getAmount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs());
 
+                jsonObject.put("where_the_attached_pwm_unit_is_located",carriedOutDetails.get(j).getWhere_the_attached_pwm_unit_is_located());
+                jsonObject.put("amt_of_compostable_garbage_collected",carriedOutDetails.get(j).getAmt_of_compostable_garbage_collected());
+
                 carried_out_details.put(jsonObject);
                 ArrayList<RealTimeMonitoringSystem> waste_dump_photos_list = dbData.getParticularCarriedOutPhotosList(carriedOutDetails.get(j).getId(),prefManager.getPvCode(),carriedOutDetails.get(j).getSwm_infra_details_id(),carriedOutDetails.get(j).getDate_entry_for());
                 for (int i = 0; i < waste_dump_photos_list.size(); i++) {

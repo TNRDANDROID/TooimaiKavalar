@@ -46,6 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String SWM_WASTE_DUMP_PHOTOS_DETAILS = "swm_waste_dump_photos_details";
     public static final String SWM_CARRIED_OUT_DETAILS = "swm_carried_out_details";
     public static final String SWM_CARRIED_OUT_PHOTOS_DETAILS = "swm_carried_out_photos_details";
+    public static final String PWM_VILLAGE_TABLE_NAME = "pwm_villageTable";
 
     ////**************///////
 
@@ -423,6 +424,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "amount_of_compostable_waste_sent_for_recycling_revenue_in_rs TEXT," +
                 "amount_of_plastic_waste_sent_to_pwm_unit_in_kg TEXT," +
                 "amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs TEXT," +
+                "where_the_attached_pwm_unit_is_located TEXT," +
+                "amt_of_compostable_garbage_collected TEXT," +
                 "total_revenue_generated TEXT)");
         db.execSQL("CREATE TABLE " + SWM_CARRIED_OUT_PHOTOS_DETAILS + " ("
                 + "carried_out_details_id INTEGER ,"+
@@ -436,6 +439,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 "after_taken_image_lat TEXT," +
                 "after_taken_image_long TEXT," +
                 "after_taken_image BLOB)");
+
+        db.execSQL("CREATE TABLE " + PWM_VILLAGE_TABLE_NAME + " ("
+                + "dcode INTEGER," +
+                "bcode INTEGER," +
+                "pvcode INTEGER," +
+                "pvname_ta TEXT," +
+                "pvname TEXT)");
+
 
 
     }
@@ -473,6 +484,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + SWM_WASTE_DUMP_PHOTOS_DETAILS);
             db.execSQL("DROP TABLE IF EXISTS " + SWM_CARRIED_OUT_DETAILS);
             db.execSQL("DROP TABLE IF EXISTS " + SWM_CARRIED_OUT_PHOTOS_DETAILS);
+            db.execSQL("DROP TABLE IF EXISTS " + PWM_VILLAGE_TABLE_NAME);
 
             onCreate(db);
         }

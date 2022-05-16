@@ -22,7 +22,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_height="wrap_content"
             android:id="@+id/toolbar"
             android:background="@color/colorPrimaryDark">
 
@@ -37,6 +37,10 @@
                 android:contentDescription="@string/back_icon" />
 
             <TextView
+                android:layout_toEndOf="@+id/back_img"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:fontFamily="@string/tamil_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

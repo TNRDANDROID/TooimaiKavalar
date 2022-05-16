@@ -1230,6 +1230,15 @@ public class Utils {
         Log.d("villageListDistBlock", "" + dataSet);
         return dataSet;
     }
+    public static JSONObject pwmvillageListDistrictBlockWiseJsonParams(Activity activity) throws JSONException {
+        prefManager = new PrefManager(activity);
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_SERVICE_ID, "plastic_waste_village_link");
+        //dataSet.put(AppConstant.DISTRICT_CODE, prefManager.getDistrictCode());
+        //dataSet.put(AppConstant.BLOCK_CODE, prefManager.getBlockCode());
+        Log.d("pwmvillage", "" + dataSet);
+        return dataSet;
+    }
     public static JSONObject HabitationListDistrictBlockVillageWiseJsonParams(Activity activity) throws JSONException {
         prefManager = new PrefManager(activity);
         JSONObject dataSet = new JSONObject();
