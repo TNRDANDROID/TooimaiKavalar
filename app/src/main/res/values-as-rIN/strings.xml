@@ -324,6 +324,6 @@
     <string name="cleared_waste_dump_photos_list">Cleared Waste Dump Photos List</string>
     <string name="where_the_attached_pwm_unit_is_located">இணைக்கப்பட்டு உள்ள நெகிழிக் கழிவு மேலாண்மை அலகு அமைந்துள்ள கிராம ஊராட்சி</string>
     <string name="amt_of_compostable_garbage_collected">சேகரிக்கப்படும் மக்காத குப்பையின் அளவு (கி)</string>
-
+    <string name="is_pending_available">உள்ளது</string>
 
 </resources>

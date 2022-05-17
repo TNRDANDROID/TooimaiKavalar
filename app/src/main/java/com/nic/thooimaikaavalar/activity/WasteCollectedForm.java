@@ -10,6 +10,7 @@ import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.nic.thooimaikaavalar.R;
@@ -47,6 +48,7 @@ public class WasteCollectedForm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activityWasteCollectedFormBinding = DataBindingUtil.setContentView(this, R.layout.new_waste_collected_entry);
         activityWasteCollectedFormBinding.setActivity(this);
 

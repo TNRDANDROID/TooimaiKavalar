@@ -239,6 +239,7 @@
                 android:id="@+id/sync_count_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="@{()-> activity.openPendingScreen()}"
                 android:layout_below="@id/rellay1"
                 android:orientation="horizontal"
                 android:baselineAligned="false">
@@ -281,6 +282,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@string/tamil_font"
                         android:textColor="@color/white"
+                        android:text="@string/is_pending_available"
                         android:textSize="@dimen/_14sdp" />
 
                     <TextView

@@ -132,7 +132,7 @@ public class Add_ViewWasteDumpDetails extends AppCompatActivity implements Api.S
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         wasteDumpDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_add__view_waste_dump_details);
         wasteDumpDetailsBinding.setActivity(this);
 

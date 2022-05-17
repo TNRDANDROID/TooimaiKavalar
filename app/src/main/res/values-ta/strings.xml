@@ -291,7 +291,7 @@
     <string name="compostable_waste_recycle_text">மறுசுழற்சி செய்ய அனுப்பப்பட்ட மக்காத குப்பையின் அளவு (கி)</string>
     <string name="revenue_rs">வருவாய் (ரூ)</string>
     <string name="plastic_waste_unit">நெகிழிக் கழிவு மேலாண்மை அலகுக்கு அனுப்பபப்பட்ட நெகிழிக் கழிவின் அளவு (கி)</string>
-    <string name="choose_date">Choose Date</string>
+    <string name="choose_date">தேதியைத் தேர்ந்தெடுக்கவும்</string>
     <string name="total_quantity_of_waste_collected_in_the_panchayat_in_kg">கிராம ஊராட்சியில் சேகரிக்கப்பட்ட கழிவுகளின் மொத்த அளவு (கி)</string>
     <string name="quantity_of_the_bio_degradable_waste_collected_in_kg">சேகரிக்கப்படும் மக்கும் கழிவுகளின் மொத்த அளவு (கி)</string>
     <string name="total_quantity_of_compost_generated_from_the_community_compost_pit_in_kg">சமூக உரக் குழியிலிருந்து உருவாக்கப்பட்ட உரத்தின் மொத்த அளவு (கி)</string>
@@ -324,6 +324,7 @@
     <string name="cleared_waste_dump_photos_list">Cleared Waste Dump Photos List</string>
     <string name="where_the_attached_pwm_unit_is_located">இணைக்கப்பட்டு உள்ள நெகிழிக் கழிவு மேலாண்மை அலகு அமைந்துள்ள கிராம ஊராட்சி</string>
     <string name="amt_of_compostable_garbage_collected">சேகரிக்கப்படும் மக்காத குப்பையின் அளவு (கி)</string>
+    <string name="is_pending_available">உள்ளது</string>
 
 
 </resources>

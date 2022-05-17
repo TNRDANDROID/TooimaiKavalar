@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.android.volley.VolleyError;
 import com.nic.thooimaikaavalar.R;
@@ -50,7 +51,7 @@ public class SwmMasterDetailsView extends AppCompatActivity implements Api.Serve
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activitySwmMasterDetailsViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_swm_master_details_view);
         activitySwmMasterDetailsViewBinding.setActivity(this);
 

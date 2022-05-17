@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.nic.thooimaikaavalar.R;
@@ -45,7 +46,7 @@ public class SwmDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activitySwmDashboardBinding = DataBindingUtil.setContentView(this, R.layout.activity_swm_dashboard);
         activitySwmDashboardBinding.setActivity(this);
 

@@ -32,6 +32,7 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -139,6 +140,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         carriedOutsScreenBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_carried_outs_screen);
         carriedOutsScreenBinding.setActivity(this);
 

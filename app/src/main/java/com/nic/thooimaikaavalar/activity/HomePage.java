@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -56,6 +57,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         homeScreenBinding = DataBindingUtil.setContentView(this, R.layout.home_screen);
         homeScreenBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -168,7 +170,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             try {
                 int count = getAllBasicDetails.size()+getTooimaiKaavalrCount.size()+getComponentImageCount.size()+getWasteCollectedDetailsCount.size()+
                         getSwmMasterDetailsCount.size()+gettableCountAssetDetailsTable;
-                homeScreenBinding.pendingCount.setText("true");
+                homeScreenBinding.pendingCount.setText(getResources().getString(R.string.is_pending_available));
             }
             catch (Exception e){
                 e.printStackTrace();

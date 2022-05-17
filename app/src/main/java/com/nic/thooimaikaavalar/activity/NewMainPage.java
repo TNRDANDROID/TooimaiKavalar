@@ -140,7 +140,7 @@ public class NewMainPage extends AppCompatActivity implements Api.ServerResponse
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activityNewMainPageBinding = DataBindingUtil.setContentView(this, R.layout.activity_new_main_page);
         activityNewMainPageBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

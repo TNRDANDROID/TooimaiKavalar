@@ -44,7 +44,7 @@ public class AddThooimaiKaavalarDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         activityAddThooimaiKaavalarDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_thooimai_kaavalar_details);
         activityAddThooimaiKaavalarDetailsBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
