@@ -59,10 +59,30 @@
                     android:contentDescription="@string/back_icon"/>
 
             </RelativeLayout>
-
+            <com.github.barteksc.pdfviewer.PDFView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:layout_above="@+id/pageNum"
+                android:visibility="gone"
+                android:id="@+id/documentViewer"/>
+            <TextView
+                android:id="@+id/pageNum"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:text="0"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/grey2"
+                android:textSize="13sp"
+                android:textStyle="bold" />
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/scroll_view"
                 android:layout_below="@id/toolbar">
 
                 <LinearLayout
@@ -731,6 +751,64 @@
                                     android:singleLine="true"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_12sdp"
+                                    android:visibility="visible"
+                                    style="@string/font_normal"
+                                    android:importantForAutofill="no" />
+
+                            </RelativeLayout>
+                            <TextView
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/attach_pdf"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:text="Please attach your receipt"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_12sdp"
+                                android:fontFamily="@string/tamil_font"/>
+                            <RelativeLayout
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/attachpdf_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/header"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/padding"
+                                android:background="@drawable/rectangle_box"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="@dimen/_5sdp"
+                                    android:id="@+id/pdf_img"
+                                    android:text="Choose File"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:background="@drawable/button_bg_grey"
+                                    android:drawablePadding="@dimen/_3sdp"
+                                    android:drawableLeft="@drawable/ic_attach_symbol"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:contentDescription="garbage_icon" />
+
+                                <TextView
+                                    android:layout_toEndOf="@+id/pdf_img"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/_5sdp"
+                                    android:id="@+id/pdf_name"
+                                    android:layout_centerInParent="true"
+                                    android:fontFamily="@string/tamil_font"
+                                    android:background="@color/full_transparent"
+                                    android:singleLine="true"
+                                    android:text="Attach file"
+                                    android:textColor="@color/dot_dark_screen3"
+                                    android:textSize="@dimen/_13sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_centerHorizontal="true"
+                                    android:gravity="center"
                                     android:visibility="visible"
                                     style="@string/font_normal"
                                     android:importantForAutofill="no" />

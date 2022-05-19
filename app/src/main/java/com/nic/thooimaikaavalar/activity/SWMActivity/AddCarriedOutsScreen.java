@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,7 +20,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.LinearGradient;
 import android.graphics.Matrix;
+import android.graphics.Shader;
 import android.location.Criteria;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -29,15 +32,21 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.github.barteksc.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -69,6 +78,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -136,6 +146,20 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
     private List<RealTimeMonitoringSystem> pwmVillageOrderList = new ArrayList<>();
     private List<RealTimeMonitoringSystem> pwmVillageList = new ArrayList<>();
+
+
+    private String fileString = "";
+    Uri uri;
+    File myFile;
+    String displayName = "";
+    String pdfString = "";
+    private String fileSize = "";
+    private byte[] bytes;
+    private String uriString;
+    private static final int MY_REQUEST_CODE_PERMISSION = 1000;
+    Dialog dialog;
+    int pageNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,6 +190,23 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             @Override
             public void onClick(View v) {
                 checkValidation();
+            }
+        });
+        carriedOutsScreenBinding.pdfImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkPermissions()){
+                    showFileChooser();
+                }
+            }
+        });
+        carriedOutsScreenBinding.pdfName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkPermissions()){
+                    viewPdf(fileString);
+
+                }
             }
         });
 
@@ -870,6 +911,235 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                         .show();
             }
         }
+        else if(requestCode == FILE_SELECT_CODE){
+            if (resultCode == RESULT_OK) {
+                // Get the Uri of the selected file
+                uri = data.getData();
+                String uriString = uri.toString();
+                myFile = new File(uriString);
+                String path = myFile.getAbsolutePath();
+                Log.d("uri", uriString);
+                Log.d("myFile", myFile.toString());
+                Log.d("path", path);
+                ConvertToString(uri);
+                if (uriString.startsWith("content://")) {
+                    Cursor cursor = null;
+                    try {
+                        cursor = this.getContentResolver().query(uri, null, null, null, null);
+                        if (cursor != null && cursor.moveToFirst()) {
+                            displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                            int sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE);
+                            long fileSizeInBytes = cursor.getLong(sizeIndex);
+//                            existingTradeDetailsViewNewBinding.fileLocation.setText(displayName+" "+getSize(fileSizeInBytes));
+                            Shader shader = new LinearGradient(0,0,0,carriedOutsScreenBinding.pdfName.getLineHeight(),
+                                    this.getResources().getColor(R.color.colorPrimary) ,
+                                    this.getResources().getColor(R.color.colorPrimaryDark) , Shader.TileMode.REPEAT);
+                           /* existingTradeDetailsViewNewBinding.fileLocation.getPaint().setShader(shader);
+                            existingTradeDetailsViewNewBinding.fileSize.getPaint().setShader(shader);*/
+                            carriedOutsScreenBinding.pdfName.setText(displayName);
+                            ConvertToString(uri);
+                            Log.d("fileString>>", fileString);
+                        }
+                    } finally {
+                        cursor.close();
+                    }
+                } else if (uriString.startsWith("file://")) {
+                    displayName = myFile.getName();
+                    Log.d("displayName", displayName);
+//                    existingTradeDetailsViewNewBinding.fileLocation.setText(getFilePath(this,uri));
+
+                    carriedOutsScreenBinding.pdfName.setText(displayName);
+                }
+            }
+        }
+    }
+    public void ConvertToString(Uri uri){
+        uriString = uri.toString();
+        Log.d("data", "onActivityResult: uri"+uriString);
+        //            myFile = new File(uriString);
+        //            ret = myFile.getAbsolutePath();
+        //Fpath.setText(ret);
+        try {
+            InputStream in = getContentResolver().openInputStream(uri);
+
+            bytes=getBytes(in);
+            Log.d("data", "onActivityResult: bytes size="+bytes.length);
+            String cnt_size;
+
+            double size_kb = getFileSize(displayName) /1024;
+            double size_mb = size_kb / 1024;
+            double size_gb = size_mb / 1024 ;
+
+            if (size_gb > 0){
+                cnt_size = size_gb + " GB";
+            }else if(size_mb > 0){
+                cnt_size = size_mb + " MB";
+            }else{
+                cnt_size = size_kb + " KB";
+            }
+            Log.d("data", "onActivityResult: Base64string="+Base64.encodeToString(bytes,Base64.DEFAULT));
+            fileString = Base64.encodeToString(bytes,Base64.DEFAULT);
+            System.out.println("Base64>>"+Base64.encodeToString(bytes,Base64.DEFAULT));
+            System.out.println("Base64fileString>>"+fileString);
+            fileSize=cnt_size;
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            Log.d("error", "onActivityResult: " + e.toString());
+        }
+    }
+    public byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
+    }
+
+    String getFilePath(Context cntx, Uri uri) {
+        Cursor cursor = null;
+        try {
+            String[] arr = { MediaStore.Images.Media.DATA };
+            cursor = cntx.getContentResolver().query(uri,  arr, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+    public static long getFileSize(String filename) {
+        File file = new File(filename);
+        if (!file.exists() || !file.isFile()) {
+            System.out.println("File doesn\'t exist");
+            return -1;
+        }
+        return file.length();
+    }
+    private static final int FILE_SELECT_CODE = 0;
+
+    private void showFileChooser() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+//        intent.setType("application/pdf");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+
+        try {
+            startActivityForResult(
+                    Intent.createChooser(intent, "Select file to upload"),
+                    FILE_SELECT_CODE);
+        } catch (android.content.ActivityNotFoundException ex) {
+            // Potentially direct the user to the Market with a Dialog
+            Toast.makeText(this, "Please install file manager",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+    private boolean checkPermissions() {
+        String[] permissions = new String[] {
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+
+        };
+        int result;
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        for (String p:permissions) {
+            result = ContextCompat.checkSelfPermission(AddCarriedOutsScreen.this,p);
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(p);
+            }
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), MY_REQUEST_CODE_PERMISSION);
+            return false;
+        }
+        return true;
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //
+        switch (requestCode) {
+            case MY_REQUEST_CODE_PERMISSION: {
+
+                // Note: If request is cancelled, the result arrays are empty.
+                // Permissions granted (CALL_PHONE).
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    Log.i( "LOG_TAG","Permission granted");
+                    Toast.makeText(this.getApplicationContext(), "Permission granted", Toast.LENGTH_SHORT).show();
+                    showFileChooser();
+
+//                    this.doBrowseFile();
+                }
+                // Cancelled or denied.
+                else {
+                    Log.i("LOG_TAG","Permission denied");
+                    Toast.makeText(this.getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            }
+        }
+    }
+
+
+    public void viewPdf(final String DocumentString) {
+        dialog = new Dialog(this,R.style.AppTheme);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.pdf_view_layout);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+        lp.dimAmount = 0.7f;
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.show();
+
+        final PDFView pdfView = (PDFView) dialog.findViewById(R.id.documentViewer);
+        final TextView pageNum = (TextView) dialog.findViewById(R.id.pageNum);
+        final TextView title = (TextView) dialog.findViewById(R.id.title);
+
+        pageNumber = 0;
+        if (DocumentString != null && !DocumentString.equals("")) {
+            byte[] decodedString = new byte[0];
+            try {
+                //byte[] name = java.util.Base64.getEncoder().encode(fileString.getBytes());
+                decodedString = Base64.decode(DocumentString/*traders.get(position).getDocument().toString()*/, Base64.DEFAULT);
+                System.out.println(new String(decodedString));
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            pdfView.fromBytes(decodedString).
+                    onPageChange(new OnPageChangeListener() {
+                        @Override
+                        public void onPageChanged(int page, int pageCount) {
+                            pageNumber = page;
+//                            setTitle(String.format("%s %s / %s", "PDF", page + 1, pageCount));
+                            pageNum.setText(pageNumber + 1 + "/" + pageCount);
+                        }
+                    }).defaultPage(pageNumber).swipeHorizontal(true).enableDoubletap(true).load();
+
+        }else {
+            Utils.showAlert(this,"No Record Found!");
+        }
+
+
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
     }
 
     public void checkValidation(){
