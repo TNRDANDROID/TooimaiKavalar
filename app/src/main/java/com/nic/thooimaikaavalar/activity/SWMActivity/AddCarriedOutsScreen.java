@@ -1232,7 +1232,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                                                 }
                                             }
                                             else {
-                                                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.quantity_of_compost_sold_in_kg));
+                                                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.amt_of_compostable_garbage_collected));
                                             }
                                         }
                                         else {

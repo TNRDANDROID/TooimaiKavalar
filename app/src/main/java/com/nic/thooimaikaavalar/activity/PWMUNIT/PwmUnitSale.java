@@ -230,7 +230,9 @@ public class PwmUnitSale extends AppCompatActivity implements Api.ServerResponse
                     new Insert_plastic_waste_management_unit_list().execute(jsonObject);
                 }
                 else {
+                    Utils.showAlert(PwmUnitSale.this,jsonObject.getString("MESSAGE"));
                     pwmUnitSaleBinding.pwmCollectionRecycler.setVisibility(View.GONE);
+                    pwmUnitSaleBinding.selectedItemValueVisibleLayout.setVisibility(View.GONE);
                 }
                 Log.d("plastic_waste_management_unit_list", "" + responseDecryptedBlockKey);
             }
@@ -239,13 +241,14 @@ public class PwmUnitSale extends AppCompatActivity implements Api.ServerResponse
                 String responseDecryptedBlockKey = Utils.decrypt(prefManager.getUserPassKey(), key);
                 JSONObject jsonObject = new JSONObject(responseDecryptedBlockKey);
                 if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
-                    Toasty.success(this, jsonObject.getString("MESSAGE"), Toast.LENGTH_LONG, true).show();
+                    //Toasty.success(this, jsonObject.getString("MESSAGE"), Toast.LENGTH_LONG, true).show();
+                    Utils.showAlert(PwmUnitSale.this,jsonObject.getString("MESSAGE"));
                     get_details_of_pwm_unit_sale_view("");
                 }
                 else {
                     Toasty.error(this, jsonObject.getString("MESSAGE"), Toast.LENGTH_LONG, true).show();
                 }
-                Log.d("plastic_waste_management_unit_list", "" + responseDecryptedBlockKey);
+                Log.d("plastic_waste_management_unit_save", "" + responseDecryptedBlockKey);
             }
             if ("get_carried_out_receipt".equals(urlType) && responseObj != null) {
                 String key = responseObj.getString(AppConstant.ENCODE_DATA);
@@ -263,6 +266,8 @@ public class PwmUnitSale extends AppCompatActivity implements Api.ServerResponse
 
         } catch (JSONException e) {
             e.printStackTrace();
+            pwmUnitSaleBinding.pwmCollectionRecycler.setVisibility(View.GONE);
+            pwmUnitSaleBinding.selectedItemValueVisibleLayout.setVisibility(View.GONE);
         }
     }
 
@@ -276,7 +281,10 @@ public class PwmUnitSale extends AppCompatActivity implements Api.ServerResponse
         clickedList = new ArrayList<>();
         double quantity =0;
         swm_activity_carried_out_id_list = new ArrayList<>();
-
+        pwmUnitSaleBinding.quantityText.setText("");
+        pwmUnitSaleBinding.amountText.setText("");
+        pwmUnitSaleBinding.agencyNameText.setText("");
+        pwmUnitSaleBinding.pdfIcon.setVisibility(View.GONE);
         for(int i=0;i<pwmuniSelectList.size();i++){
             if(pwmuniSelectList.get(i).getCheck_flag().equalsIgnoreCase("Y")){
                 RealTimeMonitoringSystem pwm_unit_sale_list_item = new RealTimeMonitoringSystem();
@@ -300,6 +308,7 @@ public class PwmUnitSale extends AppCompatActivity implements Api.ServerResponse
             }
 
             }
+            Log.d("list....>",""+swm_activity_carried_out_id_list);
             pwmUnitSaleBinding.quantityText.setText(""+quantity);
             pwmUnitSaleBinding.selectedItemValueVisibleLayout.setVisibility(View.VISIBLE);
 
@@ -336,9 +345,10 @@ public class PwmUnitSale extends AppCompatActivity implements Api.ServerResponse
     }
     public JSONObject plastic_waste_management_unit_save_normal_Params() throws JSONException {
         JSONObject dataSet = new JSONObject();
+        JSONArray array = new JSONArray(swm_activity_carried_out_id_list);
         dataSet.put(AppConstant.KEY_SERVICE_ID, "plastic_waste_management_unit_save");
         dataSet.put("swm_infra_details_id", swm_infra_details_id);
-        dataSet.put("swm_activity_carried_out_id", swm_activity_carried_out_id_list.toArray());
+        dataSet.put("swm_activity_carried_out_id", array);
         dataSet.put("sale_in_kg", pwmUnitSaleBinding.quantityText.getText().toString());
         dataSet.put("sale_amount", pwmUnitSaleBinding.amountText.getText().toString());
         dataSet.put("agency_name", pwmUnitSaleBinding.agencyNameText.getText().toString());
@@ -387,11 +397,23 @@ public class PwmUnitSale extends AppCompatActivity implements Api.ServerResponse
             super.onPostExecute(aVoid);
             if(pwmUnitList.size()>0){
                 pwmUnitSaleBinding.pwmCollectionRecycler.setVisibility(View.VISIBLE);
+                pwmUnitSaleBinding.selectedItemValueVisibleLayout.setVisibility(View.GONE);
+                pwmUnitSaleBinding.quantityText.setText("");
+                pwmUnitSaleBinding.amountText.setText("");
+                pwmUnitSaleBinding.agencyNameText.setText("");
+                pwmUnitSaleBinding.pdfIcon.setVisibility(View.GONE);
+                fileString="";
                 pwmUnitSaleAdapter = new PwmUnitSaleAdapter(PwmUnitSale.this,pwmUnitList,PwmUnitSale.this::onClickedItems);
                 pwmUnitSaleBinding.pwmCollectionRecycler.setAdapter(pwmUnitSaleAdapter);
             }
             else {
                 pwmUnitSaleBinding.pwmCollectionRecycler.setVisibility(View.GONE);
+                pwmUnitSaleBinding.selectedItemValueVisibleLayout.setVisibility(View.GONE);
+                pwmUnitSaleBinding.quantityText.setText("");
+                pwmUnitSaleBinding.amountText.setText("");
+                pwmUnitSaleBinding.agencyNameText.setText("");
+                pwmUnitSaleBinding.pdfIcon.setVisibility(View.GONE);
+                fileString="";
             }
         }
     }
@@ -426,6 +448,11 @@ public class PwmUnitSale extends AppCompatActivity implements Api.ServerResponse
         fromDate = separated[0]; // this will contain "Fruit"
         toDate = separated[1];
         pwmUnitSaleBinding.date.setText(fromDate+" to "+toDate);
+        fileString="";
+        pwmUnitSaleBinding.pdfIcon.setVisibility(View.GONE);
+        pwmUnitSaleBinding.amountText.setText("");
+        pwmUnitSaleBinding.agencyNameText.setText("");
+        pwmUnitSaleBinding.quantityText.setText("");
 //        getInCompleteActivityList();
         if(Utils.isOnline()) {
             get_details_of_pwm_unit_sale_view("");
