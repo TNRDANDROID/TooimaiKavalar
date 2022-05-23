@@ -205,6 +205,36 @@
                         android:textStyle="bold"
                         android:text="@string/activity_carried_out"/>
                 </RelativeLayout>
+                <LinearLayout
+                    android:layout_below="@+id/carried_out_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/pwm_unit_sale_layout">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:background="@color/white"
+                        android:layout_below="@+id/waste_dump_layout"
+                        android:id="@+id/view_3"/>
+
+                    <RelativeLayout
+                        android:layout_below="@+id/linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pwm_unit_sale">
+                        <TextView
+                            android:padding="@dimen/_11sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="@dimen/_12sdp"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:text="@string/plastic_waste_management_unit_sale"/>
+                    </RelativeLayout>
+                </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
 

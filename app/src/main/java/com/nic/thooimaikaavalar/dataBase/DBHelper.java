@@ -426,6 +426,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs TEXT," +
                 "where_the_attached_pwm_unit_is_located TEXT," +
                 "amt_of_compostable_garbage_collected TEXT," +
+                "receipt_file BLOB," +
                 "total_revenue_generated TEXT)");
         db.execSQL("CREATE TABLE " + SWM_CARRIED_OUT_PHOTOS_DETAILS + " ("
                 + "carried_out_details_id INTEGER ,"+

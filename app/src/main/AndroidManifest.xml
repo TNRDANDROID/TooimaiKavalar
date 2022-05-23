@@ -50,23 +50,31 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".activity.SWMActivity.AddCarriedOutsScreen"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.SWMActivity.Add_ViewWasteDumpDetails"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.SWMActivity.SwmAddAssetDetails"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.SWMActivity.SwmDashboard"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.SWMActivity.SwmMasterDetailsView"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.SWMActivity.MasterFormSwmEntry"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ViewWasteCollectedDetails"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.WasteCollectedForm"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PWMUNIT.PwmUnitSale"></activity>
+        <activity
+            android:name=".activity.SWMActivity.AddCarriedOutsScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SWMActivity.Add_ViewWasteDumpDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SWMActivity.SwmAddAssetDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SWMActivity.SwmDashboard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SWMActivity.SwmMasterDetailsView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SWMActivity.MasterFormSwmEntry"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ViewWasteCollectedDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WasteCollectedForm"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ViewTakeEditComponentsPhots"
             android:configChanges="orientation|keyboardHidden"

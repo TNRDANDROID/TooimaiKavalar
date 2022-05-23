@@ -1160,7 +1160,7 @@ public class Utils {
     }
 
     public static String getCurrentDate() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-YYYY");
         Date date = new Date();
         return formatter.format(date);
     }
@@ -1237,6 +1237,15 @@ public class Utils {
         //dataSet.put(AppConstant.DISTRICT_CODE, prefManager.getDistrictCode());
         //dataSet.put(AppConstant.BLOCK_CODE, prefManager.getBlockCode());
         Log.d("pwmvillage", "" + dataSet);
+        return dataSet;
+    }
+    public static JSONObject is_plastic_waste_managementJsonParams(Activity activity) throws JSONException {
+        prefManager = new PrefManager(activity);
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_SERVICE_ID, "is_plastic_waste_management");
+        //dataSet.put(AppConstant.DISTRICT_CODE, prefManager.getDistrictCode());
+        //dataSet.put(AppConstant.BLOCK_CODE, prefManager.getBlockCode());
+        Log.d("is_plastic_waste", "" + dataSet);
         return dataSet;
     }
     public static JSONObject HabitationListDistrictBlockVillageWiseJsonParams(Activity activity) throws JSONException {

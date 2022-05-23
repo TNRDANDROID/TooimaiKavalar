@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,6 +22,7 @@ import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.activity.SWMActivity.MasterFormSwmEntry;
 import com.nic.thooimaikaavalar.activity.SWMActivity.SwmMasterDetailsView;
 import com.nic.thooimaikaavalar.databinding.ActivityNewDashboradBinding;
+import com.nic.thooimaikaavalar.session.PrefManager;
 import com.nic.thooimaikaavalar.utils.Utils;
 
 import java.text.ParseException;
@@ -29,6 +31,7 @@ import java.util.Date;
 public class NewDashborad extends AppCompatActivity {
 
     ActivityNewDashboradBinding activityNewDashboradBinding;
+    PrefManager prefManager;
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class NewDashborad extends AppCompatActivity {
         activityNewDashboradBinding.setActivity(this);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Utils.setLocale("ta",this);
+        prefManager  = new PrefManager(this);
         activityNewDashboradBinding.btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +84,12 @@ public class NewDashborad extends AppCompatActivity {
                 gotoViewSwm("Carried_Out");
             }
         });
+        activityNewDashboradBinding.swmPwmUnitSaleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoViewSwm("PWMUnitSale");
+            }
+        });
 
         activityNewDashboradBinding.backImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +108,12 @@ public class NewDashborad extends AppCompatActivity {
             activityNewDashboradBinding.dateOfCommencement.setVisibility(View.GONE);
             activityNewDashboradBinding.swmDetailsLayout.setVisibility(View.VISIBLE);
             activityNewDashboradBinding.mccDetailsLayout.setVisibility(View.GONE);
+            if(prefManager.getis_pwm().equals("Y")){
+                activityNewDashboradBinding.swmPwmUnitSaleBtn.setVisibility(View.VISIBLE);
+            }
+            else {
+                activityNewDashboradBinding.swmPwmUnitSaleBtn.setVisibility(View.GONE);
+            }
 
         }
         else {

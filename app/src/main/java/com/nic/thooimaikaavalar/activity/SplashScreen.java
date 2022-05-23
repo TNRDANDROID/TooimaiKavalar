@@ -3,6 +3,7 @@ package com.nic.thooimaikaavalar.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.nic.thooimaikaavalar.R;
+import com.nic.thooimaikaavalar.dataBase.DBHelper;
+import com.nic.thooimaikaavalar.dataBase.dbData;
 import com.nic.thooimaikaavalar.databinding.SplashScreenBinding;
 import com.nic.thooimaikaavalar.helper.AppVersionHelper;
 import com.nic.thooimaikaavalar.session.PrefManager;

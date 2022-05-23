@@ -149,6 +149,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
 
     private String fileString = "";
+    private String receipt_file_name = "";
     Uri uri;
     File myFile;
     String displayName = "";
@@ -200,7 +201,8 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                 }
             }
         });
-        carriedOutsScreenBinding.pdfName.setOnClickListener(new View.OnClickListener() {
+        carriedOutsScreenBinding.pdfIcon.setVisibility(View.GONE);
+        carriedOutsScreenBinding.pdfIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(checkPermissions()){
@@ -266,7 +268,10 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                     carriedOutsScreenBinding.amtOfCompostableGarbageCollected.setText("");
                     carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setSelection(0);
                     where_the_attached_pwm_unit_is_located="";
-                    amt_of_compostable_garbage_collected="";
+
+                    fileString="";
+                    receipt_file_name="";
+                    carriedOutsScreenBinding.pdfIcon.setVisibility(View.GONE);
 
                     carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(null);
                 }
@@ -523,6 +528,8 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
                             where_the_attached_pwm_unit_is_located=(jsonArray1.getJSONObject(i).getString("where_the_attached_pwm_unit_is_located"));
                             amt_of_compostable_garbage_collected=(jsonArray1.getJSONObject(i).getString("amt_of_compostable_garbage_collected"));
+                            fileString =(jsonArray1.getJSONObject(i).getString("receipt_file"));
+                            receipt_file_name =(jsonArray1.getJSONObject(i).getString("receipt_file_name"));
 
                         }
                     }
@@ -542,10 +549,29 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
                         amt_of_compostable_garbage_collected="";
                         where_the_attached_pwm_unit_is_located="";
+                        fileString="";
+                        receipt_file_name="";
                     }
 
                 }
                 catch (JSONException e){
+                    total_quantity_of_waste="";
+                    quantity_of_bio_degradable_waste="";
+                    total_quantity_of_compost_generated_from_community="";
+                    total_quantity_of_compost_generated_from_vermi="";
+                    quantity_of_compost_sold = "";
+                    total_revenue_generated = "";
+                    date_entry_for = "";
+
+                    amount_of_compostable_waste_sent_for_recycling_in_kg="";
+                    amount_of_compostable_waste_sent_for_recycling_revenue_in_rs="";
+                    amount_of_plastic_waste_sent_to_pwm_unit_in_kg="";
+                    amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs="";
+
+                    amt_of_compostable_garbage_collected="";
+                    where_the_attached_pwm_unit_is_located="";
+                    fileString="";
+                    receipt_file_name="";
 
                 }
 
@@ -654,6 +680,13 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.setText(amount_of_plastic_waste_sent_to_pwm_unit_revenue_in_rs);
 
             carriedOutsScreenBinding.amtOfCompostableGarbageCollected.setText(amt_of_compostable_garbage_collected);
+            carriedOutsScreenBinding.pdfName.setText(receipt_file_name);
+            if(!fileString.equals("")){
+                carriedOutsScreenBinding.pdfIcon.setVisibility(View.VISIBLE);
+            }
+            else {
+                carriedOutsScreenBinding.pdfIcon.setVisibility(View.GONE);
+            }
             if(where_the_attached_pwm_unit_is_located!=null&&!where_the_attached_pwm_unit_is_located.equals("")){
                 carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setSelection(getIndex(where_the_attached_pwm_unit_is_located));
             }
@@ -939,6 +972,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                             carriedOutsScreenBinding.pdfName.setText(displayName);
                             ConvertToString(uri);
                             Log.d("fileString>>", fileString);
+                            carriedOutsScreenBinding.pdfIcon.setVisibility(View.VISIBLE);
                         }
                     } finally {
                         cursor.close();
@@ -949,6 +983,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 //                    existingTradeDetailsViewNewBinding.fileLocation.setText(getFilePath(this,uri));
 
                     carriedOutsScreenBinding.pdfName.setText(displayName);
+                    carriedOutsScreenBinding.pdfIcon.setVisibility(View.VISIBLE);
                 }
             }
         }
@@ -1027,8 +1062,8 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
     private void showFileChooser() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("*/*");
-//        intent.setType("application/pdf");
+//        intent.setType("*/*");
+        intent.setType("application/pdf");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
@@ -1165,27 +1200,45 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                             if(!quantity_of_compost_sold.equals("")){
                                 if(!total_revenue_generated.equals("")){
                                     if (is_plastic_connected_to_waste_management_unit.equals("Y")){
-                                        if(!quantity_of_compostable_waste_recycle.equals("")){
-                                            if(!total_recycle_plastic_waste_revenue_generated.equals("")){
-                                                if(!total_plastic_waste.equals("")){
-                                                    if(!total_plastic_waste_revenue_generated.equals("")){
-                                                        adapterItemValuesCheck();
+                                        if(!where_the_attached_pwm_unit_is_located.equals("")){
+                                            if(!amt_of_compostable_garbage_collected.equals("")){
+                                                if(!quantity_of_compostable_waste_recycle.equals("")){
+                                                    if(!total_recycle_plastic_waste_revenue_generated.equals("")){
+                                                        if(!total_plastic_waste.equals("")){
+                                                            if(!total_plastic_waste_revenue_generated.equals("")){
+                                                                if(!fileString.equals("")){
+                                                                    adapterItemValuesCheck();
+                                                                }
+                                                                else {
+                                                                    Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.attach_your_receipt));
+
+                                                                }
+
+                                                            }
+                                                            else {
+                                                                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.revenue_rs));
+                                                            }
+                                                        }
+                                                        else {
+                                                            Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.plastic_waste_unit));
+                                                        }
                                                     }
                                                     else {
                                                         Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.revenue_rs));
                                                     }
                                                 }
                                                 else {
-                                                    Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.plastic_waste_unit));
+                                                    Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.compostable_waste_recycle_text));
                                                 }
                                             }
                                             else {
-                                                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.revenue_rs));
+                                                Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.quantity_of_compost_sold_in_kg));
                                             }
                                         }
                                         else {
-                                            Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.compostable_waste_recycle_text));
+                                            Utils.showAlert(AddCarriedOutsScreen.this,getResources().getString(R.string.select_village));
                                         }
+
                                     }
                                     else {
                                         adapterItemValuesCheck();
@@ -1226,7 +1279,8 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
     }
 
     public void adapterItemValuesCheck(){
-        dbData.open();
+        byte[] receipt_file = StringToByteArray(fileString);
+         dbData.open();
         ArrayList <RealTimeMonitoringSystem> carriedOutAdapterList = new ArrayList<>();
         boolean all_is_correct= false;
         if(carriedOutListDetails.size()>0){
@@ -1275,6 +1329,8 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
                     contentValues.put("where_the_attached_pwm_unit_is_located",where_the_attached_pwm_unit_is_located);
                     contentValues.put("amt_of_compostable_garbage_collected",amt_of_compostable_garbage_collected);
+
+                    contentValues.put("receipt_file",receipt_file);
 
                     if(dbData.gettableCountCarriedOutTable("",swm_infra_details_id,choose_date_string)>0){
                         insert_updated_id = db.update(DBHelper.SWM_CARRIED_OUT_DETAILS,contentValues,null,null);
@@ -1365,6 +1421,8 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
                 contentValues.put("where_the_attached_pwm_unit_is_located",where_the_attached_pwm_unit_is_located);
                 contentValues.put("amt_of_compostable_garbage_collected",amt_of_compostable_garbage_collected);
 
+                contentValues.put("receipt_file",receipt_file);
+
                 if(dbData.gettableCountCarriedOutTable("",swm_infra_details_id,choose_date_string)>0){
                     insert_updated_id = db.update(DBHelper.SWM_CARRIED_OUT_DETAILS,contentValues,null,null);
                     if (insert_updated_id>0){
@@ -1407,5 +1465,17 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             super.onBackPressed();
             overridePendingTransition(R.anim.slide_in,R.anim.slide_out);
         }
+    }
+
+    public byte[] StringToByteArray(String fileString){
+        String str = fileString;
+        byte[] b = new byte[0];
+        try {
+            b = str.getBytes();
+        }
+        catch (Exception e){
+
+        }
+        return b;
     }
 }

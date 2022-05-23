@@ -1441,6 +1441,15 @@ public class RealTimeMonitoringSystem {
     private String where_the_attached_pwm_unit_is_located;
     private String amt_of_compostable_garbage_collected;
     private String pv_name_ta;
+    private String receipt_file;
+
+    public String getReceipt_file() {
+        return receipt_file;
+    }
+
+    public void setReceipt_file(String receipt_file) {
+        this.receipt_file = receipt_file;
+    }
 
     public String getPv_name_ta() {
         return pv_name_ta;
@@ -1464,5 +1473,24 @@ public class RealTimeMonitoringSystem {
 
     public void setAmt_of_compostable_garbage_collected(String amt_of_compostable_garbage_collected) {
         this.amt_of_compostable_garbage_collected = amt_of_compostable_garbage_collected;
+    }
+
+    private int swm_activity_carried_out_id;
+    private String check_flag;
+
+    public String getCheck_flag() {
+        return check_flag;
+    }
+
+    public void setCheck_flag(String check_flag) {
+        this.check_flag = check_flag;
+    }
+
+    public int getSwm_activity_carried_out_id() {
+        return swm_activity_carried_out_id;
+    }
+
+    public void setSwm_activity_carried_out_id(int swm_activity_carried_out_id) {
+        this.swm_activity_carried_out_id = swm_activity_carried_out_id;
     }
 }

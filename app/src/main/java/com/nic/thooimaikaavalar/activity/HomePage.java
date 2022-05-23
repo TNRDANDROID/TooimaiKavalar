@@ -120,6 +120,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
 
         /////////////////**************** //////
         getVillageList();
+        getis_plastic_waste_management();
         getPwmVillageList();
         getHabList();
         get_swm_capacity_of_mcc_in_tones();
@@ -223,6 +224,13 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
             e.printStackTrace();
         }
     }
+    public void getis_plastic_waste_management() {
+        try {
+            new ApiService(this).makeJSONObjectRequest("is_plastic_waste_management", Api.Method.POST, UrlGenerator.getWorkListUrl(), is_plastic_waste_managementJsonParams(), "not cache", this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
     public void getHabList() {
         try {
             new ApiService(this).makeJSONObjectRequest("HabitationList", Api.Method.POST, UrlGenerator.getServicesListUrl(), habitationListJsonParams(), "not cache", this);
@@ -295,6 +303,14 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
         dataSet.put(AppConstant.DATA_CONTENT, authKey);
         Log.d("pwmvillageList", "" + dataSet);
+        return dataSet;
+    }
+    public JSONObject is_plastic_waste_managementJsonParams() throws JSONException {
+        String authKey = Utils.encrypt(prefManager.getUserPassKey(), getResources().getString(R.string.init_vector), Utils.is_plastic_waste_managementJsonParams(this).toString());
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
+        dataSet.put(AppConstant.DATA_CONTENT, authKey);
+        Log.d("is_plastic_waste", "" + dataSet);
         return dataSet;
     }
     public JSONObject habitationListJsonParams() throws JSONException {
@@ -614,6 +630,16 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
                     prefManager.set_carried_out_date_listJson(jsonObject.getJSONArray("DATE_LIST"));
                 }
                 Log.d("carried_out_date_listParams", "" + responseDecryptedBlockKey);
+            }
+            if ("is_plastic_waste_management".equals(urlType) && responseObj != null) {
+                String key = responseObj.getString(AppConstant.ENCODE_DATA);
+                String responseDecryptedBlockKey = Utils.decrypt(prefManager.getUserPassKey(), key);
+                JSONObject jsonObject = new JSONObject(responseDecryptedBlockKey);
+                if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
+                    JSONArray jsonArray = jsonObject.getJSONArray("JSON_DATA");
+                    prefManager.setis_pwm(jsonArray.getJSONObject(0).getString("is_pwm"));
+                }
+                Log.d("is_plastic_waste_management", "" + responseDecryptedBlockKey);
             }
 
 

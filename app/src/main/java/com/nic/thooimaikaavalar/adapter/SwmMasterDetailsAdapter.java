@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nic.thooimaikaavalar.R;
 import com.nic.thooimaikaavalar.activity.NewPendingScreenActivity;
+import com.nic.thooimaikaavalar.activity.PWMUNIT.PwmUnitSale;
 import com.nic.thooimaikaavalar.activity.SWMActivity.AddCarriedOutsScreen;
 import com.nic.thooimaikaavalar.activity.SWMActivity.Add_ViewWasteDumpDetails;
 import com.nic.thooimaikaavalar.activity.SWMActivity.SwmDashboard;
@@ -111,11 +112,20 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
             if(which_flag.equals("Carried_Out")){
                 holder.swmMasterBasicDetailsAdapterBinding.linearLayout.setVisibility(View.GONE);
                 holder.swmMasterBasicDetailsAdapterBinding.carriedOutLayout.setVisibility(View.VISIBLE);
+                holder.swmMasterBasicDetailsAdapterBinding.pwmUnitSaleLayout.setVisibility(View.GONE);
+            }
+            else if(which_flag.equals("PWMUnitSale")){
+                holder.swmMasterBasicDetailsAdapterBinding.pwmUnitSaleLayout.setVisibility(View.VISIBLE);
+                holder.swmMasterBasicDetailsAdapterBinding.linearLayout.setVisibility(View.GONE);
+                holder.swmMasterBasicDetailsAdapterBinding.view2.setVisibility(View.GONE);
+                holder.swmMasterBasicDetailsAdapterBinding.carriedOutLayout.setVisibility(View.GONE);
+
             }
             else {
                 holder.swmMasterBasicDetailsAdapterBinding.linearLayout.setVisibility(View.VISIBLE);
                 holder.swmMasterBasicDetailsAdapterBinding.view2.setVisibility(View.GONE);
                 holder.swmMasterBasicDetailsAdapterBinding.carriedOutLayout.setVisibility(View.GONE);
+                holder.swmMasterBasicDetailsAdapterBinding.pwmUnitSaleLayout.setVisibility(View.GONE);
             }
             holder.swmMasterBasicDetailsAdapterBinding.uploadIcon.setVisibility(View.GONE);
             holder.swmMasterBasicDetailsAdapterBinding.deleteIcon.setVisibility(View.GONE);
@@ -161,6 +171,12 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
             @Override
             public void onClick(View view) {
                 gotoCarriedOut(position);
+            }
+        });
+        holder.swmMasterBasicDetailsAdapterBinding.pwmUnitSaleLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoPwmUnitSale(position);
             }
         });
     }
@@ -214,6 +230,11 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
         intent.putExtra("is_plastic_connected_to_waste_management_unit",basicDetailsList.get(pos).getIs_plastic_connected_to_waste_management_unit());
         context.startActivity(intent);
 
+    }
+    public void gotoPwmUnitSale(int pos){
+        Intent intent = new Intent(context, PwmUnitSale.class);
+        intent.putExtra("swm_infra_details_id",basicDetailsList.get(pos).getSwm_infra_details_id());
+        context.startActivity(intent);
     }
 
     public void deletePending(int position) {

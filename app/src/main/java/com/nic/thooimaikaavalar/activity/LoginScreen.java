@@ -336,6 +336,7 @@ Log.d("params",""+params);
                         prefManager.setBlockName(jsonObject.get(AppConstant.BLOCK_NAME));
                         prefManager.setDesignation(jsonObject.get(AppConstant.DESIG_NAME));
                         prefManager.setName(String.valueOf(jsonObject.get(AppConstant.DESIG_NAME)));
+                        //prefManager.setis_pwm(String.valueOf(jsonObject.get("is_pwm")));
                         Log.d("userdata", "" + prefManager.getDistrictCode() + prefManager.getBlockCode() + prefManager.getPvCode() + prefManager.getDistrictName() + prefManager.getBlockName()+prefManager.getName());
                         prefManager.setUserPassKey(decryptedKey);
                         showHomeScreen();

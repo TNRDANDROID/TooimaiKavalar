@@ -1542,6 +1542,9 @@ public class dbData {
                             .getColumnIndexOrThrow("where_the_attached_pwm_unit_is_located")));
                     card.setAmt_of_compostable_garbage_collected(cursor.getString(cursor
                             .getColumnIndexOrThrow("amt_of_compostable_garbage_collected")));
+                    byte[] receipt_file = cursor.getBlob(cursor.getColumnIndexOrThrow("receipt_file"));
+                    String s = new String(receipt_file);
+                    card.setReceipt_file(s);
 
 
                     cards.add(card);

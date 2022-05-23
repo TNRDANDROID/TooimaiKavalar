@@ -66,6 +66,7 @@ public class PrefManager {
     private static final String KEY_HAB_CODE = "Hab_Code";
     private static final String KEY_no_of_waste_dump_photos = "no_of_waste_dump_photos";
     private static final String KEY_carried_out_date_list = "carried_out_date_list";
+    private static final String KEY_is_pwm = "is_pwm";
 
 
     public PrefManager(Context context) {
@@ -361,6 +362,15 @@ public class PrefManager {
         return pref.getString(KEY_SPINNER_SELECTED_PVCODE, null);
     }
 
+
+    public void setis_pwm(String is_pwm) {
+        editor.putString(KEY_is_pwm, is_pwm);
+        editor.commit();
+    }
+
+    public String getis_pwm() {
+        return pref.getString(KEY_is_pwm, null);
+    }
 
     public void clearSharedPreferences(Context context) {
         pref = _context.getSharedPreferences(AppConstant.PREF_NAME, PRIVATE_MODE);
