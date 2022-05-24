@@ -3,6 +3,8 @@ package com.nic.thooimaikaavalar.adapter;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.icu.text.SimpleDateFormat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import com.nic.thooimaikaavalar.databinding.ThooimaiKavaalarDetailsAddLayoutAdap
 import com.nic.thooimaikaavalar.model.RealTimeMonitoringSystem;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -28,10 +31,12 @@ public class ThooimaiKaavalrEnterDetailsAdapter extends RecyclerView.Adapter<Tho
     int counts;
     int Pos=-1;
     Context context;
+    ArrayList<RealTimeMonitoringSystem> thooimaiKaavalarList;
 
-    public ThooimaiKaavalrEnterDetailsAdapter(int counts, Context context) {
+    public ThooimaiKaavalrEnterDetailsAdapter(int counts, Context context,ArrayList<RealTimeMonitoringSystem> thooimaiKaavalarList) {
         this.counts =counts;
         this.context = context;
+        this.thooimaiKaavalarList = thooimaiKaavalarList;
     }
 
     @NonNull
@@ -68,6 +73,7 @@ public class ThooimaiKaavalrEnterDetailsAdapter extends RecyclerView.Adapter<Tho
                                 String date = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
                                 //dateFormate(date);
                                 holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.dateOfEngage.setText(dateFormate(date,""));
+                                thooimaiKaavalarList.get(position).setDate_of_engagement(holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.dateOfEngage.getText().toString());
 
                             }
                         }, year, month, day);
@@ -95,6 +101,7 @@ public class ThooimaiKaavalrEnterDetailsAdapter extends RecyclerView.Adapter<Tho
                                 String date = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
                                 //dateFormate(date);
                                 holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.dateOfTraining.setText(dateFormate(date,""));
+                                thooimaiKaavalarList.get(position).setDate_of_training_given(holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.dateOfTraining.getText().toString());
 
                             }
                         }, year, month, day);
@@ -102,11 +109,47 @@ public class ThooimaiKaavalrEnterDetailsAdapter extends RecyclerView.Adapter<Tho
                 datePickerDialog.show();
             }
         });
+        holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                thooimaiKaavalarList.get(position).setName_of_the_thooimai_kaavalars(holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.name.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.mobileNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                thooimaiKaavalarList.get(position).setMobile_no(holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.mobileNumber.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.name.setText(""+thooimaiKaavalarList.get(position).getName_of_the_thooimai_kaavalars());
+        holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.mobileNumber.setText(""+thooimaiKaavalarList.get(position).getMobile_no());
+        holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.dateOfEngage.setText(""+thooimaiKaavalarList.get(position).getDate_of_engagement());
+        holder.thooimaiKavaalarDetailsAddLayoutAdapterBinding.dateOfTraining.setText(""+thooimaiKaavalarList.get(position).getDate_of_training_given());
     }
 
     @Override
     public int getItemCount() {
-        return counts;
+        return thooimaiKaavalarList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -150,6 +193,10 @@ public class ThooimaiKaavalrEnterDetailsAdapter extends RecyclerView.Adapter<Tho
             System.out.println("Parse Exception : " + pe);
         }
         return strDate;
+    }
+
+    public ArrayList<RealTimeMonitoringSystem> getAllList(){
+        return thooimaiKaavalarList;
     }
 
 

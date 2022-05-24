@@ -135,7 +135,7 @@
     <string name="scheme_group_name">Scheme Group Name</string>
     <string name="scheme_name">Scheme Name</string>
     <string name="financial_year">Financial Year</string>
-    <string name="agency_name">Agency Name</string>
+    <string name="agency_name">ஏஜென்சி பெயர்</string>
     <string name="work_group_name">Work Group Name</string>
     <string name="work_name">Work Name</string>
     <string name="block">Block</string>
@@ -327,8 +327,9 @@
     <string name="is_pending_available">உள்ளது</string>
     <string name="attach_your_receipt">தயவுசெய்து உங்கள் ரசீதை இணைக்கவும்</string>
     <string name="plastic_waste_management_unit_sale">நெகிழிக் கழிவு மேலாண்மை அலகு விற்பனை</string>
-    <string name="quantity">Quantity</string>
-    <string name="amount">Amount</string>
+    <string name="quantity">அளவு (கி)</string>
+    <string name="amount">தொகை</string>
+    <string name="cheque">காசோலை</string>
 
 
 </resources>

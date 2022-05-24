@@ -39,6 +39,7 @@ public class AddThooimaiKaavalarDetails extends AppCompatActivity {
 
     EditText name,mobile_number,date_of_engage,date_of_training;
     String thooimai_kaavalar_id="";
+    ArrayList<RealTimeMonitoringSystem> thooimaiKaavalrList;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
@@ -72,32 +73,42 @@ public class AddThooimaiKaavalarDetails extends AppCompatActivity {
 
     public void initializeRecycler(){
         activityAddThooimaiKaavalarDetailsBinding.addRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-        thooimaiKaavalrEnterDetailsAdapter = new ThooimaiKaavalrEnterDetailsAdapter(count,this);
+        thooimaiKaavalrList = new ArrayList<>();
+        for(int i=0;i<count;i++){
+            RealTimeMonitoringSystem realTimeMonitoringSystem = new RealTimeMonitoringSystem();
+            realTimeMonitoringSystem.setName_of_the_thooimai_kaavalars("");
+            realTimeMonitoringSystem.setMobile_no("");
+            realTimeMonitoringSystem.setDate_of_engagement("");
+            realTimeMonitoringSystem.setDate_of_training_given("");
+            thooimaiKaavalrList.add(realTimeMonitoringSystem);
+        }
+        thooimaiKaavalrEnterDetailsAdapter = new ThooimaiKaavalrEnterDetailsAdapter(count,this,thooimaiKaavalrList);
         activityAddThooimaiKaavalarDetailsBinding.addRecycler.setAdapter(thooimaiKaavalrEnterDetailsAdapter);
 
     }
 
     public void checkItems() {
         dbData.open();
-        activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildCount();
-        int childCount = activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildCount();
+        /*activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildCount();
+        //int childCount = activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildCount();
+        int childCount = thooimaiKaavalrEnterDetailsAdapter.getAllList().size();*/
+        ArrayList<RealTimeMonitoringSystem> thooimai_kaavalar_list = new ArrayList<>(thooimaiKaavalrEnterDetailsAdapter.getAllList());
         int count=0;
         try {
-            if (childCount > 0) {
+            if (thooimai_kaavalar_list.size() > 0) {
                 if (checkCondition()) {
-                    for (int i = 0; i < childCount; i++) {
+                    for (int i = 0; i < thooimai_kaavalar_list.size(); i++) {
                         count = count + 1;
-                        View vv = activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildAt(i);
+                        /*View vv = activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildAt(i);
                         mobile_number = vv.findViewById(R.id.mobile_number);
                         name = vv.findViewById(R.id.name);
                         date_of_engage = vv.findViewById(R.id.date_of_engage);
-                        date_of_training = vv.findViewById(R.id.date_of_training);
+                        date_of_training = vv.findViewById(R.id.date_of_training);*/
 
-                        String name_new = name.getText().toString();
-                        String mobile_number_1 = mobile_number.getText().toString();
-                        String date_of_engage_1 = date_of_engage.getText().toString();
-                        String date_of_training_1 = date_of_training.getText().toString();
+                        String name_new = thooimai_kaavalar_list.get(i).getName_of_the_thooimai_kaavalars();
+                        String mobile_number_1 = thooimai_kaavalar_list.get(i).getMobile_no();
+                        String date_of_engage_1 = thooimai_kaavalar_list.get(i).getDate_of_engagement();
+                        String date_of_training_1 =thooimai_kaavalar_list.get(i).getDate_of_training_given();
                         String mcc_id = getIntent().getStringExtra("mcc_id");
 
                         RealTimeMonitoringSystem realTimeMonitoringSystem = new RealTimeMonitoringSystem();
@@ -110,7 +121,7 @@ public class AddThooimaiKaavalarDetails extends AppCompatActivity {
 
                         dbData.insertThooimaiKaavaleDetailsLocal(realTimeMonitoringSystem);
 
-                        if (childCount == count) {
+                        if (thooimai_kaavalar_list.size() == count) {
                                 onBackPressed();
                                 Toast.makeText(this, getResources().getString(R.string.inserted_success), Toast.LENGTH_SHORT).show();
                             }
@@ -131,22 +142,30 @@ public class AddThooimaiKaavalarDetails extends AppCompatActivity {
     }
 
     public boolean checkCondition(){
-        activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildCount();
-        int childCount = activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildCount();
+        /*activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildCount();
+        int childCount = activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildCount();*/
+        ArrayList<RealTimeMonitoringSystem> thooimai_kaavalar_list = new ArrayList<>(thooimaiKaavalrEnterDetailsAdapter.getAllList());
+
         try {
             JSONArray imageJson = new JSONArray();
-            if (childCount > 0) {
-                for (int i = 0; i < childCount; i++) {
+            if (thooimai_kaavalar_list.size() > 0) {
+                for (int i = 0; i < thooimai_kaavalar_list.size(); i++) {
                     JSONObject jsonObject = new JSONObject();
-                    View vv = activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildAt(i);
+                    /*View vv = activityAddThooimaiKaavalarDetailsBinding.addRecycler.getChildAt(i);
                     mobile_number = vv.findViewById(R.id.mobile_number);
                     name = vv.findViewById(R.id.name);
                     date_of_engage = vv.findViewById(R.id.date_of_engage);
                     date_of_training = vv.findViewById(R.id.date_of_training);
-                    jsonObject.put("name", name.getText().toString());
-                    jsonObject.put("mobile_number", mobile_number.getText().toString());
-                    jsonObject.put("date_of_engage", date_of_engage.getText().toString());
-                    jsonObject.put("date_of_training", date_of_training.getText().toString());
+*/
+                    String name_new = thooimai_kaavalar_list.get(i).getName_of_the_thooimai_kaavalars();
+                    String mobile_number_1 = thooimai_kaavalar_list.get(i).getMobile_no();
+                    String date_of_engage_1 = thooimai_kaavalar_list.get(i).getDate_of_engagement();
+                    String date_of_training_1 =thooimai_kaavalar_list.get(i).getDate_of_training_given();
+
+                    jsonObject.put("name", name_new);
+                    jsonObject.put("mobile_number", mobile_number_1);
+                    jsonObject.put("date_of_engage", date_of_engage_1);
+                    jsonObject.put("date_of_training", date_of_training_1);
                     /*jsonObject.put("deleted","N");*/
                     imageJson.put(jsonObject);
                   /*  if(!name.getText().toString().equals("")){

@@ -146,7 +146,7 @@
                                         android:textSize="@dimen/_11sdp"
                                         android:textAlignment="textStart"
                                         android:layout_marginStart="@dimen/_4sdp"
-                                        android:text="Quantity"/>
+                                        android:text="@string/quantity"/>
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
@@ -182,7 +182,7 @@
                                         android:textSize="@dimen/_11sdp"
                                         android:textAlignment="textStart"
                                         android:layout_marginStart="@dimen/_4sdp"
-                                        android:text="Amount"/>
+                                        android:text="@string/amount"/>
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
@@ -231,7 +231,7 @@
                                         android:textSize="@dimen/_11sdp"
                                         android:textAlignment="textStart"
                                         android:layout_marginStart="@dimen/_4sdp"
-                                        android:text="Agency Name"/>
+                                        android:text="@string/agency_name"/>
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
@@ -279,7 +279,7 @@
                                         android:textSize="@dimen/_11sdp"
                                         android:textAlignment="textStart"
                                         android:layout_marginStart="@dimen/_4sdp"
-                                        android:text="Cheque"/>
+                                        android:text="@string/cheque"/>
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"

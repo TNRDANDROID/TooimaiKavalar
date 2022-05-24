@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
@@ -39,8 +40,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -477,6 +477,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class fetchOnlineWasteDumpTask extends AsyncTask<JSONObject, Void, ArrayList<RealTimeMonitoringSystem>> {
         String total_quantity_of_waste="";
         String quantity_of_bio_degradable_waste="";
