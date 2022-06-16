@@ -466,52 +466,6 @@
                             <TextView
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginEnd="@dimen/_10sdp"
-                                android:id="@+id/select_which_village_connected_tv"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@string/tamil_font"
-                                android:layout_marginTop="@dimen/padding"
-                                android:text="@string/where_the_attached_pwm_unit_is_located"
-                                android:textColor="@android:color/black"
-                                android:textSize="@dimen/_12sdp"
-                                />
-                            <RelativeLayout
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:id="@+id/where_the_attached_pwm_unit_is_located_layout"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/header"
-                                android:layout_marginTop="@dimen/padding"
-                                android:background="@drawable/rectangle_box"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentStart="true"
-                                    android:layout_centerInParent="true"
-                                    android:layout_marginStart="15dp"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:visibility="visible"
-                                    android:fontFamily="@string/tamil_font"
-                                    tools:ignore="RelativeOverlap" />
-
-                                <Spinner
-                                    android:id="@+id/pwm_unit_is_located_spinner"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerInParent="true"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginRight="10dp"
-                                    android:gravity="center" />
-
-                            </RelativeLayout>
-
-                            <TextView
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:layout_marginEnd="@dimen/_10sdp"
                                 android:id="@+id/please_amt_of_compostable_garbage_collected"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -708,6 +662,8 @@
 
                             </RelativeLayout>
 
+
+
                             <TextView
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginEnd="@dimen/_10sdp"
@@ -757,7 +713,51 @@
 
                             </RelativeLayout>
 
+                            <TextView
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/select_which_village_connected_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@string/tamil_font"
+                                android:layout_marginTop="@dimen/padding"
+                                android:text="@string/where_the_attached_pwm_unit_is_located"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_12sdp"
+                                />
+                            <RelativeLayout
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:id="@+id/where_the_attached_pwm_unit_is_located_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/header"
+                                android:layout_marginTop="@dimen/padding"
+                                android:background="@drawable/rectangle_box"
+                                android:orientation="vertical">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginStart="15dp"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:visibility="visible"
+                                    android:fontFamily="@string/tamil_font"
+                                    tools:ignore="RelativeOverlap" />
+
+                                <Spinner
+                                    android:id="@+id/pwm_unit_is_located_spinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:gravity="center" />
+
+                            </RelativeLayout>
 
                             <TextView
                                 android:layout_marginStart="@dimen/_10sdp"

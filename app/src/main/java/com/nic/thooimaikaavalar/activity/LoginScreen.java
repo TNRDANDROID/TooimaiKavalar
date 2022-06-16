@@ -222,14 +222,17 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     }
 
     public void checkLoginScreen() {
-        loginScreenBinding.userName.setText("kpmkcpmvp1u3");
-        loginScreenBinding.userPassword.setText("test123#$");
+        /*loginScreenBinding.userName.setText("kpmkcpmvp1u3");
+        loginScreenBinding.userPassword.setText("test123#$");*/
 
         /*loginScreenBinding.userName.setText("kpmkcpmvp1u3");
         loginScreenBinding.userPassword.setText("rdas77#$");*/
 
         /*loginScreenBinding.userName.setText("maedemo");
         loginScreenBinding.password.setText("crd123#$");*/
+
+        loginScreenBinding.userName.setText("tkssnklvp13");
+        loginScreenBinding.userPassword.setText("rdas716#$");
 
         final String username = loginScreenBinding.userName.getText().toString().trim();
         final String password = loginScreenBinding.userPassword.getText().toString().trim();
