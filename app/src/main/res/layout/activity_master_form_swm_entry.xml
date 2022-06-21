@@ -200,7 +200,7 @@
                                 android:id="@+id/no_of_thooimai_kaavalars_working"
                                 android:fontFamily="@string/tamil_font"
                                 android:background="@color/full_transparent"
-                                android:hint="@string/please_specify"
+                                android:hint="@string/please_specify_count"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp"
                                 android:visibility="visible"

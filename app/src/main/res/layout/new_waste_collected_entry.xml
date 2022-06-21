@@ -83,11 +83,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/welcome_tv"
+                                android:visibility="gone"
                                 android:textColor="@color/red"
                                 android:textSize="@dimen/_15sdp"
                                 android:textStyle="bold"
                                 android:layout_marginStart="@dimen/_15sdp"
-                                android:text="@string/welcome_back"/>
+                                android:text="@string/waste_collected_entry_form"/>
 
 
                         </RelativeLayout>

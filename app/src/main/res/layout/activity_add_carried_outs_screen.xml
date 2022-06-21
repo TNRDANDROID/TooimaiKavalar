@@ -37,12 +37,14 @@
                     android:contentDescription="@string/back_icon"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/title"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
-                    android:text="@string/activity_carried_out"
+                    android:layout_toRightOf="@+id/back_img"
+                    android:layout_toLeftOf="@+id/waste_dump_img"
+                    android:text="@string/daily_activity_carried_out"
                     android:fontFamily="@string/tamil_font"
                     android:layout_centerInParent="true"
                     android:textStyle="bold"/>
@@ -51,6 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/waste_dump_img"
+                    android:layout_toRightOf="@+id/title_tv"
                     android:src="@drawable/ic_boi_degradable_waste"
                     android:padding="@dimen/_10sdp"
                     android:tint="@color/white"

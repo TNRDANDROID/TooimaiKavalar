@@ -106,7 +106,7 @@
                             android:id="@+id/mcc_name"
                             android:fontFamily="@string/tamil_font"
                             android:background="@color/full_transparent"
-                            android:hint="@string/enter_mcc_name"
+                            android:hint="@string/enter_mcc"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
                             android:visibility="visible"

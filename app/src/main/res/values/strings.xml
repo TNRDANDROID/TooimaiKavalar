@@ -31,6 +31,7 @@
     <string name="select_habitation">Select Habitation</string>
     <string name="select_water_supply">Select Water Supply Availability</string>
     <string name="please_specify">Please Specify</string>
+    <string name="please_specify_count">Please Specify Count</string>
     <string name="add_thooimai_kaavalar">Add Thooimai Kaavalar</string>
     <string name="submit">Submit</string>
     <string name="go">Go</string>
@@ -43,6 +44,7 @@
     <string name="add_new_mcc">Add New MCC</string>
     <string name="edit_mcc">View/Edit MCC</string>
     <string name="enter_mcc_name">Enter MCC Name</string>
+    <string name="enter_mcc">Enter MCC Name</string>
     <string name="please_enter_mcc_name">Please Enter MCC Name</string>
     <string name="select_date_of_commencement">Select Date Of Commencement</string>
     <string name="capture_mcc_center">Capture MICRO COMPOSTING CENTRE</string>
@@ -282,6 +284,7 @@
     <string name="daily_collected_entry">Daily Collected Entry</string>
     <string name="waste_collected_details">Waste Collected Details</string>
     <string name="activity_carried_out">Activity Carried Out</string>
+    <string name="daily_activity_carried_out">Activity Carried Out</string>
     <string name="micro_composting_center">Micro Composting Center</string>
     <string name="add_carried_out">Activity Carried Out</string>
     <string name="solid_waste_management">Solid Waste Management</string>
@@ -329,5 +332,6 @@
     <string name="quantity">Quantity</string>
     <string name="amount">Amount</string>
     <string name="cheque">Cheque</string>
+    <string name="is_this_working">Is This Working ?</string>
 
 </resources>

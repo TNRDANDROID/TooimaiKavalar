@@ -62,7 +62,7 @@
                 android:gravity="start"
                 android:textSize="13sp"
                 android:id="@+id/asset_name"
-                android:text="Is This Working ?"
+                android:text="@string/is_this_working"
                 android:fontFamily="@string/tamil_font" />
 
             <TextView
@@ -73,7 +73,7 @@
                 android:gravity="start"
                 android:textSize="13sp"
                 android:id="@+id/ques"
-                android:text="Is This Working ?"
+                android:text="@string/is_this_working"
                 android:fontFamily="@string/tamil_font" />
             <TextView
                 android:layout_width="wrap_content"

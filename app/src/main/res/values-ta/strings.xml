@@ -3,7 +3,7 @@
     <string name="app_name">MCC</string>
     <string name="hint_password">கடவுச்சொல்</string>
     <string name="hint_username">பயனர் பெயர்</string>
-    <string name="btn_login">உள்நுழை</string>
+    <string name="btn_login">உள்செல்ல</string>
     <string name="font_circular_medium">circular-medium.ttf</string>
     <string name="font_circular_bold">circular-bold.ttf</string>
     <string name="font_circular_book">circular-book.ttf</string>
@@ -30,8 +30,9 @@
     <string name="date_of_training">தூய்மை காவலர்களின் பயிற்சி நாள்</string>
     <string name="add">சேர்க்க</string>
     <string name="select_habitation">குக்க்ராமத்தை தேர்ந்தெடுக்கவும்</string>
-    <string name="select_water_supply">நீர் வழங்கல் ஆதாரத்தை தேர்ந்தெடுக்கவும்</string>
+    <string name="select_water_supply">நீர் ஆதாரத்தை தேர்ந்தெடுக்கவும்</string>
     <string name="please_specify">தயவுசெய்து குறிப்பிடவும்</string>
+    <string name="please_specify_count">எண்ணிக்கையினை குறிப்பிடவும்</string>
     <string name="add_thooimai_kaavalar">தூய்மை காவலர் சேர்க்க</string>
     <string name="submit">சமர்ப்பிக்கவும்</string>
     <string name="go">உள்நுழழை</string>
@@ -41,9 +42,10 @@
     <string name="please_enter_valid_mobile_number">தூய்மை காவலர் சரியான மொபைல் எண்ணை உள்ளிடவும்</string>
     <string name="please_enter_data_of_engage">தூய்மை காவலர் நிச்சயதார்த்த தேதியை உள்ளிடவும்</string>
     <string name="please_enter_date_of_training">தூய்மை காவலர் பயிற்சி தேதியை உள்ளிடவும்</string>
-    <string name="add_new_mcc">புதிய நுண்ணுயிர் உரம் தயாரிக்கும் மையம் சேர்க்க</string>
-    <string name="edit_mcc">நுண்ணுயிர் உரம் தயாரிக்கும் மையம் பார்க்க/திருத்த</string>
-    <string name="enter_mcc_name">நுண்ணுயிர் உரம் தயாரிக்கும் மைய்யத்தின் பெயர்</string>
+    <string name="add_new_mcc">புதிய நுண்ணியிர் உரம் தயாரிக்கும் மையம் குறித்த விபரங்களை சேர்க்க</string>
+    <string name="edit_mcc">புதிய நுண்ணியிர் உரம் தயாரிக்கும் மையம் குறித்த விபரங்களை காண</string>
+    <string name="enter_mcc_name">நுண்ணுயிர் உரம் தயாரிக்கும் மையத்தின் பெயர்</string>
+    <string name="enter_mcc">நுண்ணுயிர் உரம் தயாரிக்கும் மையம்</string>
     <string name="please_enter_mcc_name">MCC பெயரை உள்ளிடவும்</string>
     <string name="select_date_of_commencement">நுண்ணுயிர் உரம் தயாரிக்கும் மையம் தொடக்கப்பட்ட நாள்</string>
     <string name="capture_mcc_center">நுண்ணுயிர் உரம் தயாரிக்கும் மையத்தை புகைப்படம் எடுக்கவும்</string>
@@ -114,9 +116,9 @@
     <string name="menu_icon">menu_icon</string>
     <string name="pending_screen">நிலுவையில் உள்ள திரை</string>
     <string name="thooimai_kaavalar_screen">துாய்மை காவலர் திரை</string>
-    <string name="view_mcc">நுண்ணுயிர் உரம் தயாரிக்கும் மைய்யத்தை பார்க்கவும்</string>
+    <string name="view_mcc">நுண்ணுயிர் உரம் தயாரிக்கும் மையத்தை பார்க்கவும்</string>
     <string name="select_village">கிராமத்தைத் தேர்ந்தெடுக்கவும்</string>
-    <string name="mcc_list">நுண்ணுயிர் உரம் தயாரிக்கும் மைய்யத்தின் எண்கள்</string>
+    <string name="mcc_list">நுண்ணுயிர் உரம் தயாரிக்கும் மையத்தின் எண்கள்</string>
     <string name="close_icon">close_icon</string>
     <string name="components_photos">Components Photos</string>
     <string name="view_delete_images">புகைப்படங்களை பார்க்க/நீக்கு</string>
@@ -234,12 +236,12 @@
     <string name="date_of_commencement">தொடங்கப்பட்ட தேதி</string>
     <string name="circle_icon">circle_icon</string>
     <string name="enter_collected_details">சேகரிக்கப்பட்ட கழிவு விவரங்களை பதிவிடவும்</string>
-    <string name="waste_collected_entry_form">கழிவு சேகரிக்கப்பட்ட நுழைவு படிவம்</string>
-    <string name="waste_collected_from">சேகரிக்கப்பட்ட கழிவுகளின் ஆதாரம்</string>
+    <string name="waste_collected_entry_form">சேகரிக்கப்பட்ட கழிவுகளை பதிவு செய்யும் படிவம்</string>
+    <string name="waste_collected_from">கழிவுகள் சேகரிக்கப்படும் இடங்கள்</string>
     <string name="quantity_of_bio_degradable_waste_collected_in_kg">சேகரிக்கப்பட்ட மக்கும் கழிவுகளின் அளவு (கி)</string>
     <string name="households">வீட்டுக் கழிவுகள்</string>
     <string name="shops">கடைகள்</string>
-    <string name="market_places">சந்தை இடங்கள்</string>
+    <string name="market_places">காய்கறி சந்தை</string>
     <string name="hotels">ஹோட்டல் கழிவுகள்</string>
     <string name="others">Others</string>
     <string name="total_quantity_of_bio_degradable_waste_collected_in_kg">சேகரிக்கப்படும் மக்கும் கழிவுகளின் மொத்த அளவு (கி)</string>
@@ -263,7 +265,7 @@
     <string name="collect_swm_details">SWM விவரங்களைச் சேகரிக்கவும்</string>
     <string name="enter_no_of_thooimai_kaavalars_allocated">அனுமதிக்கப்பட்ட தூய்மை காவலர்களின் எண்ணிக்கை</string>
     <string name="enter_no_of_thooimai_kaavalars_working">பணிபுரியும் தூய்மை காவலர்களின் எண்ணிக்கை</string>
-    <string name="swm_details_entry">திடக்கழிவு மேலாண்மையின் சொத்துக்கள் விவரங்கள் உள்ளீடு</string>
+    <string name="swm_details_entry">திடக்கழிவு மேலாண்மையின் சொத்துக்கள் குறித்த விபரங்களை பதிவு செய்ய</string>
     <string name="whether_community_compost_pit_available_in_the_panchayat">ஊராட்சியில் சமுதாய உரக்குழி உள்ளதா?</string>
     <string name="whether_community_vermi_compost_facility_available_in_the_panchayat">ஊராட்சியில் மண்புழு உரம் தயாரிக்கும் வசதி உள்ளதா?</string>
     <string name="is_there_any_integrated_nursery_developed_near_swm_facility">திடக்கழிவு மேலாண்மை வசதிக்கு அருகில் ஏதேனும் ஒருங்கிணைந்த நாற்றங்கால் பண்ணை உருவாக்கப்பட்டுள்ளதா?</string>
@@ -279,10 +281,11 @@
     <string name="infrastructure_details">திடக்கழிவு மேலாண்மை வசதிகள் விவரங்கள்</string>
     <string name="add_view_assets_details">சொத்து விவரங்களைச் சேர்க்கவும்/பார்க்கவும்</string>
     <string name="add_view_waste_dump_details">கிராம ஊராட்சியில் குப்பை கிடங்கு தென்படுகிறதா? சேர்க்கவும்/பார்க்கவும்</string>
-    <string name="view_infrastructure">திடக்கழிவு மேலாண்மை வசதிகள் பார்க்க</string>
-    <string name="daily_collected_entry">தினசரி கழிவு சேகரிக்கப்பட்ட விவரங்கள் தினசரி கழிவு சேகரிக்கப்பட்ட நுழைவு</string>
+    <string name="view_infrastructure">புதிய நுண்ணியிர் உரம் தயாரிக்கும் மையம் குறித்த விபரங்களை காண</string>
+    <string name="daily_collected_entry">தினசரி கழிவு சேகரிக்கப்பட்ட விபரங்களை பதிவு செய்ய</string>
     <string name="waste_collected_details">கழிவு சேகரிக்கப்பட்ட விவரங்கள்</string>
     <string name="activity_carried_out">தினசரி அறிக்கை உள்ளீடு</string>
+    <string name="daily_activity_carried_out">தினசரி கழிவு சேகரிக்கப்பட்ட விபரங்களை பதிவு செய்ய</string>
     <string name="micro_composting_center">நுண்ணுயிர்  உரம் தயாரிக்கும் மையம்</string>
     <string name="add_carried_out">தினசரி அறிக்கை</string>
     <string name="solid_waste_management">திடக்கழிவு மேலாண்மை</string>
@@ -319,7 +322,7 @@
     <string name="swm_assets">SWM Assets</string>
     <string name="add_swm_asset_details">திடக்கழிவு மேலாண்மை வசதிகள் சேர்க்க</string>
     <string name="view_swm_assets">திடக்கழிவு மேலாண்மை வசதிகள் பார்க்க</string>
-    <string name="add_infrastructure">திடக்கழிவு மேலாண்மை வசதிகள் சேர்க்க</string>
+    <string name="add_infrastructure">புதிய நுண்ணியிர் உரம் தயாரிக்கும் மையம் குறித்த விபரங்களை சேர்க்க</string>
     <string name="waste_dump_photos_list">கிராம ஊராட்சியில் குப்பை கிடங்கு தென்படும் புகைப்படங்கள்</string>
     <string name="cleared_waste_dump_photos_list">Cleared Waste Dump Photos List</string>
     <string name="where_the_attached_pwm_unit_is_located">இணைக்கப்பட்டு உள்ள நெகிழிக் கழிவு மேலாண்மை அலகு அமைந்துள்ள கிராம ஊராட்சி</string>
@@ -330,6 +333,6 @@
     <string name="quantity">அளவு (கி)</string>
     <string name="amount">தொகை</string>
     <string name="cheque">காசோலை</string>
-
+    <string name="is_this_working">பயன்பாட்டில் உள்ளதா?</string>
 
 </resources>
