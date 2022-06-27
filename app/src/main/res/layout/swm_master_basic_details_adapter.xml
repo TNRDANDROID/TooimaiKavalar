@@ -28,10 +28,9 @@
                 android:layout_height="wrap_content"
                 >
             <RelativeLayout
-                android:layout_centerVertical="true"
                 android:id="@+id/image_rl"
-                android:layout_width="@dimen/_100sdp"
-                android:layout_height="@dimen/_100sdp">
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250sdp">
 
                 <ImageView
                     android:src="@drawable/swm_logo"
@@ -41,18 +40,23 @@
                     android:id="@+id/logo_image"
                     android:contentDescription="@string/logo_icon" />
             </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_250sdp"
+                android:background="#DDEEFFFF">
+            </RelativeLayout>
             <LinearLayout
                 android:id="@+id/ll1"
                 android:padding="@dimen/_5sdp"
                 android:layout_marginStart="@dimen/_7sdp"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/image_rl"
                 android:layout_toStartOf="@+id/delete_upload_rl"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/pv_name"
@@ -60,6 +64,7 @@
                     android:textColor="@color/black"
                     />
                 <TextView
+                    android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/workers_allocated"
@@ -69,6 +74,7 @@
                     />
 
                 <TextView
+                    android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/workers_working"
@@ -77,6 +83,7 @@
                     android:textColor="@color/black"
                     />
                 <TextView
+                    android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/wcc_pit"
@@ -85,6 +92,7 @@
                     android:textColor="@color/black"
                     />
                 <TextView
+                    android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/wvc_pit"
@@ -93,6 +101,7 @@
                     android:textColor="@color/black"
                     />
                 <TextView
+                    android:textSize="@dimen/_12sdp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/nursery_pit"

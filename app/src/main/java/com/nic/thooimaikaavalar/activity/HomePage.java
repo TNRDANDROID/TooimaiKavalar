@@ -130,6 +130,7 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         get_swm_asset_type();
         get_no_of_waste_dump_photos();
         get_carried_out_date_list();
+        get_min_max_date();
 
     }
 
@@ -471,6 +472,21 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
         return dataSet;
     }
 
+    public void get_min_max_date() {
+        try {
+            new ApiService(this).makeJSONObjectRequest("get_min_max_date", Api.Method.POST, UrlGenerator.getWorkListUrl(), get_min_max_date_JSONParams(), "not cache", this);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public JSONObject get_min_max_date_JSONParams() throws JSONException {
+        String authKey = Utils.encrypt(prefManager.getUserPassKey(), getResources().getString(R.string.init_vector), Utils.min_max_dateJsonParams().toString());
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_USER_NAME, prefManager.getUserName());
+        dataSet.put(AppConstant.DATA_CONTENT, authKey);
+        Log.d("min_max_date", "" + dataSet);
+        return dataSet;
+    }
     /////////////***************** //////////
 
 
@@ -641,6 +657,18 @@ public class HomePage extends AppCompatActivity implements Api.ServerResponseLis
                 }
                 Log.d("is_plastic_waste_management", "" + responseDecryptedBlockKey);
             }
+
+            if ("get_min_max_date".equals(urlType) && responseObj != null) {
+                String key = responseObj.getString(AppConstant.ENCODE_DATA);
+                String responseDecryptedBlockKey = Utils.decrypt(prefManager.getUserPassKey(), key);
+                JSONObject jsonObject = new JSONObject(responseDecryptedBlockKey);
+                if (jsonObject.getString("STATUS").equalsIgnoreCase("OK") && jsonObject.getString("RESPONSE").equalsIgnoreCase("OK")) {
+                    prefManager.setKey_minimum_date(jsonObject.getString("min_date"));
+                    prefManager.setKey_maximum_date(jsonObject.getString("max_date"));
+                }
+                Log.d("get_min_max_date", "" + responseDecryptedBlockKey);
+            }
+
 
 
         } catch (JSONException e) {

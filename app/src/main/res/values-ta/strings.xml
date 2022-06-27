@@ -281,7 +281,7 @@
     <string name="infrastructure_details">திடக்கழிவு மேலாண்மை வசதிகள் விவரங்கள்</string>
     <string name="add_view_assets_details">சொத்து விவரங்களைச் சேர்க்கவும்/பார்க்கவும்</string>
     <string name="add_view_waste_dump_details">கிராம ஊராட்சியில் குப்பை கிடங்கு தென்படுகிறதா? சேர்க்கவும்/பார்க்கவும்</string>
-    <string name="view_infrastructure">புதிய நுண்ணியிர் உரம் தயாரிக்கும் மையம் குறித்த விபரங்களை காண</string>
+    <string name="view_infrastructure">திடக்கழிவு மேலாண்மை வசதிகள் குறித்த விபரங்களை காண</string>
     <string name="daily_collected_entry">தினசரி கழிவு சேகரிக்கப்பட்ட விபரங்களை பதிவு செய்ய</string>
     <string name="waste_collected_details">கழிவு சேகரிக்கப்பட்ட விவரங்கள்</string>
     <string name="activity_carried_out">தினசரி அறிக்கை உள்ளீடு</string>
@@ -301,7 +301,7 @@
     <string name="total_quantity_of_compost_generated_from_the_vermi_composting_compost_pit_in_kg">மண்புழு உரக் குழியிலிருந்து உருவாக்கப்பட்ட உரத்தின் மொத்த அளவு (கி)</string>
     <string name="sale_of_compost">உரம் விற்பனை</string>
     <string name="quantity_of_compost_sold_in_kg">விற்கப்பட்ட உரம் அளவு (கி)</string>
-    <string name="total_revenue_generated_in_lakhs">ஈட்டப்பட்ட மொத்த வருவாய் (லட்சத்தில்)</string>
+    <string name="total_revenue_generated_in_lakhs">ஈட்டப்பட்ட மொத்த வருவாய் (ரூ)</string>
 
     <string name="you_cant_take_photos_delete_old_records">You Cant take photos Please delete old record</string>
     <string name="select_date">தேதியைத் தேர்ந்தெடுக்கவும்</string>
@@ -314,25 +314,26 @@
     <string name="water_available_name">Water Available Name</string>
     <string name="name">பெயர்</string>
     <string name="mobile">கைபேசி எண்</string>
-    <string name="workers_allocated">Workers Allocated</string>
-    <string name="workers_working">Workers Working</string>
-    <string name="wcc_pit">WCC Pit</string>
-    <string name="wvc_pit">WVC Pit</string>
-    <string name="nursery_developed">Nursery developed</string>
+    <string name="workers_allocated">அனுமதிக்கப்பட்ட தூய்மை காவலர்களின் எண்ணிக்கை</string>
+    <string name="workers_working">பணிபுரியும் தூய்மை காவலர்களின் எண்ணிக்கை</string>
+    <string name="wcc_pit">ஊராட்சியில் சமுதாய உரக்குழி உள்ளதா?</string>
+    <string name="wvc_pit">ஊராட்சியில் மண்புழு உரம் தயாரிக்கும் வசதி உள்ளதா?</string>
+    <string name="nursery_developed">நாற்றங்கால் பண்ணை உருவாக்கப்பட்டுள்ளதா?</string>
     <string name="swm_assets">SWM Assets</string>
     <string name="add_swm_asset_details">திடக்கழிவு மேலாண்மை வசதிகள் சேர்க்க</string>
     <string name="view_swm_assets">திடக்கழிவு மேலாண்மை வசதிகள் பார்க்க</string>
-    <string name="add_infrastructure">புதிய நுண்ணியிர் உரம் தயாரிக்கும் மையம் குறித்த விபரங்களை சேர்க்க</string>
+    <string name="add_infrastructure">திடக்கழிவு மேலாண்மை வசதிகள் குறித்த விபரங்களை சேர்க்க</string>
     <string name="waste_dump_photos_list">கிராம ஊராட்சியில் குப்பை கிடங்கு தென்படும் புகைப்படங்கள்</string>
     <string name="cleared_waste_dump_photos_list">Cleared Waste Dump Photos List</string>
     <string name="where_the_attached_pwm_unit_is_located">இணைக்கப்பட்டு உள்ள நெகிழிக் கழிவு மேலாண்மை அலகு அமைந்துள்ள கிராம ஊராட்சி</string>
     <string name="amt_of_compostable_garbage_collected">சேகரிக்கப்படும் மக்காத குப்பையின் அளவு (கி)</string>
     <string name="is_pending_available">உள்ளது</string>
-    <string name="attach_your_receipt">தயவுசெய்து உங்கள் ரசீதை இணைக்கவும்</string>
+    <string name="attach_your_receipt">ADD  தயவுசெய்து உங்கள் ரசீதை இணைக்கவும் ( choose file) below ஈட்டப்பட்ட மொத்த வருவாய்</string>
     <string name="plastic_waste_management_unit_sale">நெகிழிக் கழிவு மேலாண்மை அலகு விற்பனை</string>
     <string name="quantity">அளவு (கி)</string>
     <string name="amount">தொகை</string>
     <string name="cheque">காசோலை</string>
     <string name="is_this_working">பயன்பாட்டில் உள்ளதா?</string>
+    <string name="is_this_waste_dump_cleaned_or_not">குப்பை கிடங்கு தென்படும் இடங்கள் சுத்தம் செய்யபட்டுள்ளதா?</string>
 
 </resources>

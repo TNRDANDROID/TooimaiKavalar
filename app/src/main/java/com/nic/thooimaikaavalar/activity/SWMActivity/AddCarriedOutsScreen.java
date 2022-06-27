@@ -1,5 +1,6 @@
 package com.nic.thooimaikaavalar.activity.SWMActivity;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -24,6 +26,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Shader;
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
 import android.location.Criteria;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -41,6 +45,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,8 +84,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
@@ -160,6 +168,11 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
     private static final int MY_REQUEST_CODE_PERMISSION = 1000;
     Dialog dialog;
     int pageNumber;
+
+    ////Date Picker
+    String maximum_date ="";
+    String minimum_date ="";
+    private int mYear, mMonth, mDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -317,6 +330,13 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
             }
         });
+
+        carriedOutsScreenBinding.chooseDateLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showStartDatePickerDialog();
+            }
+        });
     }
     public void getIntentData(){
         initialiseRecyclerView();
@@ -402,7 +422,9 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
         carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setAdapter(new CommonAdapter(this, pwmVillageList, "pwmVillageList"));
     }
     public void loadCarriedOutDateList(){
-        carriedOutDateList = new ArrayList<>();
+        minimum_date = prefManager.getKey_minimum_date();
+        maximum_date = prefManager.getKey_maximum_date();
+        /*carriedOutDateList = new ArrayList<>();
         RealTimeMonitoringSystem carriedOutItem1 = new RealTimeMonitoringSystem();
         carriedOutItem1.setCarried_out_date(getResources().getString(R.string.select_date));
         carriedOutDateList.add(carriedOutItem1);
@@ -424,7 +446,7 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
             carriedOutsScreenBinding.chooseDateSpinner.setAdapter(null);
 
         }
-
+*/
     }
 
     public void getOnlineWasteDumpList(){
@@ -1478,5 +1500,81 @@ public class AddCarriedOutsScreen extends AppCompatActivity implements  Api.Serv
 
         }
         return b;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void showStartDatePickerDialog() {
+
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+
+                        carriedOutsScreenBinding.dateText.setText(dateFormet(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year));
+                        choose_date_string = carriedOutsScreenBinding.dateText.getText().toString();
+                        carriedOutsScreenBinding.totalQuantityOfWaste.setText("");
+                        carriedOutsScreenBinding.quantityOfBioDegradableWaste.setText("");
+                        carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromCommunity.setText("");
+                        carriedOutsScreenBinding.totalQuantityOfCompostGeneratedFromVermi.setText("");
+                        carriedOutsScreenBinding.quantityOfCompostSold.setText("");
+                        carriedOutsScreenBinding.totalRevenueGenerated.setText("");
+
+                        carriedOutsScreenBinding.quantityOfCompostableWasteRecycle.setText("");
+                        carriedOutsScreenBinding.totalRecyclePlasticWasteRevenueGenerated.setText("");
+                        carriedOutsScreenBinding.totalPlasticWaste.setText("");
+                        carriedOutsScreenBinding.totalPlasticWasteRevenueGenerated.setText("");
+
+                        carriedOutsScreenBinding.amtOfCompostableGarbageCollected.setText("");
+                        carriedOutsScreenBinding.pwmUnitIsLocatedSpinner.setSelection(0);
+                        where_the_attached_pwm_unit_is_located="";
+                        amt_of_compostable_garbage_collected="";
+
+                        carriedOutsScreenBinding.wasteDumpRecycler.setAdapter(null);
+                        getOnlineWasteDumpList();
+
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.getDatePicker().setMinDate(stringToDate(minimum_date));
+        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+        datePickerDialog.show();
+
+
+    }
+    private String dateFormet(String dateStr) {
+        String myFormat="";
+        java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("dd-MM-yyyy");
+        try {
+            Date date1 = format.parse(dateStr);
+            System.out.println(date1);
+            String dateTime = format.format(date1);
+            System.out.println("Current Date Time : " + dateTime);
+            myFormat = dateTime; //In which you need put here
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return myFormat;
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private long stringToDate(String date_text){
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        Date startDate = new Date();
+        long milliseconds = 0;
+        try {
+            startDate = df.parse(date_text);
+            String newDateString = df.format(startDate);
+            milliseconds = startDate.getTime();
+            System.out.println(newDateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return milliseconds;
     }
 }

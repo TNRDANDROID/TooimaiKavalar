@@ -51,7 +51,7 @@ android {
         }
         production {
             debuggable false
-            testCoverageEnabled true
+            testCoverageEnabled false
             minifyEnabled false
             shrinkResources false
             signingConfig signingConfigs.debug

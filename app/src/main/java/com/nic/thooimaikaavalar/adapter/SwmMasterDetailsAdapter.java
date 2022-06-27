@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.text.Html;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -76,32 +77,45 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
     @Override
     public void onBindViewHolder(@NonNull final SwmMasterDetailsAdapter.MyViewHolder holder, final int position) {
         holder.swmMasterBasicDetailsAdapterBinding.pvName.setText(basicDetailsList.get(position).getPvName());
-        holder.swmMasterBasicDetailsAdapterBinding.workersAllocated.setText(context.getResources().getString(R.string.workers_allocated)+" "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_allocated());
-        holder.swmMasterBasicDetailsAdapterBinding.workersWorking.setText(context.getResources().getString(R.string.workers_working)+" "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_working());
+        //holder.swmMasterBasicDetailsAdapterBinding.workersAllocated.setText(context.getResources().getString(R.string.workers_allocated)+" "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_allocated());
+        // holder.swmMasterBasicDetailsAdapterBinding.workersWorking.setText(context.getResources().getString(R.string.workers_working)+" "+basicDetailsList.get(position).getNo_of_thooimai_kaavalars_working());
+
+        changeTextColor(context.getResources().getString(R.string.workers_allocated),basicDetailsList.get(position).getNo_of_thooimai_kaavalars_allocated(),holder.swmMasterBasicDetailsAdapterBinding.workersAllocated);
+        changeTextColor(context.getResources().getString(R.string.workers_working),basicDetailsList.get(position).getNo_of_thooimai_kaavalars_working(),holder.swmMasterBasicDetailsAdapterBinding.workersWorking);
         if(basicDetailsList.get(position).getWhether_community_compost_pit_available_in_panchayat().equals("Y")){
-            holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText(context.getResources().getString(R.string.wcc_pit)+" "+context.getResources().getString(R.string.yes));
+          //  holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText(context.getResources().getString(R.string.wcc_pit)+" "+context.getResources().getString(R.string.yes));
+            changeTextColor(context.getResources().getString(R.string.wcc_pit),context.getResources().getString(R.string.yes),holder.swmMasterBasicDetailsAdapterBinding.wccPit);
         }
         else {
-            holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText(context.getResources().getString(R.string.wcc_pit)+" "+context.getResources().getString(R.string.no));
+           // holder.swmMasterBasicDetailsAdapterBinding.wccPit.setText(context.getResources().getString(R.string.wcc_pit)+" "+context.getResources().getString(R.string.no));
+            changeTextColor(context.getResources().getString(R.string.wcc_pit),context.getResources().getString(R.string.no),holder.swmMasterBasicDetailsAdapterBinding.wccPit);
         }
         if(basicDetailsList.get(position).getWhether_vermi_compost_pit_available_in_panchayat().equals("Y")){
-            holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText(context.getResources().getString(R.string.wvc_pit)+" "+context.getResources().getString(R.string.yes));
+           // holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText(context.getResources().getString(R.string.wvc_pit)+" "+context.getResources().getString(R.string.yes));
+            changeTextColor(context.getResources().getString(R.string.wvc_pit),context.getResources().getString(R.string.yes),holder.swmMasterBasicDetailsAdapterBinding.wvcPit);
 
         }
         else {
-            holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText(context.getResources().getString(R.string.wvc_pit)+" "+context.getResources().getString(R.string.no));
+            //holder.swmMasterBasicDetailsAdapterBinding.wvcPit.setText(context.getResources().getString(R.string.wvc_pit)+" "+context.getResources().getString(R.string.no));
+            changeTextColor(context.getResources().getString(R.string.wvc_pit),context.getResources().getString(R.string.no),holder.swmMasterBasicDetailsAdapterBinding.wvcPit);
+
 
         }
         if(basicDetailsList.get(position).getAny_integrated_nuesery_devlp_near_swm_facility().equals("Y")){
-            holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText(context.getResources().getString(R.string.nursery_developed)+" "+context.getResources().getString(R.string.yes));
+            //holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText(context.getResources().getString(R.string.nursery_developed)+" "+context.getResources().getString(R.string.yes));
+            changeTextColor(context.getResources().getString(R.string.nursery_developed),context.getResources().getString(R.string.yes),holder.swmMasterBasicDetailsAdapterBinding.nurseryPit);
+
         }
         else {
-            holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText(context.getResources().getString(R.string.nursery_developed)+" "+context.getResources().getString(R.string.no));
+            //holder.swmMasterBasicDetailsAdapterBinding.nurseryPit.setText(context.getResources().getString(R.string.nursery_developed)+" "+context.getResources().getString(R.string.no));
+            changeTextColor(context.getResources().getString(R.string.nursery_developed),context.getResources().getString(R.string.yes),holder.swmMasterBasicDetailsAdapterBinding.nurseryPit);
+
         }
 
 
 
         if(type.equals("Local")) {
+            holder.swmMasterBasicDetailsAdapterBinding.deleteUploadRl.setVisibility(View.VISIBLE);
             holder.swmMasterBasicDetailsAdapterBinding.uploadIcon.setVisibility(View.VISIBLE);
             holder.swmMasterBasicDetailsAdapterBinding.deleteIcon.setVisibility(View.VISIBLE);
             holder.swmMasterBasicDetailsAdapterBinding.uploadIcon.setImageResource(R.drawable.ic_upload_icon);
@@ -127,6 +141,7 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
                 holder.swmMasterBasicDetailsAdapterBinding.carriedOutLayout.setVisibility(View.GONE);
                 holder.swmMasterBasicDetailsAdapterBinding.pwmUnitSaleLayout.setVisibility(View.GONE);
             }
+            holder.swmMasterBasicDetailsAdapterBinding.deleteUploadRl.setVisibility(View.GONE);
             holder.swmMasterBasicDetailsAdapterBinding.uploadIcon.setVisibility(View.GONE);
             holder.swmMasterBasicDetailsAdapterBinding.deleteIcon.setVisibility(View.GONE);
             holder.swmMasterBasicDetailsAdapterBinding.uploadIcon.setImageResource(R.drawable.ic_visibility_grey_900_24dp);
@@ -335,5 +350,9 @@ public class SwmMasterDetailsAdapter extends RecyclerView.Adapter<SwmMasterDetai
 
     }
 
+    private void changeTextColor(String first_text,String value_text,TextView textView){
+        String text = "<font color='DimGray'>"+first_text+"</font><br><font color='red'>"+value_text+"</font>";
+        textView.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
+    }
 }
 

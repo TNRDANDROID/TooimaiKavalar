@@ -91,7 +91,7 @@
                             android:id="@+id/ques"
                             android:layout_marginTop="@dimen/_2sdp"
                             android:layout_below="@+id/ans1"
-                            android:text="Is this waste dump cleaned or not ?"
+                            android:text="@string/is_this_waste_dump_cleaned_or_not"
                             android:fontFamily="@string/tamil_font" />
                         <RelativeLayout
                             android:id="@+id/yesno_layout"

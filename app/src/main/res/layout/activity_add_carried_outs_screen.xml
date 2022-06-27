@@ -121,19 +121,27 @@
                             android:background="@drawable/rectangle_box"
                             android:orientation="vertical">
 
+                            <ImageView
+                                android:layout_width="@dimen/_25sdp"
+                                android:layout_height="@dimen/_25sdp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:src="@drawable/date_icon"/>
                             <TextView
+                                android:hint="@string/choose_date"
+                                android:id="@+id/date_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginStart="15dp"
-                                android:textColor="@android:color/white"
+                                android:textColor="@android:color/black"
                                 android:textSize="@dimen/_12sdp"
                                 android:visibility="visible"
                                 android:fontFamily="@string/tamil_font"
                                 tools:ignore="RelativeOverlap" />
 
                             <Spinner
+                                android:visibility="gone"
                                 android:id="@+id/choose_date_spinner"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

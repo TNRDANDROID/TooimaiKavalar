@@ -1318,6 +1318,13 @@ public class Utils {
         return dataSet;
     }
 
+    public static JSONObject min_max_dateJsonParams() throws JSONException {
+        JSONObject dataSet = new JSONObject();
+        dataSet.put(AppConstant.KEY_SERVICE_ID, "get_min_max_date");
+        Log.d("get_min_max_date", "" + dataSet);
+        return dataSet;
+    }
+
 
 
 //    public static void deleteCache(Context context) {

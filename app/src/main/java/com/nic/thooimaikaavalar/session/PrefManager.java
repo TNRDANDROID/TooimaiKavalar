@@ -67,6 +67,8 @@ public class PrefManager {
     private static final String KEY_no_of_waste_dump_photos = "no_of_waste_dump_photos";
     private static final String KEY_carried_out_date_list = "carried_out_date_list";
     private static final String KEY_is_pwm = "is_pwm";
+    private static final String Key_minimum_date = "minimum_date";
+    private static final String Key_maximum_date = "maximum_date";
 
 
     public PrefManager(Context context) {
@@ -254,6 +256,25 @@ public class PrefManager {
 
     public Object setTypeOfWork(Object key) {
         editor.putString(TYPE_OF_WORK, String.valueOf(key));
+        editor.commit();
+        return key;
+    }
+
+    public String getKey_minimum_date() {
+        return pref.getString(Key_minimum_date, null);
+    }
+
+    public Object setKey_minimum_date(Object key) {
+        editor.putString(Key_minimum_date, String.valueOf(key));
+        editor.commit();
+        return key;
+    }
+    public String getKey_maximum_date() {
+        return pref.getString(Key_maximum_date, null);
+    }
+
+    public Object setKey_maximum_date(Object key) {
+        editor.putString(Key_maximum_date, String.valueOf(key));
         editor.commit();
         return key;
     }

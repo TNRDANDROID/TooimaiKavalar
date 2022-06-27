@@ -333,5 +333,6 @@
     <string name="amount">Amount</string>
     <string name="cheque">Cheque</string>
     <string name="is_this_working">Is This Working ?</string>
+    <string name="is_this_waste_dump_cleaned_or_not">Is this waste dump cleaned or not ?</string>
 
 </resources>
